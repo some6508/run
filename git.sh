@@ -1,0 +1,1 @@
+export CODING='https://gitlab.com/shell_some/shell.ccaeo/-/raw/master'
