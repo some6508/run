@@ -7,6 +7,7 @@
 #
 
 # 本地/局域网地址
+DOMAIN-SUFFIX,ccaeo.cn
 DOMAIN-SUFFIX,ip6-localhost
 DOMAIN-SUFFIX,ip6-loopback
 DOMAIN-SUFFIX,lan
@@ -323,9 +324,8 @@ PROCESS-NAME,Weiyun.exe
 PROCESS-NAME,baidunetdisk.exe
 
 # bt
+DOMAIN-KEYWORD,announce
+DOMAIN-KEYWORD,torrent
+DOMAIN-KEYWORD,tracker
 DOMAIN-KEYWORD,aria2
 DOMAIN-SUFFIX,smtp
-
-# CN域名直连(中国|公司|网络)
-DOMAIN-SUFFIX,cn
-DOMAIN-KEYWORD,-cn
