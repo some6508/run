@@ -33,3 +33,5 @@ PROCESS-NAME,com.tencent.tmgp.sgame
 PROCESS-NAME,com.tencent.mobileqq
 PROCESS-NAME,com.tencent.mm
 
+DOMAIN-SUFFIX,cn
+DOMAIN-KEYWORD,-cn
