@@ -1,32 +1,6 @@
 #
-# 参考：https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/LocalAreaNetwork.list
-# 参考：https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Cloudflare/Cloudflare.list
-#
-# https://github.com/flyhigherpi/merlinclash_clash_related/tree/master
-# https://github.com/ACL4SSR/ACL4SSR/tree/master
-# https://github.com/blackmatrix7/ios_rule_script/tree/master
-# https://github.com/zsokami/ACL4SSR/tree/main
-#
-
-# 本地/局域网地址
 DOMAIN-SUFFIX,ccaeo.cn
-DOMAIN-SUFFIX,local
-DOMAIN-SUFFIX,localhost
-DOMAIN-SUFFIX,ip6-localhost
-DOMAIN-SUFFIX,ip6-loopback
-IP-CIDR,0.0.0.0/8,no-resolve
-IP-CIDR,10.0.0.0/8,no-resolve
-IP-CIDR,100.64.0.0/10,no-resolve
-IP-CIDR,127.0.0.0/8,no-resolve
-IP-CIDR,172.16.0.0/12,no-resolve
-IP-CIDR,192.168.0.0/16,no-resolve
-IP-CIDR,224.0.0.0/4,no-resolve
-IP-CIDR6,::1/128,no-resolve
-IP-CIDR6,fc00::/7,no-resolve
-IP-CIDR6,fe80::/10,no-resolve
-IP-CIDR6,fd00::/8,no-resolve
-
-#Tencent
-PROCESS-NAME,com.tencent.tmgp.sgame
-PROCESS-NAME,com.tencent.mobileqq
-PROCESS-NAME,com.tencent.mm
+DOMAIN-SUFFIX,sub.v1.mk
+DOMAIN-SUFFIX,api.v1.mk
+DOMAIN-SUFFIX,sub.flycnb.tk
+DOMAIN-SUFFIX,suc.flycnb.tk
