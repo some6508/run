@@ -1,6 +1,12 @@
-#
+#白名单
 DOMAIN-SUFFIX,ccaeo.cn
 DOMAIN-SUFFIX,sub.v1.mk
 DOMAIN-SUFFIX,api.v1.mk
 DOMAIN-SUFFIX,sub.flycnb.tk
 DOMAIN-SUFFIX,suc.flycnb.tk
+
+#放行包名
+PROCESS-NAME,com.tencent.tmgp.sgame
+PROCESS-NAME,com.tencent.mobileqq
+PROCESS-NAME,com.tencent.mm
+PROCESS-NAME,com.luna.music
