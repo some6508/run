@@ -1,3 +1,15 @@
+#本地/局域网
+DOMAIN-SUFFIX,local
+DOMAIN-SUFFIX,localhost
+IP-CIDR,10.0.0.0/8,no-resolve
+IP-CIDR,17.0.0.0/8,no-resolve
+IP-CIDR,100.64.0.0/10,no-resolve
+IP-CIDR,127.0.0.0/8,no-resolve
+IP-CIDR,172.16.0.0/12,no-resolve
+IP-CIDR,192.168.0.0/16,no-resolve
+IP-CIDR,224.0.0.0/4,no-resolve
+IP-CIDR6,fe80::/10,no-resolve
+
 #白名单
 DOMAIN-SUFFIX,ccaeo.cn
 DOMAIN-SUFFIX,sub.v1.mk
@@ -10,3 +22,8 @@ PROCESS-NAME,com.tencent.tmgp.sgame
 PROCESS-NAME,com.tencent.mobileqq
 PROCESS-NAME,com.tencent.mm
 PROCESS-NAME,com.luna.music
+
+#内置规则
+DOMAIN-SUFFIX,cn
+DOMAIN-KEYWORD,-cn
+GEOIP,CN
