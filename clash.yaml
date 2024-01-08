@@ -1,0 +1,26 @@
+payload:
+  - DOMAIN-SUFFIX,local
+  - IP-CIDR,10.0.0.0/8
+  - IP-CIDR,17.0.0.0/8
+  - IP-CIDR,100.64.0.0/10
+  - IP-CIDR,127.0.0.0/8
+  - IP-CIDR,172.16.0.0/12
+  - IP-CIDR,192.168.0.0/16
+  - IP-CIDR,224.0.0.0/4
+  - IP-CIDR6,fe80::/10
+
+  - DOMAIN-SUFFIX,ccaeo.cn
+  - DOMAIN-SUFFIX,sub.v1.mk
+  - DOMAIN-SUFFIX,api.v1.mk
+  - DOMAIN-SUFFIX,sub.flycnb.tk
+  - DOMAIN-SUFFIX,suc.flycnb.tk
+  - DOMAIN-SUFFIX,sub.danhu.ml
+
+  - PROCESS-NAME,com.tencent.tmgp.sgame
+  - PROCESS-NAME,com.tencent.mobileqq
+  - PROCESS-NAME,com.tencent.mm
+  - PROCESS-NAME,com.luna.music
+
+  - DOMAIN-SUFFIX,cn
+  - DOMAIN-KEYWORD,-cn
+  - GEOIP,CN
