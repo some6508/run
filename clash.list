@@ -18,4 +18,3 @@ PROCESS-NAME,com.luna.music
 #内置规则
 DOMAIN-SUFFIX,cn
 DOMAIN-KEYWORD,-cn
-GEOIP,CN
