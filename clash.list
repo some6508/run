@@ -8,13 +8,3 @@ IP-CIDR,172.16.0.0/12,no-resolve
 IP-CIDR,192.168.0.0/16,no-resolve
 IP-CIDR,224.0.0.0/4,no-resolve
 IP-CIDR6,fe80::/10,no-resolve
-
-#放行包名
-PROCESS-NAME,com.tencent.tmgp.sgame
-PROCESS-NAME,com.tencent.mobileqq
-PROCESS-NAME,com.tencent.mm
-PROCESS-NAME,com.luna.music
-
-#内置规则
-DOMAIN-SUFFIX,cn
-DOMAIN-KEYWORD,-cn
