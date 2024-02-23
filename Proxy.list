@@ -1,3 +1,11 @@
+# 代理规则
+# DOMAIN: 10
+# DOMAIN-KEYWORD: 16
+# DOMAIN-SUFFIX: 691
+# IP-CIDR: 83
+# IP-CIDR6: 2
+# 规则总数: 802
+
 DOMAIN,cvws.icloud-content.com
 DOMAIN,developer.apple.com
 DOMAIN,itunes.apple.com
@@ -25,6 +33,7 @@ DOMAIN-KEYWORD,tesla
 DOMAIN-KEYWORD,twitter
 DOMAIN-KEYWORD,whatsapp
 DOMAIN-KEYWORD,youtube
+
 DOMAIN-SUFFIX,1e100.net
 DOMAIN-SUFFIX,2mdn.net
 DOMAIN-SUFFIX,2o7.net
@@ -800,5 +809,6 @@ IP-CIDR,91.108.16.0/22,no-resolve
 IP-CIDR,91.108.4.0/22,no-resolve
 IP-CIDR,91.108.56.0/22,no-resolve
 IP-CIDR,91.108.8.0/21,no-resolve
+
 IP-CIDR6,2001:67c:4e8::/48,no-resolve
 IP-CIDR6,2001:b28:f23d::/48,no-resolve
