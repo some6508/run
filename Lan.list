@@ -1,2 +1,2 @@
 # 校园网验证
-IP-CIDR,1.117.0.0/12,no-resolve
+IP-CIDR,1.117.0.0/16,no-resolve
