@@ -1,2 +1,14 @@
+payload:
+# 本地规则
+# DOMAIN-SUFFIX: 1
+# IP-CIDR: 1
+# DOMAIN: 0
+# IP-CIDR6: 0
+# DOMAIN-KEYWORD: 0
+# 规则总数: 2
+
+# VPS FTP
+DOMAIN-SUFFIX,ftpupload.net
+
 # 校园网验证
 IP-CIDR,1.117.0.0/16,no-resolve
