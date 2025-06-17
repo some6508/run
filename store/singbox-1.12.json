@@ -1,0 +1,240 @@
+{
+	"log": {
+		"level": "warn",
+		"timestamp": true
+	},
+	"experimental": {
+		"clash_api": {
+			"default_mode": "规则",
+			"external_controller": "127.0.0.1:9090",
+			"external_ui": "ui",
+			"external_ui_download_detour": "🎯 直连访问",
+			"external_ui_download_url": "https://gh-proxy.com/https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip"
+		},
+		"cache_file": {
+			"enabled": true,
+			"store_fakeip": true
+		}
+	},
+	"dns": {
+		"final": "代理DNS",
+		"independent_cache": true,
+		"strategy": "prefer_ipv4",
+		"servers": [
+			{
+				"tag": "代理DNS",
+				"type": "https",
+				"detour": "🚀 节点选择",
+				"server": "8.8.8.8"
+			},
+			{
+				"tag": "直连DNS",
+				"type": "https",
+				"server": "223.5.5.5"
+			},
+			{
+				"tag": "默认DNS",
+				"type": "udp",
+				"server": "119.29.29.29"
+			},
+			{
+				"tag": "fakeip_dns",
+				"type": "fakeip",
+				"inet4_range": "198.18.0.0/15",
+				"inet6_range": "fc00::/18"
+			}
+		],
+		"rules": [
+			{
+				"clash_mode": "直连",
+				"server": "直连DNS"
+			},
+			{
+				"clash_mode": "代理",
+				"server": "fakeip_dns"
+			},
+			{
+				"query_type": "AAAA",
+				"action": "reject"
+			},
+			{
+				"rule_set": "geosite_cn",
+				"server": "直连DNS"
+			},
+			{
+				"query_type": [
+					"A",
+					"AAAA"
+				],
+				"server": "fakeip_dns",
+				"rewrite_ttl": 1
+			}
+		]
+	},
+	"inbounds": [
+		{
+			"tag": "tun-in",
+			"type": "tun",
+			"stack": "mixed",
+			"auto_route": true,
+			"address": [
+				"172.19.0.1/30",
+				"fdfe:dcba:9876::1/126"
+			]
+		},
+		{
+			"tag": "mixed-in",
+			"type": "mixed",
+			"listen": "0.0.0.0",
+			"listen_port": 7890
+		}
+	],
+	"route": {
+		"default_domain_resolver": "默认DNS",
+		"auto_detect_interface": true,
+		"final": "🚀 节点选择",
+		"rules": [
+			{
+				"action": "sniff",
+				"timeout": "500ms"
+			},
+			{
+				"type": "logical",
+				"mode": "or",
+				"rules": [
+					{
+						"port": 53
+					},
+					{
+						"protocol": "dns"
+					}
+				],
+				"action": "hijack-dns"
+			},
+			{
+				"ip_is_private": true,
+				"outbound": "🎯 直连访问"
+			},
+			{
+				"rule_set": [
+					"adrules_singbox",
+					"AWAvenue_Ads",
+					"geosite_ads"
+				],
+				"action": "reject"
+			},
+			{
+				"domain": [
+					"clash.razord.top",
+					"yacd.metacubex.one",
+					"yacd.haishan.me",
+					"d.metacubex.one"
+				],
+				"outbound": "🎯 直连访问"
+			},
+			{
+				"rule_set": "geosite_proxy",
+				"outbound": "🚀 节点选择"
+			},
+			{
+				"rule_set": [
+					"geoip_cn",
+					"geosite_cn"
+				],
+				"outbound": "🎯 直连访问"
+			},
+			{
+				"clash_mode": "代理",
+				"outbound": "🚀 节点选择"
+			},
+			{
+				"clash_mode": "直连",
+				"outbound": "🎯 直连访问"
+			}
+		],
+		"rule_set": [
+			{
+				"tag": "adrules_singbox",
+				"type": "remote",
+				"format": "binary",
+				"update_interval": "7d",
+				"download_detour": "🎯 直连访问",
+				"url": "https://testingcf.jsdelivr.net/gh/Cats-Team/AdRules@main/adrules-singbox.srs"
+			},
+			{
+				"tag": "AWAvenue_Ads",
+				"type": "remote",
+				"format": "binary",
+				"update_interval": "7d",
+				"download_detour": "🎯 直连访问",
+				"url": "https://testingcf.jsdelivr.net/gh/TG-Twilight/AWAvenue-Ads-Rule@main/Filters/AWAvenue-Ads-Rule-Singbox-regex.srs"
+			},
+			{
+				"tag": "geosite_ads",
+				"type": "remote",
+				"format": "binary",
+				"update_interval": "7d",
+				"download_detour": "🎯 直连访问",
+				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ads-all.srs"
+			},
+			{
+				"tag": "geoip_cn",
+				"type": "remote",
+				"format": "binary",
+				"update_interval": "7d",
+				"download_detour": "🎯 直连访问",
+				"url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geoip/cn.srs"
+			},
+			{
+				"tag": "geosite_cn",
+				"type": "remote",
+				"format": "binary",
+				"update_interval": "7d",
+				"download_detour": "🎯 直连访问",
+				"url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo-lite/geosite/cn.srs"
+			},
+			{
+				"tag": "geosite_proxy",
+				"type": "remote",
+				"format": "binary",
+				"update_interval": "7d",
+				"download_detour": "🎯 直连访问",
+				"url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geosite/geolocation-!cn.srs"
+			}
+		]
+	},
+	"outbounds": [
+		{
+			"tag": "🚀 节点选择",
+			"type": "selector",
+			"default": "♻️ 自动选择",
+			"outbounds": [
+				"♻️ 自动选择",
+				"🖲️ 手动选择",
+				"🎯 直连访问"
+			]
+		},
+		{
+			"tag": "🖲️ 手动选择",
+			"type": "selector",
+			"outbounds": [
+				"🎯 直连访问"
+			]
+		},
+		{
+			"tag": "♻️ 自动选择",
+			"type": "urltest",
+			"interval": "1m",
+			"url": "http://cp.cloudflare.com/",
+			"outbounds": []
+		},
+		{
+			"tag": "🎯 直连访问",
+			"type": "direct",
+			"domain_resolver": {
+				"server": "直连DNS",
+				"strategy": "prefer_ipv4"
+			}
+		}
+	]
+}
