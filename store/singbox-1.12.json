@@ -33,11 +33,6 @@
 				"server": "223.5.5.5"
 			},
 			{
-				"tag": "默认DNS",
-				"type": "udp",
-				"server": "119.29.29.29"
-			},
-			{
 				"tag": "fakeip_dns",
 				"type": "fakeip",
 				"inet4_range": "198.18.0.0/15",
@@ -90,7 +85,7 @@
 		}
 	],
 	"route": {
-		"default_domain_resolver": "默认DNS",
+		"default_domain_resolver": "直连DNS",
 		"auto_detect_interface": true,
 		"final": "🚀 节点选择",
 		"rules": [
