@@ -220,7 +220,7 @@
 			"tag": "♻️ 自动选择",
 			"type": "urltest",
 			"interval": "1m",
-			"url": "http://cp.cloudflare.com/",
+			"url": "https://www.gstatic.com/generate_204",
 			"outbounds": []
 		},
 		{
