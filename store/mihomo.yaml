@@ -64,7 +64,7 @@ dns:
   nameserver-policy:
     rule-set:adrules,AWAvenue:
     - rcode://success
-p: &p {url: 'https://cp.cloudflare.com/', interval: 600, include-all: true}
+p: &p {url: 'https://www.gstatic.com/generate_204', interval: 600, include-all: true}
 proxy-groups:
 - name: 🚀 节点选择
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png
