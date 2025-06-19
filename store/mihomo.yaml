@@ -64,6 +64,7 @@ dns:
   nameserver-policy:
     rule-set:adrules,AWAvenue:
     - rcode://success
+p: &p {url: 'https://cp.cloudflare.com/', interval: 600, include-all: true}
 proxy-groups:
 - name: 🚀 节点选择
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png
@@ -77,21 +78,15 @@ proxy-groups:
 - name: ♻️ 自动选择
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
   type: url-test
-  include-all: true
-  interval: 600
-  url: https://cp.cloudflare.com/
+  <<: *p
 - name: ☁️ 故障转移
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Available.png
   type: fallback
-  include-all: true
-  interval: 600
-  url: https://cp.cloudflare.com/
+  <<: *p
 - name: 🔮 负载均衡
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Round_Robin.png
   type: load-balance
-  include-all: true
-  interval: 600
-  url: https://cp.cloudflare.com/
+  <<: *p
 - name: 🖲️ 手动选择
   icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Direct.png
   type: select
