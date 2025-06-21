@@ -140,6 +140,8 @@ rules:
 - DOMAIN,ad-channel.diwodiwo.xyz,🛑 拦截访问
 - DOMAIN,pixon.ads-pixiv.net,🛑 拦截访问
 - DOMAIN,aax.amazon-adsystem.com,🛑 拦截访问
+- DOMAIN,testingcf.jsdelivr.net,🎯 直连访问
+- DOMAIN,gh-proxy.com,🎯 直连访问
 - RULE-SET,private,🎯 直连访问
 - RULE-SET,private_ip,🎯 直连访问,no-resolve
 - RULE-SET,cn,🎯 直连访问
