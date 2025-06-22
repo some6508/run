@@ -57,7 +57,7 @@ dns:
     rule-set:private:
     - system
 rule-anchor:
-  p: &p {url: 'https://www.gstatic.com/generate_204', interval: 600, include-all: true}
+  p: &p {url: 'https://www.google.com/generate_204', interval: 600, include-all: true}
   ip: &ip {type: http, interval: 604800, behavior: ipcidr, format: mrs}
   domain: &domain {type: http, interval: 604800, behavior: domain, format: mrs}
 proxy-groups:
