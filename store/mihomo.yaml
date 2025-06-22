@@ -118,6 +118,10 @@ rule-providers:
     <<: *domain
     path: ./rule/AWAvenue.mrs
     url: https://testingcf.jsdelivr.net/gh/TG-Twilight/AWAvenue-Ads-Rule@main/Filters/AWAvenue-Ads-Rule-Clash.mrs
+  geolocation:
+    <<: *domain
+    path: ./rule/geolocation.mrs
+    url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/geolocation-!cn.mrs
   private:
     <<: *domain
     path: ./rule/private.mrs
@@ -142,6 +146,7 @@ rules:
 - DOMAIN,aax.amazon-adsystem.com,🛑 拦截访问
 - DOMAIN,testingcf.jsdelivr.net,🎯 直连访问
 - DOMAIN,gh-proxy.com,🎯 直连访问
+- RULE-SET,geolocation,🚀 节点选择
 - RULE-SET,private,🎯 直连访问
 - RULE-SET,private_ip,🎯 直连访问,no-resolve
 - RULE-SET,cn,🎯 直连访问
