@@ -152,3 +152,4 @@ rules:
 - RULE-SET,cn,🎯 直连访问
 - RULE-SET,cn_ip,🎯 直连访问,no-resolve
 - MATCH,🐟 漏网之鱼
+proxies: []
