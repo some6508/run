@@ -25,18 +25,39 @@
 				"tag": "代理DNS",
 				"type": "https",
 				"detour": "🚀 节点选择",
-				"server": "8.8.8.8"
+				"domain_resolver": "hosts",
+				"server": "dns.google"
 			},
 			{
 				"tag": "直连DNS",
 				"type": "https",
-				"server": "223.5.5.5"
+				"domain_resolver": "hosts",
+				"server": "doh.pub"
 			},
 			{
 				"tag": "fakeip_dns",
 				"type": "fakeip",
 				"inet4_range": "198.18.0.0/15",
 				"inet6_range": "fc00::/18"
+			},
+			{
+				"type": "hosts",
+				"tag": "hosts",
+				"predefined": {
+					"doh.pub": [
+						"120.53.53.53",
+						"1.12.12.12",
+						"1.12.12.21"
+					],
+					"dns.alidns.com": [
+						"223.5.5.5",
+						"223.6.6.6"
+					],
+					"dns.google": [
+						"8.8.8.8",
+						"8.8.4.4"
+					]
+				}
 			}
 		],
 		"rules": [
@@ -51,10 +72,6 @@
 			{
 				"query_type": "AAAA",
 				"action": "reject"
-			},
-			{
-				"rule_set": "geosite_cn",
-				"server": "直连DNS"
 			},
 			{
 				"query_type": [
@@ -178,7 +195,7 @@
 				"format": "binary",
 				"update_interval": "7d",
 				"download_detour": "🎯 直连访问",
-				"url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geoip/cn.srs"
+				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs"
 			},
 			{
 				"tag": "geosite_cn",
@@ -186,7 +203,7 @@
 				"format": "binary",
 				"update_interval": "7d",
 				"download_detour": "🎯 直连访问",
-				"url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo-lite/geosite/cn.srs"
+				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo-lite/geosite/cn.srs"
 			},
 			{
 				"tag": "geosite_proxy",
@@ -194,7 +211,7 @@
 				"format": "binary",
 				"update_interval": "7d",
 				"download_detour": "🎯 直连访问",
-				"url": "https://ghfast.top/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/refs/heads/sing/geo/geosite/geolocation-!cn.srs"
+				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs"
 			}
 		]
 	},
@@ -225,11 +242,7 @@
 		},
 		{
 			"tag": "🎯 直连访问",
-			"type": "direct",
-			"domain_resolver": {
-				"server": "直连DNS",
-				"strategy": "prefer_ipv4"
-			}
+			"type": "direct"
 		}
 	]
 }
