@@ -16,9 +16,11 @@ geox-url:
   geosite: https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat
   mmdb: https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.metadb
   asn: https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/GeoLite2-ASN.mmdb
+
 profile:
   store-selected: false
   store-fake-ip: true
+
 dns:
   enable: true
   listen: 0.0.0.0:1053
@@ -56,10 +58,12 @@ dns:
     - rcode://success
     rule-set:private:
     - system
+
 rule-anchor:
-  p: &p {url: 'https://www.google.com/generate_204', interval: 600, include-all: true}
+  p: &p {url: 'https://www.google.com/generate_204', interval: 600, tolerance: 100, include-all: true}
   ip: &ip {type: http, interval: 604800, behavior: ipcidr, format: mrs}
   domain: &domain {type: http, interval: 604800, behavior: domain, format: mrs}
+
 proxy-groups:
   - name: 🚀 节点选择
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png
@@ -80,24 +84,29 @@ proxy-groups:
     - 🇺🇸 美国自动选择
     - 🇸🇬 新加坡自动选择
     - DIRECT
+
   - name: ♻️ 自动选择
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
     type: url-test
     <<: *p
+
   - name: ☁️ 故障转移
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Available.png
     type: fallback
     <<: *p
+
   - name: 🔮 负载均衡
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Round_Robin.png
     type: load-balance
     <<: *p
+
   - name: 🖲️ 手动选择
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Direct.png
     type: select
     include-all: true
     proxies:
     - DIRECT
+
   - name: 🎯 直连访问
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Loop.png
     type: select
@@ -105,6 +114,7 @@ proxy-groups:
     - DIRECT
     - REJECT
     - 🚀 节点选择
+
   - name: 🛑 拦截访问
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Reject.png
     type: select
@@ -112,6 +122,7 @@ proxy-groups:
     - REJECT
     - DIRECT
     - 🚀 节点选择
+
   - name: 🐟 漏网之鱼
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Lab.png
     type: select
@@ -125,52 +136,73 @@ proxy-groups:
     include-all: true
     filter: "(?i)港|hk|hongkong|hong kong|🇭🇰"
     icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/Hongkong(1).png
+    proxies:
+    - DIRECT
+
   - name: 🇹🇼 台湾
     type: select
     include-all: true
     filter: "(?i)台|tw|taiwan|🇹🇼"
     icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/taiwan(3).png
+    proxies:
+    - DIRECT
+
   - name: 🇯🇵 日本
     type: select
     include-all: true
     filter: "(?i)日|jp|japan|🇯🇵"
     icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/Japan.png
+    proxies:
+    - DIRECT
+
   - name: 🇺🇸 美国
     type: select
     include-all: true
     filter: "(?i)美|us|unitedstates|united states|🇺🇸"
     icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/US(1).png
+    proxies:
+    - DIRECT
+
   - name: 🇸🇬 新加坡
     type: select
     include-all: true
     filter: "(?i)(新|sg|singapore|🇸🇬)"
     icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/singapore(1).png
+    proxies:
+    - DIRECT
+
   - name: 🚩 其它地区
     type: select
     include-all: true
     filter: "(?i)^(?!.*(?:🇭🇰|🇹🇼|🇯🇵|🇺🇸|🇸🇬|🇨🇳|港|hk|hongkong|台|tw|taiwan|日|jp|japan|新|sg|singapore|美|us|unitedstates)).*"
     icon: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/master/Gallery/Color/Rocket.png
+    proxies:
+    - DIRECT
 
   - name: 🇭🇰 香港自动选择
     type: url-test
     filter: "(?i)港|hk|hongkong|hong kong|🇭🇰"
     icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/Hongkong(1).png
     <<: *p
+
   - name: 🇹🇼 台湾自动选择
     type: url-test
     filter: "(?i)台|tw|taiwan|🇹🇼"
     icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/taiwan(3).png
     <<: *p
+
   - name: 🇯🇵 日本自动选择
     type: url-test
     filter: "(?i)日|jp|japan|🇯🇵"
     icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/Japan.png
     <<: *p
+
   - name: 🇺🇸 美国自动选择
     type: url-test
     filter: "(?i)美|us|unitedstates|united states|🇺🇸"
     icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/US(1).png
     <<: *p
+
   - name: 🇸🇬 新加坡自动选择
     type: url-test
     filter: "(?i)(新|sg|singapore|🇸🇬)"
@@ -182,26 +214,32 @@ rule-providers:
     <<: *domain
     path: ./rule/adrules.mrs
     url: https://testingcf.jsdelivr.net/gh/Cats-Team/AdRules@main/adrules-mihomo.mrs
+
   AWAvenue:
     <<: *domain
     path: ./rule/AWAvenue.mrs
     url: https://testingcf.jsdelivr.net/gh/TG-Twilight/AWAvenue-Ads-Rule@main/Filters/AWAvenue-Ads-Rule-Clash.mrs
+
   geolocation:
     <<: *domain
     path: ./rule/geolocation.mrs
     url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/geolocation-!cn.mrs
+
   private:
     <<: *domain
     path: ./rule/private.mrs
     url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/private.mrs
+
   private_ip:
     <<: *ip
     path: ./rule/private_ip.mrs
     url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/private.mrs
+
   cn:
     <<: *domain
     path: ./rule/cn.mrs
     url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/cn.mrs
+
   cn_ip:
     <<: *ip
     path: ./rule/cn_ip.mrs
