@@ -57,58 +57,126 @@ dns:
     rule-set:private:
     - system
 rule-anchor:
-  p: &p {url: 'http://www.google.com/generate_204', interval: 600, include-all: true}
+  p: &p {url: 'https://www.google.com/generate_204', interval: 600, include-all: true}
   ip: &ip {type: http, interval: 604800, behavior: ipcidr, format: mrs}
   domain: &domain {type: http, interval: 604800, behavior: domain, format: mrs}
 proxy-groups:
-- name: 🚀 节点选择
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png
-  type: select
-  proxies:
-  - ♻️ 自动选择
-  - ☁️ 故障转移
-  - 🔮 负载均衡
-  - 🖲️ 手动选择
-  - DIRECT
-- name: ♻️ 自动选择
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
-  type: url-test
-  <<: *p
-- name: ☁️ 故障转移
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Available.png
-  type: fallback
-  <<: *p
-- name: 🔮 负载均衡
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Round_Robin.png
-  type: load-balance
-  <<: *p
-- name: 🖲️ 手动选择
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Direct.png
-  type: select
-  include-all: true
-  proxies:
-  - DIRECT
-- name: 🎯 直连访问
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Loop.png
-  type: select
-  proxies:
-  - DIRECT
-  - REJECT
-  - 🚀 节点选择
-- name: 🛑 拦截访问
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Reject.png
-  type: select
-  proxies:
-  - REJECT
-  - DIRECT
-  - 🚀 节点选择
-- name: 🐟 漏网之鱼
-  icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Lab.png
-  type: select
-  proxies:
-  - 🚀 节点选择
-  - DIRECT
-  - REJECT
+  - name: 🚀 节点选择
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png
+    type: select
+    proxies:
+    - ♻️ 自动选择
+    - ☁️ 故障转移
+    - 🔮 负载均衡
+    - 🖲️ 手动选择
+    - 🇭🇰 香港
+    - 🇹🇼 台湾
+    - 🇯🇵 日本
+    - 🇺🇸 美国
+    - 🇸🇬 新加坡
+    - 🇭🇰 香港自动选择
+    - 🇹🇼 台湾自动选择
+    - 🇯🇵 日本自动选择
+    - 🇺🇸 美国自动选择
+    - 🇸🇬 新加坡自动选择
+    - DIRECT
+  - name: ♻️ 自动选择
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
+    type: url-test
+    <<: *p
+  - name: ☁️ 故障转移
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Available.png
+    type: fallback
+    <<: *p
+  - name: 🔮 负载均衡
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Round_Robin.png
+    type: load-balance
+    <<: *p
+  - name: 🖲️ 手动选择
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Direct.png
+    type: select
+    include-all: true
+    proxies:
+    - DIRECT
+  - name: 🎯 直连访问
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Loop.png
+    type: select
+    proxies:
+    - DIRECT
+    - REJECT
+    - 🚀 节点选择
+  - name: 🛑 拦截访问
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Reject.png
+    type: select
+    proxies:
+    - REJECT
+    - DIRECT
+    - 🚀 节点选择
+  - name: 🐟 漏网之鱼
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Lab.png
+    type: select
+    proxies:
+    - 🚀 节点选择
+    - DIRECT
+    - REJECT
+
+  - name: 🇭🇰 香港
+    type: select
+    include-all: true
+    filter: "(?i)港|hk|hongkong|hong kong|🇭🇰"
+    icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/Hongkong(1).png
+  - name: 🇹🇼 台湾
+    type: select
+    include-all: true
+    filter: "(?i)台|tw|taiwan|🇹🇼"
+    icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/taiwan(3).png
+  - name: 🇯🇵 日本
+    type: select
+    include-all: true
+    filter: "(?i)日|jp|japan|🇯🇵"
+    icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/Japan.png
+  - name: 🇺🇸 美国
+    type: select
+    include-all: true
+    filter: "(?i)美|us|unitedstates|united states|🇺🇸"
+    icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/US(1).png
+  - name: 🇸🇬 新加坡
+    type: select
+    include-all: true
+    filter: "(?i)(新|sg|singapore|🇸🇬)"
+    icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/singapore(1).png
+  - name: 🚩 其它地区
+    type: select
+    include-all: true
+    filter: "(?i)^(?!.*(?:🇭🇰|🇹🇼|🇯🇵|🇺🇸|🇸🇬|🇨🇳|港|hk|hongkong|台|tw|taiwan|日|jp|japan|新|sg|singapore|美|us|unitedstates)).*"
+    icon: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/master/Gallery/Color/Rocket.png
+
+  - name: 🇭🇰 香港自动选择
+    type: url-test
+    filter: "(?i)港|hk|hongkong|hong kong|🇭🇰"
+    icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/Hongkong(1).png
+    <<: *p
+  - name: 🇹🇼 台湾自动选择
+    type: url-test
+    filter: "(?i)台|tw|taiwan|🇹🇼"
+    icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/taiwan(3).png
+    <<: *p
+  - name: 🇯🇵 日本自动选择
+    type: url-test
+    filter: "(?i)日|jp|japan|🇯🇵"
+    icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/Japan.png
+    <<: *p
+  - name: 🇺🇸 美国自动选择
+    type: url-test
+    filter: "(?i)美|us|unitedstates|united states|🇺🇸"
+    icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/US(1).png
+    <<: *p
+  - name: 🇸🇬 新加坡自动选择
+    type: url-test
+    filter: "(?i)(新|sg|singapore|🇸🇬)"
+    icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/singapore(1).png
+    <<: *p
+
 rule-providers:
   adrules:
     <<: *domain
@@ -138,17 +206,18 @@ rule-providers:
     <<: *ip
     path: ./rule/cn_ip.mrs
     url: https://gh-proxy.com/https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/cnip.mrs
+
 rules:
-- RULE-SET,adrules,🛑 拦截访问
-- RULE-SET,AWAvenue,🛑 拦截访问
-- DOMAIN,ad-channel.diwodiwo.xyz,🛑 拦截访问
-- DOMAIN,pixon.ads-pixiv.net,🛑 拦截访问
-- DOMAIN,aax.amazon-adsystem.com,🛑 拦截访问
-- DOMAIN,testingcf.jsdelivr.net,🎯 直连访问
-- DOMAIN,gh-proxy.com,🎯 直连访问
-- RULE-SET,geolocation,🚀 节点选择
-- RULE-SET,private,🎯 直连访问
-- RULE-SET,private_ip,🎯 直连访问,no-resolve
-- RULE-SET,cn,🎯 直连访问
-- RULE-SET,cn_ip,🎯 直连访问,no-resolve
-- MATCH,🐟 漏网之鱼
+  - RULE-SET,adrules,🛑 拦截访问
+  - RULE-SET,AWAvenue,🛑 拦截访问
+  - DOMAIN,ad-channel.diwodiwo.xyz,🛑 拦截访问
+  - DOMAIN,pixon.ads-pixiv.net,🛑 拦截访问
+  - DOMAIN,aax.amazon-adsystem.com,🛑 拦截访问
+  - DOMAIN,testingcf.jsdelivr.net,🎯 直连访问
+  - DOMAIN,gh-proxy.com,🎯 直连访问
+  - RULE-SET,geolocation,🚀 节点选择
+  - RULE-SET,private,🎯 直连访问
+  - RULE-SET,private_ip,🎯 直连访问,no-resolve
+  - RULE-SET,cn,🎯 直连访问
+  - RULE-SET,cn_ip,🎯 直连访问,no-resolve
+  - MATCH,🐟 漏网之鱼
