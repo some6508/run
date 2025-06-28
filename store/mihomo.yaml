@@ -60,7 +60,7 @@ dns:
     - system
 
 rule-anchor:
-  p: &p {url: 'https://www.google.com/generate_204', interval: 600, tolerance: 100, include-all: true}
+  p: &p {url: 'http://connectivitycheck.platform.hicloud.com/generate_204', interval: 600, tolerance: 100, include-all: true}
   ip: &ip {type: http, interval: 604800, behavior: ipcidr, format: mrs}
   domain: &domain {type: http, interval: 604800, behavior: domain, format: mrs}
 
