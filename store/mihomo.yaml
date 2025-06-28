@@ -73,11 +73,11 @@ proxy-groups:
     - ☁️ 故障转移
     - 🔮 负载均衡
     - 🖲️ 手动选择
-    - 🇭🇰 香港
-    - 🇹🇼 台湾
-    - 🇯🇵 日本
-    - 🇺🇸 美国
-    - 🇸🇬 新加坡
+    - 🇭🇰 香港节点
+    - 🇹🇼 台湾节点
+    - 🇯🇵 日本节点
+    - 🇺🇸 美国节点
+    - 🇸🇬 新加坡节点
     - 🚩 其它地区
     - DIRECT
 
@@ -133,31 +133,31 @@ proxy-groups:
     icon: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/master/Gallery/Color/Rocket.png
     <<: *p
 
-  - name: 🇭🇰 香港
+  - name: 🇭🇰 香港节点
     type: url-test
     filter: "(?i)港|hk|hongkong|hong kong|🇭🇰"
     icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/Hongkong(1).png
     <<: *p
 
-  - name: 🇹🇼 台湾
+  - name: 🇹🇼 台湾节点
     type: url-test
     filter: "(?i)台|tw|taiwan|🇹🇼"
     icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/taiwan(3).png
     <<: *p
 
-  - name: 🇯🇵 日本
+  - name: 🇯🇵 日本节点
     type: url-test
     filter: "(?i)日|jp|japan|🇯🇵"
     icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/Japan.png
     <<: *p
 
-  - name: 🇺🇸 美国
+  - name: 🇺🇸 美国节点
     type: url-test
     filter: "(?i)美|us|unitedstates|united states|🇺🇸"
     icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/US(1).png
     <<: *p
 
-  - name: 🇸🇬 新加坡
+  - name: 🇸🇬 新加坡节点
     type: url-test
     filter: "(?i)(新|sg|singapore|🇸🇬)"
     icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/singapore(1).png
