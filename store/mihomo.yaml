@@ -37,8 +37,8 @@ dns:
   - 180.184.1.1
   - 8.8.8.8
   - 1.1.1.1
-  - tls://223.5.5.5:853
-  - tls://1.12.12.12:853
+  - 223.5.5.5
+  - 1.12.12.12
   - system
   nameserver:
   - https://doh.pub/dns-query
@@ -78,11 +78,7 @@ proxy-groups:
     - 🇯🇵 日本
     - 🇺🇸 美国
     - 🇸🇬 新加坡
-    - 🇭🇰 香港自动选择
-    - 🇹🇼 台湾自动选择
-    - 🇯🇵 日本自动选择
-    - 🇺🇸 美国自动选择
-    - 🇸🇬 新加坡自动选择
+    - 🚩 其它地区
     - DIRECT
 
   - name: ♻️ 自动选择
@@ -131,79 +127,37 @@ proxy-groups:
     - DIRECT
     - REJECT
 
-  - name: 🇭🇰 香港
-    type: select
-    include-all: true
-    filter: "(?i)港|hk|hongkong|hong kong|🇭🇰"
-    icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/Hongkong(1).png
-    proxies:
-    - DIRECT
-
-  - name: 🇹🇼 台湾
-    type: select
-    include-all: true
-    filter: "(?i)台|tw|taiwan|🇹🇼"
-    icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/taiwan(3).png
-    proxies:
-    - DIRECT
-
-  - name: 🇯🇵 日本
-    type: select
-    include-all: true
-    filter: "(?i)日|jp|japan|🇯🇵"
-    icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/Japan.png
-    proxies:
-    - DIRECT
-
-  - name: 🇺🇸 美国
-    type: select
-    include-all: true
-    filter: "(?i)美|us|unitedstates|united states|🇺🇸"
-    icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/US(1).png
-    proxies:
-    - DIRECT
-
-  - name: 🇸🇬 新加坡
-    type: select
-    include-all: true
-    filter: "(?i)(新|sg|singapore|🇸🇬)"
-    icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/singapore(1).png
-    proxies:
-    - DIRECT
-
   - name: 🚩 其它地区
-    type: select
-    include-all: true
+    type: url-test
     filter: "(?i)^(?!.*(?:🇭🇰|🇹🇼|🇯🇵|🇺🇸|🇸🇬|🇨🇳|港|hk|hongkong|台|tw|taiwan|日|jp|japan|新|sg|singapore|美|us|unitedstates)).*"
     icon: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/master/Gallery/Color/Rocket.png
-    proxies:
-    - DIRECT
+    <<: *p
 
-  - name: 🇭🇰 香港自动选择
+  - name: 🇭🇰 香港
     type: url-test
     filter: "(?i)港|hk|hongkong|hong kong|🇭🇰"
     icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/Hongkong(1).png
     <<: *p
 
-  - name: 🇹🇼 台湾自动选择
+  - name: 🇹🇼 台湾
     type: url-test
     filter: "(?i)台|tw|taiwan|🇹🇼"
     icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/taiwan(3).png
     <<: *p
 
-  - name: 🇯🇵 日本自动选择
+  - name: 🇯🇵 日本
     type: url-test
     filter: "(?i)日|jp|japan|🇯🇵"
     icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/Japan.png
     <<: *p
 
-  - name: 🇺🇸 美国自动选择
+  - name: 🇺🇸 美国
     type: url-test
     filter: "(?i)美|us|unitedstates|united states|🇺🇸"
     icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/US(1).png
     <<: *p
 
-  - name: 🇸🇬 新加坡自动选择
+  - name: 🇸🇬 新加坡
     type: url-test
     filter: "(?i)(新|sg|singapore|🇸🇬)"
     icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/singapore(1).png
