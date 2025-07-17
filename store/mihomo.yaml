@@ -95,6 +95,7 @@ proxy-groups:
   - name: 🔮 负载均衡
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Round_Robin.png
     type: load-balance
+    strategy: consistent-hashing
     <<: *p
 
   - name: 🖲️ 手动选择
