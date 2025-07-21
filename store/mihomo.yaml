@@ -223,11 +223,6 @@ rule-providers:
     path: ./rule/Reject.yaml
     url: https://testingcf.jsdelivr.net/gh/some6508/run@master/rules/Reject.yaml
 
-  Global:
-    <<: *yaml
-    path: ./rule/Global.yaml
-    url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Global/Global_Classical.yaml
-
 rules:
   - RULE-SET,adblockmihomo,🛑 拦截访问
   - RULE-SET,adrules,🛑 拦截访问
@@ -237,7 +232,6 @@ rules:
   - DOMAIN,gh-proxy.com,🎯 直连访问
   - RULE-SET,geolocation,🚀 节点选择
   - RULE-SET,google,🚀 节点选择
-  - RULE-SET,Global,🚀 节点选择
   - RULE-SET,private,🎯 直连访问
   - RULE-SET,private_ip,🎯 直连访问,no-resolve
   - RULE-SET,cn,🎯 直连访问
