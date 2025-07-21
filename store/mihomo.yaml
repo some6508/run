@@ -6,7 +6,7 @@ allow-lan: true
 bind-address: '*'
 unified-delay: false
 tcp-concurrent: true
-external-controller: 0.0.0.0:9090
+external-controller: 127.0.0.1:9090
 external-ui: ./ui
 external-ui-url: https://gh-proxy.com/https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip
 keep-alive-interval: 15
@@ -198,6 +198,11 @@ rule-providers:
     path: ./rule/geolocation.mrs
     url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/geolocation-!cn.mrs
 
+  google:
+    <<: *domain
+    path: ./rule/google.mrs
+    url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google.mrs
+
   private:
     <<: *domain
     path: ./rule/private.mrs
@@ -226,6 +231,7 @@ rules:
   - DOMAIN,testingcf.jsdelivr.net,🎯 直连访问
   - DOMAIN,gh-proxy.com,🎯 直连访问
   - RULE-SET,geolocation,🚀 节点选择
+  - RULE-SET,google,🚀 节点选择
   - RULE-SET,private,🎯 直连访问
   - RULE-SET,private_ip,🎯 直连访问,no-resolve
   - RULE-SET,cn,🎯 直连访问
