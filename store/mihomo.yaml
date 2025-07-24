@@ -12,10 +12,10 @@ external-ui-url: https://gh-proxy.com/https://github.com/MetaCubeX/metacubexd/ar
 keep-alive-interval: 15
 global-client-fingerprint: chrome
 geox-url:
-  geoip: https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.dat
-  geosite: https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geosite.dat
-  mmdb: https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip.metadb
-  asn: https://gh-proxy.com/https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/GeoLite2-ASN.mmdb
+  geoip: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo/geoip.dat
+  geosite: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo/geosite.dat
+  mmdb: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo/geoip.metadb
+  asn: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo/Country-ASN.mmdb
 
 profile:
   store-selected: false
@@ -188,10 +188,10 @@ rule-providers:
     path: ./rule/AWAvenue.mrs
     url: https://testingcf.jsdelivr.net/gh/TG-Twilight/AWAvenue-Ads-Rule@main/Filters/AWAvenue-Ads-Rule-Clash.mrs
 
-  geolocation:
+  proxy:
     <<: *domain
-    path: ./rule/geolocation.mrs
-    url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/geolocation-!cn.mrs
+    path: ./rule/proxy.mrs
+    url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/proxy.mrs
 
   google:
     <<: *domain
@@ -201,22 +201,22 @@ rule-providers:
   private:
     <<: *domain
     path: ./rule/private.mrs
-    url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/private.mrs
+    url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/private.mrs
 
   cn:
     <<: *domain
     path: ./rule/cn.mrs
-    url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/cn.mrs
+    url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/cn.mrs
 
   private_ip:
     <<: *ip
     path: ./rule/private_ip.mrs
-    url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/private.mrs
+    url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/privateip.mrs
 
   cn_ip:
     <<: *ip
     path: ./rule/cn_ip.mrs
-    url: https://gh-proxy.com/https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/cnip.mrs
+    url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/cnip.mrs
 
   Reject:
     <<: *yaml
@@ -230,7 +230,7 @@ rules:
   - RULE-SET,Reject,🛑 拦截访问
   - DOMAIN,testingcf.jsdelivr.net,🎯 直连访问
   - DOMAIN,gh-proxy.com,🎯 直连访问
-  - RULE-SET,geolocation,🚀 节点选择
+  - RULE-SET,proxy,🚀 节点选择
   - RULE-SET,google,🚀 节点选择
   - RULE-SET,private,🎯 直连访问
   - RULE-SET,private_ip,🎯 直连访问,no-resolve
