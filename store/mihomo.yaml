@@ -72,14 +72,15 @@ proxy-groups:
     proxies:
     - ♻️ 自动选择
     - ☁️ 故障转移
-    - 🔮 负载均衡
+    - ❇️ 负载均衡(聚合)
+    - ✳️ 负载均衡(分散)
     - 🖲️ 手动选择
     - 🇭🇰 香港节点
     - 🇹🇼 台湾节点
     - 🇯🇵 日本节点
     - 🇺🇸 美国节点
     - 🇸🇬 新加坡节点
-    - 🚩 其它地区
+    - 🇺🇳 其它地区
     - DIRECT
 
   - name: ♻️ 自动选择
@@ -92,10 +93,16 @@ proxy-groups:
     type: fallback
     <<: *p
 
-  - name: 🔮 负载均衡
+  - name: ❇️ 负载均衡(聚合)
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Round_Robin.png
     type: load-balance
     strategy: consistent-hashing
+    <<: *p
+
+  - name: ✳️ 负载均衡(分散)
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Round_Robin.png
+    type: load-balance
+    strategy: round-robin
     <<: *p
 
   - name: 🖲️ 手动选择
@@ -129,7 +136,7 @@ proxy-groups:
     - DIRECT
     - REJECT
 
-  - name: 🚩 其它地区
+  - name: 🇺🇳 其它地区
     type: url-test
     filter: "(?i)^(?!.*(?:🇭🇰|🇹🇼|🇯🇵|🇺🇸|🇸🇬|🇨🇳|🇰🇷|港|hk|hongkong|台|tw|taiwan|日|jp|japan|新|sg|singapore|美|us|unitedstates)).*"
     icon: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/master/Gallery/Color/Rocket.png
@@ -217,16 +224,16 @@ rule-providers:
     url: https://testingcf.jsdelivr.net/gh/some6508/run@master/rules/Reject.yaml
 
 rules:
+  - RULE-SET,private,DIRECT
+  - RULE-SET,private_ip,DIRECT,no-resolve
+  - DOMAIN,testingcf.jsdelivr.net,🎯 直连访问
+  - DOMAIN,gh-proxy.com,🎯 直连访问
   - RULE-SET,adblockmihomo,🛑 拦截访问
   - RULE-SET,adrules,🛑 拦截访问
   - RULE-SET,AWAvenue,🛑 拦截访问
   - RULE-SET,Reject,🛑 拦截访问
-  - DOMAIN,testingcf.jsdelivr.net,🎯 直连访问
-  - DOMAIN,gh-proxy.com,🎯 直连访问
-  - RULE-SET,proxy,🚀 节点选择
   - RULE-SET,google,🚀 节点选择
-  - RULE-SET,private,🎯 直连访问
-  - RULE-SET,private_ip,🎯 直连访问,no-resolve
+  - RULE-SET,proxy,🚀 节点选择
   - RULE-SET,cn,🎯 直连访问
   - RULE-SET,cn_ip,🎯 直连访问,no-resolve
   - MATCH,🐟 漏网之鱼
