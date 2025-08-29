@@ -18,7 +18,7 @@ geox-url:
   asn: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo/Country-ASN.mmdb
 
 profile:
-  store-selected: false
+  store-selected: true
   store-fake-ip: true
 
 dns:
@@ -43,7 +43,6 @@ dns:
   nameserver:
   - https://doh.pub/dns-query
   - https://dns.alidns.com/dns-query
-  - https://sm2.doh.pub/dns-query
   - https://t243345927.666.66a.net/dns-query
   - https://dns.google/dns-query
   - https://dns.twnic.tw/dns-query
@@ -72,8 +71,7 @@ proxy-groups:
     proxies:
     - ♻️ 自动选择
     - ☁️ 故障转移
-    - ❇️ 负载均衡(聚合)
-    - ✳️ 负载均衡(分散)
+    - ❇️ 负载均衡
     - 🖲️ 手动选择
     - 🇭🇰 香港节点
     - 🇹🇼 台湾节点
@@ -93,16 +91,10 @@ proxy-groups:
     type: fallback
     <<: *p
 
-  - name: ❇️ 负载均衡(聚合)
+  - name: ❇️ 负载均衡
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Round_Robin.png
     type: load-balance
     strategy: consistent-hashing
-    <<: *p
-
-  - name: ✳️ 负载均衡(分散)
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Round_Robin.png
-    type: load-balance
-    strategy: round-robin
     <<: *p
 
   - name: 🖲️ 手动选择
