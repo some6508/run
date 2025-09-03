@@ -9,7 +9,6 @@ tcp-concurrent: true
 external-controller: 127.0.0.1:9090
 external-ui: ./ui
 external-ui-url: https://gh-proxy.com/https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip
-keep-alive-interval: 15
 global-client-fingerprint: chrome
 geox-url:
   geoip: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo/geoip.dat
@@ -18,8 +17,8 @@ geox-url:
   asn: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo/Country-ASN.mmdb
 
 profile:
-  store-selected: true
-  store-fake-ip: true
+  store-selected: false
+  store-fake-ip: false
 
 dns:
   enable: true
@@ -43,7 +42,6 @@ dns:
   nameserver:
   - https://doh.pub/dns-query
   - https://dns.alidns.com/dns-query
-  - https://t243345927.666.66a.net/dns-query
   - https://dns.google/dns-query
   - https://dns.twnic.tw/dns-query
   - https://doh.apad.pro/dns-query
@@ -52,6 +50,7 @@ dns:
   - https://dns.cloudflare.com/dns-query
   - https://cloudflare-dns.com/dns-query
   - https://unfiltered.adguard-dns.com/dns-query
+  - https://a132559169.66a.net/dns-query
   nameserver-policy:
     rule-set:adblockmihomo,adrules,AWAvenue,Reject:
     - rcode://success
@@ -59,7 +58,7 @@ dns:
     - system
 
 rule-anchor:
-  p: &p {url: 'https://www.gstatic.com/generate_204', interval: 300, tolerance: 50, include-all: true}
+  p: &p {url: 'https://www.google.com/generate_204', interval: 600, include-all: true}
   ip: &ip {type: http, interval: 604800, behavior: ipcidr, format: mrs}
   domain: &domain {type: http, interval: 604800, behavior: domain, format: mrs}
   yaml: &yaml {type: http, interval: 604800, behavior: classical, format: yaml}
