@@ -8,7 +8,7 @@ unified-delay: false
 tcp-concurrent: true
 external-controller: 127.0.0.1:9090
 external-ui: ./ui
-external-ui-url: https://gh-proxy.com/https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip
+external-ui-url: https://gh-proxy.com/https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip
 global-client-fingerprint: chrome
 geox-url:
   geoip: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo/geoip.dat
@@ -17,7 +17,7 @@ geox-url:
   asn: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo/Country-ASN.mmdb
 
 profile:
-  store-selected: false
+  store-selected: true
   store-fake-ip: false
 
 dns:
@@ -29,7 +29,6 @@ dns:
   fake-ip-filter:
   - +.lan
   - +.local
-  - +.market.xiaomi.com
   default-nameserver:
   - 114.114.114.114
   - 119.29.29.29
@@ -50,15 +49,14 @@ dns:
   - https://dns.cloudflare.com/dns-query
   - https://cloudflare-dns.com/dns-query
   - https://unfiltered.adguard-dns.com/dns-query
-  - https://a132559169.66a.net/dns-query
   nameserver-policy:
-    rule-set:adblockmihomo,adrules,AWAvenue,Reject:
+    rule-set:adblockmihomo,adrules,AWAvenue:
     - rcode://success
     rule-set:private:
     - system
 
 rule-anchor:
-  p: &p {url: 'https://www.google.com/generate_204', interval: 600, include-all: true}
+  p: &p {url: 'https://www.gstatic.com/generate_204', interval: 600, expected-status: 200/204, include-all: true}
   ip: &ip {type: http, interval: 604800, behavior: ipcidr, format: mrs}
   domain: &domain {type: http, interval: 604800, behavior: domain, format: mrs}
   yaml: &yaml {type: http, interval: 604800, behavior: classical, format: yaml}
@@ -209,11 +207,6 @@ rule-providers:
     path: ./rule/cn_ip.mrs
     url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/cnip.mrs
 
-  Reject:
-    <<: *yaml
-    path: ./rule/Reject.yaml
-    url: https://testingcf.jsdelivr.net/gh/some6508/run@master/rules/Reject.yaml
-
 rules:
   - RULE-SET,private,DIRECT
   - RULE-SET,private_ip,DIRECT,no-resolve
@@ -222,7 +215,6 @@ rules:
   - RULE-SET,adblockmihomo,🛑 拦截访问
   - RULE-SET,adrules,🛑 拦截访问
   - RULE-SET,AWAvenue,🛑 拦截访问
-  - RULE-SET,Reject,🛑 拦截访问
   - RULE-SET,google,🚀 节点选择
   - RULE-SET,proxy,🚀 节点选择
   - RULE-SET,cn,🎯 直连访问
