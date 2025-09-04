@@ -1,9 +1,0 @@
-# DOMAIN: 匹配完整域名
-# DOMAIN-SUFFIX: 匹配域名后缀
-payload:
-  # PICACG
-  - DOMAIN,ad-channel.diwodiwo.xyz
-  # pixiv
-  - DOMAIN,pixon.ads-pixiv.net
-  # Shaft
-  - DOMAIN,aax.amazon-adsystem.com
