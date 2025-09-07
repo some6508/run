@@ -11,10 +11,10 @@ external-ui: ./ui
 external-ui-url: https://gh-proxy.com/https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip
 global-client-fingerprint: chrome
 geox-url:
-  geoip: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo/geoip.dat
-  geosite: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo/geosite.dat
-  mmdb: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo/geoip.metadb
-  asn: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo/Country-ASN.mmdb
+  geoip: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo/geoip-all.dat
+  geosite: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo/geosite-all.dat
+  mmdb: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo/geoip-all.metadb
+  asn: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo/Country-ASN-all.mmdb
 
 profile:
   store-selected: true
