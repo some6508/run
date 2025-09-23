@@ -1,11 +1,11 @@
 mixed-port: 7890
 ipv6: false
 mode: rule
-log-level: info
+log-level: error
 allow-lan: true
 bind-address: '*'
 unified-delay: false
-tcp-concurrent: true
+tcp-concurrent: false
 external-controller: 127.0.0.1:9090
 external-ui: ./ui
 external-ui-url: https://gh-proxy.com/https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip
@@ -18,7 +18,7 @@ geox-url:
 
 profile:
   store-selected: true
-  store-fake-ip: false
+  store-fake-ip: true
 
 dns:
   enable: true
