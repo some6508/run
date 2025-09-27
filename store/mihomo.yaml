@@ -19,6 +19,7 @@ dns:
   listen: 0.0.0.0:1053
   ipv6: true
   use-hosts: true
+  respect-rules: true
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
@@ -45,6 +46,9 @@ dns:
   - https://dns.cloudflare.com/dns-query
   - https://cloudflare-dns.com/dns-query
   - https://unfiltered.adguard-dns.com/dns-query
+  proxy-server-nameserver:
+  - https://doh.pub/dns-query
+  - https://dns.alidns.com/dns-query
   nameserver-policy:
     rule-set:adblockmihomo,adrules,AWAvenue:
     - rcode://success
