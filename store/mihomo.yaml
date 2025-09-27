@@ -25,6 +25,17 @@ dns:
   fake-ip-filter:
   - +.lan
   - +.local
+  - +.market.xiaomi.com
+  - +.msftconnecttest.com
+  - +.msftncsi.com
+  - localhost.ptlogin2.qq.com
+  - localhost.sec.qq.com
+  - localhost.work.weixin.qq.com
+  - +.in-addr.arpa
+  - +.ip6.arpa
+  - time.*.com
+  - time.*.gov
+  - pool.ntp.org
   default-nameserver:
   - 114.114.114.114
   - 120.53.53.53
@@ -56,7 +67,7 @@ dns:
     - system
 
 rule-anchor:
-  p: &p {url: 'https://www.v2ex.com/generate_204', interval: 600, expected-status: 200/204, include-all: true}
+  p: &p {url: 'https://www.v2ex.com/generate_204', interval: 600, tolerance: 200, expected-status: 200/204, include-all: true}
   ip: &ip {type: http, interval: 604800, behavior: ipcidr, format: mrs}
   domain: &domain {type: http, interval: 604800, behavior: domain, format: mrs}
   yaml: &yaml {type: http, interval: 604800, behavior: classical, format: yaml}
@@ -68,7 +79,7 @@ proxy-groups:
     proxies:
     - ♻️ 自动选择
     - ☁️ 故障转移
-    - ❇️ 负载均衡
+    - 🔮 负载均衡
     - 🖲️ 手动选择
     - 🇭🇰 香港节点
     - 🇹🇼 台湾节点
@@ -79,30 +90,25 @@ proxy-groups:
     - DIRECT
 
   - name: ♻️ 自动选择
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
     type: url-test
     <<: *p
 
   - name: ☁️ 故障转移
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Available.png
     type: fallback
     <<: *p
 
-  - name: ❇️ 负载均衡
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Round_Robin.png
+  - name: 🔮 负载均衡
     type: load-balance
     strategy: consistent-hashing
     <<: *p
 
   - name: 🖲️ 手动选择
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Direct.png
     type: select
     include-all: true
     proxies:
     - DIRECT
 
   - name: 🎯 直连访问
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Loop.png
     type: select
     proxies:
     - DIRECT
@@ -110,7 +116,6 @@ proxy-groups:
     - 🚀 节点选择
 
   - name: 🛑 拦截访问
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Reject.png
     type: select
     proxies:
     - REJECT
@@ -118,7 +123,6 @@ proxy-groups:
     - 🚀 节点选择
 
   - name: 🐟 漏网之鱼
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Lab.png
     type: select
     proxies:
     - 🚀 节点选择
@@ -128,37 +132,31 @@ proxy-groups:
   - name: 🇺🇳 其它地区
     type: url-test
     filter: "(?i)^(?!.*(?:🇭🇰|🇹🇼|🇯🇵|🇺🇸|🇸🇬|🇨🇳|🇰🇷|港|hk|hongkong|台|tw|taiwan|日|jp|japan|新|sg|singapore|美|us|unitedstates)).*"
-    icon: https://raw.githubusercontent.com/Centralmatrix3/Matrix-io/master/Gallery/Color/Rocket.png
     <<: *p
 
   - name: 🇭🇰 香港节点
     type: url-test
     filter: "(?i)港|hk|hongkong|hong kong|🇭🇰"
-    icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/Hongkong(1).png
     <<: *p
 
   - name: 🇹🇼 台湾节点
     type: url-test
     filter: "(?i)台|tw|taiwan|🇹🇼"
-    icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/taiwan(3).png
     <<: *p
 
   - name: 🇯🇵 日本节点
     type: url-test
     filter: "(?i)日|jp|japan|🇯🇵"
-    icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/Japan.png
     <<: *p
 
   - name: 🇺🇸 美国节点
     type: url-test
     filter: "(?i)美|us|unitedstates|united states|🇺🇸"
-    icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/US(1).png
     <<: *p
 
   - name: 🇸🇬 新加坡节点
     type: url-test
     filter: "(?i)(新|sg|singapore|🇸🇬)"
-    icon: https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/singapore(1).png
     <<: *p
 
 rule-providers:
