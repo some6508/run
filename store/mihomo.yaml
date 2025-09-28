@@ -8,6 +8,10 @@ external-controller: 127.0.0.1:9090
 external-ui: ./ui
 external-ui-url: https://gh-proxy.com/https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip
 global-client-fingerprint: chrome
+geodata-mode: true
+geo-auto-update: true
+geodata-loader: standard
+geo-update-interval: 24
 geox-url:
   geoip: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo/geoip-all.dat
   geosite: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo/geosite-all.dat
@@ -25,17 +29,17 @@ dns:
   fake-ip-filter:
   - +.lan
   - +.local
+  - +.msftncsi.com
   - +.market.xiaomi.com
   - +.msftconnecttest.com
-  - +.msftncsi.com
-  - localhost.ptlogin2.qq.com
-  - localhost.sec.qq.com
-  - localhost.work.weixin.qq.com
-  - +.in-addr.arpa
   - +.ip6.arpa
+  - +.in-addr.arpa
   - time.*.com
   - time.*.gov
   - pool.ntp.org
+  - localhost.sec.qq.com
+  - localhost.ptlogin2.qq.com
+  - localhost.work.weixin.qq.com
   default-nameserver:
   - 114.114.114.114
   - 120.53.53.53
