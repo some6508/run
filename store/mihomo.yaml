@@ -74,7 +74,6 @@ rule-anchor:
 
 proxy-groups:
   - name: 🚀 节点选择
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Proxy.png
     type: select
     proxies:
     - ♻️ 自动选择
