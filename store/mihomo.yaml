@@ -23,6 +23,7 @@ dns:
   listen: 0.0.0.0:1053
   ipv6: true
   use-hosts: true
+  respect-rules: true
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
@@ -51,15 +52,23 @@ dns:
   nameserver:
   - https://doh.pub/dns-query
   - https://dns.alidns.com/dns-query
+  - https://doh.360.cn/dns-query
   - https://dns.google/dns-query
+  - https://one.one.one.one/dns-query
+  - https://dns.cloudflare.com/dns-query
+  - https://cloudflare-dns.com/dns-query
   - https://dns.twnic.tw/dns-query
   - https://dot.sb/dns-query
   - https://doh.apad.pro/dns-query
   - https://dns.quad9.net/dns-query
-  - https://one.one.one.one/dns-query
-  - https://dns.cloudflare.com/dns-query
-  - https://cloudflare-dns.com/dns-query
+  - https://dns.csaonline.de/dns-query
+  - https://dns.umbrella.com/dns-query
+  - https://dns.adguard.com/dns-query
   - https://unfiltered.adguard-dns.com/dns-query
+  proxy-server-nameserver:
+  - https://doh.pub/dns-query
+  - https://dns.alidns.com/dns-query
+  - https://doh.360.cn/dns-query
   nameserver-policy:
     rule-set:adblockmihomo,adrules,AWAvenue:
     - rcode://success
