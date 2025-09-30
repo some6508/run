@@ -244,7 +244,7 @@
       }
     ],
     "final": "🐟 漏网之鱼",
-    "default_domain_resolver": "直连DNS",
+    "default_domain_resolver": "直连解析",
     "auto_detect_interface": true
   },
   "outbounds": [
