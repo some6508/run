@@ -1,248 +1,361 @@
 {
-	"log": {
-		"level": "warn",
-		"timestamp": true
-	},
-	"experimental": {
-		"clash_api": {
-			"default_mode": "规则",
-			"external_controller": "127.0.0.1:9090",
-			"external_ui": "ui",
-			"external_ui_download_detour": "🎯 直连访问",
-			"external_ui_download_url": "https://gh-proxy.com/https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip"
-		},
-		"cache_file": {
-			"enabled": true,
-			"store_fakeip": true
-		}
-	},
-	"dns": {
-		"final": "代理DNS",
-		"independent_cache": true,
-		"strategy": "prefer_ipv4",
-		"servers": [
-			{
-				"tag": "代理DNS",
-				"type": "https",
-				"detour": "🚀 节点选择",
-				"domain_resolver": "hosts",
-				"server": "dns.google"
-			},
-			{
-				"tag": "直连DNS",
-				"type": "https",
-				"domain_resolver": "hosts",
-				"server": "doh.pub"
-			},
-			{
-				"tag": "fakeip_dns",
-				"type": "fakeip",
-				"inet4_range": "198.18.0.0/15",
-				"inet6_range": "fc00::/18"
-			},
-			{
-				"type": "hosts",
-				"tag": "hosts",
-				"predefined": {
-					"doh.pub": [
-						"120.53.53.53",
-						"1.12.12.12",
-						"1.12.12.21"
-					],
-					"dns.alidns.com": [
-						"223.5.5.5",
-						"223.6.6.6"
-					],
-					"dns.google": [
-						"8.8.8.8",
-						"8.8.4.4"
-					]
-				}
-			}
-		],
-		"rules": [
-			{
-				"clash_mode": "直连",
-				"server": "直连DNS"
-			},
-			{
-				"clash_mode": "代理",
-				"server": "fakeip_dns"
-			},
-			{
-				"query_type": "AAAA",
-				"action": "reject"
-			},
-			{
-				"query_type": [
-					"A",
-					"AAAA"
-				],
-				"server": "fakeip_dns",
-				"rewrite_ttl": 1
-			}
-		]
-	},
-	"inbounds": [
-		{
-			"tag": "tun-in",
-			"type": "tun",
-			"stack": "mixed",
-			"auto_route": true,
-			"address": [
-				"172.19.0.1/30",
-				"fdfe:dcba:9876::1/126"
-			]
-		},
-		{
-			"tag": "mixed-in",
-			"type": "mixed",
-			"listen": "0.0.0.0",
-			"listen_port": 7890
-		}
-	],
-	"route": {
-		"default_domain_resolver": "直连DNS",
-		"auto_detect_interface": true,
-		"final": "🚀 节点选择",
-		"rules": [
-			{
-				"action": "sniff",
-				"timeout": "500ms"
-			},
-			{
-				"type": "logical",
-				"mode": "or",
-				"rules": [
-					{
-						"port": 53
-					},
-					{
-						"protocol": "dns"
-					}
-				],
-				"action": "hijack-dns"
-			},
-			{
-				"ip_is_private": true,
-				"outbound": "🎯 直连访问"
-			},
-			{
-				"rule_set": [
-					"adrules_singbox",
-					"AWAvenue_Ads",
-					"geosite_ads"
-				],
-				"action": "reject"
-			},
-			{
-				"domain": [
-					"clash.razord.top",
-					"yacd.metacubex.one",
-					"yacd.haishan.me",
-					"d.metacubex.one"
-				],
-				"outbound": "🎯 直连访问"
-			},
-			{
-				"rule_set": "geosite_proxy",
-				"outbound": "🚀 节点选择"
-			},
-			{
-				"rule_set": [
-					"geoip_cn",
-					"geosite_cn"
-				],
-				"outbound": "🎯 直连访问"
-			},
-			{
-				"clash_mode": "代理",
-				"outbound": "🚀 节点选择"
-			},
-			{
-				"clash_mode": "直连",
-				"outbound": "🎯 直连访问"
-			}
-		],
-		"rule_set": [
-			{
-				"tag": "adrules_singbox",
-				"type": "remote",
-				"format": "binary",
-				"update_interval": "7d",
-				"download_detour": "🎯 直连访问",
-				"url": "https://testingcf.jsdelivr.net/gh/Cats-Team/AdRules@main/adrules-singbox.srs"
-			},
-			{
-				"tag": "AWAvenue_Ads",
-				"type": "remote",
-				"format": "binary",
-				"update_interval": "7d",
-				"download_detour": "🎯 直连访问",
-				"url": "https://testingcf.jsdelivr.net/gh/TG-Twilight/AWAvenue-Ads-Rule@main/Filters/AWAvenue-Ads-Rule-Singbox-regex.srs"
-			},
-			{
-				"tag": "geosite_ads",
-				"type": "remote",
-				"format": "binary",
-				"update_interval": "7d",
-				"download_detour": "🎯 直连访问",
-				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/category-ads-all.srs"
-			},
-			{
-				"tag": "geoip_cn",
-				"type": "remote",
-				"format": "binary",
-				"update_interval": "7d",
-				"download_detour": "🎯 直连访问",
-				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/cn.srs"
-			},
-			{
-				"tag": "geosite_cn",
-				"type": "remote",
-				"format": "binary",
-				"update_interval": "7d",
-				"download_detour": "🎯 直连访问",
-				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo-lite/geosite/cn.srs"
-			},
-			{
-				"tag": "geosite_proxy",
-				"type": "remote",
-				"format": "binary",
-				"update_interval": "7d",
-				"download_detour": "🎯 直连访问",
-				"url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/geolocation-!cn.srs"
-			}
-		]
-	},
-	"outbounds": [
-		{
-			"tag": "🚀 节点选择",
-			"type": "selector",
-			"default": "♻️ 自动选择",
-			"outbounds": [
-				"♻️ 自动选择",
-				"🖲️ 手动选择",
-				"🎯 直连访问"
-			]
-		},
-		{
-			"tag": "🖲️ 手动选择",
-			"type": "selector",
-			"outbounds": [
-				"🎯 直连访问"
-			]
-		},
-		{
-			"tag": "♻️ 自动选择",
-			"type": "urltest",
-			"interval": "1m",
-			"url": "http://www.google.com/generate_204",
-			"outbounds": []
-		},
-		{
-			"tag": "🎯 直连访问",
-			"type": "direct"
-		}
-	]
+  "experimental": {
+    "clash_api": {
+      "default_mode": "规则",
+      "external_controller": "127.0.0.1:9090",
+      "external_ui": "ui",
+      "external_ui_download_url": "https://gh-proxy.com/https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip",
+      "external_ui_download_detour": "🎯 直连访问"
+    },
+    "cache_file": {
+      "enabled": true,
+      "store_fakeip": true
+    }
+  },
+  "log": {
+    "disabled": false,
+    "level": "error",
+    "timestamp": true
+  },
+  "inbounds": [
+    {
+      "type": "tun",
+      "address": [
+        "172.19.0.0/30",
+        "fdfe:dcba:9876::0/126"
+      ],
+      "stack": "mixed",
+      "auto_route": true
+    },
+    {
+      "type": "mixed",
+      "listen": "127.0.0.1",
+      "listen_port": 7890
+    }
+  ],
+  "dns": {
+    "servers": [
+      {
+        "type": "udp",
+        "tag": "域名解析",
+        "server": "223.5.5.5",
+        "server_port": 53
+      },
+      {
+        "type": "https",
+        "tag": "直连解析",
+        "domain_resolver": "域名解析",
+        "server": "dns.alidns.com",
+        "server_port": 443,
+        "path": "dns-query",
+        "detour": "🎯 直连访问"
+      },
+      {
+        "type": "https",
+        "tag": "代理解析",
+        "domain_resolver": "域名解析",
+        "server": "dns.google",
+        "server_port": 443,
+        "path": "dns-query",
+        "detour": "🚀 节点选择"
+      },
+      {
+        "type": "fakeip",
+        "tag": "FAKEIP",
+        "inet4_range": "198.18.0.0/15",
+        "inet6_range": "fc00::/18"
+      }
+    ],
+    "rules": [
+      {
+        "clash_mode": "直连",
+        "server": "直连解析"
+      },
+      {
+        "clash_mode": "全局",
+        "server": "代理解析"
+      },
+      {
+        "query_type": "HTTPS",
+        "action": "reject"
+      },
+      {
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "server": "FAKEIP",
+        "rewrite_ttl": 1
+      },
+      {
+        "rule_set": [
+          "cn_domain"
+        ],
+        "server": "直连解析"
+      },
+      {
+        "rule_set": [
+          "adrules-singbox",
+          "adblocksingbox",
+          "AWAvenue-Ads-Rule-Singbox"
+        ],
+        "action": "reject"
+      }
+    ],
+    "final": "代理解析",
+    "strategy": "ipv4_only",
+    "independent_cache": true
+  },
+  "route": {
+    "rules": [
+      {
+        "action": "sniff",
+        "sniffer": [
+          "http",
+          "tls",
+          "quic",
+          "dns"
+        ],
+        "timeout": "500ms"
+      },
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "port": 53
+          },
+          {
+            "protocol": "dns"
+          }
+        ],
+        "action": "hijack-dns"
+      },
+      {
+        "rule_set": [
+          "private_ip",
+          "private_domain"
+        ],
+        "outbound": "DIRECT"
+      },
+      {
+        "rule_set": [
+          "adrules-singbox",
+          "adblocksingbox",
+          "AWAvenue-Ads-Rule-Singbox"
+        ],
+        "action": "reject"
+      },
+      {
+        "clash_mode": "全局",
+        "outbound": "GLOBAL"
+      },
+      {
+        "clash_mode": "直连",
+        "outbound": "DIRECT"
+      },
+      {
+        "rule_set": [
+          "proxy_domain",
+          "google_domain"
+        ],
+        "outbound": "🚀 节点选择"
+      },
+      {
+        "rule_set": [
+          "cn_ip",
+          "cn_domain"
+        ],
+        "outbound": "🎯 直连访问"
+      }
+    ],
+    "rule_set": [
+      {
+        "tag": "private_ip",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "7d",
+        "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/privateip.srs",
+        "download_detour": "🎯 直连访问"
+      },
+      {
+        "tag": "private_domain",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "7d",
+        "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/private.srs",
+        "download_detour": "🎯 直连访问"
+      },
+      {
+        "tag": "google_domain",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "7d",
+        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google.srs",
+        "download_detour": "🎯 直连访问"
+      },
+      {
+        "tag": "cn_ip",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "7d",
+        "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cnip.srs",
+        "download_detour": "🎯 直连访问"
+      },
+      {
+        "tag": "cn_domain",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "7d",
+        "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cn.srs",
+        "download_detour": "🎯 直连访问"
+      },
+      {
+        "tag": "proxy_domain",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "7d",
+        "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/proxy.srs",
+        "download_detour": "🎯 直连访问"
+      },
+      {
+        "tag": "adrules-singbox",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "7d",
+        "url": "https://testingcf.jsdelivr.net/gh/Cats-Team/AdRules@main/adrules-singbox.srs",
+        "download_detour": "🎯 直连访问"
+      },
+      {
+        "tag": "adblocksingbox",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "7d",
+        "url": "https://testingcf.jsdelivr.net/gh/217heidai/adblockfilters@main/rules/adblocksingbox.srs",
+        "download_detour": "🎯 直连访问"
+      },
+      {
+        "tag": "AWAvenue-Ads-Rule-Singbox",
+        "type": "remote",
+        "format": "source",
+        "update_interval": "7d",
+        "url": "https://testingcf.jsdelivr.net/gh/TG-Twilight/AWAvenue-Ads-Rule@main/Filters/AWAvenue-Ads-Rule-Singbox.json",
+        "download_detour": "🎯 直连访问"
+      }
+    ],
+    "final": "🐟 漏网之鱼",
+    "default_domain_resolver": "直连DNS",
+    "auto_detect_interface": true
+  },
+  "outbounds": [
+    {
+      "tag": "🚀 节点选择",
+      "type": "selector",
+      "outbounds": [
+        "♻️ 自动选择",
+        "🖲️ 手动选择",
+        "🇭🇰 香港节点",
+        "🇹🇼 台湾节点",
+        "🇯🇵 日本节点",
+        "🇺🇸 美国节点",
+        "🇸🇬 新加坡节点",
+        "DIRECT"
+      ],
+      "default": "♻️ 自动选择"
+    },
+    {
+      "tag": "🎯 直连访问",
+      "type": "selector",
+      "outbounds": [
+        "🚀 节点选择",
+        "DIRECT"
+      ],
+      "default": "DIRECT"
+    },
+    {
+      "tag": "🐟 漏网之鱼",
+      "type": "selector",
+      "outbounds": [
+        "🚀 节点选择",
+        "DIRECT"
+      ],
+      "default": "🚀 节点选择"
+    },
+    {
+      "tag": "🖲️ 手动选择",
+      "type": "selector",
+      "outbounds": [
+        "DIRECT"
+      ],
+      "default": "DIRECT"
+    },
+    {
+      "tag": "🇭🇰 香港节点",
+      "type": "urltest",
+      "outbounds": [],
+      "url": "https://www.v2ex.com/generate_204",
+      "interval": "1m",
+      "tolerance": 200
+    },
+    {
+      "tag": "🇹🇼 台湾节点",
+      "type": "urltest",
+      "outbounds": [],
+      "url": "https://www.v2ex.com/generate_204",
+      "interval": "1m",
+      "tolerance": 200
+    },
+    {
+      "tag": "🇯🇵 日本节点",
+      "type": "urltest",
+      "outbounds": [],
+      "url": "https://www.v2ex.com/generate_204",
+      "interval": "1m",
+      "tolerance": 200
+    },
+    {
+      "tag": "🇺🇸 美国节点",
+      "type": "urltest",
+      "outbounds": [],
+      "url": "https://www.v2ex.com/generate_204",
+      "interval": "1m",
+      "tolerance": 200
+    },
+    {
+      "tag": "🇸🇬 新加坡节点",
+      "type": "urltest",
+      "outbounds": [],
+      "url": "https://www.v2ex.com/generate_204",
+      "interval": "1m",
+      "tolerance": 200
+    },
+    {
+      "tag": "♻️ 自动选择",
+      "type": "urltest",
+      "outbounds": [],
+      "url": "https://www.v2ex.com/generate_204",
+      "interval": "1m",
+      "tolerance": 200
+    },
+    {
+      "tag": "GLOBAL",
+      "type": "selector",
+      "outbounds": [
+        "🚀 节点选择",
+        "♻️ 自动选择",
+        "🖲️ 手动选择",
+        "🇭🇰 香港节点",
+        "🇹🇼 台湾节点",
+        "🇯🇵 日本节点",
+        "🇺🇸 美国节点",
+        "🇸🇬 新加坡节点",
+        "DIRECT"
+      ],
+      "default": "DIRECT"
+    },
+    {
+      "tag": "DIRECT",
+      "type": "direct"
+    }
+  ]
 }
