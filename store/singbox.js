@@ -27,7 +27,7 @@ config.outbounds.map(i => {
     i.outbounds.push(...getTags(proxies, /美|us|unitedstates|united states|🇺🇸/i))
   }
   if (['🇸🇬 新加坡选择', '🇸🇬 新加坡自动'].includes(i.tag)) {
-    i.outbounds.push(...getTags(proxies， /新|sg|singapore|🇸🇬/i))
+    i.outbounds.push(...getTags(proxies, /新|sg|singapore|🇸🇬/i))
   }
   if (['🇺🇳 其它选择', '🇺🇳 其它自动'].includes(i.tag)) {
     i.outbounds.push(...getTags(proxies, /^(?!.*(🇭🇰|🇹🇼|🇯🇵|🇺🇸|🇸🇬|🇨🇳|🇰🇷|港|hk|hongkong|台|tw|taiwan|日|jp|japan|新|sg|singapore|美|us|unitedstates)).*$/i))
