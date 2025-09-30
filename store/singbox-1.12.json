@@ -37,6 +37,9 @@
     }
   ],
   "dns": {
+    "final": "代理解析",
+    "strategy": "ipv4_only",
+    "independent_cache": true,
     "servers": [
       {
         "type": "udp",
@@ -104,12 +107,12 @@
         ],
         "action": "reject"
       }
-    ],
-    "final": "代理解析",
-    "strategy": "ipv4_only",
-    "independent_cache": true
+    ]
   },
   "route": {
+    "final": "🐟 漏网之鱼",
+    "default_domain_resolver": "直连解析",
+    "auto_detect_interface": true,
     "rules": [
       {
         "action": "sniff",
@@ -245,10 +248,7 @@
         "url": "https://testingcf.jsdelivr.net/gh/TG-Twilight/AWAvenue-Ads-Rule@main/Filters/AWAvenue-Ads-Rule-Singbox.json",
         "download_detour": "🎯 直连访问"
       }
-    ],
-    "final": "🐟 漏网之鱼",
-    "default_domain_resolver": "直连解析",
-    "auto_detect_interface": true
+    ]
   },
   "outbounds": [
     {
