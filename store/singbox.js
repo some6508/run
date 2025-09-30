@@ -1,4 +1,4 @@
- const { type, name } = $arguments
+const { type, name } = $arguments
 
 let config = JSON.parse($files[0])
 let proxies = await produceArtifact({
