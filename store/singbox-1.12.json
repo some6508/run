@@ -9,7 +9,8 @@
     },
     "cache_file": {
       "enabled": true,
-      "store_fakeip": true
+      "store_selected": false,
+      "store_fakeip": false
     }
   },
   "log": {
