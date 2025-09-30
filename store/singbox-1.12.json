@@ -9,7 +9,6 @@
     },
     "cache_file": {
       "enabled": true,
-      "store_selected": false,
       "store_fakeip": false
     }
   },
