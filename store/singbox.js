@@ -8,9 +8,9 @@ let proxies = await produceArtifact({
   produceType: 'internal',
 })
 
-config。outbounds。push(...proxies)
+config.outbounds.push(...proxies)
 
-config。outbounds.map(i => {
+config.outbounds.map(i => {
   if (['🖲️ 手动选择', '♻️ 自动选择'].includes(i.tag)) {
     i.outbounds.push(...getTags(proxies))
   }
