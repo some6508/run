@@ -257,17 +257,11 @@
       "outbounds": [
         "♻️ 自动选择",
         "🖲️ 手动选择",
-        "🇺🇳 其它选择",
         "🇺🇳 其它自动",
-        "🇭🇰 香港选择",
         "🇭🇰 香港自动",
-        "🇹🇼 台湾选择",
         "🇹🇼 台湾自动",
-        "🇯🇵 日本选择",
         "🇯🇵 日本自动",
-        "🇺🇸 美国选择",
         "🇺🇸 美国自动",
-        "🇸🇬 新加坡选择",
         "🇸🇬 新加坡自动",
         "DIRECT"
       ],
@@ -293,54 +287,6 @@
     },
     {
       "tag": "🖲️ 手动选择",
-      "type": "selector",
-      "outbounds": [
-        "DIRECT"
-      ],
-      "default": "DIRECT"
-    },
-    {
-      "tag": "🇺🇳 其它选择",
-      "type": "selector",
-      "outbounds": [
-        "DIRECT"
-      ],
-      "default": "DIRECT"
-    },
-    {
-      "tag": "🇭🇰 香港选择",
-      "type": "selector",
-      "outbounds": [
-        "DIRECT"
-      ],
-      "default": "DIRECT"
-    },
-    {
-      "tag": "🇹🇼 台湾选择",
-      "type": "selector",
-      "outbounds": [
-        "DIRECT"
-      ],
-      "default": "DIRECT"
-    },
-    {
-      "tag": "🇯🇵 日本选择",
-      "type": "selector",
-      "outbounds": [
-        "DIRECT"
-      ],
-      "default": "DIRECT"
-    },
-    {
-      "tag": "🇺🇸 美国选择",
-      "type": "selector",
-      "outbounds": [
-        "DIRECT"
-      ],
-      "default": "DIRECT"
-    },
-    {
-      "tag": "🇸🇬 新加坡选择",
       "type": "selector",
       "outbounds": [
         "DIRECT"
@@ -410,17 +356,11 @@
         "🚀 节点选择",
         "♻️ 自动选择",
         "🖲️ 手动选择",
-        "🇺🇳 其它选择",
         "🇺🇳 其它自动",
-        "🇭🇰 香港选择",
         "🇭🇰 香港自动",
-        "🇹🇼 台湾选择",
         "🇹🇼 台湾自动",
-        "🇯🇵 日本选择",
         "🇯🇵 日本自动",
-        "🇺🇸 美国选择",
         "🇺🇸 美国自动",
-        "🇸🇬 新加坡选择",
         "🇸🇬 新加坡自动",
         "DIRECT"
       ],
