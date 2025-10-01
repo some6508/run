@@ -61,7 +61,6 @@ dns:
   - https://cloudflare-dns.com/dns-query
   - https://dns.twnic.tw/dns-query
   - https://dot.sb/dns-query
-  - https://doh.apad.pro/dns-query
   - https://dns.quad9.net/dns-query
   - https://dns.csaonline.de/dns-query
   - https://dns.umbrella.com/dns-query
