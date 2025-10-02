@@ -42,18 +42,15 @@
     "independent_cache": true,
     "servers": [
       {
-        "type": "udp",
+        "type": "tls",
         "tag": "域名解析",
-        "server": "223.5.5.5",
-        "server_port": 53
+        "server": "223.5.5.5"
       },
       {
         "type": "https",
         "tag": "直连解析",
         "domain_resolver": "域名解析",
         "server": "dns.alidns.com",
-        "server_port": 443,
-        "path": "dns-query",
         "detour": "🎯 直连访问"
       },
       {
@@ -61,8 +58,6 @@
         "tag": "代理解析",
         "domain_resolver": "域名解析",
         "server": "dns.google",
-        "server_port": 443,
-        "path": "dns-query",
         "detour": "🚀 节点选择"
       },
       {
