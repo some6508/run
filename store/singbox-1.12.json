@@ -289,6 +289,14 @@
       "default": "DIRECT"
     },
     {
+      "tag": "♻️ 自动选择",
+      "type": "urltest",
+      "outbounds": [],
+      "url": "https://www.v2ex.com/generate_204",
+      "interval": "10m",
+      "tolerance": 200
+    },
+    {
       "tag": "🇺🇳 其它地区",
       "type": "urltest",
       "outbounds": [],
@@ -330,14 +338,6 @@
     },
     {
       "tag": "🇸🇬 新加坡节点",
-      "type": "urltest",
-      "outbounds": [],
-      "url": "https://www.v2ex.com/generate_204",
-      "interval": "10m",
-      "tolerance": 200
-    },
-    {
-      "tag": "♻️ 自动选择",
       "type": "urltest",
       "outbounds": [],
       "url": "https://www.v2ex.com/generate_204",
