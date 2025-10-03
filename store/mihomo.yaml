@@ -236,6 +236,7 @@ rules:
   - RULE-SET,private_ip,DIRECT,no-resolve
   - DOMAIN,testingcf.jsdelivr.net,🎯 直连访问
   - DOMAIN,gh-proxy.com,🎯 直连访问
+  - DST-PORT,853,DIRECT
   - RULE-SET,adblockmihomo,🚫 拦截访问
   - RULE-SET,adrules,🚫 拦截访问
   - RULE-SET,AWAvenue,🚫 拦截访问
