@@ -124,7 +124,7 @@ proxy-groups:
     - REJECT
     - 🚀 节点选择
 
-  - name: 🛑 拦截访问
+  - name: 🚫 拦截访问
     type: select
     proxies:
     - REJECT
@@ -236,9 +236,9 @@ rules:
   - RULE-SET,private_ip,DIRECT,no-resolve
   - DOMAIN,testingcf.jsdelivr.net,🎯 直连访问
   - DOMAIN,gh-proxy.com,🎯 直连访问
-  - RULE-SET,adblockmihomo,🛑 拦截访问
-  - RULE-SET,adrules,🛑 拦截访问
-  - RULE-SET,AWAvenue,🛑 拦截访问
+  - RULE-SET,adblockmihomo,🚫 拦截访问
+  - RULE-SET,adrules,🚫 拦截访问
+  - RULE-SET,AWAvenue,🚫 拦截访问
   - RULE-SET,google,🚀 节点选择
   - RULE-SET,proxy,🚀 节点选择
   - RULE-SET,cn,🎯 直连访问
