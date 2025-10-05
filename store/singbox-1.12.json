@@ -42,7 +42,7 @@
     "independent_cache": true,
     "servers": [
       {
-        "type": "tls",
+        "type": "udp",
         "tag": "域名解析",
         "server": "223.5.5.5"
       },
