@@ -1,3 +1,4 @@
+// by: https://raw.githubusercontent.com/xishang0128/sub-store-template/main/sing-box.js
 const { type, name } = $arguments
 
 let config = JSON.parse($files[0])
