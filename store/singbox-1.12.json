@@ -111,13 +111,27 @@
     "rules": [
       {
         "action": "sniff",
-        "sniffer": [
-          "http",
-          "tls",
-          "quic",
-          "dns"
-        ],
         "timeout": "500ms"
+      },
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          {
+            "port": 853
+          },
+          {
+            "network": "udp",
+            "port": 443
+          },
+          {
+            "protocol": "quic"
+          },
+          {
+            "protocol": "stun"
+          }
+        ],
+        "action": "reject"
       },
       {
         "type": "logical",
@@ -134,8 +148,8 @@
       },
       {
         "rule_set": [
-          "private_ip",
-          "private_domain"
+          "private_domain",
+          "private_ip"
         ],
         "outbound": "DIRECT"
       },
@@ -164,8 +178,8 @@
       },
       {
         "rule_set": [
-          "cn_ip",
-          "cn_domain"
+          "cn_domain",
+          "cn_ip"
         ],
         "outbound": "🎯 直连访问"
       }
