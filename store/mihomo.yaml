@@ -29,19 +29,7 @@ dns:
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
-  - +.lan
-  - +.local
-  - +.msftncsi.com
-  - +.market.xiaomi.com
-  - +.msftconnecttest.com
-  - +.ip6.arpa
-  - +.in-addr.arpa
-  - time.*.com
-  - time.*.gov
-  - pool.ntp.org
-  - localhost.sec.qq.com
-  - localhost.ptlogin2.qq.com
-  - localhost.work.weixin.qq.com
+  - rule-set:fakeip-filter
   default-nameserver:
   - 114.114.114.114
   - 120.53.53.53
@@ -220,6 +208,11 @@ rule-providers:
     <<: *domain
     path: ./rule/cn.mrs
     url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/cn.mrs
+
+  fakeip-filter:
+    <<: *domain
+    path: ./rule/fakeip-filter.mrs
+    url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/fakeip-filter.mrs
 
   private_ip:
     <<: *ip
