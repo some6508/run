@@ -9,7 +9,7 @@
     },
     "cache_file": {
       "enabled": true,
-      "store_fakeip": false
+      "store_fakeip": true
     }
   },
   "log": {
@@ -74,25 +74,11 @@
       },
       {
         "clash_mode": "全局",
-        "server": "代理解析"
+        "server": "FAKEIP"
       },
       {
         "query_type": "HTTPS",
         "action": "reject"
-      },
-      {
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
-        "server": "FAKEIP",
-        "rewrite_ttl": 1
-      },
-      {
-        "rule_set": [
-          "cn_domain"
-        ],
-        "server": "直连解析"
       },
       {
         "rule_set": [
@@ -101,16 +87,38 @@
           "AWAvenue-Ads-Rule-Singbox"
         ],
         "action": "reject"
+      },
+      {
+        "rule_set": [
+          "cn_domain"
+        ],
+        "server": "直连解析"
+      },
+      {
+        "query_type": [
+          "A",
+          "AAAA"
+        ],
+        "server": "FAKEIP",
+        "rewrite_ttl": 1
       }
     ]
   },
   "route": {
     "final": "🐟 漏网之鱼",
-    "default_domain_resolver": "直连解析",
+    "default_domain_resolver": {
+      "server": "直连解析"
+    },
     "auto_detect_interface": true,
     "rules": [
       {
         "action": "sniff",
+        "sniffer": [
+          "http",
+          "tls",
+          "quic",
+          "dns"
+        ],
         "timeout": "500ms"
       },
       {
