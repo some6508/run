@@ -49,8 +49,10 @@ dns:
   - https://one.one.one.one/dns-query
   - https://dns.cloudflare.com/dns-query
   - https://cloudflare-dns.com/dns-query
-  - https://dns.twnic.tw/dns-query
   - https://dot.sb/dns-query
+  - https://doh.opendns.com/dns-query
+  - https://dns.umbrella.com/dns-query
+  - https://dns.twnic.tw/dns-query
   - https://dns.quad9.net/dns-query
   - https://dns.csaonline.de/dns-query
   - https://dns.umbrella.com/dns-query
