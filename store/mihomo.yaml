@@ -179,52 +179,52 @@ proxy-groups:
 rule-providers:
   adblockmihomo:
     <<: *domain
-    path: ./rule/adblockmihomo.mrs
+    path: ./ruleset/adblockmihomo.mrs
     url: https://testingcf.jsdelivr.net/gh/217heidai/adblockfilters@main/rules/adblockmihomo.mrs
 
   adrules:
     <<: *domain
-    path: ./rule/adrules.mrs
+    path: ./ruleset/adrules.mrs
     url: https://testingcf.jsdelivr.net/gh/Cats-Team/AdRules@main/adrules-mihomo.mrs
 
   AWAvenue:
     <<: *domain
-    path: ./rule/AWAvenue.mrs
+    path: ./ruleset/AWAvenue.mrs
     url: https://testingcf.jsdelivr.net/gh/TG-Twilight/AWAvenue-Ads-Rule@main/Filters/AWAvenue-Ads-Rule-Clash.mrs
 
   proxy:
     <<: *domain
-    path: ./rule/proxy.mrs
+    path: ./ruleset/proxy.mrs
     url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/proxy.mrs
 
   google:
     <<: *domain
-    path: ./rule/google.mrs
+    path: ./ruleset/google.mrs
     url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google.mrs
 
   private:
     <<: *domain
-    path: ./rule/private.mrs
+    path: ./ruleset/private.mrs
     url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/private.mrs
 
   cn:
     <<: *domain
-    path: ./rule/cn.mrs
+    path: ./ruleset/cn.mrs
     url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/cn.mrs
 
   fakeip-filter:
     <<: *domain
-    path: ./rule/fakeip-filter.mrs
+    path: ./ruleset/fakeip-filter.mrs
     url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/fakeip-filter.mrs
 
   private_ip:
     <<: *ip
-    path: ./rule/private_ip.mrs
+    path: ./ruleset/private_ip.mrs
     url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/privateip.mrs
 
   cn_ip:
     <<: *ip
-    path: ./rule/cn_ip.mrs
+    path: ./ruleset/cn_ip.mrs
     url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/cnip.mrs
 
 rules:
