@@ -9,7 +9,10 @@
     },
     "cache_file": {
       "enabled": true,
-      "store_fakeip": true
+      "path": "./cache.db",
+      "store_fakeip": true,
+      "store_rdrc": false,
+      "rdrc_timeout": "24h0m0s"
     }
   },
   "log": {
@@ -19,13 +22,19 @@
   },
   "inbounds": [
     {
+      "type": "direct",
+      "tag": "dns-in",
+      "listen": "::",
+      "listen_port": 1053
+    },
+    {
       "type": "tun",
       "tag": "tun-in",
       "address": [
         "172.19.0.0/30",
-        "fdfe:dcba:9876::0/126"
+        "fdce:ba09:8765:4321::1/64"
       ],
-      "stack": "gvisor",
+      "stack": "mixed",
       "auto_route": true,
       "strict_route": true
     },
@@ -44,13 +53,16 @@
       {
         "type": "udp",
         "tag": "域名解析",
-        "server": "223.5.5.5"
+        "server": "223.5.5.5",
+        "server_port": 53
       },
       {
         "type": "https",
         "tag": "直连解析",
         "domain_resolver": "域名解析",
         "server": "dns.alidns.com",
+        "server_port": 443,
+        "path": "dns-query",
         "detour": "🎯 直连访问"
       },
       {
@@ -58,13 +70,15 @@
         "tag": "代理解析",
         "domain_resolver": "域名解析",
         "server": "dns.google",
+        "server_port": 443,
+        "path": "dns-query",
         "detour": "🚀 节点选择"
       },
       {
         "type": "fakeip",
         "tag": "FAKEIP",
         "inet4_range": "198.18.0.0/15",
-        "inet6_range": "fc00::/18"
+        "inet6_range": "fdec:ba98:7654:3210::/64"
       }
     ],
     "rules": [
@@ -74,7 +88,7 @@
       },
       {
         "clash_mode": "全局",
-        "server": "FAKEIP"
+        "server": "代理解析"
       },
       {
         "query_type": "HTTPS",
@@ -92,7 +106,8 @@
         "rule_set": [
           "cn_domain"
         ],
-        "server": "直连解析"
+        "server": "直连解析",
+        "disable_cache": true
       },
       {
         "query_type": [
@@ -112,14 +127,7 @@
     "auto_detect_interface": true,
     "rules": [
       {
-        "action": "sniff",
-        "sniffer": [
-          "http",
-          "tls",
-          "quic",
-          "dns"
-        ],
-        "timeout": "500ms"
+        "action": "sniff"
       },
       {
         "type": "logical",
@@ -155,40 +163,85 @@
         "action": "hijack-dns"
       },
       {
+        "clash_mode": "直连",
+        "action": "route",
+        "outbound": "DIRECT"
+      },
+      {
+        "clash_mode": "全局",
+        "action": "route",
+        "outbound": "GLOBAL"
+      },
+      {
+        "protocol": [ "quic" ],
+        "action": "reject",
+        "method": "default",
+        "no_drop": false
+      },
+      {
         "rule_set": [
-          "private_domain",
-          "private_ip"
+          "private_domain"
         ],
+        "action": "route",
         "outbound": "DIRECT"
       },
       {
         "rule_set": [
-          "adrules-singbox",
-          "adblocksingbox",
+          "private_ip"
+        ],
+        "action": "route",
+        "outbound": "DIRECT"
+      },
+      {
+        "rule_set": [
+          "adrules-singbox"
+        ],
+        "action": "reject"
+      },
+      {
+        "rule_set": [
+          "adblocksingbox"
+        ],
+        "action": "reject"
+      },
+      {
+        "rule_set": [
           "AWAvenue-Ads-Rule-Singbox"
         ],
         "action": "reject"
       },
       {
-        "clash_mode": "全局",
-        "outbound": "GLOBAL"
-      },
-      {
-        "clash_mode": "直连",
-        "outbound": "DIRECT"
-      },
-      {
         "rule_set": [
-          "proxy_domain",
-          "google_domain"
+          "proxy_domain"
         ],
+        "action": "route",
         "outbound": "🚀 节点选择"
       },
       {
         "rule_set": [
-          "cn_domain",
+          "google_domain"
+        ],
+        "action": "route",
+        "outbound": "🚀 节点选择"
+      },
+      {
+        "action": "resolve",
+        "server": "直连解析",
+        "strategy": "prefer_ipv4",
+        "disable_cache": true
+      },
+      {
+        "rule_set": [
+          "cn_domain"
+        ],
+        "action": "route",
+        "outbound": "🎯 直连访问"
+      },
+      {
+        "rule_set": [
           "cn_ip"
         ],
+        "action": "route",
         "outbound": "🎯 直连访问"
       }
     ],
@@ -198,6 +251,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "7d",
+        "path": "./ruleset/private_ip.srs",
         "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/privateip.srs",
         "download_detour": "🎯 直连访问"
       },
@@ -206,6 +260,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "7d",
+        "path": "./ruleset/private_domain.srs",
         "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/private.srs",
         "download_detour": "🎯 直连访问"
       },
@@ -214,6 +269,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "7d",
+        "path": "./ruleset/google_domain.srs",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google.srs",
         "download_detour": "🎯 直连访问"
       },
@@ -222,6 +278,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "7d",
+        "path": "./ruleset/cn_ip.srs",
         "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cnip.srs",
         "download_detour": "🎯 直连访问"
       },
@@ -230,6 +287,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "7d",
+        "path": "./ruleset/cn_domain.srs",
         "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cn.srs",
         "download_detour": "🎯 直连访问"
       },
@@ -238,6 +296,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "7d",
+        "path": "./ruleset/proxy_domain.srs",
         "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/proxy.srs",
         "download_detour": "🎯 直连访问"
       },
@@ -246,6 +305,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "7d",
+        "path": "./ruleset/adrules-singbox.srs",
         "url": "https://testingcf.jsdelivr.net/gh/Cats-Team/AdRules@main/adrules-singbox.srs",
         "download_detour": "🎯 直连访问"
       },
@@ -254,6 +314,7 @@
         "type": "remote",
         "format": "binary",
         "update_interval": "7d",
+        "path": "./ruleset/adblocksingbox.srs",
         "url": "https://testingcf.jsdelivr.net/gh/217heidai/adblockfilters@main/rules/adblocksingbox.srs",
         "download_detour": "🎯 直连访问"
       },
@@ -262,6 +323,7 @@
         "type": "remote",
         "format": "source",
         "update_interval": "7d",
+        "path": "./ruleset/AWAvenue-Ads-Rule-Singbox.srs",
         "url": "https://testingcf.jsdelivr.net/gh/TG-Twilight/AWAvenue-Ads-Rule@main/Filters/AWAvenue-Ads-Rule-Singbox.json",
         "download_detour": "🎯 直连访问"
       }
@@ -318,7 +380,7 @@
       "outbounds": [],
       "url": "https://www.v2ex.com/generate_204",
       "interval": "10m",
-      "tolerance": 200
+      "tolerance": 300
     },
     {
       "tag": "☁️ 故障转移",
@@ -326,7 +388,7 @@
       "outbounds": [],
       "fallback": {
         "enabled": true,
-        "max_delay": "200ms"
+        "max_delay": "300ms"
       },
       "url": "https://www.v2ex.com/generate_204",
       "interval": "10m"
@@ -345,7 +407,7 @@
       "outbounds": [],
       "url": "https://www.v2ex.com/generate_204",
       "interval": "10m",
-      "tolerance": 200
+      "tolerance": 300
     },
     {
       "tag": "🇭🇰 香港节点",
@@ -353,7 +415,7 @@
       "outbounds": [],
       "url": "https://www.v2ex.com/generate_204",
       "interval": "10m",
-      "tolerance": 200
+      "tolerance": 300
     },
     {
       "tag": "🇹🇼 台湾节点",
@@ -361,7 +423,7 @@
       "outbounds": [],
       "url": "https://www.v2ex.com/generate_204",
       "interval": "10m",
-      "tolerance": 200
+      "tolerance": 300
     },
     {
       "tag": "🇯🇵 日本节点",
@@ -369,7 +431,7 @@
       "outbounds": [],
       "url": "https://www.v2ex.com/generate_204",
       "interval": "10m",
-      "tolerance": 200
+      "tolerance": 300
     },
     {
       "tag": "🇺🇸 美国节点",
@@ -377,7 +439,7 @@
       "outbounds": [],
       "url": "https://www.v2ex.com/generate_204",
       "interval": "10m",
-      "tolerance": 200
+      "tolerance": 300
     },
     {
       "tag": "🇸🇬 新加坡节点",
@@ -385,7 +447,7 @@
       "outbounds": [],
       "url": "https://www.v2ex.com/generate_204",
       "interval": "10m",
-      "tolerance": 200
+      "tolerance": 300
     },
     {
       "tag": "GLOBAL",
