@@ -53,16 +53,13 @@
       {
         "type": "udp",
         "tag": "域名解析",
-        "server": "223.5.5.5",
-        "server_port": 53
+        "server": "223.5.5.5"
       },
       {
         "type": "https",
         "tag": "直连解析",
         "domain_resolver": "域名解析",
         "server": "dns.alidns.com",
-        "server_port": 443,
-        "path": "dns-query",
         "detour": "🎯 直连访问"
       },
       {
@@ -70,8 +67,6 @@
         "tag": "代理解析",
         "domain_resolver": "域名解析",
         "server": "dns.google",
-        "server_port": 443,
-        "path": "dns-query",
         "detour": "🚀 节点选择"
       },
       {
@@ -82,38 +77,19 @@
       }
     ],
     "rules": [
+      { "clash_mode": "直连", "server": "直连解析" },
+      { "clash_mode": "全局", "server": "代理解析" },
+      { "query_type": "HTTPS", "action": "reject" },
+      { "rule_set": "adrules-singbox", "action": "reject" },
+      { "rule_set": "adblocksingbox", "action": "reject" },
+      { "rule_set": "AWAvenue-Ads-Rule-Singbox", "action": "reject" },
       {
-        "clash_mode": "直连",
-        "server": "直连解析"
-      },
-      {
-        "clash_mode": "全局",
-        "server": "代理解析"
-      },
-      {
-        "query_type": "HTTPS",
-        "action": "reject"
-      },
-      {
-        "rule_set": [
-          "adrules-singbox",
-          "adblocksingbox",
-          "AWAvenue-Ads-Rule-Singbox"
-        ],
-        "action": "reject"
-      },
-      {
-        "rule_set": [
-          "cn_domain"
-        ],
+        "rule_set": "cn_domain",
         "server": "直连解析",
         "disable_cache": true
       },
       {
-        "query_type": [
-          "A",
-          "AAAA"
-        ],
+        "query_type": [ "A", "AAAA" ],
         "server": "FAKEIP",
         "rewrite_ttl": 1
       }
@@ -126,42 +102,19 @@
     },
     "auto_detect_interface": true,
     "rules": [
-      {
-        "action": "sniff"
-      },
+      { "action": "sniff" },
       {
         "type": "logical",
         "mode": "or",
         "rules": [
-          {
-            "port": 853
-          },
-          {
-            "network": "udp",
-            "port": 443
-          },
-          {
-            "protocol": "quic"
-          },
-          {
-            "protocol": "stun"
-          }
+          { "port": 853 },
+          { "network": "udp", "port": 443 },
+          { "protocol": "quic" },
+          { "protocol": "stun" }
         ],
         "action": "reject"
       },
-      {
-        "type": "logical",
-        "mode": "or",
-        "rules": [
-          {
-            "port": 53
-          },
-          {
-            "protocol": "dns"
-          }
-        ],
-        "action": "hijack-dns"
-      },
+      { "protocol": "dns", "action": "hijack-dns" },
       {
         "clash_mode": "直连",
         "action": "route",
@@ -172,78 +125,16 @@
         "action": "route",
         "outbound": "GLOBAL"
       },
-      {
-        "protocol": [ "quic" ],
-        "action": "reject",
-        "method": "default",
-        "no_drop": false
-      },
-      {
-        "rule_set": [
-          "private_domain"
-        ],
-        "action": "route",
-        "outbound": "DIRECT"
-      },
-      {
-        "rule_set": [
-          "private_ip"
-        ],
-        "action": "route",
-        "outbound": "DIRECT"
-      },
-      {
-        "rule_set": [
-          "adrules-singbox"
-        ],
-        "action": "reject"
-      },
-      {
-        "rule_set": [
-          "adblocksingbox"
-        ],
-        "action": "reject"
-      },
-      {
-        "rule_set": [
-          "AWAvenue-Ads-Rule-Singbox"
-        ],
-        "action": "reject"
-      },
-      {
-        "rule_set": [
-          "proxy_domain"
-        ],
-        "action": "route",
-        "outbound": "🚀 节点选择"
-      },
-      {
-        "rule_set": [
-          "google_domain"
-        ],
-        "action": "route",
-        "outbound": "🚀 节点选择"
-      },
-      {
-        "action": "resolve",
-        "server": "直连解析",
-        "strategy": "prefer_ipv4",
-        "disable_cache": true
-      },
-      {
-        "rule_set": [
-          "cn_domain"
-        ],
-        "action": "route",
-        "outbound": "🎯 直连访问"
-      },
-      {
-        "rule_set": [
-          "cn_ip"
-        ],
-        "action": "route",
-        "outbound": "🎯 直连访问"
-      }
+      { "rule_set": "private_domain", "outbound": "DIRECT" },
+      { "rule_set": "private_ip", "outbound": "DIRECT" },
+      { "ip_is_private": true, "outbound": "DIRECT" },
+      { "rule_set": "adrules-singbox", "action": "reject" },
+      { "rule_set": "adblocksingbox", "action": "reject" },
+      { "rule_set": "AWAvenue-Ads-Rule-Singbox", "action": "reject" },
+      { "rule_set": "proxy_domain", "outbound": "🚀 节点选择" },
+      { "rule_set": "google_domain", "outbound": "🚀 节点选择" },
+      { "rule_set": "cn_domain", "outbound": "🎯 直连访问" },
+      { "rule_set": "cn_ip", "outbound": "🎯 直连访问" }
     ],
     "rule_set": [
       {
@@ -351,27 +242,19 @@
     {
       "tag": "🎯 直连访问",
       "type": "selector",
-      "outbounds": [
-        "🚀 节点选择",
-        "DIRECT"
-      ],
+      "outbounds": [ "🚀 节点选择", "DIRECT" ],
       "default": "DIRECT"
     },
     {
       "tag": "🐟 漏网之鱼",
       "type": "selector",
-      "outbounds": [
-        "🚀 节点选择",
-        "DIRECT"
-      ],
+      "outbounds": [ "🚀 节点选择", "DIRECT" ],
       "default": "🚀 节点选择"
     },
     {
       "tag": "🖲️ 手动选择",
       "type": "selector",
-      "outbounds": [
-        "DIRECT"
-      ],
+      "outbounds": [ "DIRECT" ],
       "default": "DIRECT"
     },
     {
@@ -468,9 +351,6 @@
       ],
       "default": "DIRECT"
     },
-    {
-      "tag": "DIRECT",
-      "type": "direct"
-    }
+    { "tag": "DIRECT", "type": "direct" }
   ]
 }
