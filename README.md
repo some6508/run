@@ -1,0 +1,2 @@
+- [store](/store) 目录用于在 [Sub Store](https://github.com/sub-store-org/Sub-Store) 中使用
+- [sub.ini](/sub.ini) 文件用于在 [subconverter](https://github.com/tindy2013/subconverter) 后端使用
