@@ -3,7 +3,7 @@
     "clash_api": {
       "default_mode": "规则",
       "external_controller": "127.0.0.1:9090",
-      "external_ui": "ui",
+      "external_ui": "./ui",
       "external_ui_download_url": "https://gh-proxy.com/https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages.zip",
       "external_ui_download_detour": "🎯 直连访问"
     },
@@ -41,7 +41,7 @@
   ],
   "dns": {
     "final": "代理解析",
-    "strategy": "prefer_ipv4",
+    "strategy": "ipv4_only",
     "independent_cache": true,
     "servers": [
       {
