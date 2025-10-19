@@ -322,7 +322,7 @@
     },
     {
       "tag": "☁️ 故障转移",
-      "type": "fallback",
+      "type": "urltest",
       "outbounds": [],
       "fallback": {
         "enabled": true
