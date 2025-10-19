@@ -325,11 +325,11 @@
       "type": "urltest",
       "outbounds": [],
       "fallback": {
-        "enabled": true
+        "enabled": true,
+        "max_delay": "200ms"
       },
       "url": "https://www.v2ex.com/generate_204",
-      "interval": "10m",
-      "tolerance": 200
+      "interval": "10m"
     },
     {
       "tag": "🔮 负载均衡",
@@ -337,8 +337,7 @@
       "strategy": "consistent-hashing",
       "outbounds": [],
       "url": "https://www.v2ex.com/generate_204",
-      "interval": "10m",
-      "tolerance": 200
+      "interval": "10m"
     },
     {
       "tag": "🇺🇳 其它地区",
