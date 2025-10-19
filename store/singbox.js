@@ -12,8 +12,11 @@ let proxies = await produceArtifact({
 config.outbounds.push(...proxies)
 
 config.outbounds.map(i => {
-  if (['🖲️ 手动选择', '♻️ 自动选择'].includes(i.tag)) {
+  if (['🖲️ 手动选择', '♻️ 自动选择', '☁️ 故障转移', '🔮 负载均衡'].includes(i.tag)) {
     i.outbounds.push(...getTags(proxies))
+  }
+  if (['🇺🇳 其它选择', '🇺🇳 其它地区'].includes(i.tag)) {
+    i.outbounds.push(...getTags(proxies, /^(?!.*(🇭🇰|🇹🇼|🇯🇵|🇺🇸|🇸🇬|🇨🇳|🇰🇷|港|hk|hongkong|台|tw|taiwan|日|jp|japan|新|sg|singapore|美|us|unitedstates)).*$/i))
   }
   if (['🇭🇰 香港选择', '🇭🇰 香港节点'].includes(i.tag)) {
     i.outbounds.push(...getTags(proxies, /港|hk|hongkong|hong kong|🇭🇰/i))
@@ -29,9 +32,6 @@ config.outbounds.map(i => {
   }
   if (['🇸🇬 新加坡选择', '🇸🇬 新加坡节点'].includes(i.tag)) {
     i.outbounds.push(...getTags(proxies, /新|sg|singapore|🇸🇬/i))
-  }
-  if (['🇺🇳 其它选择', '🇺🇳 其它地区'].includes(i.tag)) {
-    i.outbounds.push(...getTags(proxies, /^(?!.*(🇭🇰|🇹🇼|🇯🇵|🇺🇸|🇸🇬|🇨🇳|🇰🇷|港|hk|hongkong|台|tw|taiwan|日|jp|japan|新|sg|singapore|美|us|unitedstates)).*$/i))
   }
 })
 
