@@ -274,6 +274,8 @@
       "outbounds": [
         "♻️ 自动选择",
         "🖲️ 手动选择",
+        "☁️ 故障转移",
+        "🔮 负载均衡",
         "🇺🇳 其它地区",
         "🇭🇰 香港节点",
         "🇹🇼 台湾节点",
@@ -313,6 +315,26 @@
     {
       "tag": "♻️ 自动选择",
       "type": "urltest",
+      "outbounds": [],
+      "url": "https://www.v2ex.com/generate_204",
+      "interval": "10m",
+      "tolerance": 200
+    },
+    {
+      "tag": "☁️ 故障转移",
+      "type": "fallback",
+      "outbounds": [],
+      "fallback": {
+        "enabled": true
+      },
+      "url": "https://www.v2ex.com/generate_204",
+      "interval": "10m",
+      "tolerance": 200
+    },
+    {
+      "tag": "🔮 负载均衡",
+      "type": "loadbalance",
+      "strategy": "consistent-hashing",
       "outbounds": [],
       "url": "https://www.v2ex.com/generate_204",
       "interval": "10m",
@@ -372,6 +394,8 @@
       "outbounds": [
         "🚀 节点选择",
         "♻️ 自动选择",
+        "☁️ 故障转移",
+        "🔮 负载均衡",
         "🖲️ 手动选择",
         "🇺🇳 其它地区",
         "🇭🇰 香港节点",
