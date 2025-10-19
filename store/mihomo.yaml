@@ -25,7 +25,7 @@ profile:
 dns:
   enable: true
   listen: 0.0.0.0:1053
-  ipv6: true
+  ipv6: false
   use-hosts: true
   respect-rules: true
   enhanced-mode: fake-ip
