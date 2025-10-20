@@ -30,7 +30,9 @@
       ],
       "stack": "mixed",
       "auto_route": true,
-      "strict_route": true
+      "strict_route": true,
+      "include_package": [],
+      "exclude_package": []
     },
     {
       "type": "mixed",
@@ -41,7 +43,7 @@
   ],
   "dns": {
     "final": "代理解析",
-    "strategy": "ipv4_only",
+    "strategy": "prefer_ipv4",
     "independent_cache": true,
     "servers": [
       {
