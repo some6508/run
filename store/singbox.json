@@ -30,9 +30,7 @@
       ],
       "stack": "mixed",
       "auto_route": true,
-      "strict_route": true,
-      "include_package": [],
-      "exclude_package": []
+      "strict_route": true
     },
     {
       "type": "mixed",
