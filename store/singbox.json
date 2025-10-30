@@ -26,7 +26,7 @@
       "tag": "tun-in",
       "address": [
         "172.19.0.0/30",
-        "fdce:ba09:8765:4321::1/64"
+        "fdfe:dcba:9876::1/126"
       ],
       "stack": "mixed",
       "auto_route": true,
@@ -67,12 +67,12 @@
         "type": "fakeip",
         "tag": "FAKEIP",
         "inet4_range": "198.18.0.0/15",
-        "inet6_range": "fdec:ba98:7654:3210::/64"
+        "inet6_range": "fc00::/18"
       }
     ],
     "rules": [
       { "clash_mode": "直连", "server": "直连解析" },
-      { "clash_mode": "全局", "server": "代理解析" },
+      { "clash_mode": "全局", "server": "FAKEIP" },
       { "query_type": "HTTPS", "action": "reject" },
       { "rule_set": "adrules-singbox", "action": "reject" },
       { "rule_set": "adblocksingbox", "action": "reject" },
@@ -119,9 +119,9 @@
         "action": "route",
         "outbound": "GLOBAL"
       },
+      { "ip_is_private": true, "outbound": "DIRECT" },
       { "rule_set": "private_domain", "outbound": "DIRECT" },
       { "rule_set": "private_ip", "outbound": "DIRECT" },
-      { "ip_is_private": true, "outbound": "DIRECT" },
       { "rule_set": "adrules-singbox", "action": "reject" },
       { "rule_set": "adblocksingbox", "action": "reject" },
       { "rule_set": "AWAvenue-Ads-Rule-Singbox", "action": "reject" },
@@ -141,37 +141,37 @@
         "download_detour": "🎯 直连访问"
       },
       {
-        "tag": "private_domain",
-        "type": "remote",
-        "format": "binary",
+        "tag": "private_domain"，
+        "type": "remote"，
+        "format": "binary"，
         "update_interval": "7d",
         "path": "./ruleset/private_domain.srs",
         "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/private.srs",
         "download_detour": "🎯 直连访问"
       },
       {
-        "tag": "google_domain",
+        "tag": "google_domain"，
         "type": "remote",
         "format": "binary",
         "update_interval": "7d",
         "path": "./ruleset/google_domain.srs",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google.srs",
         "download_detour": "🎯 直连访问"
-      },
+      }，
       {
         "tag": "cn_ip",
         "type": "remote",
         "format": "binary",
         "update_interval": "7d",
-        "path": "./ruleset/cn_ip.srs",
+        "path": "./ruleset/cn_ip.srs"，
         "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cnip.srs",
         "download_detour": "🎯 直连访问"
-      },
+      }，
       {
-        "tag": "cn_domain",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "7d",
+        "tag": "cn_domain"，
+        "type": "remote"，
+        "format": "binary"，
+        "update_interval": "7d"，
         "path": "./ruleset/cn_domain.srs",
         "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cn.srs",
         "download_detour": "🎯 直连访问"
