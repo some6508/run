@@ -10,7 +10,7 @@
     "cache_file": {
       "enabled": true,
       "path": "./cache.db",
-      "store_fakeip": true,
+      "store_fakeip": false,
       "store_rdrc": false,
       "rdrc_timeout": "24h0m0s"
     }
