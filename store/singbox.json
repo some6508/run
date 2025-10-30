@@ -15,11 +15,7 @@
       "rdrc_timeout": "24h0m0s"
     }
   },
-  "log": {
-    "disabled": false,
-    "level": "error",
-    "timestamp": true
-  },
+  "log": { "disabled": false, "level": "error", "timestamp": true },
   "inbounds": [
     {
       "type": "tun",
@@ -32,23 +28,14 @@
       "auto_route": true,
       "strict_route": true
     },
-    {
-      "type": "mixed",
-      "tag": "mixed-in",
-      "listen": "127.0.0.1",
-      "listen_port": 7890
-    }
+    { "type": "mixed", "tag": "mixed-in", "listen": "127.0.0.1", "listen_port": 7890 }
   ],
   "dns": {
     "final": "代理解析",
     "strategy": "prefer_ipv4",
     "independent_cache": true,
     "servers": [
-      {
-        "type": "udp",
-        "tag": "域名解析",
-        "server": "223.5.5.5"
-      },
+      { "type": "udp", "tag": "域名解析", "server": "223.5.5.5" },
       {
         "type": "https",
         "tag": "直连解析",
@@ -63,12 +50,7 @@
         "server": "dns.google",
         "detour": "🚀 节点选择"
       },
-      {
-        "type": "fakeip",
-        "tag": "FAKEIP",
-        "inet4_range": "198.18.0.0/15",
-        "inet6_range": "fc00::/18"
-      }
+      { "type": "fakeip", "tag": "FAKEIP", "inet4_range": "198.18.0.0/15", "inet6_range": "fc00::/18" }
     ],
     "rules": [
       { "clash_mode": "直连", "server": "直连解析" },
@@ -77,16 +59,8 @@
       { "rule_set": "adrules-singbox", "action": "reject" },
       { "rule_set": "adblocksingbox", "action": "reject" },
       { "rule_set": "AWAvenue-Ads-Rule-Singbox", "action": "reject" },
-      {
-        "rule_set": "cn_domain",
-        "server": "直连解析",
-        "disable_cache": true
-      },
-      {
-        "query_type": [ "A", "AAAA" ],
-        "server": "FAKEIP",
-        "rewrite_ttl": 1
-      }
+      { "rule_set": "cn_domain", "server": "直连解析", "disable_cache": true },
+      { "query_type": [ "A", "AAAA" ], "server": "FAKEIP", "rewrite_ttl": 1 }
     ]
   },
   "route": {
@@ -109,16 +83,8 @@
         "action": "reject"
       },
       { "protocol": "dns", "action": "hijack-dns" },
-      {
-        "clash_mode": "直连",
-        "action": "route",
-        "outbound": "DIRECT"
-      },
-      {
-        "clash_mode": "全局",
-        "action": "route",
-        "outbound": "GLOBAL"
-      },
+      { "clash_mode": "直连", "action": "route", "outbound": "DIRECT" },
+      { "clash_mode": "全局", "action": "route", "outbound": "GLOBAL" },
       { "ip_is_private": true, "outbound": "DIRECT" },
       { "rule_set": "private_domain", "outbound": "DIRECT" },
       { "rule_set": "private_ip", "outbound": "DIRECT" },
@@ -256,7 +222,7 @@
       "type": "urltest",
       "outbounds": [],
       "url": "https://www.v2ex.com/generate_204",
-      "interval": "10m",
+      "interval": "5m",
       "tolerance": 300
     },
     {
@@ -268,7 +234,7 @@
         "max_delay": "300ms"
       },
       "url": "https://www.v2ex.com/generate_204",
-      "interval": "10m"
+      "interval": "5m"
     },
     {
       "tag": "🔮 负载均衡",
@@ -276,14 +242,14 @@
       "strategy": "consistent-hashing",
       "outbounds": [],
       "url": "https://www.v2ex.com/generate_204",
-      "interval": "10m"
+      "interval": "5m"
     },
     {
       "tag": "🇺🇳 其它地区",
       "type": "urltest",
       "outbounds": [],
       "url": "https://www.v2ex.com/generate_204",
-      "interval": "10m",
+      "interval": "5m",
       "tolerance": 300
     },
     {
@@ -291,7 +257,7 @@
       "type": "urltest",
       "outbounds": [],
       "url": "https://www.v2ex.com/generate_204",
-      "interval": "10m",
+      "interval": "5m",
       "tolerance": 300
     },
     {
@@ -299,7 +265,7 @@
       "type": "urltest",
       "outbounds": [],
       "url": "https://www.v2ex.com/generate_204",
-      "interval": "10m",
+      "interval": "5m",
       "tolerance": 300
     },
     {
@@ -307,7 +273,7 @@
       "type": "urltest",
       "outbounds": [],
       "url": "https://www.v2ex.com/generate_204",
-      "interval": "10m",
+      "interval": "5m",
       "tolerance": 300
     },
     {
@@ -315,7 +281,7 @@
       "type": "urltest",
       "outbounds": [],
       "url": "https://www.v2ex.com/generate_204",
-      "interval": "10m",
+      "interval": "5m",
       "tolerance": 300
     },
     {
@@ -323,7 +289,7 @@
       "type": "urltest",
       "outbounds": [],
       "url": "https://www.v2ex.com/generate_204",
-      "interval": "10m",
+      "interval": "5m",
       "tolerance": 300
     },
     {
