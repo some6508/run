@@ -107,37 +107,37 @@
         "download_detour": "🎯 直连访问"
       },
       {
-        "tag": "private_domain"，
-        "type": "remote"，
-        "format": "binary"，
+        "tag": "private_domain",
+        "type": "remote",
+        "format": "binary",
         "update_interval": "7d",
         "path": "./ruleset/private_domain.srs",
         "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/private.srs",
         "download_detour": "🎯 直连访问"
       },
       {
-        "tag": "google_domain"，
+        "tag": "google_domain",
         "type": "remote",
         "format": "binary",
         "update_interval": "7d",
         "path": "./ruleset/google_domain.srs",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google.srs",
         "download_detour": "🎯 直连访问"
-      }，
+      },
       {
         "tag": "cn_ip",
         "type": "remote",
         "format": "binary",
         "update_interval": "7d",
-        "path": "./ruleset/cn_ip.srs"，
+        "path": "./ruleset/cn_ip.srs",
         "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cnip.srs",
         "download_detour": "🎯 直连访问"
-      }，
+      },
       {
-        "tag": "cn_domain"，
-        "type": "remote"，
-        "format": "binary"，
-        "update_interval": "7d"，
+        "tag": "cn_domain",
+        "type": "remote",
+        "format": "binary",
+        "update_interval": "7d",
         "path": "./ruleset/cn_domain.srs",
         "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cn.srs",
         "download_detour": "🎯 直连访问"
