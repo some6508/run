@@ -2,8 +2,9 @@
   "experimental": {
     "clash_api": {
       "default_mode": "规则",
-      "external_controller": "127.0.0.1:9090",
+      "external_controller": "0.0.0.0:9090",
       "external_ui": "./ui",
+      "external_ui_update_interval": "1d",
       "external_ui_download_url": "https://gh-proxy.com/https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages-no-fonts.zip",
       "external_ui_download_detour": "🎯 直连访问"
     },
@@ -24,6 +25,7 @@
         "172.19.0.0/30",
         "fdfe:dcba:9876::1/126"
       ],
+      "mtu": 9000,
       "stack": "mixed",
       "auto_route": true,
       "strict_route": true
@@ -34,6 +36,8 @@
     "final": "代理解析",
     "strategy": "prefer_ipv4",
     "independent_cache": true,
+    "reverse_mapping": false,
+    "cache_capacity": 65536,
     "servers": [
       { "type": "udp", "tag": "域名解析", "server": "223.5.5.5" },
       {
@@ -59,17 +63,16 @@
       { "rule_set": "adrules-singbox", "action": "reject" },
       { "rule_set": "adblocksingbox", "action": "reject" },
       { "rule_set": "AWAvenue-Ads-Rule-Singbox", "action": "reject" },
-      { "rule_set": "cn_domain", "server": "直连解析", "disable_cache": true },
+      { "rule_set": "cn_domain", "server": "直连解析", "disable_cache": false },
       { "query_type": [ "A", "AAAA" ], "server": "FAKEIP", "rewrite_ttl": 1 }
     ]
   },
   "route": {
     "final": "🐟 漏网之鱼",
-    "default_domain_resolver": {
-      "server": "直连解析"
-    },
+    "default_domain_resolver": { "server": "直连解析", "strategy": "prefer_ipv4", "rewrite_ttl": 86400 },
     "auto_detect_interface": true,
     "rules": [
+      { "port": 53, "action": "hijack-dns" },
       { "action": "sniff" },
       {
         "type": "logical",
@@ -85,15 +88,16 @@
       { "protocol": "dns", "action": "hijack-dns" },
       { "clash_mode": "直连", "action": "route", "outbound": "DIRECT" },
       { "clash_mode": "全局", "action": "route", "outbound": "GLOBAL" },
-      { "ip_is_private": true, "outbound": "DIRECT" },
       { "rule_set": "private_domain", "outbound": "DIRECT" },
-      { "rule_set": "private_ip", "outbound": "DIRECT" },
       { "rule_set": "adrules-singbox", "action": "reject" },
       { "rule_set": "adblocksingbox", "action": "reject" },
       { "rule_set": "AWAvenue-Ads-Rule-Singbox", "action": "reject" },
       { "rule_set": "proxy_domain", "outbound": "🚀 节点选择" },
       { "rule_set": "google_domain", "outbound": "🚀 节点选择" },
       { "rule_set": "cn_domain", "outbound": "🎯 直连访问" },
+      { "action": "resolve", "match_only": true, "server": "直连解析", "strategy": "prefer_ipv4", "rewrite_ttl": 3600, "disable_cache": false },
+      { "ip_is_private": true, "outbound": "DIRECT" },
+      { "rule_set": "private_ip", "outbound": "DIRECT" },
       { "rule_set": "cn_ip", "outbound": "🎯 直连访问" }
     ],
     "rule_set": [
