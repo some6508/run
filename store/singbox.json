@@ -36,8 +36,7 @@
     "final": "代理解析",
     "strategy": "prefer_ipv4",
     "independent_cache": true,
-    "reverse_mapping": false,
-    "cache_capacity": 65536,
+    "reverse_mapping": true,
     "servers": [
       { "type": "udp", "tag": "域名解析", "server": "223.5.5.5" },
       {
@@ -59,21 +58,29 @@
     "rules": [
       { "query_type": "HTTPS", "action": "predefined", "rcode": "NOTIMP" },
       { "clash_mode": "直连", "server": "直连解析" },
-      { "clash_mode": "全局", "query_type": [ "A", "AAAA" ], "server": "FAKEIP", "rewrite_ttl": 1 },
+      { "clash_mode": "全局", "query_type": [ "A", "AAAA" ], "server": "FAKEIP", "rewrite_ttl": 0, "disable_cache": true },
       { "rule_set": "adrules-singbox", "action": "reject" },
       { "rule_set": "adblocksingbox", "action": "reject" },
       { "rule_set": "AWAvenue-Ads-Rule-Singbox", "action": "reject" },
-      { "rule_set": "cn_domain", "server": "直连解析", "disable_cache": false },
-      { "query_type": [ "A", "AAAA" ], "server": "FAKEIP", "rewrite_ttl": 1 }
+      { "rule_set": "cn_domain", "server": "直连解析", "disable_cache": true },
+      { "query_type": [ "A", "AAAA" ], "server": "FAKEIP", "rewrite_ttl": 0, "disable_cache": true }
     ]
   },
   "route": {
     "final": "🐟 漏网之鱼",
-    "default_domain_resolver": { "server": "直连解析", "strategy": "prefer_ipv4", "rewrite_ttl": 86400 },
+    "default_domain_resolver": { "server": "直连解析", "strategy": "prefer_ipv4" },
     "auto_detect_interface": true,
     "rules": [
-      { "port": 53, "action": "hijack-dns" },
       { "action": "sniff" },
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          { "port": 53 },
+          { "protocol": "dns" }
+        ],
+        "action": "hijack-dns"
+      },
       {
         "type": "logical",
         "mode": "or",
@@ -85,7 +92,6 @@
         ],
         "action": "reject"
       },
-      { "protocol": "dns", "action": "hijack-dns" },
       { "clash_mode": "直连", "action": "route", "outbound": "DIRECT" },
       { "clash_mode": "全局", "action": "route", "outbound": "GLOBAL" },
       { "rule_set": "private_domain", "outbound": "DIRECT" },
