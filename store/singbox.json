@@ -23,7 +23,6 @@
         "172.19.0.0/30",
         "fdfe:dcba:9876::1/126"
       ],
-      "mtu": 1453,
       "stack": "mixed",
       "auto_route": true
     },
@@ -67,7 +66,6 @@
     "default_domain_resolver": { "server": "直连解析" },
     "auto_detect_interface": true,
     "rules": [
-      { "action": "sniff" },
       {
         "type": "logical",
         "mode": "or",
@@ -77,6 +75,7 @@
         ],
         "action": "hijack-dns"
       },
+      { "action": "sniff" },
       {
         "type": "logical",
         "mode": "or",
