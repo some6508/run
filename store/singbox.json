@@ -19,12 +19,12 @@
     {
       "type": "tun",
       "tag": "tun-in",
+      "stack": "mixed",
+      "auto_route": true,
       "address": [
         "172.19.0.0/30",
         "fdfe:dcba:9876::1/126"
-      ],
-      "stack": "mixed",
-      "auto_route": true
+      ]
     },
     { "type": "mixed", "tag": "mixed-in", "listen": "0.0.0.0", "listen_port": 7890 }
   ],
@@ -65,10 +65,17 @@
     "final": "🐟 漏网之鱼",
     "default_domain_resolver": { "server": "直连解析" },
     "auto_detect_interface": true,
-    "rules": [
-      { "port": 53, "action": "hijack-dns" },
+    "rules": 
       { "action": "sniff" },
-      { "protocol": "dns", "action": "hijack-dns"},
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules":[
+          { "port":53 },
+          { "protocol": "dns" }
+        ],
+        "action": "hijack-dns"
+      },
       {
         "type": "logical",
         "mode": "or",
