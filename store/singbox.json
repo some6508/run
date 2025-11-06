@@ -95,8 +95,8 @@
       { "rule_set": "adrules-singbox", "action": "reject" },
       { "rule_set": "adblocksingbox", "action": "reject" },
       { "rule_set": "AWAvenue-Ads-Rule-Singbox", "action": "reject" },
-      { "rule_set": "proxy_domain", "outbound": "🚀 节点选择" },
       { "rule_set": "google_domain", "outbound": "🚀 节点选择" },
+      { "rule_set": "proxy_domain", "outbound": "🚀 节点选择" },
       { "rule_set": "cn_domain", "outbound": "🎯 直连访问" },
       { "action": "resolve" },
       { "rule_set": "cn_ip", "outbound": "🎯 直连访问" }
