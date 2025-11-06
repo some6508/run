@@ -33,7 +33,7 @@
     "strategy": "prefer_ipv4",
     "independent_cache": true,
     "servers": [
-      { "type": "udp", "tag": "域名解析", "server": "223.5.5.5" },
+      { "type": "udp", "tag": "域名解析", "server": "223.6.6.6" },
       {
         "type": "https",
         "tag": "直连解析",
