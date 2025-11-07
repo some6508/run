@@ -16,17 +16,17 @@
   },
   "log": { "disabled": false, "level": "warn", "timestamp": true },
   "inbounds": [
+    { "type": "mixed", "tag": "mixed-in", "listen": "0.0.0.0", "listen_port": 7890 },
     {
       "type": "tun",
       "tag": "tun-in",
       "stack": "mixed",
       "auto_route": true,
-      "address": [
-        "172.19.0.0/30",
-        "fdfe:dcba:9876::1/126"
-      ]
-    },
-    { "type": "mixed", "tag": "mixed-in", "listen": "0.0.0.0", "listen_port": 7890 }
+      "address": [ "172.19.0.0/30", "fdfe:dcba:9876::1/126" ],
+      "platform": {
+        "http_proxy": { "enabled": false, "server": "127.0.0.1", "server_port": 7890 }
+      }
+    }
   ],
   "dns": {
     "final": "代理解析",
@@ -63,8 +63,8 @@
   },
   "route": {
     "final": "🐟 漏网之鱼",
-    "default_domain_resolver": { "server": "直连解析" },
     "auto_detect_interface": true,
+    "default_domain_resolver": { "server": "直连解析" },
     "rules": 
       { "action": "sniff" },
       {
