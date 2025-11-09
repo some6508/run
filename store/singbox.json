@@ -20,7 +20,6 @@
     {
       "type": "tun",
       "tag": "tun-in",
-      "mtu": 9000,
       "stack": "mixed",
       "auto_route": true,
       "address": [ "172.19.0.0/30", "fdfe:dcba:9876::1/126" ]
