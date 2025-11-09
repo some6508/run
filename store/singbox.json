@@ -20,6 +20,7 @@
     {
       "type": "tun",
       "tag": "tun-in",
+      "mtu": 9000,
       "stack": "mixed",
       "auto_route": true,
       "address": [ "172.19.0.0/30", "fdfe:dcba:9876::1/126" ]
@@ -46,9 +47,9 @@
       { "type": "fakeip", "tag": "FAKEIP", "inet4_range": "198.18.0.0/15", "inet6_range": "fc00::/18" }
     ],
     "rules": [
-      { "clash_mode": "直连", "server": "直连解析" },
-      { "clash_mode": "全局", "server": "FAKEIP" },
-      { "rule_set": "cn_domain", "server": "直连解析" },
+      { "clash_mode": "直连", "action": "route", "server": "直连解析" },
+      { "clash_mode": "全局", "action": "route", "server": "FAKEIP" },
+      { "rule_set": "cn_domain", "action": "route", "server": "直连解析" },
       { "rule_set": "adrules-singbox", "action": "reject" },
       { "rule_set": "adblocksingbox", "action": "reject" },
       { "rule_set": "AWAvenue-Ads-Rule-Singbox", "action": "reject" },
@@ -80,19 +81,19 @@
         ],
         "action": "reject"
       },
-      { "clash_mode": "直连", "outbound": "DIRECT" },
-      { "clash_mode": "全局", "outbound": "GLOBAL" },
-      { "rule_set": "private_domain", "outbound": "DIRECT" },
+      { "clash_mode": "直连", "action": "route", "outbound": "DIRECT" },
+      { "clash_mode": "全局", "action": "route", "outbound": "GLOBAL" },
+      { "rule_set": "private_domain", "action": "route", "outbound": "DIRECT" },
       { "rule_set": "adrules-singbox", "action": "reject" },
       { "rule_set": "adblocksingbox", "action": "reject" },
       { "rule_set": "AWAvenue-Ads-Rule-Singbox", "action": "reject" },
-      { "rule_set": "google_domain", "outbound": "🚀 节点选择" },
-      { "rule_set": "proxy_domain", "outbound": "🚀 节点选择" },
-      { "rule_set": "cn_domain", "outbound": "🎯 直连访问" },
+      { "rule_set": "google_domain", "action": "route", "outbound": "🚀 节点选择" },
+      { "rule_set": "proxy_domain", "action": "route", "outbound": "🚀 节点选择" },
+      { "rule_set": "cn_domain", "action": "route", "outbound": "🎯 直连访问" },
       { "action": "resolve" },
-      { "ip_is_private": true, "outbound": "DIRECT" },
-      { "rule_set": "private_ip", "outbound": "DIRECT" },
-      { "rule_set": "cn_ip", "outbound": "🎯 直连访问" }
+      { "ip_is_private": true, "action": "route", "outbound": "DIRECT" },
+      { "rule_set": "private_ip", "action": "route", "outbound": "DIRECT" },
+      { "rule_set": "cn_ip", "action": "route", "outbound": "🎯 直连访问" }
     ],
     "rule_set": [
       {
