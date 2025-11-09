@@ -22,16 +22,11 @@
       "tag": "tun-in",
       "stack": "mixed",
       "auto_route": true,
-      "address": [ "172.19.0.0/30", "fdfe:dcba:9876::1/126" ],
-      "platform": {
-        "http_proxy": { "enabled": false, "server": "127.0.0.1", "server_port": 7890 }
-      }
+      "address": [ "172.19.0.0/30", "fdfe:dcba:9876::1/126" ]
     }
   ],
   "dns": {
     "final": "代理解析",
-    "strategy": "prefer_ipv4",
-    "reverse_mapping": true,
     "independent_cache": true,
     "servers": [
       { "type": "udp", "tag": "域名解析", "server": "114.114.114.114" },
@@ -74,6 +69,16 @@
           { "protocol": "dns" }
         ],
         "action": "hijack-dns"
+      },
+      {
+        "type": "logical",
+        "mode": "or",
+        "rules": [
+          { "port": 853 },
+          { "network": "udp", "port": 443 },
+          { "protocol": [ "quic", "stun" ] }
+        ],
+        "action": "reject"
       },
       { "clash_mode": "直连", "outbound": "DIRECT" },
       { "clash_mode": "全局", "outbound": "GLOBAL" },
