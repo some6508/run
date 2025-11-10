@@ -23,6 +23,7 @@
       "tag": "tun-in",
       "stack": "mixed",
       "auto_route": true,
+      "endpoint_independent_nat": false,
       "address": [ "172.19.0.0/30", "fdfe:dcba:9876::1/126" ]
     }
   ],
