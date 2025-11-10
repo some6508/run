@@ -28,6 +28,7 @@
   ],
   "dns": {
     "final": "代理解析",
+    "strategy": "prefer_ipv4",
     "independent_cache": true,
     "servers": [
       { "type": "udp", "tag": "域名解析", "server": "114.114.114.114" },
@@ -49,7 +50,7 @@
     "rules": [
       { "clash_mode": "直连", "action": "route", "server": "直连解析" },
       { "clash_mode": "全局", "action": "route", "server": "FAKEIP" },
-      { "rule_set": "cn_domain", "action": "route", "server": "直连解析" },
+      { "rule_set": "cn_domain", "action": "route", "server": "直连解析", "disable_cache": true },
       { "rule_set": "adrules-singbox", "action": "reject" },
       { "rule_set": "adblocksingbox", "action": "reject" },
       { "rule_set": "AWAvenue-Ads-Rule-Singbox", "action": "reject" },
@@ -90,7 +91,7 @@
       { "rule_set": "google_domain", "action": "route", "outbound": "🚀 节点选择" },
       { "rule_set": "proxy_domain", "action": "route", "outbound": "🚀 节点选择" },
       { "rule_set": "cn_domain", "action": "route", "outbound": "🎯 直连访问" },
-      { "action": "resolve" },
+      { "action": "resolve", "disable_cache": true },
       { "ip_is_private": true, "action": "route", "outbound": "DIRECT" },
       { "rule_set": "private_ip", "action": "route", "outbound": "DIRECT" },
       { "rule_set": "cn_ip", "action": "route", "outbound": "🎯 直连访问" }
