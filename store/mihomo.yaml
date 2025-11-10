@@ -4,12 +4,11 @@ mode: rule
 log-level: error
 allow-lan: true
 bind-address: '*'
-unified-delay: false
+unified-delay: true
 tcp-concurrent: true
 external-controller: 0.0.0.0:9090
 external-ui: ./ui
 external-ui-url: https://gh-proxy.com/https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages-no-fonts.zip
-global-client-fingerprint: chrome
 geo-auto-update: true
 geo-update-interval: 24
 geox-url:
@@ -62,8 +61,6 @@ dns:
   nameserver-policy:
     rule-set:adblockmihomo,adrules,AWAvenue:
     - rcode://success
-    rule-set:private:
-    - system
 
 rule-anchor:
   p: &p {url: 'https://www.v2ex.com/generate_204', interval: 600, tolerance: 300, expected-status: 200/204, include-all: true}
