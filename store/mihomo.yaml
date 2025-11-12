@@ -21,6 +21,27 @@ profile:
   store-selected: false
   store-fake-ip: false
 
+sniffer:
+  enable: true
+  sniff:
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    TLS:
+      ports: [443, 8443]
+  skip-domain:
+  - 'Mijia Cloud'
+  - 'dlg.io.mi.com'
+  - '+.push.apple.com'
+  - '+.apple.com'
+  - '+.qq.com'
+  - '+.weixin.qq.com'
+  - '+.taobao.com'
+  - '+.tmall.com'
+  - '+.jd.com'
+  - '+.baidu.com'
+  - '+.bilibili.com'
+
 dns:
   enable: true
   listen: 0.0.0.0:1053
