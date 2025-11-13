@@ -4,7 +4,7 @@
       "default_mode": "规则",
       "external_controller": "0.0.0.0:9090",
       "external_ui": "./ui",
-      "external_ui_update_interval": "7d",
+      "external_ui_update_interval": "24h",
       "external_ui_download_url": "https://gh-proxy.com/https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages-no-fonts.zip",
       "external_ui_download_detour": "🎯 直连访问"
     },
@@ -22,7 +22,7 @@
       "tag": "tun-in",
       "stack": "mixed",
       "auto_route": true,
-      "strict_route": false,
+      "strict_route": true,
       "endpoint_independent_nat": false,
       "address": [ "172.19.0.0/30", "fdfe:dcba:9876::1/126" ]
     }
@@ -86,7 +86,7 @@
         "tag": "private_ip",
         "type": "remote",
         "format": "binary",
-        "update_interval": "7d",
+        "update_interval": "24h",
         "path": "./ruleset/private_ip.srs",
         "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/privateip.srs",
         "download_detour": "🎯 直连访问"
@@ -95,7 +95,7 @@
         "tag": "private_domain",
         "type": "remote",
         "format": "binary",
-        "update_interval": "7d",
+        "update_interval": "24h",
         "path": "./ruleset/private_domain.srs",
         "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/private.srs",
         "download_detour": "🎯 直连访问"
@@ -104,7 +104,7 @@
         "tag": "google_domain",
         "type": "remote",
         "format": "binary",
-        "update_interval": "7d",
+        "update_interval": "24h",
         "path": "./ruleset/google_domain.srs",
         "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google.srs",
         "download_detour": "🎯 直连访问"
@@ -113,7 +113,7 @@
         "tag": "cn_ip",
         "type": "remote",
         "format": "binary",
-        "update_interval": "7d",
+        "update_interval": "24h",
         "path": "./ruleset/cn_ip.srs",
         "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cnip.srs",
         "download_detour": "🎯 直连访问"
@@ -122,7 +122,7 @@
         "tag": "cn_domain",
         "type": "remote",
         "format": "binary",
-        "update_interval": "7d",
+        "update_interval": "24h",
         "path": "./ruleset/cn_domain.srs",
         "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cn.srs",
         "download_detour": "🎯 直连访问"
@@ -131,7 +131,7 @@
         "tag": "proxy_domain",
         "type": "remote",
         "format": "binary",
-        "update_interval": "7d",
+        "update_interval": "24h",
         "path": "./ruleset/proxy_domain.srs",
         "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/proxy.srs",
         "download_detour": "🎯 直连访问"
@@ -140,7 +140,7 @@
         "tag": "adrules-singbox",
         "type": "remote",
         "format": "binary",
-        "update_interval": "7d",
+        "update_interval": "24h",
         "path": "./ruleset/adrules-singbox.srs",
         "url": "https://testingcf.jsdelivr.net/gh/Cats-Team/AdRules@main/adrules-singbox.srs",
         "download_detour": "🎯 直连访问"
@@ -149,7 +149,7 @@
         "tag": "adblocksingbox",
         "type": "remote",
         "format": "binary",
-        "update_interval": "7d",
+        "update_interval": "24h",
         "path": "./ruleset/adblocksingbox.srs",
         "url": "https://testingcf.jsdelivr.net/gh/217heidai/adblockfilters@main/rules/adblocksingbox.srs",
         "download_detour": "🎯 直连访问"
