@@ -53,7 +53,7 @@
       { "clash_mode": "直连", "server": "直连解析" },
       { "clash_mode": "全局", "server": "FAKEIP" },
       { "rule_set": "cn_domain", "server": "直连解析", "disable_cache": true },
-      { "rule_set": [ "adrules-singbox", "adblocksingbox", "AWAvenue-Ads-Rule-Singbox" ], "action": "reject" },
+      { "rule_set": [ "adrules-singbox", "adblocksingbox" ], "action": "reject" },
       { "query_type": [ "A", "AAAA" ], "server": "FAKEIP", "rewrite_ttl": 1 }
     ]
   },
@@ -67,7 +67,7 @@
       { "clash_mode": "直连", "outbound": "DIRECT" },
       { "clash_mode": "全局", "outbound": "GLOBAL" },
       { "rule_set": "private_domain", "outbound": "DIRECT" },
-      { "rule_set": [ "adrules-singbox", "adblocksingbox", "AWAvenue-Ads-Rule-Singbox" ], "action": "reject" },
+      { "rule_set": [ "adrules-singbox", "adblocksingbox" ], "action": "reject" },
       { "rule_set": "google_domain", "outbound": "🚀 节点选择" },
       { "rule_set": "proxy_domain", "outbound": "🚀 节点选择" },
       { "rule_set": "cn_domain", "outbound": "🎯 直连访问" },
@@ -147,15 +147,6 @@
         "update_interval": "7d",
         "path": "./ruleset/adblocksingbox.srs",
         "url": "https://testingcf.jsdelivr.net/gh/217heidai/adblockfilters@main/rules/adblocksingbox.srs",
-        "download_detour": "🎯 直连访问"
-      },
-      {
-        "tag": "AWAvenue-Ads-Rule-Singbox",
-        "type": "remote",
-        "format": "source",
-        "update_interval": "7d",
-        "path": "./ruleset/AWAvenue-Ads-Rule-Singbox.srs",
-        "url": "https://testingcf.jsdelivr.net/gh/TG-Twilight/AWAvenue-Ads-Rule@main/Filters/AWAvenue-Ads-Rule-Singbox.json",
         "download_detour": "🎯 直连访问"
       }
     ]
