@@ -4,7 +4,7 @@ mode: rule
 log-level: error
 allow-lan: true
 bind-address: '*'
-unified-delay: true
+unified-delay: false
 tcp-concurrent: true
 external-controller: 0.0.0.0:9090
 external-ui: ./ui
@@ -20,7 +20,7 @@ geox-url:
 
 profile:
   store-selected: false
-  store-fake-ip: true
+  store-fake-ip: false
 
 sniffer:
   enable: true
