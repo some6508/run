@@ -8,7 +8,7 @@ unified-delay: false
 tcp-concurrent: true
 external-controller: 0.0.0.0:9090
 external-ui: ./ui
-external-ui-url: https://gh-proxy.com/https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages-no-fonts.zip
+external-ui-url: https://proxy.pipers.cn/https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages-no-fonts.zip
 global-client-fingerprint: chrome
 geo-auto-update: true
 geo-update-interval: 24
@@ -267,8 +267,8 @@ rule-providers:
 rules:
   - RULE-SET,private,DIRECT
   - RULE-SET,private_ip,DIRECT,no-resolve
-  - DOMAIN,testingcf.jsdelivr.net,🎯 直连访问
-  - DOMAIN,gh-proxy.com,🎯 直连访问
+  - DOMAIN-SUFFIX,jsdelivr.net,🎯 直连访问
+  - DOMAIN,proxy.pipers.cn,🎯 直连访问
   - RULE-SET,adblockmihomo,🚫 拦截访问
   - RULE-SET,adrules,🚫 拦截访问
   - RULE-SET,AWAvenue,🚫 拦截访问
