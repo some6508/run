@@ -31,17 +31,17 @@ sniffer:
     TLS:
       ports: [443, 8443]
   skip-domain:
-  - 'Mijia Cloud'
-  - 'dlg.io.mi.com'
-  - '+.push.apple.com'
-  - '+.apple.com'
-  - '+.qq.com'
-  - '+.weixin.qq.com'
-  - '+.taobao.com'
-  - '+.tmall.com'
-  - '+.jd.com'
-  - '+.baidu.com'
-  - '+.bilibili.com'
+  - Mijia Cloud
+  - dlg.io.mi.com
+  - +.push.apple.com
+  - +.apple.com
+  - +.qq.com
+  - +.weixin.qq.com
+  - +.taobao.com
+  - +.tmall.com
+  - +.jd.com
+  - +.baidu.com
+  - +.bilibili.com
 
 dns:
   enable: true
@@ -137,7 +137,7 @@ proxy-groups:
 
   - name: 🎯 直连访问
     type: select
-    icon: https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/icon/qure/color/Loop.png
+    icon: https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/icon/color/ssid.png
     proxies:
     - DIRECT
     - REJECT
@@ -197,7 +197,7 @@ proxy-groups:
 
   - name: GLOBAL
     type: select
-    icon: https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/icon/qure/color/Global.png
+    icon: https://testingcf.jsdelivr.net/gh/fmz200/wool_scripts@main/icons/apps/quanqiu(1).png
     proxies:
     - DIRECT
     - 🚀 节点选择
