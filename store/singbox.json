@@ -5,7 +5,7 @@
       "external_controller": "0.0.0.0:9090",
       "external_ui": "./ui",
       "external_ui_update_interval": "24h",
-      "external_ui_download_url": "https://gh-proxy.com/https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages-no-fonts.zip",
+      "external_ui_download_url": "https://proxy.pipers.cn/https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages-no-fonts.zip",
       "external_ui_download_detour": "🎯 直连访问"
     },
     "cache_file": {
@@ -14,7 +14,7 @@
       "store_fakeip": true
     }
   },
-  "log": { "disabled": false, "level": "warn", "timestamp": true },
+  "log": { "disabled": false, "level": "error", "timestamp": true },
   "inbounds": [
     { "type": "mixed", "tag": "mixed-in", "listen": "0.0.0.0", "listen_port": 7890 },
     {
@@ -44,7 +44,7 @@
         "type": "https",
         "tag": "代理解析",
         "domain_resolver": "域名解析",
-        "server": "dns.google",
+        "server": "cloudflare-dns.com",
         "detour": "🚀 节点选择"
       },
       { "type": "fakeip", "tag": "FAKEIP", "inet4_range": "198.18.0.0/15", "inet6_range": "fc00::/18" }
