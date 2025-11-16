@@ -11,18 +11,19 @@
     "cache_file": {
       "enabled": true,
       "path": "./cache.db",
-      "store_fakeip": true
+      "store_fakeip": false
     }
   },
   "log": { "disabled": false, "level": "error", "timestamp": true },
   "inbounds": [
-    { "type": "mixed", "tag": "mixed-in", "listen": "0.0.0.0", "listen_port": 7890 },
+    { "tag": "dns-in", "type": "direct", "listen": "::", "listen_port": 1053 },
+    { "tag": "mixed-in", "type": "mixed", "listen": "::", "listen_port": 7890 },
     {
-      "type": "tun",
       "tag": "tun-in",
-      "stack": "mixed",
+      "type": "tun",
+      "stack": "gvisor",
       "auto_route": true,
-      "strict_route": true,
+      "strict_route": false,
       "endpoint_independent_nat": false,
       "address": [ "172.19.0.0/30", "fdfe:dcba:9876::1/126" ]
     }
@@ -33,10 +34,10 @@
     "reverse_mapping": true,
     "independent_cache": true,
     "servers": [
-      { "type": "udp", "tag": "域名解析", "server": "114.114.114.114" },
+      { "tag": "域名解析", "type": "udp", "server": "114.114.114.114" },
       {
-        "type": "https",
         "tag": "直连解析",
+        "type": "https",
         "domain_resolver": "域名解析",
         "server": "dns.alidns.com"
       },
@@ -63,8 +64,8 @@
     "auto_detect_interface": true,
     "default_domain_resolver": { "server": "直连解析" },
     "rules": [
-      { "port": 53, "action": "hijack-dns" },
       { "action": "sniff" },
+      { "port": 53, "action": "hijack-dns" },
       { "protocol": "dns", "action": "hijack-dns" },
       { "port": 853, "action": "reject" },
       { "protocol": "quic", "action": "reject" },
@@ -160,6 +161,7 @@
     {
       "tag": "🚀 节点选择",
       "type": "selector",
+      "interrupt_exist_connections": true,
       "outbounds": [
         "♻️ 自动选择",
         "🖲️ 手动选择",
@@ -178,24 +180,28 @@
     {
       "tag": "🎯 直连访问",
       "type": "selector",
+      "interrupt_exist_connections": true,
       "outbounds": [ "🚀 节点选择", "DIRECT" ],
       "default": "DIRECT"
     },
     {
       "tag": "🐟 漏网之鱼",
       "type": "selector",
+      "interrupt_exist_connections": true,
       "outbounds": [ "🚀 节点选择", "DIRECT" ],
       "default": "🚀 节点选择"
     },
     {
       "tag": "🖲️ 手动选择",
       "type": "selector",
+      "interrupt_exist_connections": true,
       "outbounds": [ "DIRECT" ],
       "default": "DIRECT"
     },
     {
       "tag": "♻️ 自动选择",
       "type": "urltest",
+      "interrupt_exist_connections": true,
       "outbounds": [],
       "url": "https://www.v2ex.com/generate_204",
       "interval": "10m",
@@ -204,6 +210,7 @@
     {
       "tag": "☁️ 故障转移",
       "type": "urltest",
+      "interrupt_exist_connections": true,
       "outbounds": [],
       "fallback": {
         "enabled": true,
@@ -216,6 +223,7 @@
       "tag": "🔮 负载均衡",
       "type": "loadbalance",
       "strategy": "consistent-hashing",
+      "interrupt_exist_connections": true,
       "outbounds": [],
       "url": "https://www.v2ex.com/generate_204",
       "interval": "10m"
@@ -223,6 +231,7 @@
     {
       "tag": "🇺🇳 其它地区",
       "type": "urltest",
+      "interrupt_exist_connections": true,
       "outbounds": [],
       "url": "https://www.v2ex.com/generate_204",
       "interval": "10m",
@@ -231,6 +240,7 @@
     {
       "tag": "🇭🇰 香港节点",
       "type": "urltest",
+      "interrupt_exist_connections": true,
       "outbounds": [],
       "url": "https://www.v2ex.com/generate_204",
       "interval": "10m",
@@ -239,6 +249,7 @@
     {
       "tag": "🇹🇼 台湾节点",
       "type": "urltest",
+      "interrupt_exist_connections": true,
       "outbounds": [],
       "url": "https://www.v2ex.com/generate_204",
       "interval": "10m",
@@ -247,6 +258,7 @@
     {
       "tag": "🇯🇵 日本节点",
       "type": "urltest",
+      "interrupt_exist_connections": true,
       "outbounds": [],
       "url": "https://www.v2ex.com/generate_204",
       "interval": "10m",
@@ -255,6 +267,7 @@
     {
       "tag": "🇺🇸 美国节点",
       "type": "urltest",
+      "interrupt_exist_connections": true,
       "outbounds": [],
       "url": "https://www.v2ex.com/generate_204",
       "interval": "10m",
@@ -263,6 +276,7 @@
     {
       "tag": "🇸🇬 新加坡节点",
       "type": "urltest",
+      "interrupt_exist_connections": true,
       "outbounds": [],
       "url": "https://www.v2ex.com/generate_204",
       "interval": "10m",
@@ -271,6 +285,7 @@
     {
       "tag": "GLOBAL",
       "type": "selector",
+      "interrupt_exist_connections": true,
       "outbounds": [
         "🚀 节点选择",
         "♻️ 自动选择",
