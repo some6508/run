@@ -8,42 +8,22 @@
       "external_ui_download_url": "https://proxy.pipers.cn/https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages-no-fonts.zip",
       "external_ui_download_detour": "🎯 直连访问"
     },
-    "cache_file": {
-      "enabled": true,
-      "path": "./cache.db",
-      "store_fakeip": false
-    }
+    "cache_file": { "enabled": true, "path": "./cache.db", "store_fakeip": false }
   },
   "log": { "disabled": false, "level": "error", "timestamp": true },
   "inbounds": [
     { "tag": "dns-in", "type": "direct", "listen": "::", "listen_port": 1053 },
     { "tag": "mixed-in", "type": "mixed", "listen": "::", "listen_port": 7890 },
-    {
-      "tag": "tun-in",
-      "type": "tun",
-      "stack": "mixed",
-      "auto_route": true,
-      "address": [ "172.19.0.0/30", "fdfe:dcba:9876::1/126" ]
-    }
+    { "tag": "tun-in", "type": "tun", "stack": "mixed", "auto_route": true, "address": [ "172.19.0.0/30", "fdfe:dcba:9876::1/126" ] }
   ],
   "dns": {
     "final": "代理解析",
     "strategy": "prefer_ipv4",
     "servers": [
+      { "tag": "local", "type": "local" },
       { "tag": "域名解析", "type": "udp", "server": "114.114.114.114" },
-      {
-        "tag": "直连解析",
-        "type": "https",
-        "domain_resolver": "域名解析",
-        "server": "dns.alidns.com"
-      },
-      {
-        "tag": "代理解析",
-        "type": "https",
-        "domain_resolver": "域名解析",
-        "server": "dns.google",
-        "detour": "🚀 节点选择"
-      },
+      { "tag": "直连解析", "type": "https", "domain_resolver": "域名解析", "server": "dns.alidns.com" },
+      { "tag": "代理解析", "type": "https", "domain_resolver": "域名解析", "server": "dns.google", "detour": "🚀 节点选择" },
       { "tag": "FAKEIP", "type": "fakeip", "inet4_range": "198.18.0.0/15", "inet6_range": "fc00::/18" }
     ],
     "rules": [
