@@ -21,18 +21,14 @@
     {
       "tag": "tun-in",
       "type": "tun",
-      "stack": "gvisor",
+      "stack": "mixed",
       "auto_route": true,
-      "strict_route": false,
-      "endpoint_independent_nat": false,
       "address": [ "172.19.0.0/30", "fdfe:dcba:9876::1/126" ]
     }
   ],
   "dns": {
     "final": "代理解析",
     "strategy": "prefer_ipv4",
-    "reverse_mapping": true,
-    "independent_cache": true,
     "servers": [
       { "tag": "域名解析", "type": "udp", "server": "114.114.114.114" },
       {
@@ -42,20 +38,21 @@
         "server": "dns.alidns.com"
       },
       {
-        "type": "https",
         "tag": "代理解析",
+        "type": "https",
         "domain_resolver": "域名解析",
-        "server": "cloudflare-dns.com",
+        "server": "dns.google",
         "detour": "🚀 节点选择"
       },
-      { "type": "fakeip", "tag": "FAKEIP", "inet4_range": "198.18.0.0/15", "inet6_range": "fc00::/18" }
+      { "tag": "FAKEIP", "type": "fakeip", "inet4_range": "198.18.0.0/15", "inet6_range": "fc00::/18" }
     ],
     "rules": [
       { "clash_mode": "直连", "server": "直连解析" },
       { "clash_mode": "全局", "server": "FAKEIP" },
+      { "query_type": "HTTPS", "action": "reject" },
+      { "rule_set": [ "adrules-singbox", "adblocksingbox" ], "action": "reject" },
       { "rule_set": "cn_domain", "server": "直连解析" },
-      { "rule_set": [ "adrules-singbox", "adblocksingbox" ], "action": "reject", "rewrite_ttl": 0, "disable_cache": true },
-      { "query_type": [ "A", "AAAA" ], "server": "FAKEIP", "rewrite_ttl": 0, "disable_cache": true }
+      { "query_type": [ "A", "AAAA" ], "server": "FAKEIP", "rewrite_ttl": 1 }
     ]
   },
   "route": {
