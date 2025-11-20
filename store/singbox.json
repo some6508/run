@@ -1,19 +1,15 @@
 {
   "experimental": {
-    "clash_api": {
-      "default_mode": "规则",
-      "external_controller": "0.0.0.0:9090",
-      "external_ui": "./ui",
-      "external_ui_update_interval": "24h",
-      "external_ui_download_url": "https://proxy.pipers.cn/https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages-no-fonts.zip",
-      "external_ui_download_detour": "🎯 直连访问"
-    },
-    "cache_file": { "enabled": true, "path": "./cache.db", "store_fakeip": false }
+    "urltest_unified_delay": true,
+    "cache_file": { "enabled": true, "path": "./cache.db", "store_fakeip": false },
+    "clash_api": { "default_mode": "规则", "external_controller": "0.0.0.0:9090", "external_ui": "./ui", "external_ui_update_interval": "24h", "external_ui_download_detour": "🎯 直连访问", "external_ui_download_url": "https://proxy.pipers.cn/https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages-no-fonts.zip" }
   },
   "log": { "disabled": false, "level": "error", "timestamp": true },
   "inbounds": [
-    { "tag": "dns-in", "type": "direct", "listen": "::", "listen_port": 1053 },
-    { "tag": "mixed-in", "type": "mixed", "listen": "::", "listen_port": 7890 },
+    { "tag": "dns-in", "type": "direct", "listen": "0.0.0.0", "listen_port": 1053 },
+    { "tag": "mixed-in", "type": "mixed", "listen": "0.0.0.0", "listen_port": 7890 },
+    { "tag": "tproxy-in", "type": "tproxy", "listen": "0.0.0.0", "listen_port": 7898 },
+    { "tag": "redirect-in", "type": "redirect", "listen": "0.0.0.0", "listen_port": 7897 },
     { "tag": "tun-in", "type": "tun", "stack": "mixed", "auto_route": true, "address": [ "172.19.0.0/30", "fdfe:dcba:9876::1/126" ] }
   ],
   "dns": {
@@ -32,7 +28,7 @@
       { "query_type": "HTTPS", "action": "reject" },
       { "rule_set": [ "adrules-singbox", "adblocksingbox" ], "action": "reject" },
       { "rule_set": "cn_domain", "server": "直连解析" },
-      { "query_type": [ "A", "AAAA" ], "server": "FAKEIP", "rewrite_ttl": 1 }
+      { "query_type": [ "A", "AAAA" ], "server": "FAKEIP" }
     ]
   },
   "route": {
@@ -42,11 +38,7 @@
     "default_domain_resolver": { "server": "直连解析" },
     "rules": [
       { "action": "sniff" },
-      { "port": 53, "action": "hijack-dns" },
       { "protocol": "dns", "action": "hijack-dns" },
-      { "port": 853, "action": "reject" },
-      { "protocol": "quic", "action": "reject" },
-      { "protocol": "stun", "action": "reject" },
       { "clash_mode": "直连", "outbound": "DIRECT" },
       { "clash_mode": "全局", "outbound": "GLOBAL" },
       { "rule_set": "private_domain", "outbound": "DIRECT" },
@@ -60,225 +52,31 @@
       { "rule_set": "cn_ip", "outbound": "🎯 直连访问" }
     ],
     "rule_set": [
-      {
-        "tag": "private_ip",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "24h",
-        "path": "./ruleset/private_ip.srs",
-        "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/privateip.srs",
-        "download_detour": "🎯 直连访问"
-      },
-      {
-        "tag": "private_domain",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "24h",
-        "path": "./ruleset/private_domain.srs",
-        "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/private.srs",
-        "download_detour": "🎯 直连访问"
-      },
-      {
-        "tag": "google_domain",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "24h",
-        "path": "./ruleset/google_domain.srs",
-        "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google.srs",
-        "download_detour": "🎯 直连访问"
-      },
-      {
-        "tag": "cn_ip",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "24h",
-        "path": "./ruleset/cn_ip.srs",
-        "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cnip.srs",
-        "download_detour": "🎯 直连访问"
-      },
-      {
-        "tag": "cn_domain",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "24h",
-        "path": "./ruleset/cn_domain.srs",
-        "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cn.srs",
-        "download_detour": "🎯 直连访问"
-      },
-      {
-        "tag": "proxy_domain",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "24h",
-        "path": "./ruleset/proxy_domain.srs",
-        "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/proxy.srs",
-        "download_detour": "🎯 直连访问"
-      },
-      {
-        "tag": "adrules-singbox",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "24h",
-        "path": "./ruleset/adrules-singbox.srs",
-        "url": "https://testingcf.jsdelivr.net/gh/Cats-Team/AdRules@main/adrules-singbox.srs",
-        "download_detour": "🎯 直连访问"
-      },
-      {
-        "tag": "adblocksingbox",
-        "type": "remote",
-        "format": "binary",
-        "update_interval": "24h",
-        "path": "./ruleset/adblocksingbox.srs",
-        "url": "https://testingcf.jsdelivr.net/gh/217heidai/adblockfilters@main/rules/adblocksingbox.srs",
-        "download_detour": "🎯 直连访问"
-      }
+      { "tag": "private_ip", "type": "remote", "format": "binary", "download_detour": "🎯 直连访问", "update_interval": "24h", "path": "./ruleset/private_ip.srs", "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/privateip.srs" },
+      { "tag": "private_domain", "type": "remote", "format": "binary", "download_detour": "🎯 直连访问", "update_interval": "24h", "path": "./ruleset/private_domain.srs", "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/private.srs" },
+      { "tag": "google_domain", "type": "remote", "format": "binary", "download_detour": "🎯 直连访问", "update_interval": "24h", "path": "./ruleset/google_domain.srs", "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google.srs" },
+      { "tag": "cn_ip", "type": "remote", "format": "binary", "download_detour": "🎯 直连访问", "update_interval": "24h", "path": "./ruleset/cn_ip.srs", "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cnip.srs" },
+      { "tag": "cn_domain", "type": "remote", "format": "binary", "download_detour": "🎯 直连访问", "update_interval": "24h", "path": "./ruleset/cn_domain.srs", "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cn.srs" },
+      { "tag": "proxy_domain", "type": "remote", "format": "binary", "download_detour": "🎯 直连访问", "update_interval": "24h", "path": "./ruleset/proxy_domain.srs", "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/proxy.srs" },
+      { "tag": "adrules-singbox", "type": "remote", "format": "binary", "download_detour": "🎯 直连访问", "update_interval": "24h", "path": "./ruleset/adrules-singbox.srs", "url": "https://testingcf.jsdelivr.net/gh/Cats-Team/AdRules@main/adrules-singbox.srs" },
+      { "tag": "adblocksingbox", "type": "remote", "format": "binary", "download_detour": "🎯 直连访问", "update_interval": "24h", "path": "./ruleset/adblocksingbox.srs", "url": "https://testingcf.jsdelivr.net/gh/217heidai/adblockfilters@main/rules/adblocksingbox.srs" }
     ]
   },
   "outbounds": [
-    {
-      "tag": "🚀 节点选择",
-      "type": "selector",
-      "interrupt_exist_connections": true,
-      "outbounds": [
-        "♻️ 自动选择",
-        "🖲️ 手动选择",
-        "☁️ 故障转移",
-        "🔮 负载均衡",
-        "🇺🇳 其它地区",
-        "🇭🇰 香港节点",
-        "🇹🇼 台湾节点",
-        "🇯🇵 日本节点",
-        "🇺🇸 美国节点",
-        "🇸🇬 新加坡节点",
-        "DIRECT"
-      ],
-      "default": "♻️ 自动选择"
-    },
-    {
-      "tag": "🎯 直连访问",
-      "type": "selector",
-      "interrupt_exist_connections": true,
-      "outbounds": [ "🚀 节点选择", "DIRECT" ],
-      "default": "DIRECT"
-    },
-    {
-      "tag": "🐟 漏网之鱼",
-      "type": "selector",
-      "interrupt_exist_connections": true,
-      "outbounds": [ "🚀 节点选择", "DIRECT" ],
-      "default": "🚀 节点选择"
-    },
-    {
-      "tag": "🖲️ 手动选择",
-      "type": "selector",
-      "interrupt_exist_connections": true,
-      "outbounds": [ "DIRECT" ],
-      "default": "DIRECT"
-    },
-    {
-      "tag": "♻️ 自动选择",
-      "type": "urltest",
-      "interrupt_exist_connections": true,
-      "outbounds": [],
-      "url": "https://www.v2ex.com/generate_204",
-      "interval": "5m",
-      "tolerance": 300
-    },
-    {
-      "tag": "☁️ 故障转移",
-      "type": "urltest",
-      "interrupt_exist_connections": true,
-      "outbounds": [],
-      "url": "https://www.v2ex.com/generate_204",
-      "interval": "5m",
-      "fallback": {
-        "enabled": true,
-        "max_delay": "300ms"
-      }
-    },
-    {
-      "tag": "🔮 负载均衡",
-      "type": "loadbalance",
-      "strategy": "consistent-hashing",
-      "interrupt_exist_connections": true,
-      "outbounds": [],
-      "url": "https://www.v2ex.com/generate_204",
-      "interval": "5m"
-    },
-    {
-      "tag": "🇺🇳 其它地区",
-      "type": "urltest",
-      "interrupt_exist_connections": true,
-      "outbounds": [],
-      "url": "https://www.v2ex.com/generate_204",
-      "interval": "5m",
-      "tolerance": 300
-    },
-    {
-      "tag": "🇭🇰 香港节点",
-      "type": "urltest",
-      "interrupt_exist_connections": true,
-      "outbounds": [],
-      "url": "https://www.v2ex.com/generate_204",
-      "interval": "5m",
-      "tolerance": 300
-    },
-    {
-      "tag": "🇹🇼 台湾节点",
-      "type": "urltest",
-      "interrupt_exist_connections": true,
-      "outbounds": [],
-      "url": "https://www.v2ex.com/generate_204",
-      "interval": "5m",
-      "tolerance": 300
-    },
-    {
-      "tag": "🇯🇵 日本节点",
-      "type": "urltest",
-      "interrupt_exist_connections": true,
-      "outbounds": [],
-      "url": "https://www.v2ex.com/generate_204",
-      "interval": "5m",
-      "tolerance": 300
-    },
-    {
-      "tag": "🇺🇸 美国节点",
-      "type": "urltest",
-      "interrupt_exist_connections": true,
-      "outbounds": [],
-      "url": "https://www.v2ex.com/generate_204",
-      "interval": "5m",
-      "tolerance": 300
-    },
-    {
-      "tag": "🇸🇬 新加坡节点",
-      "type": "urltest",
-      "interrupt_exist_connections": true,
-      "outbounds": [],
-      "url": "https://www.v2ex.com/generate_204",
-      "interval": "5m",
-      "tolerance": 300
-    },
-    {
-      "tag": "GLOBAL",
-      "type": "selector",
-      "interrupt_exist_connections": true,
-      "outbounds": [
-        "🚀 节点选择",
-        "♻️ 自动选择",
-        "☁️ 故障转移",
-        "🔮 负载均衡",
-        "🖲️ 手动选择",
-        "🇺🇳 其它地区",
-        "🇭🇰 香港节点",
-        "🇹🇼 台湾节点",
-        "🇯🇵 日本节点",
-        "🇺🇸 美国节点",
-        "🇸🇬 新加坡节点",
-        "DIRECT"
-      ],
-      "default": "DIRECT"
-    },
+    { "tag": "🚀 节点选择", "type": "selector", "interrupt_exist_connections": true, "outbounds": [ "♻️ 自动选择", "🖲️ 手动选择", "☁️ 故障转移", "🔮 负载均衡", "🇺🇳 其它地区", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇺🇸 美国节点", "🇸🇬 新加坡节点", "DIRECT" ], "default": "♻️ 自动选择" },
+    { "tag": "🎯 直连访问", "type": "selector", "interrupt_exist_connections": true, "outbounds": [ "🚀 节点选择", "DIRECT" ], "default": "DIRECT" },
+    { "tag": "🐟 漏网之鱼", "type": "selector", "interrupt_exist_connections": true, "outbounds": [ "🚀 节点选择", "DIRECT" ], "default": "🚀 节点选择" },
+    { "tag": "🖲️ 手动选择", "type": "selector", "interrupt_exist_connections": true, "outbounds": [ "DIRECT" ], "default": "DIRECT" },
+    { "tag": "♻️ 自动选择", "type": "urltest", "interrupt_exist_connections": true, "outbounds": [], "url": "https://www.v2ex.com/generate_204", "interval": "10m", "tolerance": 300 },
+    { "tag": "☁️ 故障转移", "type": "urltest", "interrupt_exist_connections": true, "outbounds": [], "url": "https://www.v2ex.com/generate_204", "interval": "10m", "fallback": { "enabled": true, "max_delay": "300ms" } },
+    { "tag": "🔮 负载均衡", "type": "loadbalance", "strategy": "consistent-hashing", "interrupt_exist_connections": true, "outbounds": [], "url": "https://www.v2ex.com/generate_204", "interval": "10m" },
+    { "tag": "🇺🇳 其它地区", "type": "urltest", "interrupt_exist_connections": true, "outbounds": [], "url": "https://www.v2ex.com/generate_204", "interval": "10m", "tolerance": 300 },
+    { "tag": "🇭🇰 香港节点", "type": "urltest", "interrupt_exist_connections": true, "outbounds": [], "url": "https://www.v2ex.com/generate_204", "interval": "10m", "tolerance": 300 },
+    { "tag": "🇹🇼 台湾节点", "type": "urltest", "interrupt_exist_connections": true, "outbounds": [], "url": "https://www.v2ex.com/generate_204", "interval": "10m", "tolerance": 300 },
+    { "tag": "🇯🇵 日本节点", "type": "urltest", "interrupt_exist_connections": true, "outbounds": [], "url": "https://www.v2ex.com/generate_204", "interval": "10m", "tolerance": 300 },
+    { "tag": "🇺🇸 美国节点", "type": "urltest", "interrupt_exist_connections": true, "outbounds": [], "url": "https://www.v2ex.com/generate_204", "interval": "10m", "tolerance": 300 },
+    { "tag": "🇸🇬 新加坡节点", "type": "urltest", "interrupt_exist_connections": true, "outbounds": [], "url": "https://www.v2ex.com/generate_204", "interval": "10m", "tolerance": 300 },
+    { "tag": "GLOBAL", "type": "selector", "interrupt_exist_connections": true, "outbounds": [ "🚀 节点选择", "♻️ 自动选择", "☁️ 故障转移", "🔮 负载均衡", "🖲️ 手动选择", "🇺🇳 其它地区", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇺🇸 美国节点", "🇸🇬 新加坡节点", "DIRECT" ], "default": "DIRECT" },
     { "tag": "DIRECT", "type": "direct" }
   ]
 }
