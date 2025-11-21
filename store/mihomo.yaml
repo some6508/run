@@ -208,6 +208,46 @@ proxy-groups:
     - REJECT
 
 rule-providers:
+  fakeip-filter:
+    <<: *domain
+    path: ./ruleset/fakeip-filter.mrs
+    url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/fakeip-filter.mrs
+
+  private:
+    <<: *domain
+    path: ./ruleset/private.mrs
+    url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/private.mrs
+
+  private_ip:
+    <<: *ip
+    path: ./ruleset/private_ip.mrs
+    url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/privateip.mrs
+
+  gfw:
+    <<: *domain
+    path: ./ruleset/gfw.mrs
+    url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/gfw.mrs
+
+  proxy:
+    <<: *domain
+    path: ./ruleset/proxy.mrs
+    url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/proxy.mrs
+
+  cn:
+    <<: *domain
+    path: ./ruleset/cn.mrs
+    url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/cn.mrs
+
+  cn_ip:
+    <<: *ip
+    path: ./ruleset/cn_ip.mrs
+    url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/cnip.mrs
+
+  ads:
+    <<: *domain
+    path: ./ruleset/ads.mrs
+    url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/ads.mrs
+
   adblockmihomo:
     <<: *domain
     path: ./ruleset/adblockmihomo.mrs
@@ -223,41 +263,6 @@ rule-providers:
     path: ./ruleset/AWAvenue.mrs
     url: https://testingcf.jsdelivr.net/gh/TG-Twilight/AWAvenue-Ads-Rule@main/Filters/AWAvenue-Ads-Rule-Clash.mrs
 
-  proxy:
-    <<: *domain
-    path: ./ruleset/proxy.mrs
-    url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/proxy.mrs
-
-  google:
-    <<: *domain
-    path: ./ruleset/google.mrs
-    url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/google.mrs
-
-  private:
-    <<: *domain
-    path: ./ruleset/private.mrs
-    url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/private.mrs
-
-  cn:
-    <<: *domain
-    path: ./ruleset/cn.mrs
-    url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/cn.mrs
-
-  fakeip-filter:
-    <<: *domain
-    path: ./ruleset/fakeip-filter.mrs
-    url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/fakeip-filter.mrs
-
-  private_ip:
-    <<: *ip
-    path: ./ruleset/private_ip.mrs
-    url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/privateip.mrs
-
-  cn_ip:
-    <<: *ip
-    path: ./ruleset/cn_ip.mrs
-    url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/cnip.mrs
-
 rules:
   - RULE-SET,private,DIRECT
   - RULE-SET,private_ip,DIRECT,no-resolve
@@ -266,7 +271,8 @@ rules:
   - RULE-SET,adblockmihomo,🚫 拦截访问
   - RULE-SET,adrules,🚫 拦截访问
   - RULE-SET,AWAvenue,🚫 拦截访问
-  - RULE-SET,google,🚀 节点选择
+  - RULE-SET,ads,🚫 拦截访问
+  - RULE-SET,gfw,🚀 节点选择
   - RULE-SET,proxy,🚀 节点选择
   - RULE-SET,cn,🎯 直连访问
   - RULE-SET,cn_ip,🎯 直连访问,no-resolve
