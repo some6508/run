@@ -67,9 +67,19 @@ dns:
   - 8.8.8.8
   - 1.1.1.1
   - system
-  nameserver:
+  direct-nameserver:
   - https://doh.pub/dns-query
   - https://dns.alidns.com/dns-query
+  proxy-server-nameserver:
+  - https://doh.pub/dns-query
+  - https://dns.alidns.com/dns-query
+  nameserver-policy:
+    rule-set:cn:
+    - https://doh.pub/dns-query
+    - https://dns.alidns.com/dns-query
+    rule-set:adblockmihomo,adrules,AWAvenue:
+    - rcode://success
+  nameserver:
   - https://dns.google/dns-query
   - https://one.one.one.one/dns-query
   - https://dns.cloudflare.com/dns-query
@@ -84,9 +94,6 @@ dns:
   - https://dns.adguard.com/dns-query
   - https://0ms.dev/dns-query
   - https://dns.mullvad.net/dns-query
-  nameserver-policy:
-    rule-set:adblockmihomo,adrules,AWAvenue:
-    - rcode://success
 
 rule-anchor:
   p: &p {url: 'https://www.v2ex.com/generate_204', interval: 300, tolerance: 300, include-all: true}
