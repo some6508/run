@@ -26,9 +26,11 @@
       { "clash_mode": "直连", "server": "直连解析" },
       { "clash_mode": "全局", "server": "FAKEIP" },
       { "query_type": "HTTPS", "action": "reject" },
-      { "rule_set": [ "adrules-singbox", "adblocksingbox" ], "action": "reject" },
-      { "rule_set": "cn_domain", "server": "直连解析" },
-      { "query_type": [ "A", "AAAA" ], "server": "FAKEIP" }
+      { "rule_set": "cn", "server": "直连解析" },
+      { "rule_set": "ads", "action": "predefined", "rcode": "NOERROR" },
+      { "rule_set": "adrules-singbox", "action": "predefined", "rcode": "NOERROR" },
+      { "rule_set": "adblocksingbox", "action": "predefined", "rcode": "NOERROR" },
+      { "query_type": [ "A", "AAAA" ], "server": "FAKEIP", "rewrite_ttl": 1 }
     ]
   },
   "route": {
@@ -41,23 +43,26 @@
       { "protocol": "dns", "action": "hijack-dns" },
       { "clash_mode": "直连", "outbound": "DIRECT" },
       { "clash_mode": "全局", "outbound": "GLOBAL" },
-      { "rule_set": "private_domain", "outbound": "DIRECT" },
-      { "rule_set": [ "adrules-singbox", "adblocksingbox" ], "action": "reject" },
-      { "rule_set": "google_domain", "outbound": "🚀 节点选择" },
-      { "rule_set": "proxy_domain", "outbound": "🚀 节点选择" },
-      { "rule_set": "cn_domain", "outbound": "🎯 直连访问" },
+      { "rule_set": "private", "outbound": "DIRECT" },
+      { "rule_set": "ads", "action": "reject" },
+      { "rule_set": "adrules-singbox", "action": "reject" },
+      { "rule_set": "adblocksingbox", "action": "reject" },
+      { "rule_set": "gfw", "outbound": "🚀 节点选择" },
+      { "rule_set": "proxy", "outbound": "🚀 节点选择" },
+      { "rule_set": "cn", "outbound": "🎯 直连访问" },
       { "action": "resolve" },
       { "ip_is_private": true, "outbound": "DIRECT" },
-      { "rule_set": "private_ip", "outbound": "DIRECT" },
-      { "rule_set": "cn_ip", "outbound": "🎯 直连访问" }
+      { "rule_set": "privateip", "outbound": "DIRECT" },
+      { "rule_set": "cnip", "outbound": "🎯 直连访问" }
     ],
     "rule_set": [
-      { "tag": "private_ip", "type": "remote", "format": "binary", "download_detour": "🎯 直连访问", "update_interval": "24h", "path": "./ruleset/private_ip.srs", "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/privateip.srs" },
-      { "tag": "private_domain", "type": "remote", "format": "binary", "download_detour": "🎯 直连访问", "update_interval": "24h", "path": "./ruleset/private_domain.srs", "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/private.srs" },
-      { "tag": "google_domain", "type": "remote", "format": "binary", "download_detour": "🎯 直连访问", "update_interval": "24h", "path": "./ruleset/google_domain.srs", "url": "https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/google.srs" },
-      { "tag": "cn_ip", "type": "remote", "format": "binary", "download_detour": "🎯 直连访问", "update_interval": "24h", "path": "./ruleset/cn_ip.srs", "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cnip.srs" },
-      { "tag": "cn_domain", "type": "remote", "format": "binary", "download_detour": "🎯 直连访问", "update_interval": "24h", "path": "./ruleset/cn_domain.srs", "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cn.srs" },
-      { "tag": "proxy_domain", "type": "remote", "format": "binary", "download_detour": "🎯 直连访问", "update_interval": "24h", "path": "./ruleset/proxy_domain.srs", "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/proxy.srs" },
+      { "tag": "privateip", "type": "remote", "format": "binary", "download_detour": "🎯 直连访问", "update_interval": "24h", "path": "./ruleset/privateip.srs", "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/privateip.srs" },
+      { "tag": "private", "type": "remote", "format": "binary", "download_detour": "🎯 直连访问", "update_interval": "24h", "path": "./ruleset/private.srs", "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/private.srs" },
+      { "tag": "gfw", "type": "remote", "format": "binary", "download_detour": "🎯 直连访问", "update_interval": "24h", "path": "./ruleset/gfw.srs", "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/gfw.srs" },
+      { "tag": "cnip", "type": "remote", "format": "binary", "download_detour": "🎯 直连访问", "update_interval": "24h", "path": "./ruleset/cn.srs", "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cnip.srs" },
+      { "tag": "cn", "type": "remote", "format": "binary", "download_detour": "🎯 直连访问", "update_interval": "24h", "path": "./ruleset/cn.srs", "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cn.srs" },
+      { "tag": "proxy", "type": "remote", "format": "binary", "download_detour": "🎯 直连访问", "update_interval": "24h", "path": "./ruleset/proxy.srs", "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/proxy.srs" },
+      { "tag": "ads", "type": "remote", "format": "binary", "download_detour": "🎯 直连访问", "update_interval": "24h", "path": "./ruleset/ads.srs", "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/ads.srs" },
       { "tag": "adrules-singbox", "type": "remote", "format": "binary", "download_detour": "🎯 直连访问", "update_interval": "24h", "path": "./ruleset/adrules-singbox.srs", "url": "https://testingcf.jsdelivr.net/gh/Cats-Team/AdRules@main/adrules-singbox.srs" },
       { "tag": "adblocksingbox", "type": "remote", "format": "binary", "download_detour": "🎯 直连访问", "update_interval": "24h", "path": "./ruleset/adblocksingbox.srs", "url": "https://testingcf.jsdelivr.net/gh/217heidai/adblockfilters@main/rules/adblocksingbox.srs" }
     ]
