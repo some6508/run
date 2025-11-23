@@ -73,11 +73,11 @@ dns:
   - https://doh.pub/dns-query
   - https://dns.alidns.com/dns-query
   nameserver-policy:
+    rule-set:AWAvenue,ads,adrules-mihomo,adblockmihomo:
+    - rcode://success
     rule-set:cn:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
-    rule-set:AWAvenue,ads,adrules-mihomo,adblockmihomo:
-    - rcode://success
   nameserver:
   - https://dns.google/dns-query
   - https://one.one.one.one/dns-query
