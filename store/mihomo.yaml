@@ -76,7 +76,7 @@ dns:
     rule-set:cn:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
-    rule-set:adblockmihomo,adrules,AWAvenue:
+    rule-set:AWAvenue,ads,adrules-mihomo,adblockmihomo:
     - rcode://success
   nameserver:
   - https://dns.google/dns-query
@@ -95,7 +95,7 @@ dns:
   - https://dns.mullvad.net/dns-query
 
 rule-anchor:
-  p: &p {url: 'https://www.v2ex.com/generate_204', interval: 300, tolerance: 300, include-all: true}
+  p: &p {url: 'https://www.v2ex.com/generate_204', interval: 600, tolerance: 300, include-all: true}
   ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
   domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
   yaml: &yaml {type: http, interval: 86400, behavior: classical, format: yaml}
@@ -229,9 +229,9 @@ rule-providers:
     path: ./ruleset/private.mrs
     url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/private.mrs
 
-  private_ip:
+  privateip:
     <<: *ip
-    path: ./ruleset/private_ip.mrs
+    path: ./ruleset/privateip.mrs
     url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/privateip.mrs
 
   gfw:
@@ -249,9 +249,9 @@ rule-providers:
     path: ./ruleset/cn.mrs
     url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/cn.mrs
 
-  cn_ip:
+  cnip:
     <<: *ip
-    path: ./ruleset/cn_ip.mrs
+    path: ./ruleset/cnip.mrs
     url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/cnip.mrs
 
   ads:
@@ -264,9 +264,9 @@ rule-providers:
     path: ./ruleset/adblockmihomo.mrs
     url: https://testingcf.jsdelivr.net/gh/217heidai/adblockfilters@main/rules/adblockmihomo.mrs
 
-  adrules:
+  adrules-mihomo:
     <<: *domain
-    path: ./ruleset/adrules.mrs
+    path: ./ruleset/adrules-mihomo.mrs
     url: https://testingcf.jsdelivr.net/gh/Cats-Team/AdRules@main/adrules-mihomo.mrs
 
   AWAvenue:
@@ -276,15 +276,15 @@ rule-providers:
 
 rules:
   - RULE-SET,private,DIRECT
-  - RULE-SET,private_ip,DIRECT,no-resolve
+  - RULE-SET,privateip,DIRECT,no-resolve
   - DOMAIN-SUFFIX,jsdelivr.net,🎯 直连访问
   - DOMAIN,proxy.pipers.cn,🎯 直连访问
-  - RULE-SET,adblockmihomo,🚫 拦截访问
-  - RULE-SET,adrules,🚫 拦截访问
   - RULE-SET,AWAvenue,🚫 拦截访问
   - RULE-SET,ads,🚫 拦截访问
+  - RULE-SET,adrules-mihomo,🚫 拦截访问
+  - RULE-SET,adblockmihomo,🚫 拦截访问
   - RULE-SET,gfw,🚀 节点选择
   - RULE-SET,proxy,🚀 节点选择
   - RULE-SET,cn,🎯 直连访问
-  - RULE-SET,cn_ip,🎯 直连访问,no-resolve
+  - RULE-SET,cnip,🎯 直连访问,no-resolve
   - MATCH,🐟 漏网之鱼
