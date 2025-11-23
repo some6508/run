@@ -8,8 +8,6 @@
   "inbounds": [
     { "tag": "dns-in", "type": "direct", "listen": "0.0.0.0", "listen_port": 1053 },
     { "tag": "mixed-in", "type": "mixed", "listen": "0.0.0.0", "listen_port": 7890 },
-    { "tag": "tproxy-in", "type": "tproxy", "listen": "0.0.0.0", "listen_port": 7898 },
-    { "tag": "redirect-in", "type": "redirect", "listen": "0.0.0.0", "listen_port": 7897 },
     { "tag": "tun-in", "type": "tun", "stack": "mixed", "auto_route": true, "address": [ "172.19.0.0/30", "fdfe:dcba:9876::1/126" ] }
   ],
   "dns": {
