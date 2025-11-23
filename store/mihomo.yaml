@@ -5,7 +5,7 @@ log-level: error
 allow-lan: true
 bind-address: '*'
 unified-delay: true
-tcp-concurrent: true
+tcp-concurrent: false
 external-controller: 0.0.0.0:9090
 external-ui-url: https://proxy.pipers.cn/https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages-no-fonts.zip
 external-ui: ./ui
