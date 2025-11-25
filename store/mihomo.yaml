@@ -32,21 +32,12 @@ sniffer:
     HTTP:
       ports: [80, 8080-8880]
     TLS:
-      ports: [443, 5228, 8443]
+      ports: [443, 8443]
     QUIC:
       ports: [443, 8443]
   skip-domain:
   - Mijia Cloud
-  - dlg.io.mi.com
   - +.push.apple.com
-  - +.apple.com
-  - +.qq.com
-  - +.weixin.qq.com
-  - +.taobao.com
-  - +.tmall.com
-  - +.jd.com
-  - +.baidu.com
-  - +.bilibili.com
 
 dns:
   enable: true
@@ -95,7 +86,7 @@ dns:
     - https://dns.alidns.com/dns-query
 
 rule-anchor:
-  p: &p {url: 'https://www.google.com/generate_204', interval: 600, tolerance: 300, include-all: true}
+  p: &p {url: 'https://connectivitycheck.android.com/generate_204', interval: 600, tolerance: 300, include-all: true}
   ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
   domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
   yaml: &yaml {type: http, interval: 86400, behavior: classical, format: yaml}
