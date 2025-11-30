@@ -14,10 +14,10 @@ global-client-fingerprint: chrome
 geo-auto-update: true
 geo-update-interval: 24
 geox-url:
-  geoip: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo/geoip-all.dat
-  geosite: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo/geosite-all.dat
-  mmdb: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo/geoip-all.metadb
-  asn: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo/Country-ASN-all.mmdb
+  geoip: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-geodata/geoip-all.dat
+  geosite: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-geodata/geosite-all.dat
+  mmdb: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-geodata/geoip-all.metadb
+  asn: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-geodata/Country-ASN-all.mmdb
 
 profile:
   store-selected: false
