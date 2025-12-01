@@ -37,26 +37,34 @@ sniffer:
       ports: [443, 8443]
   skip-domain:
   - Mijia Cloud
-  - +.push.apple.com
 
 dns:
   enable: true
   listen: 0.0.0.0:1053
   ipv6: true
+  prefer-h3: false
   use-hosts: true
+  use-system-hosts: true
+  respect-rules: true
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.1/16
   fake-ip-filter:
   - rule-set:fakeip-filter
   default-nameserver:
   - 114.114.114.114
+  - 114.114.115.115
   - 119.29.29.29
-  - 120.53.53.53
+  - 119.28.28.28
   - 1.12.12.12
+  - 120.53.53.53
   - 180.184.1.1
-  - 223.5.5.5
+  - 180.184.2.2
   - 8.8.8.8
+  - 8.4.4.8
   - 1.1.1.1
+  - 1.0.0.1
+  - tls://223.5.5.5
+  - tls://223.6.6.6
   nameserver:
   - https://dns.google/dns-query
   - https://one.one.one.one/dns-query
@@ -81,9 +89,6 @@ dns:
   nameserver-policy:
     rule-set:AWAvenue,ads,adrules-mihomo,adblockmihomo:
     - rcode://success
-    rule-set:cn:
-    - https://doh.pub/dns-query
-    - https://dns.alidns.com/dns-query
 
 rule-anchor:
   p: &p {url: 'https://connectivitycheck.android.com/generate_204', interval: 600, tolerance: 300, include-all: true}
