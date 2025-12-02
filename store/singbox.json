@@ -24,10 +24,10 @@
       { "clash_mode": "直连", "server": "直连解析" },
       { "clash_mode": "全局", "server": "FAKEIP" },
       { "query_type": "HTTPS", "action": "reject" },
-      { "rule_set": "cn", "server": "直连解析" },
       { "rule_set": "ads", "action": "predefined", "rcode": "NOERROR" },
       { "rule_set": "adrules-singbox", "action": "predefined", "rcode": "NOERROR" },
       { "rule_set": "adblocksingbox", "action": "predefined", "rcode": "NOERROR" },
+      { "rule_set": "cn", "server": "直连解析" },
       { "query_type": [ "A", "AAAA" ], "server": "FAKEIP", "rewrite_ttl": 1 }
     ]
   },
@@ -38,6 +38,7 @@
     "default_domain_resolver": { "server": "直连解析" },
     "rules": [
       { "action": "sniff" },
+      { "port": "53", "action": "hijack-dns" },
       { "protocol": "dns", "action": "hijack-dns" },
       { "clash_mode": "直连", "outbound": "DIRECT" },
       { "clash_mode": "全局", "outbound": "GLOBAL" },
@@ -57,7 +58,7 @@
       { "tag": "privateip", "type": "remote", "format": "binary", "download_detour": "🎯 直连访问", "update_interval": "24h", "path": "./ruleset/privateip.srs", "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/privateip.srs" },
       { "tag": "private", "type": "remote", "format": "binary", "download_detour": "🎯 直连访问", "update_interval": "24h", "path": "./ruleset/private.srs", "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/private.srs" },
       { "tag": "gfw", "type": "remote", "format": "binary", "download_detour": "🎯 直连访问", "update_interval": "24h", "path": "./ruleset/gfw.srs", "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/gfw.srs" },
-      { "tag": "cnip", "type": "remote", "format": "binary", "download_detour": "🎯 直连访问", "update_interval": "24h", "path": "./ruleset/cn.srs", "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cnip.srs" },
+      { "tag": "cnip", "type": "remote", "format": "binary", "download_detour": "🎯 直连访问", "update_interval": "24h", "path": "./ruleset/cnip.srs", "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cnip.srs" },
       { "tag": "cn", "type": "remote", "format": "binary", "download_detour": "🎯 直连访问", "update_interval": "24h", "path": "./ruleset/cn.srs", "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cn.srs" },
       { "tag": "proxy", "type": "remote", "format": "binary", "download_detour": "🎯 直连访问", "update_interval": "24h", "path": "./ruleset/proxy.srs", "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/proxy.srs" },
       { "tag": "ads", "type": "remote", "format": "binary", "download_detour": "🎯 直连访问", "update_interval": "24h", "path": "./ruleset/ads.srs", "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/ads.srs" },
