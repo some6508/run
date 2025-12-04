@@ -37,8 +37,8 @@
     "auto_detect_interface": true,
     "default_domain_resolver": { "server": "直连解析" },
     "rules": [
-      { "action": "sniff" },
       { "port": 53, "action": "hijack-dns" },
+      { "action": "sniff" },
       { "protocol": "dns", "action": "hijack-dns" },
       { "clash_mode": "直连", "outbound": "DIRECT" },
       { "clash_mode": "全局", "outbound": "GLOBAL" },
@@ -67,10 +67,10 @@
     ]
   },
   "outbounds": [
-    { "tag": "🚀 节点选择", "type": "selector", "default": "♻️ 自动选择", "outbounds": [ "♻️ 自动选择", "🖲️ 手动选择", "☁️ 故障转移", "🔮 负载均衡", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇺🇸 美国节点", "🇸🇬 新加坡节点", "🇺🇳 其它地区", "DIRECT" ] },
-    { "tag": "🎯 直连访问", "type": "selector", "default": "DIRECT", "outbounds": [ "🚀 节点选择", "DIRECT" ] },
-    { "tag": "🐟 漏网之鱼", "type": "selector", "default": "🚀 节点选择", "outbounds": [ "🚀 节点选择", "DIRECT" ] },
-    { "tag": "🖲️ 手动选择", "type": "selector", "default": "DIRECT", "outbounds": [ "DIRECT" ] },
+    { "tag": "🚀 节点选择", "type": "selector", "outbounds": [ "♻️ 自动选择", "☁️ 故障转移", "🔮 负载均衡", "🖲️ 手动选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇺🇸 美国节点", "🇸🇬 新加坡节点", "🇺🇳 其它地区", "DIRECT" ] },
+    { "tag": "🎯 直连访问", "type": "selector", "outbounds": [ "DIRECT", "🚀 节点选择" ] },
+    { "tag": "🐟 漏网之鱼", "type": "selector", "outbounds": [ "🚀 节点选择", "DIRECT" ] },
+    { "tag": "🖲️ 手动选择", "type": "selector", "outbounds": [ "DIRECT" ] },
     { "tag": "♻️ 自动选择", "type": "urltest", "url": "https://connectivitycheck.android.com/generate_204", "interval": "10m", "tolerance": 300, "outbounds": [] },
     { "tag": "☁️ 故障转移", "type": "urltest", "url": "https://connectivitycheck.android.com/generate_204", "interval": "10m", "fallback": { "enabled": true, "max_delay": "300ms" }, "outbounds": [] },
     { "tag": "🔮 负载均衡", "type": "loadbalance", "strategy": "consistent-hashing", "url": "https://connectivitycheck.android.com/generate_204", "interval": "10m", "outbounds": [] },
