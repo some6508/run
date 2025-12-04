@@ -288,7 +288,7 @@ rule-providers:
 rules:
   - RULE-SET,private,DIRECT
   - RULE-SET,privateip,DIRECT,no-resolve
-  - DOMAIN-SUFFIX,jsdelivr.net,🎯 直连访问
+  - DOMAIN,testingcf.jsdelivr.net,🎯 直连访问
   - DOMAIN,proxy.pipers.cn,🎯 直连访问
   - RULE-SET,AWAvenue,🚫 拦截访问
   - RULE-SET,ads,🚫 拦截访问
