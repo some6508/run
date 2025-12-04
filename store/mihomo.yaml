@@ -32,11 +32,22 @@ sniffer:
     HTTP:
       ports: [80, 8080-8880]
     TLS:
-      ports: [443, 8443]
+      ports: [443, 5228, 8443]
     QUIC:
       ports: [443, 8443]
+  force-domain:
+  - +.v2ex.com
   skip-domain:
   - Mijia Cloud
+
+tun:
+  enable: false
+  stack: gvisor
+  dns-hijack:
+  - any:53
+  - tcp://any:53
+  auto-route: true
+  auto-detect-interface: true
 
 dns:
   enable: true
@@ -128,7 +139,7 @@ proxy-groups:
 
   - name: 🔮 负载均衡
     type: load-balance
-    icon: https://testingcf.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Available.png
+    icon: https://testingcf.jsdelivr.net/gh/fmz200/wool_scripts@main/icons/apps/LoadBalance.png
     strategy: consistent-hashing
     <<: *p
 
@@ -141,7 +152,7 @@ proxy-groups:
 
   - name: 🎯 直连访问
     type: select
-    icon: https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/icon/color/ssid.png
+    icon: https://testingcf.jsdelivr.net/gh/lige47/QuanX-icon-rule@main/icon/direct.png
     proxies:
     - DIRECT
     - REJECT
@@ -149,7 +160,7 @@ proxy-groups:
 
   - name: 🚫 拦截访问
     type: select
-    icon: https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/icon/color/adblock.png
+    icon: https://testingcf.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/No-ads-all.svg
     proxies:
     - REJECT
     - DIRECT
@@ -157,7 +168,7 @@ proxy-groups:
 
   - name: 🐟 漏网之鱼
     type: select
-    icon: https://testingcf.jsdelivr.net/gh/lige47/QuanX-icon-rule@main/icon/yu(1).png
+    icon: https://testingcf.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/HBASE-copy.svg
     proxies:
     - 🚀 节点选择
     - DIRECT
@@ -165,31 +176,31 @@ proxy-groups:
 
   - name: 🇭🇰 香港节点
     type: url-test
-    icon: https://testingcf.jsdelivr.net/gh/lige47/QuanX-icon-rule@main/icon/Hongkong(2).png
+    icon: https://testingcf.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/HK.svg
     filter: '(?i)(港|hk|hongkong|hong kong|🇭🇰)'
     <<: *p
 
   - name: 🇹🇼 台湾节点
     type: url-test
-    icon: https://testingcf.jsdelivr.net/gh/lige47/QuanX-icon-rule@main/icon/taiwan(2).png
+    icon: https://testingcf.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/CN.svg
     filter: '(?i)(台|tw|taiwan|🇹🇼)'
     <<: *p
 
   - name: 🇯🇵 日本节点
     type: url-test
-    icon: https://testingcf.jsdelivr.net/gh/lige47/QuanX-icon-rule@main/icon/Japan(1).png
+    icon: https://testingcf.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/JP.svg
     filter: '(?i)(日|jp|japan|🇯🇵)'
     <<: *p
 
   - name: 🇺🇸 美国节点
     type: url-test
-    icon: https://testingcf.jsdelivr.net/gh/lige47/QuanX-icon-rule@main/icon/US(1).png
+    icon: https://testingcf.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/US.svg
     filter: '(?i)(美|us|unitedstates|united states|🇺🇸)'
     <<: *p
 
   - name: 🇸🇬 新加坡节点
     type: url-test
-    icon: https://testingcf.jsdelivr.net/gh/lige47/QuanX-icon-rule@main/icon/singapore(2).png
+    icon: https://testingcf.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Singapore.svg
     filter: '(?i)(新|sg|singapore|🇸🇬)'
     <<: *p
 
@@ -201,7 +212,7 @@ proxy-groups:
 
   - name: GLOBAL
     type: select
-    icon: https://testingcf.jsdelivr.net/gh/fmz200/wool_scripts@main/icons/apps/quanqiu(1).png
+    icon: https://testingcf.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Globe.svg
     proxies:
     - DIRECT
     - 🚀 节点选择
