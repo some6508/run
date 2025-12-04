@@ -1,7 +1,7 @@
 {
   "experimental": {
     "urltest_unified_delay": true,
-    "cache_file": { "enabled": true, "path": "./cache.db", "store_fakeip": false },
+    "cache_file": { "enabled": true, "path": "./cache.db", "store_fakeip": false, "store_rdrc": true, "rdrc_timeout": "24h0m0s" },
     "clash_api": { "default_mode": "规则", "external_controller": "0.0.0.0:9090", "external_ui": "./ui", "external_ui_update_interval": "1d", "external_ui_download_detour": "🎯 直连访问", "external_ui_download_url": "https://proxy.pipers.cn/https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages-no-fonts.zip" }
   },
   "log": { "disabled": false, "level": "error", "timestamp": true },
