@@ -8,3 +8,6 @@
 - 内核：[Mihomo](https://github.com/MetaCubeX/mihomo)
 - 电脑端：[Mihomo-Party](https://github.com/mihomo-party-org/clash-party/releases)
 - 手机端：[FlClash](https://github.com/chen08209/FlClash/releases)
+
+# ICON
+- 图标: [合集](https://velvetcodeloom.github.io/icloud/icon.html)
