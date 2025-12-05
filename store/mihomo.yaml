@@ -245,6 +245,11 @@ rule-providers:
     path: ./ruleset/privateip.mrs
     url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/privateip.mrs
 
+  telegramip:
+    <<: *ip
+    path: ./ruleset/telegramip.mrs
+    url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/telegramip.mrs
+
   gfw:
     <<: *domain
     path: ./ruleset/gfw.mrs
@@ -306,6 +311,7 @@ rules:
   - RULE-SET,adblockmihomo,🚫 拦截访问
   - RULE-SET,games-cn,🎯 直连访问
   - RULE-SET,apple-cn,🎯 直连访问
+  - RULE-SET,telegramip,🚀 节点选择
   - RULE-SET,gfw,🚀 节点选择
   - RULE-SET,proxy,🚀 节点选择
   - RULE-SET,cn,🎯 直连访问
