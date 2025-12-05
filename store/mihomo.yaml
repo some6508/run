@@ -265,6 +265,16 @@ rule-providers:
     path: ./ruleset/cnip.mrs
     url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/cnip.mrs
 
+  games-cn:
+    <<: *domain
+    path: ./ruleset/games-cn.mrs
+    url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/games-cn.mrs
+
+  apple-cn:
+    <<: *domain
+    path: ./ruleset/apple-cn.mrs
+    url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/apple-cn.mrs
+
   ads:
     <<: *domain
     path: ./ruleset/ads.mrs
@@ -286,14 +296,16 @@ rule-providers:
     url: https://testingcf.jsdelivr.net/gh/TG-Twilight/AWAvenue-Ads-Rule@main/Filters/AWAvenue-Ads-Rule-Clash.mrs
 
 rules:
-  - RULE-SET,private,DIRECT
   - RULE-SET,privateip,DIRECT,no-resolve
+  - RULE-SET,private,DIRECT
   - DOMAIN,testingcf.jsdelivr.net,🎯 直连访问
   - DOMAIN,proxy.pipers.cn,🎯 直连访问
   - RULE-SET,AWAvenue,🚫 拦截访问
   - RULE-SET,ads,🚫 拦截访问
   - RULE-SET,adrules-mihomo,🚫 拦截访问
   - RULE-SET,adblockmihomo,🚫 拦截访问
+  - RULE-SET,games-cn,🎯 直连访问
+  - RULE-SET,apple-cn,🎯 直连访问
   - RULE-SET,gfw,🚀 节点选择
   - RULE-SET,proxy,🚀 节点选择
   - RULE-SET,cn,🎯 直连访问
