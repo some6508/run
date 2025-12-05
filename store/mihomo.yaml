@@ -1,6 +1,6 @@
 mixed-port: 7890
 ipv6: false
-mode: Rule
+mode: rule
 log-level: error
 allow-lan: true
 bind-address: '*'
@@ -118,8 +118,8 @@ proxy-groups:
     proxies:
     - ♻️ 自动选择
     - ☁️ 故障转移
-    - 🔮 负载均衡
     - 🖲️ 手动选择
+    - 🔮 负载均衡
     - 🇭🇰 香港节点
     - 🇹🇼 台湾节点
     - 🇯🇵 日本节点
@@ -138,12 +138,6 @@ proxy-groups:
     icon: https://testingcf.jsdelivr.net/gh/fmz200/wool_scripts@main/icons/apps/FallBack.png
     <<: *p
 
-  - name: 🔮 负载均衡
-    type: load-balance
-    icon: https://testingcf.jsdelivr.net/gh/fmz200/wool_scripts@main/icons/apps/LoadBalance.png
-    strategy: consistent-hashing
-    <<: *p
-
   - name: 🖲️ 手动选择
     type: select
     icon: https://testingcf.jsdelivr.net/gh/fmz200/wool_scripts@main/icons/apps/select.png
@@ -151,9 +145,15 @@ proxy-groups:
     proxies:
     - DIRECT
 
+  - name: 🔮 负载均衡
+    type: load-balance
+    icon: https://testingcf.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/adjust.svg
+    strategy: consistent-hashing
+    <<: *p
+
   - name: 🎯 直连访问
     type: select
-    icon: https://testingcf.jsdelivr.net/gh/lige47/QuanX-icon-rule@main/icon/direct.png
+    icon: https://testingcf.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg
     proxies:
     - DIRECT
     - REJECT
@@ -161,7 +161,7 @@ proxy-groups:
 
   - name: 🚫 拦截访问
     type: select
-    icon: https://testingcf.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/No-ads-all.svg
+    icon: https://testingcf.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/block.svg
     proxies:
     - REJECT
     - DIRECT
@@ -169,7 +169,7 @@ proxy-groups:
 
   - name: 🐟 漏网之鱼
     type: select
-    icon: https://testingcf.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/HBASE-copy.svg
+    icon: https://testingcf.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/fish.svg
     proxies:
     - 🚀 节点选择
     - DIRECT
@@ -207,7 +207,7 @@ proxy-groups:
 
   - name: 🇺🇳 其它地区
     type: url-test
-    icon: https://testingcf.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/icon/qure/color/United_Nations.png
+    icon: https://testingcf.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/un.svg
     exclude-filter: '(?i)(🇭🇰|🇹🇼|🇯🇵|🇺🇸|🇸🇬|🇨🇳|🇰🇷|港|hk|hongkong|台|新北|彰化|tw|taiwan|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-]日|jp|japan|新加坡|坡|狮城|sg|singapore|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|us|united states)'
     <<: *p
 
@@ -219,8 +219,8 @@ proxy-groups:
     - 🚀 节点选择
     - ♻️ 自动选择
     - ☁️ 故障转移
-    - 🔮 负载均衡
     - 🖲️ 手动选择
+    - 🔮 负载均衡
     - 🇭🇰 香港节点
     - 🇹🇼 台湾节点
     - 🇯🇵 日本节点
