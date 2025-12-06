@@ -99,7 +99,7 @@ dns:
   - https://doh.pub/dns-query
   - https://dns.alidns.com/dns-query
   nameserver-policy:
-    rule-set:AWAvenue,ads,adrules-mihomo,adblockmihomo:
+    rule-set:adblockmihomo,adrules-mihomo,ads,AWAvenue:
     - rcode://success
     rule-set:private,cn:
     - https://doh.pub/dns-query
@@ -305,15 +305,15 @@ rules:
   - RULE-SET,private,DIRECT
   - DOMAIN,testingcf.jsdelivr.net,🎯 直连访问
   - DOMAIN,proxy.pipers.cn,🎯 直连访问
-  - RULE-SET,AWAvenue,🚫 拦截访问
-  - RULE-SET,ads,🚫 拦截访问
-  - RULE-SET,adrules-mihomo,🚫 拦截访问
   - RULE-SET,adblockmihomo,🚫 拦截访问
+  - RULE-SET,adrules-mihomo,🚫 拦截访问
+  - RULE-SET,ads,🚫 拦截访问
+  - RULE-SET,AWAvenue,🚫 拦截访问
   - RULE-SET,games-cn,🎯 直连访问
   - RULE-SET,apple-cn,🎯 直连访问
   - RULE-SET,telegramip,🚀 节点选择
-  - RULE-SET,gfw,🚀 节点选择
   - RULE-SET,proxy,🚀 节点选择
+  - RULE-SET,gfw,🚀 节点选择
   - RULE-SET,cn,🎯 直连访问
   - RULE-SET,cnip,🎯 直连访问,no-resolve
   - MATCH,🐟 漏网之鱼
