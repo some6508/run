@@ -152,7 +152,9 @@ proxy-groups:
     <<: *p
 
   - name: 🎯 直连访问
-    type: select
+    type: url-test
+    url: https://captive.apple.com
+    interval: 600
     icon: https://testingcf.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg
     proxies:
     - DIRECT
