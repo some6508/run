@@ -101,7 +101,7 @@ dns:
   nameserver-policy:
     rule-set:adblockmihomo,adrules-mihomo,ads,AWAvenue:
     - rcode://success
-    rule-set:private,cn:
+    rule-set:private,games-cn,apple-cn,cn:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
 
