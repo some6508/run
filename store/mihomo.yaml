@@ -42,7 +42,7 @@ sniffer:
   - Mijia Cloud
 
 tun:
-  enable: false
+  enable: true
   stack: gvisor
   dns-hijack:
   - any:53
@@ -80,16 +80,16 @@ dns:
   nameserver:
   - https://dns.google/dns-query
   - https://one.one.one.one/dns-query
-  - https://dns.cloudflare.com/dns-query
   - https://cloudflare-dns.com/dns-query
-  - https://dot.sb/dns-query
-  - https://dns.twnic.tw/dns-query
+  - https://dns.cloudflare.com/dns-query
   - https://dns.quad9.net/dns-query
-  - https://doh.opendns.com/dns-query
-  - https://dns.bebasid.com/dns-query
   - https://dns.umbrella.com/dns-query
-  - https://dns.csaonline.de/dns-query
   - https://dns.adguard.com/dns-query
+  - https://dns.twnic.tw/dns-query
+  - https://dot.sb/dns-query
+  - https://dns.bebasid.com/dns-query
+  - https://doh.opendns.com/dns-query
+  - https://dns.csaonline.de/dns-query
   - https://0ms.dev/dns-query
   - https://dns.mullvad.net/dns-query
   proxy-server-nameserver:
