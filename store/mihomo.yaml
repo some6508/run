@@ -313,7 +313,7 @@ rules:
   - RULE-SET,AWAvenue,🚫 拦截访问
   - RULE-SET,games-cn,🎯 直连访问
   - RULE-SET,apple-cn,🎯 直连访问
-  - RULE-SET,telegramip,🚀 节点选择
+  - RULE-SET,telegramip,🚀 节点选择,no-resolve
   - RULE-SET,proxy,🚀 节点选择
   - RULE-SET,gfw,🚀 节点选择
   - RULE-SET,cn,🎯 直连访问
