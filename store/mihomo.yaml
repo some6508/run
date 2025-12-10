@@ -107,7 +107,7 @@ dns:
 
 rule-anchor:
   p: &p {url: 'https://connectivitycheck.android.com/generate_204', interval: 600, tolerance: 300, include-all: true, expected-status: 200/204/302}
-  pr: &pr {type: select, proxies: '🚀 节点选择', '♻️ 自动选择', '☁️ 故障转移', '🖲️ 手动选择', '🔮 负载均衡', '🇭🇰 香港节点', '🇹🇼 台湾节点', '🇯🇵 日本节点', '🇺🇸 美国节点', '🇸🇬 新加坡节点', '🇺🇳 其它地区', '🎯 直连访问', '🚫 拦截访问'}
+  pr: &pr {type: select, proxies: ['🚀 节点选择', '♻️ 自动选择', '☁️ 故障转移', '🖲️ 手动选择', '🔮 负载均衡', '🇭🇰 香港节点', '🇹🇼 台湾节点', '🇯🇵 日本节点', '🇺🇸 美国节点', '🇸🇬 新加坡节点', '🇺🇳 其它地区', '🎯 直连访问', '🚫 拦截访问']}
   ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
   domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
   yaml: &yaml {type: http, interval: 86400, behavior: classical, format: yaml}
