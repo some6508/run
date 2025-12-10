@@ -232,6 +232,22 @@ proxy-groups:
     - 🇺🇳 其它地区
     - REJECT
 
+  - name: 🍀 Google
+    icon: https://testingcf.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Google.svg
+    <<: *pr
+
+  - name: 🪟 Microsoft
+    icon: https://testingcf.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Microsoft.svg
+    <<: *pr
+
+  - name: 📲 Telegram
+    icon: https://testingcf.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Telegram.svg
+    <<: *pr
+
+  - name: 🎵 TikTok
+    icon: https://testingcf.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/TikTok.svg
+    <<: *pr
+
 rule-providers:
   fakeip-filter:
     <<: *domain
@@ -248,15 +264,30 @@ rule-providers:
     path: ./ruleset/privateip.mrs
     url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/privateip.mrs
 
+  telegram:
+    <<: *domain
+    path: ./ruleset/telegram.mrs
+    url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/telegram.mrs
+
   telegramip:
     <<: *ip
     path: ./ruleset/telegramip.mrs
     url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/telegramip.mrs
 
+  microsoft:
+    <<: *domain
+    path: ./ruleset/microsoft.mrs
+    url: https://testingcf.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/microsoft.mrs
+
   gfw:
     <<: *domain
     path: ./ruleset/gfw.mrs
     url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/gfw.mrs
+
+  tiktok:
+    <<: *domain
+    path: ./ruleset/tiktok.mrs
+    url: https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/tiktok.mrs
 
   proxy:
     <<: *domain
@@ -314,9 +345,12 @@ rules:
   - RULE-SET,AWAvenue,🚫 拦截访问
   - RULE-SET,games-cn,🎯 直连访问
   - RULE-SET,apple-cn,🎯 直连访问
-  - RULE-SET,telegramip,🚀 节点选择,no-resolve
+  - RULE-SET,telegram,📲 Telegram
+  - RULE-SET,telegramip,📲 Telegram,no-resolve
+  - RULE-SET,tiktok,🎵 TikTok
+  - RULE-SET,microsoft,🪟 Microsoft
+  - RULE-SET,gfw,🍀 Google
   - RULE-SET,proxy,🚀 节点选择
-  - RULE-SET,gfw,🚀 节点选择
   - RULE-SET,cn,🎯 直连访问
   - RULE-SET,cnip,🎯 直连访问,no-resolve
   - MATCH,🐟 漏网之鱼
