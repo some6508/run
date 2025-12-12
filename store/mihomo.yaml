@@ -1,7 +1,7 @@
 mixed-port: 7890
 ipv6: false
 mode: rule
-log-level: error
+log-level: warning
 allow-lan: true
 bind-address: '*'
 unified-delay: true
@@ -33,7 +33,7 @@ sniffer:
     HTTP:
       ports: [80, 8080-8880]
     TLS:
-      ports: [443, 5228, 8443]
+      ports: [443, 8443]
     QUIC:
       ports: [443, 8443]
   force-domain:
@@ -101,16 +101,20 @@ dns:
   nameserver-policy:
     rule-set:adblockmihomo,adrules-mihomo,ads,AWAvenue:
     - rcode://success
-    rule-set:private,games-cn,apple-cn,cn:
+    rule-set:private,games-cn,apple-cn,networktest,cn:
     - https://doh.pub/dns-query
     - https://dns.alidns.com/dns-query
 
-rule-anchor:
-  p: &p {url: 'https://connectivitycheck.android.com/generate_204', interval: 600, tolerance: 300, include-all: true, expected-status: 200/204/302}
-  pr: &pr {type: select, proxies: ['🚀 节点选择', '♻️ 自动选择', '☁️ 故障转移', '🖲️ 手动选择', '🔮 负载均衡', '🇭🇰 香港节点', '🇹🇼 台湾节点', '🇯🇵 日本节点', '🇺🇸 美国节点', '🇸🇬 新加坡节点', '🇺🇳 其它地区', '🎯 直连访问', '🚫 拦截访问']}
-  ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
-  domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
-  yaml: &yaml {type: http, interval: 86400, behavior: classical, format: yaml}
+FilterHK: &FilterHK '(?i)(港|hk|hongkong|hong kong|🇭🇰)'
+FilterTW: &FilterTW '(?i)(台|新北|彰化|tw|taiwan|🇹🇼)'
+FilterJP: &FilterJP '(?i)(日本|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-]日|jp|japan|🇯🇵)'
+FilterUS: &FilterUS '(?i)(美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|us|unitedstates|united states|🇺🇸)'
+FilterSG: &FilterSG '(?i)(新加坡|坡|狮城|sg|singapore|🇸🇬)'
+FilterUN: &FilterUN '(?i)(🇭🇰|🇹🇼|🇯🇵|🇺🇸|🇸🇬|🇨🇳|🇰🇷|港|hk|hongkong|台|新北|彰化|tw|taiwan|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-]日|jp|japan|新加坡|坡|狮城|sg|singapore|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|us|united states)'
+
+p: &p {url: 'https://connectivitycheck.android.com/generate_204', interval: 600, tolerance: 300, timeout: 5000, max-failed-times: 3, include-all: true, expected-status: 200/204/302}
+pg_Proxy: &pg_Proxy {type: select, proxies: ['🚀 节点选择', '♻️ 自动选择', '☁️ 故障转移', '🖲️ 手动选择', '🔮 负载均衡', '🇭🇰 香港节点', '🇹🇼 台湾节点', '🇯🇵 日本节点', '🇺🇸 美国节点', '🇸🇬 新加坡节点', '🇺🇳 其它地区', '🎯 直连访问', '🚫 拦截访问']}
+pg_Direct: &pg_Direct {type: select, proxies: ['🎯 直连访问', '🚀 节点选择', '♻️ 自动选择', '☁️ 故障转移', '🖲️ 手动选择', '🔮 负载均衡', '🇭🇰 香港节点', '🇹🇼 台湾节点', '🇯🇵 日本节点', '🇺🇸 美国节点', '🇸🇬 新加坡节点', '🇺🇳 其它地区', '🚫 拦截访问']}
 
 proxy-groups:
   - name: 🚀 节点选择
@@ -181,37 +185,37 @@ proxy-groups:
   - name: 🇭🇰 香港节点
     type: url-test
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/HK.svg
-    filter: '(?i)(港|hk|hongkong|hong kong|🇭🇰)'
+    filter: *FilterHK
     <<: *p
 
   - name: 🇹🇼 台湾节点
     type: url-test
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/CN.svg
-    filter: '(?i)(台|新北|彰化|tw|taiwan|🇹🇼)'
+    filter: *FilterTW
     <<: *p
 
   - name: 🇯🇵 日本节点
     type: url-test
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/JP.svg
-    filter: '(?i)(日本|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-]日|jp|japan|🇯🇵)'
+    filter: *FilterJP
     <<: *p
 
   - name: 🇺🇸 美国节点
     type: url-test
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/US.svg
-    filter: '(?i)(美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|us|unitedstates|united states|🇺🇸)'
+    filter: *FilterUS
     <<: *p
 
   - name: 🇸🇬 新加坡节点
     type: url-test
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/Singapore.svg
-    filter: '(?i)(新加坡|坡|狮城|sg|singapore|🇸🇬)'
+    filter: *FilterSG
     <<: *p
 
   - name: 🇺🇳 其它地区
     type: url-test
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/clash-verge-rev/clash-verge-rev.github.io/main/docs/assets/icons/flags/un.svg
-    exclude-filter: '(?i)(🇭🇰|🇹🇼|🇯🇵|🇺🇸|🇸🇬|🇨🇳|🇰🇷|港|hk|hongkong|台|新北|彰化|tw|taiwan|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-]日|jp|japan|新加坡|坡|狮城|sg|singapore|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|us|united states)'
+    exclude-filter: *FilterUN
     <<: *p
 
   - name: GLOBAL
@@ -234,103 +238,112 @@ proxy-groups:
 
   - name: 🍀 Google
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/Google.svg
-    <<: *pr
+    <<: *pg_Proxy
 
   - name: 🪟 Microsoft
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/Microsoft.svg
-    <<: *pr
+    <<: *pg_Proxy
 
-  - name: 📲 Telegram
+  - name: ✈️ Telegram
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/Telegram.svg
-    <<: *pr
+    <<: *pg_Proxy
 
   - name: 🎵 TikTok
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/TikTok.svg
-    <<: *pr
+    <<: *pg_Proxy
+
+RuleSet_ipcidr_mrs: &RuleSet_ipcidr_mrs {type: http, interval: 86400, behavior: ipcidr, format: mrs}
+RuleSet_domain_mrs: &RuleSet_domain_mrs {type: http, interval: 86400, behavior: domain, format: mrs}
+RuleSet_classical_yaml: &RuleSet_classical_yaml {type: http, interval: 86400, behavior: classical, format: yaml}
 
 rule-providers:
+  privateip:
+    <<: *RuleSet_ipcidr_mrs
+    path: ./ruleset/privateip.mrs
+    url: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/mihomo-ruleset/privateip.mrs
+
+  telegramip:
+    <<: *RuleSet_ipcidr_mrs
+    path: ./ruleset/telegramip.mrs
+    url: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/mihomo-ruleset/telegramip.mrs
+
+  cnip:
+    <<: *RuleSet_ipcidr_mrs
+    path: ./ruleset/cnip.mrs
+    url: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/mihomo-ruleset/cnip.mrs
+
   fakeip-filter:
-    <<: *domain
+    <<: *RuleSet_domain_mrs
     path: ./ruleset/fakeip-filter.mrs
     url: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/mihomo-ruleset/fakeip-filter.mrs
 
   private:
-    <<: *domain
+    <<: *RuleSet_domain_mrs
     path: ./ruleset/private.mrs
     url: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs
 
-  privateip:
-    <<: *ip
-    path: ./ruleset/privateip.mrs
-    url: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/mihomo-ruleset/privateip.mrs
-
   telegram:
-    <<: *domain
+    <<: *RuleSet_domain_mrs
     path: ./ruleset/telegram.mrs
     url: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.mrs
 
-  telegramip:
-    <<: *ip
-    path: ./ruleset/telegramip.mrs
-    url: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/mihomo-ruleset/telegramip.mrs
-
   microsoft:
-    <<: *domain
+    <<: *RuleSet_domain_mrs
     path: ./ruleset/microsoft.mrs
     url: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.mrs
 
   gfw:
-    <<: *domain
+    <<: *RuleSet_domain_mrs
     path: ./ruleset/gfw.mrs
     url: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/mihomo-ruleset/gfw.mrs
 
   tiktok:
-    <<: *domain
+    <<: *RuleSet_domain_mrs
     path: ./ruleset/tiktok.mrs
     url: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/mihomo-ruleset/tiktok.mrs
 
   proxy:
-    <<: *domain
+    <<: *RuleSet_domain_mrs
     path: ./ruleset/proxy.mrs
     url: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/mihomo-ruleset/proxy.mrs
 
   cn:
-    <<: *domain
+    <<: *RuleSet_domain_mrs
     path: ./ruleset/cn.mrs
     url: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/mihomo-ruleset/cn.mrs
 
-  cnip:
-    <<: *ip
-    path: ./ruleset/cnip.mrs
-    url: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/mihomo-ruleset/cnip.mrs
-
   games-cn:
-    <<: *domain
+    <<: *RuleSet_domain_mrs
     path: ./ruleset/games-cn.mrs
     url: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/mihomo-ruleset/games-cn.mrs
 
   apple-cn:
-    <<: *domain
+    <<: *RuleSet_domain_mrs
     path: ./ruleset/apple-cn.mrs
     url: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/mihomo-ruleset/apple-cn.mrs
 
+  networktest:
+    <<: *RuleSet_domain_mrs
+    path: ./ruleset/networktest.mrs
+    url: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/mihomo-ruleset/networktest.mrs
+
   ads:
-    <<: *domain
+    <<: *RuleSet_domain_mrs
     path: ./ruleset/ads.mrs
     url: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/mihomo-ruleset/ads.mrs
 
   adblockmihomo:
-    <<: *domain
+    <<: *RuleSet_domain_mrs
     path: ./ruleset/adblockmihomo.mrs
     url: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/217heidai/adblockfilters/main/rules/adblockmihomo.mrs
 
   adrules-mihomo:
-    <<: *domain
+    <<: *RuleSet_domain_mrs
     path: ./ruleset/adrules-mihomo.mrs
     url: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/Cats-Team/AdRules/main/adrules-mihomo.mrs
 
   AWAvenue:
-    <<: *domain
+    <<: *RuleSet_domain_mrs
     path: ./ruleset/AWAvenue.mrs
     url: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Clash.mrs
 
@@ -342,14 +355,15 @@ rules:
   - RULE-SET,adrules-mihomo,🚫 拦截访问
   - RULE-SET,ads,🚫 拦截访问
   - RULE-SET,AWAvenue,🚫 拦截访问
+  - RULE-SET,networktest,🎯 直连访问
   - RULE-SET,games-cn,🎯 直连访问
   - RULE-SET,apple-cn,🎯 直连访问
-  - RULE-SET,telegram,📲 Telegram
-  - RULE-SET,telegramip,📲 Telegram,no-resolve
+  - RULE-SET,telegram,✈️ Telegram
+  - RULE-SET,telegramip,✈️ Telegram,no-resolve
   - RULE-SET,tiktok,🎵 TikTok
   - RULE-SET,microsoft,🪟 Microsoft
   - RULE-SET,gfw,🍀 Google
-  - RULE-SET,proxy,🚀 节点选择
   - RULE-SET,cn,🎯 直连访问
   - RULE-SET,cnip,🎯 直连访问,no-resolve
+  - RULE-SET,proxy,🚀 节点选择
   - MATCH,🐟 漏网之鱼
