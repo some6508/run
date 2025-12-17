@@ -65,14 +65,14 @@ dns:
   default-nameserver:
   - 114.114.114.114
   - 114.114.115.115
+  - 180.184.1.1
+  - 180.184.2.2
   - 119.29.29.29
   - 119.28.28.28
   - 1.12.12.12
   - 120.53.53.53
   - 223.5.5.5
   - 223.6.6.6
-  - 180.184.1.1
-  - 180.184.2.2
   - 8.8.8.8
   - 8.4.4.8
   - 1.1.1.1
@@ -113,8 +113,8 @@ FilterSG: &FilterSG '(?i)(新加坡|坡|狮城|sg|singapore|🇸🇬)'
 FilterUN: &FilterUN '(?i)(🇭🇰|🇹🇼|🇯🇵|🇺🇸|🇸🇬|🇨🇳|🇰🇷|港|hk|hongkong|台|新北|彰化|tw|taiwan|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-]日|jp|japan|新加坡|坡|狮城|sg|singapore|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|us|united states)'
 
 p: &p {url: 'https://connectivitycheck.android.com/generate_204', interval: 600, tolerance: 300, timeout: 5000, max-failed-times: 3, include-all: true, expected-status: 200/204/302}
-pg_Proxy: &pg_Proxy {type: select, proxies: ['🚀 节点选择', '♻️ 自动选择', '☁️ 故障转移', '🖲️ 手动选择', '🔮 负载均衡', '🇭🇰 香港节点', '🇹🇼 台湾节点', '🇯🇵 日本节点', '🇺🇸 美国节点', '🇸🇬 新加坡节点', '🇺🇳 其它地区', '🎯 直连访问', '🚫 拦截访问']}
-pg_Direct: &pg_Direct {type: select, proxies: ['🎯 直连访问', '🚀 节点选择', '♻️ 自动选择', '☁️ 故障转移', '🖲️ 手动选择', '🔮 负载均衡', '🇭🇰 香港节点', '🇹🇼 台湾节点', '🇯🇵 日本节点', '🇺🇸 美国节点', '🇸🇬 新加坡节点', '🇺🇳 其它地区', '🚫 拦截访问']}
+pg_Proxy: &pg_Proxy {type: select, proxies: ['🚀 节点选择', '♻️ 自动选择', '☁️ 故障转移', '🖲️ 手动选择', '🇭🇰 香港节点-♻️ 自动选择', '🇭🇰 香港节点-☁️ 故障转移', '🇭🇰 香港节点-🖲️ 手动选择', '🇹🇼 台湾节点-♻️ 自动选择', '🇹🇼 台湾节点-☁️ 故障转移', '🇹🇼 台湾节点-🖲️ 手动选择', '🇯🇵 日本节点-♻️ 自动选择', '🇯🇵 日本节点-☁️ 故障转移', '🇯🇵 日本节点-🖲️ 手动选择', '🇺🇸 美国节点-♻️ 自动选择', '🇺🇸 美国节点-☁️ 故障转移', '🇺🇸 美国节点-🖲️ 手动选择', '🇸🇬 新加坡节点-♻️ 自动选择', '🇸🇬 新加坡节点-☁️ 故障转移', '🇸🇬 新加坡节点-🖲️ 手动选择', '🇺🇳 其它地区-♻️ 自动选择', '🇺🇳 其它地区-☁️ 故障转移', '🇺🇳 其它地区-🖲️ 手动选择', '🎯 直连访问', '🚫 拦截访问']}
+pg_Direct: &pg_Direct {type: select, proxies: ['🎯 直连访问', '🚀 节点选择', '♻️ 自动选择', '☁️ 故障转移', '🖲️ 手动选择', '🇭🇰 香港节点-♻️ 自动选择', '🇭🇰 香港节点-☁️ 故障转移', '🇭🇰 香港节点-🖲️ 手动选择', '🇹🇼 台湾节点-♻️ 自动选择', '🇹🇼 台湾节点-☁️ 故障转移', '🇹🇼 台湾节点-🖲️ 手动选择', '🇯🇵 日本节点-♻️ 自动选择', '🇯🇵 日本节点-☁️ 故障转移', '🇯🇵 日本节点-🖲️ 手动选择', '🇺🇸 美国节点-♻️ 自动选择', '🇺🇸 美国节点-☁️ 故障转移', '🇺🇸 美国节点-🖲️ 手动选择', '🇸🇬 新加坡节点-♻️ 自动选择', '🇸🇬 新加坡节点-☁️ 故障转移', '🇸🇬 新加坡节点-🖲️ 手动选择', '🇺🇳 其它地区-♻️ 自动选择', '🇺🇳 其它地区-☁️ 故障转移', '🇺🇳 其它地区-🖲️ 手动选择', '🚫 拦截访问']}
 
 proxy-groups:
   - name: 🚀 节点选择
@@ -124,13 +124,24 @@ proxy-groups:
     - ♻️ 自动选择
     - ☁️ 故障转移
     - 🖲️ 手动选择
-    - 🔮 负载均衡
-    - 🇭🇰 香港节点
-    - 🇹🇼 台湾节点
-    - 🇯🇵 日本节点
-    - 🇺🇸 美国节点
-    - 🇸🇬 新加坡节点
-    - 🇺🇳 其它地区
+    - 🇭🇰 香港节点-♻️ 自动选择
+    - 🇭🇰 香港节点-☁️ 故障转移
+    - 🇭🇰 香港节点-🖲️ 手动选择
+    - 🇹🇼 台湾节点-♻️ 自动选择
+    - 🇹🇼 台湾节点-☁️ 故障转移
+    - 🇹🇼 台湾节点-🖲️ 手动选择
+    - 🇯🇵 日本节点-♻️ 自动选择
+    - 🇯🇵 日本节点-☁️ 故障转移
+    - 🇯🇵 日本节点-🖲️ 手动选择
+    - 🇺🇸 美国节点-♻️ 自动选择
+    - 🇺🇸 美国节点-☁️ 故障转移
+    - 🇺🇸 美国节点-🖲️ 手动选择
+    - 🇸🇬 新加坡节点-♻️ 自动选择
+    - 🇸🇬 新加坡节点-☁️ 故障转移
+    - 🇸🇬 新加坡节点-🖲️ 手动选择
+    - 🇺🇳 其它地区-♻️ 自动选择
+    - 🇺🇳 其它地区-☁️ 故障转移
+    - 🇺🇳 其它地区-🖲️ 手动选择
     - DIRECT
 
   - name: ♻️ 自动选择
@@ -149,12 +160,6 @@ proxy-groups:
     include-all: true
     proxies:
     - DIRECT
-
-  - name: 🔮 负载均衡
-    type: load-balance
-    icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/clash-verge-rev/clash-verge-rev.github.io/main/docs/assets/icons/adjust.svg
-    strategy: consistent-hashing
-    <<: *p
 
   - name: 🎯 直连访问
     type: url-test
@@ -182,40 +187,112 @@ proxy-groups:
     - DIRECT
     - REJECT
 
-  - name: 🇭🇰 香港节点
+  - name: 🇭🇰 香港节点-♻️ 自动选择
     type: url-test
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/HK.svg
     filter: *FilterHK
     <<: *p
+  - name: 🇭🇰 香港节点-☁️ 故障转移
+    type: fallback
+    icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/HK.svg
+    filter: *FilterHK
+    <<: *p
+  - name: 🇭🇰 香港节点-🖲️ 手动选择
+    type: select
+    icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/HK.svg
+    filter: *FilterHK
+    proxies:
+    - DIRECT
+    <<: *p
 
-  - name: 🇹🇼 台湾节点
+  - name: 🇹🇼 台湾节点-♻️ 自动选择
     type: url-test
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/CN.svg
     filter: *FilterTW
     <<: *p
+  - name: 🇹🇼 台湾节点-☁️ 故障转移
+    type: fallback
+    icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/CN.svg
+    filter: *FilterTW
+    <<: *p
+  - name: 🇹🇼 台湾节点-🖲️ 手动选择
+    type: select
+    icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/CN.svg
+    filter: *FilterTW
+    proxies:
+    - DIRECT
+    <<: *p
 
-  - name: 🇯🇵 日本节点
+  - name: 🇯🇵 日本节点-♻️ 自动选择
     type: url-test
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/JP.svg
     filter: *FilterJP
     <<: *p
+  - name: 🇯🇵 日本节点-☁️ 故障转移
+    type: fallback
+    icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/JP.svg
+    filter: *FilterJP
+    <<: *p
+  - name: 🇯🇵 日本节点-🖲️ 手动选择
+    type: select
+    icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/JP.svg
+    filter: *FilterJP
+    proxies:
+    - DIRECT
+    <<: *p
 
-  - name: 🇺🇸 美国节点
+  - name: 🇺🇸 美国节点-♻️ 自动选择
     type: url-test
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/US.svg
     filter: *FilterUS
     <<: *p
+  - name: 🇺🇸 美国节点-☁️ 故障转移
+    type: fallback
+    icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/US.svg
+    filter: *FilterUS
+    <<: *p
+  - name: 🇺🇸 美国节点-🖲️ 手动选择
+    type: select
+    icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/US.svg
+    filter: *FilterUS
+    proxies:
+    - DIRECT
+    <<: *p
 
-  - name: 🇸🇬 新加坡节点
+  - name: 🇸🇬 新加坡节点-♻️ 自动选择
     type: url-test
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/Singapore.svg
     filter: *FilterSG
     <<: *p
+  - name: 🇸🇬 新加坡节点-☁️ 故障转移
+    type: fallback
+    icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/Singapore.svg
+    filter: *FilterSG
+    <<: *p
+  - name: 🇸🇬 新加坡节点-🖲️ 手动选择
+    type: select
+    icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/Singapore.svg
+    filter: *FilterSG
+    proxies:
+    - DIRECT
+    <<: *p
 
-  - name: 🇺🇳 其它地区
+  - name: 🇺🇳 其它地区-♻️ 自动选择
     type: url-test
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/clash-verge-rev/clash-verge-rev.github.io/main/docs/assets/icons/flags/un.svg
     exclude-filter: *FilterUN
+    <<: *p
+  - name: 🇺🇳 其它地区-☁️ 故障转移
+    type: fallback
+    icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/clash-verge-rev/clash-verge-rev.github.io/main/docs/assets/icons/flags/un.svg
+    exclude-filter: *FilterUN
+    <<: *p
+  - name: 🇺🇳 其它地区-🖲️ 手动选择
+    type: select
+    icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/clash-verge-rev/clash-verge-rev.github.io/main/docs/assets/icons/flags/un.svg
+    exclude-filter: *FilterUN
+    proxies:
+    - DIRECT
     <<: *p
 
   - name: GLOBAL
@@ -227,13 +304,24 @@ proxy-groups:
     - ♻️ 自动选择
     - ☁️ 故障转移
     - 🖲️ 手动选择
-    - 🔮 负载均衡
-    - 🇭🇰 香港节点
-    - 🇹🇼 台湾节点
-    - 🇯🇵 日本节点
-    - 🇺🇸 美国节点
-    - 🇸🇬 新加坡节点
-    - 🇺🇳 其它地区
+    - 🇭🇰 香港节点-♻️ 自动选择
+    - 🇭🇰 香港节点-☁️ 故障转移
+    - 🇭🇰 香港节点-🖲️ 手动选择
+    - 🇹🇼 台湾节点-♻️ 自动选择
+    - 🇹🇼 台湾节点-☁️ 故障转移
+    - 🇹🇼 台湾节点-🖲️ 手动选择
+    - 🇯🇵 日本节点-♻️ 自动选择
+    - 🇯🇵 日本节点-☁️ 故障转移
+    - 🇯🇵 日本节点-🖲️ 手动选择
+    - 🇺🇸 美国节点-♻️ 自动选择
+    - 🇺🇸 美国节点-☁️ 故障转移
+    - 🇺🇸 美国节点-🖲️ 手动选择
+    - 🇸🇬 新加坡节点-♻️ 自动选择
+    - 🇸🇬 新加坡节点-☁️ 故障转移
+    - 🇸🇬 新加坡节点-🖲️ 手动选择
+    - 🇺🇳 其它地区-♻️ 自动选择
+    - 🇺🇳 其它地区-☁️ 故障转移
+    - 🇺🇳 其它地区-🖲️ 手动选择
     - REJECT
 
   - name: 🍀 Google
