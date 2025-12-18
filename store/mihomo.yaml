@@ -118,7 +118,7 @@ pg_Direct: &pg_Direct {type: select, proxies: ['🎯 直连访问', '🚀 节点
 
 proxy-groups:
   - name: 🚀 节点选择
-    type: select
+    输入: select
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/rocket(1).png
     proxies:
     - ♻️ 自动选择
@@ -145,24 +145,24 @@ proxy-groups:
     - DIRECT
 
   - name: ♻️ 自动选择
-    type: url-test
+    输入: url-test
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/fmz200/wool_scripts/main/icons/apps/UrlTest.png
     <<: *p
 
   - name: ☁️ 故障转移
-    type: fallback
+    输入: fallback
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/fmz200/wool_scripts/main/icons/apps/FallBack.png
     <<: *p
 
   - name: 🖲️ 手动选择
-    type: select
+    输入: select
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/fmz200/wool_scripts/main/icons/apps/select.png
     include-all: true
     proxies:
     - DIRECT
 
   - name: 🎯 直连访问
-    type: url-test
+    输入: url-test
     url: https://captive.apple.com
     interval: 600
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/clash-verge-rev/clash-verge-rev.github.io/main/docs/assets/icons/link.svg
@@ -172,7 +172,7 @@ proxy-groups:
     - 🚀 节点选择
 
   - name: 🚫 拦截访问
-    type: select
+    输入: select
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/clash-verge-rev/clash-verge-rev.github.io/main/docs/assets/icons/block.svg
     proxies:
     - REJECT
@@ -180,7 +180,7 @@ proxy-groups:
     - 🚀 节点选择
 
   - name: 🐟 漏网之鱼
-    type: select
+    输入: select
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/clash-verge-rev/clash-verge-rev.github.io/main/docs/assets/icons/fish.svg
     proxies:
     - 🚀 节点选择
@@ -188,115 +188,115 @@ proxy-groups:
     - REJECT
 
   - name: 🇭🇰 香港节点-♻️ 自动选择
-    type: url-test
+    输入: url-test
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/HK.svg
     filter: *FilterHK
     <<: *p
   - name: 🇭🇰 香港节点-☁️ 故障转移
-    type: fallback
+    输入: fallback
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/HK.svg
     filter: *FilterHK
     <<: *p
   - name: 🇭🇰 香港节点-🖲️ 手动选择
-    type: select
+    输入: select
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/HK.svg
     filter: *FilterHK
+    include-all: true
     proxies:
     - DIRECT
-    <<: *p
 
   - name: 🇹🇼 台湾节点-♻️ 自动选择
-    type: url-test
+    输入: url-test
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/CN.svg
     filter: *FilterTW
     <<: *p
   - name: 🇹🇼 台湾节点-☁️ 故障转移
-    type: fallback
+    输入: fallback
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/CN.svg
     filter: *FilterTW
     <<: *p
   - name: 🇹🇼 台湾节点-🖲️ 手动选择
-    type: select
+    输入: select
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/CN.svg
     filter: *FilterTW
+    include-all: true
     proxies:
     - DIRECT
-    <<: *p
 
   - name: 🇯🇵 日本节点-♻️ 自动选择
-    type: url-test
+    输入: url-test
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/JP.svg
     filter: *FilterJP
     <<: *p
   - name: 🇯🇵 日本节点-☁️ 故障转移
-    type: fallback
+    输入: fallback
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/JP.svg
     filter: *FilterJP
     <<: *p
   - name: 🇯🇵 日本节点-🖲️ 手动选择
-    type: select
+    输入: select
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/JP.svg
     filter: *FilterJP
+    include-all: true
     proxies:
     - DIRECT
-    <<: *p
 
   - name: 🇺🇸 美国节点-♻️ 自动选择
-    type: url-test
+    输入: url-test
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/US.svg
     filter: *FilterUS
     <<: *p
   - name: 🇺🇸 美国节点-☁️ 故障转移
-    type: fallback
+    输入: fallback
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/US.svg
     filter: *FilterUS
     <<: *p
   - name: 🇺🇸 美国节点-🖲️ 手动选择
-    type: select
+    输入: select
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/US.svg
     filter: *FilterUS
+    include-all: true
     proxies:
     - DIRECT
-    <<: *p
 
   - name: 🇸🇬 新加坡节点-♻️ 自动选择
-    type: url-test
+    输入: url-test
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/Singapore.svg
     filter: *FilterSG
     <<: *p
   - name: 🇸🇬 新加坡节点-☁️ 故障转移
-    type: fallback
+    输入: fallback
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/Singapore.svg
     filter: *FilterSG
     <<: *p
   - name: 🇸🇬 新加坡节点-🖲️ 手动选择
-    type: select
+    输入: select
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/Singapore.svg
     filter: *FilterSG
+    include-all: true
     proxies:
     - DIRECT
-    <<: *p
 
   - name: 🇺🇳 其它地区-♻️ 自动选择
-    type: url-test
+    输入: url-test
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/clash-verge-rev/clash-verge-rev.github.io/main/docs/assets/icons/flags/un.svg
     exclude-filter: *FilterUN
     <<: *p
   - name: 🇺🇳 其它地区-☁️ 故障转移
-    type: fallback
+    输入: fallback
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/clash-verge-rev/clash-verge-rev.github.io/main/docs/assets/icons/flags/un.svg
     exclude-filter: *FilterUN
     <<: *p
   - name: 🇺🇳 其它地区-🖲️ 手动选择
-    type: select
+    输入: select
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/clash-verge-rev/clash-verge-rev.github.io/main/docs/assets/icons/flags/un.svg
     exclude-filter: *FilterUN
+    include-all: true
     proxies:
     - DIRECT
-    <<: *p
 
   - name: GLOBAL
-    type: select
+    输入: select
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/Globe.svg
     proxies:
     - DIRECT
