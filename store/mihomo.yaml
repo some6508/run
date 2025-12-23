@@ -445,7 +445,7 @@ rules:
   - RULE-SET,tiktok,🎵 TikTok
   - RULE-SET,microsoft,🪟 Microsoft
   - RULE-SET,gfw,🍀 Google
+  - RULE-SET,proxy,🚀 节点选择
   - RULE-SET,cn,🎯 直连访问
   - RULE-SET,cnip,🎯 直连访问,no-resolve
-  - RULE-SET,proxy,🚀 节点选择
   - MATCH,🐟 漏网之鱼
