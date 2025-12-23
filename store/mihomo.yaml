@@ -98,12 +98,6 @@ dns:
   direct-nameserver:
   - https://doh.pub/dns-query
   - https://dns.alidns.com/dns-query
-  nameserver-policy:
-    rule-set:adblockmihomo,adrules-mihomo,ads,AWAvenue:
-    - rcode://success
-    rule-set:private,games-cn,apple-cn,networktest,cn:
-    - https://doh.pub/dns-query
-    - https://dns.alidns.com/dns-query
 
 FilterHK: &FilterHK '(?i)(港|hk|hongkong|hong kong|🇭🇰)'
 FilterTW: &FilterTW '(?i)(台|新北|彰化|tw|taiwan|🇹🇼)'
