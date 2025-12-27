@@ -50,7 +50,7 @@ tun:
   auto-route: true
   auto-detect-interface: true
 
-dns_Direct: &dns_Direct [https://doh.pub/dns-query, https://dns.alidns.com/dns-query]
+dns_Direct: &dns_Direct [https://doh.pub/dns-query#DIRECT, https://dns.alidns.com/dns-query#DIRECT, https://dot.360.cn/dns-query#DIRECT]
 
 dns:
   enable: true
