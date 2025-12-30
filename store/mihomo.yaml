@@ -431,7 +431,7 @@ rule-providers:
 rules:
   - RULE-SET,privateip,DIRECT,no-resolve
   - RULE-SET,private,DIRECT
-  - DOMAIN,dl.ccaeo.xo.je,🎯 直连访问
+  - DOMAIN-KEYWORD,ccaeo,🎯 直连访问
   - RULE-SET,adblockmihomo,🚫 拦截访问
   - RULE-SET,adrules-mihomo,🚫 拦截访问
   - RULE-SET,ads,🚫 拦截访问
