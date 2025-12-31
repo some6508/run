@@ -97,6 +97,8 @@ dns:
   - https://dns.mullvad.net/dns-query
   proxy-server-nameserver: *dns_Direct
   direct-nameserver: *dns_Direct
+  nameserver-policy:
+    rule-set:adblockmihomo,adrules-mihomo,ads,AWAvenue: rcode://success
 
 FilterHK: &FilterHK '(?i)(港|hk|hongkong|hong kong|🇭🇰)'
 FilterTW: &FilterTW '(?i)(台|新北|彰化|tw|taiwan|🇹🇼)'
@@ -105,7 +107,7 @@ FilterUS: &FilterUS '(?i)(美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|
 FilterSG: &FilterSG '(?i)(新加坡|坡|狮城|sg|singapore|🇸🇬)'
 FilterUN: &FilterUN '(?i)(🇭🇰|🇹🇼|🇯🇵|🇺🇸|🇸🇬|🇨🇳|🇰🇷|港|hk|hongkong|台|新北|彰化|tw|taiwan|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|jp|japan|新加坡|坡|狮城|sg|singapore|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|us|united states)'
 
-p: &p {url: 'https://connectivitycheck.android.com/generate_204', interval: 600, tolerance: 50, include-all: true}
+p: &p {url: 'https://connectivitycheck.android.com/generate_204', interval: 600, tolerance: 50, timeout: 5000, max-failed-times: 3, expected-status: 200/204, include-all: true, lazy: true}
 pg_Proxy: &pg_Proxy {type: select, proxies: ['🚀 节点选择', '♻️ 自动选择', '☁️ 故障转移', '🖲️ 手动选择', '🇭🇰 香港节点-♻️ 自动选择', '🇭🇰 香港节点-☁️ 故障转移', '🇭🇰 香港节点-🖲️ 手动选择', '🇹🇼 台湾节点-♻️ 自动选择', '🇹🇼 台湾节点-☁️ 故障转移', '🇹🇼 台湾节点-🖲️ 手动选择', '🇯🇵 日本节点-♻️ 自动选择', '🇯🇵 日本节点-☁️ 故障转移', '🇯🇵 日本节点-🖲️ 手动选择', '🇺🇸 美国节点-♻️ 自动选择', '🇺🇸 美国节点-☁️ 故障转移', '🇺🇸 美国节点-🖲️ 手动选择', '🇸🇬 新加坡节点-♻️ 自动选择', '🇸🇬 新加坡节点-☁️ 故障转移', '🇸🇬 新加坡节点-🖲️ 手动选择', '🇺🇳 其它地区-♻️ 自动选择', '🇺🇳 其它地区-☁️ 故障转移', '🇺🇳 其它地区-🖲️ 手动选择', '🎯 直连访问', '🚫 拦截访问']}
 pg_Direct: &pg_Direct {type: select, proxies: ['🎯 直连访问', '🚀 节点选择', '♻️ 自动选择', '☁️ 故障转移', '🖲️ 手动选择', '🇭🇰 香港节点-♻️ 自动选择', '🇭🇰 香港节点-☁️ 故障转移', '🇭🇰 香港节点-🖲️ 手动选择', '🇹🇼 台湾节点-♻️ 自动选择', '🇹🇼 台湾节点-☁️ 故障转移', '🇹🇼 台湾节点-🖲️ 手动选择', '🇯🇵 日本节点-♻️ 自动选择', '🇯🇵 日本节点-☁️ 故障转移', '🇯🇵 日本节点-🖲️ 手动选择', '🇺🇸 美国节点-♻️ 自动选择', '🇺🇸 美国节点-☁️ 故障转移', '🇺🇸 美国节点-🖲️ 手动选择', '🇸🇬 新加坡节点-♻️ 自动选择', '🇸🇬 新加坡节点-☁️ 故障转移', '🇸🇬 新加坡节点-🖲️ 手动选择', '🇺🇳 其它地区-♻️ 自动选择', '🇺🇳 其它地区-☁️ 故障转移', '🇺🇳 其它地区-🖲️ 手动选择', '🚫 拦截访问']}
 
@@ -430,7 +432,6 @@ rule-providers:
 rules:
   - RULE-SET,privateip,DIRECT,no-resolve
   - RULE-SET,private,DIRECT
-  - DOMAIN-KEYWORD,ccaeo,🎯 直连访问
   - RULE-SET,adblockmihomo,🚫 拦截访问
   - RULE-SET,adrules-mihomo,🚫 拦截访问
   - RULE-SET,ads,🚫 拦截访问
