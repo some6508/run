@@ -2,7 +2,7 @@
   "experimental": {
     "urltest_unified_delay": true,
     "cache_file": { "enabled": true, "path": "./cache.db", "store_fakeip": false, "store_rdrc": true, "rdrc_timeout": "24h0m0s" },
-    "clash_api": { "default_mode": "规则", "external_controller": "0.0.0.0:9090", "external_ui": "./ui", "external_ui_update_interval": "1d", "external_ui_download_detour": "🎯 直连访问", "external_ui_download_url": "https://dl.ccaeo.xo.je/https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages-no-fonts.zip" }
+    "clash_api": { "default_mode": "规则", "external_controller": "0.0.0.0:9090", "external_ui": "./ui", "external_ui_update_interval": "1d", "external_ui_download_url": "https://dl.ccaeo.xo.je/https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages-no-fonts.zip" }
   },
   "log": { "disabled": false, "level": "error", "timestamp": true },
   "inbounds": [
@@ -15,7 +15,7 @@
     "strategy": "prefer_ipv4",
     "reverse_mapping": true,
     "servers": [
-      { "tag": "local", "type": "local" },
+      { "tag": "本地解析", "type": "local" },
       { "tag": "域名解析", "type": "udp", "server": "114.114.114.114" },
       { "tag": "直连解析", "type": "https", "domain_resolver": "域名解析", "server": "dns.alidns.com" },
       { "tag": "代理解析", "type": "https", "domain_resolver": "域名解析", "server": "dns.google", "detour": "🚀 节点选择" },
@@ -25,7 +25,7 @@
       { "clash_mode": "直连", "server": "直连解析" },
       { "clash_mode": "全局", "server": "FAKEIP" },
       { "query_type": [ "SVCB", "HTTPS" ], "action": "reject" },
-      { "rule_set": [ "adblocksingbox", "adrules-singbox", "ads" ], "action": "predefined", "rcode": "NOERROR" },
+      { "rule_set": [ "adblocksingbox", "adrules-singbox", "ads" ], "action": "reject" },
       { "rule_set": "cn", "server": "直连解析" },
       { "query_type": [ "A", "AAAA" ], "server": "FAKEIP", "rewrite_ttl": 1 }
     ]
@@ -57,35 +57,33 @@
       { "rule_set": "cnip", "outbound": "🎯 直连访问" }
     ],
     "rule_set": [
-      { "tag": "privateip", "type": "remote", "format": "binary", "update_interval": "1d", "download_detour": "🎯 直连访问", "path": "./ruleset/privateip.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/privateip.srs" },
-      { "tag": "private", "type": "remote", "format": "binary", "update_interval": "1d", "download_detour": "🎯 直连访问", "path": "./ruleset/private.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/private.srs" },
-      { "tag": "cnip", "type": "remote", "format": "binary", "update_interval": "1d", "download_detour": "🎯 直连访问", "path": "./ruleset/cnip.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/cnip.srs" },
-      { "tag": "cn", "type": "remote", "format": "binary", "update_interval": "1d", "download_detour": "🎯 直连访问", "path": "./ruleset/cn.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/cn.srs" },
-      { "tag": "apple-cn", "type": "remote", "format": "binary", "update_interval": "1d", "download_detour": "🎯 直连访问", "path": "./ruleset/apple-cn.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/apple-cn.srs" },
-      { "tag": "games-cn", "type": "remote", "format": "binary", "update_interval": "1d", "download_detour": "🎯 直连访问", "path": "./ruleset/games-cn.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/games-cn.srs" },
-      { "tag": "telegramip", "type": "remote", "format": "binary", "update_interval": "1d", "download_detour": "🎯 直连访问", "path": "./ruleset/telegramip.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/telegramip.srs" },
-      { "tag": "proxy", "type": "remote", "format": "binary", "update_interval": "1d", "download_detour": "🎯 直连访问", "path": "./ruleset/proxy.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/proxy.srs" },
-      { "tag": "gfw", "type": "remote", "format": "binary", "update_interval": "1d", "download_detour": "🎯 直连访问", "path": "./ruleset/gfw.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/gfw.srs" },
-      { "tag": "ads", "type": "remote", "format": "binary", "update_interval": "1d", "download_detour": "🎯 直连访问", "path": "./ruleset/ads.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/ads.srs" },
-      { "tag": "adrules-singbox", "type": "remote", "format": "binary", "update_interval": "1d", "download_detour": "🎯 直连访问", "path": "./ruleset/adrules-singbox.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/Cats-Team/AdRules/main/adrules-singbox.srs" },
-      { "tag": "adblocksingbox", "type": "remote", "format": "binary", "update_interval": "1d", "download_detour": "🎯 直连访问", "path": "./ruleset/adblocksingbox.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/217heidai/adblockfilters/main/rules/adblocksingbox.srs" }
+      { "tag": "privateip", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/privateip.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/privateip.srs" },
+      { "tag": "private", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/private.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/private.srs" },
+      { "tag": "cnip", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/cnip.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/cnip.srs" },
+      { "tag": "cn", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/cn.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/cn.srs" },
+      { "tag": "apple-cn", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/apple-cn.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/apple-cn.srs" },
+      { "tag": "games-cn", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/games-cn.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/games-cn.srs" },
+      { "tag": "telegramip", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/telegramip.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/telegramip.srs" },
+      { "tag": "proxy", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/proxy.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/proxy.srs" },
+      { "tag": "gfw", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/gfw.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/gfw.srs" },
+      { "tag": "ads", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/ads.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/ads.srs" },
+      { "tag": "adrules-singbox", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/adrules-singbox.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/Cats-Team/AdRules/main/adrules-singbox.srs" },
+      { "tag": "adblocksingbox", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/adblocksingbox.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/217heidai/adblockfilters/main/rules/adblocksingbox.srs" }
     ]
   },
   "outbounds": [
     { "tag": "DIRECT", "type": "direct" },
-    { "tag": "🚀 节点选择", "type": "selector", "outbounds": [ "♻️ 自动选择", "☁️ 故障转移", "🔮 负载均衡", "🖲️ 手动选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇺🇸 美国节点", "🇸🇬 新加坡节点", "🇺🇳 其它地区", "DIRECT" ] },
-    { "tag": "🎯 直连访问", "type": "selector", "outbounds": [ "DIRECT", "🚀 节点选择" ] },
-    { "tag": "🐟 漏网之鱼", "type": "selector", "outbounds": [ "🚀 节点选择", "DIRECT" ] },
+    { "tag": "🚀 节点选择", "type": "selector", "outbounds": [ "♻️ 自动选择", "🖲️ 手动选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇺🇸 美国节点", "🇸🇬 新加坡节点", "🇺🇳 其它地区", "DIRECT" ] },
     { "tag": "🖲️ 手动选择", "type": "selector", "outbounds": [ "DIRECT" ] },
-    { "tag": "♻️ 自动选择", "type": "urltest", "url": "https://connectivitycheck.android.com/generate_204", "interval": "10m", "tolerance": 300, "outbounds": [] },
-    { "tag": "☁️ 故障转移", "type": "urltest", "url": "https://connectivitycheck.android.com/generate_204", "interval": "10m", "fallback": { "enabled": true, "max_delay": "300ms" }, "outbounds": [] },
-    { "tag": "🔮 负载均衡", "type": "loadbalance", "strategy": "consistent-hashing", "url": "https://connectivitycheck.android.com/generate_204", "interval": "10m", "outbounds": [] },
-    { "tag": "🇭🇰 香港节点", "type": "urltest", "url": "https://connectivitycheck.android.com/generate_204", "interval": "10m", "tolerance": 300, "outbounds": [] },
-    { "tag": "🇹🇼 台湾节点", "type": "urltest", "url": "https://connectivitycheck.android.com/generate_204", "interval": "10m", "tolerance": 300, "outbounds": [] },
-    { "tag": "🇯🇵 日本节点", "type": "urltest", "url": "https://connectivitycheck.android.com/generate_204", "interval": "10m", "tolerance": 300, "outbounds": [] },
-    { "tag": "🇺🇸 美国节点", "type": "urltest", "url": "https://connectivitycheck.android.com/generate_204", "interval": "10m", "tolerance": 300, "outbounds": [] },
-    { "tag": "🇸🇬 新加坡节点", "type": "urltest", "url": "https://connectivitycheck.android.com/generate_204", "interval": "10m", "tolerance": 300, "outbounds": [] },
-    { "tag": "🇺🇳 其它地区", "type": "urltest", "url": "https://connectivitycheck.android.com/generate_204", "interval": "10m", "tolerance": 300, "outbounds": [] },
+    { "tag": "🎯 直连访问", "type": "urltest", "url": "https://connectivitycheck.android.com/generate_204", "interval": "10m", "outbounds": [ "DIRECT" ] },
+    { "tag": "🇭🇰 香港节点", "type": "selector", "outbounds": [ "DIRECT" ] },
+    { "tag": "🇹🇼 台湾节点", "type": "selector", "outbounds": [ "DIRECT" ] },
+    { "tag": "🇯🇵 日本节点", "type": "selector", "outbounds": [ "DIRECT" ] },
+    { "tag": "🇺🇸 美国节点", "type": "selector", "outbounds": [ "DIRECT" ] },
+    { "tag": "🇸🇬 新加坡节点", "type": "selector", "outbounds": [ "DIRECT" ] },
+    { "tag": "🇺🇳 其它地区", "type": "selector", "outbounds": [ "DIRECT" ] },
+    { "tag": "🐟 漏网之鱼", "type": "selector", "outbounds": [ "🚀 节点选择", "DIRECT" ] },
+    { "tag": "♻️ 自动选择", "type": "urltest", "url": "https://connectivitycheck.platform.hicloud.com/generate_204", "interval": "10m", "tolerance": 50, "outbounds": [] },
     { "tag": "GLOBAL", "type": "selector", "default": "DIRECT", "outbounds": [ "🚀 节点选择", "♻️ 自动选择", "☁️ 故障转移", "🔮 负载均衡", "🖲️ 手动选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇺🇸 美国节点", "🇸🇬 新加坡节点", "🇺🇳 其它地区", "DIRECT" ] }
   ]
 }
