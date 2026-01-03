@@ -140,31 +140,6 @@ proxy-groups:
     strategy: consistent-hashing
     <<: *p
 
-  - name: 🎯 直连访问
-    type: url-test
-    url: https://connectivitycheck.platform.hicloud.com/generate_204
-    interval: 600
-    icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/clash-verge-rev/clash-verge-rev.github.io/main/docs/assets/icons/link.svg
-    proxies:
-    - DIRECT
-    - REJECT
-
-  - name: 🚫 拦截访问
-    type: select
-    icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/clash-verge-rev/clash-verge-rev.github.io/main/docs/assets/icons/block.svg
-    proxies:
-    - REJECT
-    - DIRECT
-    - 🚀 节点选择
-
-  - name: 🐟 漏网之鱼
-    type: select
-    icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/clash-verge-rev/clash-verge-rev.github.io/main/docs/assets/icons/fish.svg
-    proxies:
-    - 🚀 节点选择
-    - DIRECT
-    - REJECT
-
   - name: 🇭🇰 香港节点
     type: url-test
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/HK.svg
@@ -216,6 +191,31 @@ proxy-groups:
   - name: 🎵 TikTok
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/TikTok.svg
     <<: *pg_Proxy
+
+  - name: 🎯 直连访问
+    type: url-test
+    url: https://connectivitycheck.platform.hicloud.com/generate_204
+    interval: 600
+    icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/clash-verge-rev/clash-verge-rev.github.io/main/docs/assets/icons/link.svg
+    proxies:
+    - DIRECT
+    - REJECT
+
+  - name: 🚫 拦截访问
+    type: select
+    icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/clash-verge-rev/clash-verge-rev.github.io/main/docs/assets/icons/block.svg
+    proxies:
+    - REJECT
+    - DIRECT
+    - 🚀 节点选择
+
+  - name: 🐟 漏网之鱼
+    type: select
+    icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/clash-verge-rev/clash-verge-rev.github.io/main/docs/assets/icons/fish.svg
+    proxies:
+    - 🚀 节点选择
+    - DIRECT
+    - REJECT
 
 RuleSet_ipcidr_mrs: &RuleSet_ipcidr_mrs {type: http, interval: 86400, behavior: ipcidr, format: mrs}
 RuleSet_domain_mrs: &RuleSet_domain_mrs {type: http, interval: 86400, behavior: domain, format: mrs}
