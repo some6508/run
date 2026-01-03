@@ -99,7 +99,6 @@ FilterUN: &FilterUN '(?i)(🇭🇰|🇹🇼|🇯🇵|🇺🇸|🇸🇬|🇨🇳|
 
 p: &p {url: 'https://connectivitycheck.android.com/generate_204', interval: 600, tolerance: 50, timeout: 5000, max-failed-times: 3, expected-status: 200/204, include-all: true}
 pg_Proxy: &pg_Proxy {type: select, proxies: ['🚀 节点选择', '♻️ 自动选择', '☁️ 故障转移', '🖲️ 手动选择', '🔮 负载均衡', '🇭🇰 香港节点', '🇹🇼 台湾节点', '🇯🇵 日本节点', '🇺🇸 美国节点', '🇸🇬 新加坡节点', '🇺🇳 其它地区', '🎯 直连访问', '🚫 拦截访问']}
-pg_Direct: &pg_Direct {type: select, proxies: ['🎯 直连访问', '🚀 节点选择', '♻️ 自动选择', '☁️ 故障转移', '🖲️ 手动选择', '🔮 负载均衡', '🇭🇰 香港节点', '🇹🇼 台湾节点', '🇯🇵 日本节点', '🇺🇸 美国节点', '🇸🇬 新加坡节点', '🇺🇳 其它地区', '🚫 拦截访问']}
 
 proxy-groups:
   - name: 🚀 节点选择
@@ -201,11 +200,6 @@ proxy-groups:
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/clash-verge-rev/clash-verge-rev.github.io/main/docs/assets/icons/flags/un.svg
     exclude-filter: *FilterUN
     <<: *p
-
-  - name: GLOBAL
-    type: select
-    icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/Globe.svg
-    <<: *pg_Direct
 
   - name: 🍀 Google
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/Google.svg
