@@ -124,7 +124,7 @@ proxy-groups:
     - 🇺🇸 美国节点
     - 🇸🇬 新加坡节点
     - 🇺🇳 其它地区
-    - DIRECT
+    - 🎯 直连访问
 
   - name: ♻️ 自动选择
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/fmz200/wool_scripts/main/icons/apps/UrlTest.png
