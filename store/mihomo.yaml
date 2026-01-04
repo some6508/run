@@ -99,12 +99,12 @@ FilterUN: &FilterUN '(?i)(🇭🇰|🇹🇼|🇯🇵|🇺🇸|🇸🇬|🇨🇳|
 
 p: &p {url: 'https://connectivitycheck.android.com/generate_204', interval: 600, tolerance: 50, timeout: 5000, max-failed-times: 3, expected-status: 200/204, include-all: true}
 pg_Proxy: &pg_Proxy {type: select, proxies: [
-  '🚀 节点选择', '♻️ 自动选择', '☁️ 故障转移', '🔮 负载均衡', '🖲️ 手动选择',
-  '🇭🇰 香港节点', '🇹🇼 台湾节点', '🇯🇵 日本节点', '🇺🇸 美国节点', '🇸🇬 新加坡节点', '🇺🇳 其它地区',
-  '🎯 直连访问', '🚫 拦截访问'
+  🚀 节点选择, ♻️ 自动选择, ☁️ 故障转移, 🔮 负载均衡, 🖲️ 手动选择,
+  🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇺🇸 美国节点, 🇸🇬 新加坡节点, 🇺🇳 其它地区,
+  🎯 直连访问, 🚫 拦截访问
 ]}
 
-Select: &Select {type: select, include-all: true}
+Select: &Select {type: select, include-all: true, proxies: [DIRECT]}
 UrlTest: &UrlTest {type: url-test, <<: *p}
 FallBack: &FallBack {type: fallback, <<: *p}
 LoadBalance: &LoadBalance {type: load-balance, strategy: consistent-hashing, <<: *p}
@@ -136,8 +136,6 @@ proxy-groups:
 
   - name: 🖲️ 手动选择
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/fmz200/wool_scripts/main/icons/apps/select.png
-    proxies:
-    - DIRECT
     <<: *Select
 
   - name: 🔮 负载均衡
