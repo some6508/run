@@ -87,7 +87,7 @@ dns:
   proxy-server-nameserver: *dns_Direct
   direct-nameserver: *dns_Direct
   nameserver-policy:
-    rule-set:adblockmihomo,adrules-mihomo,ads,AWAvenue: rcode://refused
+    rule-set:adblockmihomo: rcode://refused
 
 FilterHK: &FilterHK '(?i)(港|hk|hongkong|hong kong|🇭🇰)'
 FilterTW: &FilterTW '(?i)(台|新北|彰化|tw|taiwan|🇹🇼)'
@@ -344,33 +344,15 @@ rule-providers:
     path: ./ruleset/networktest.mrs
     url: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/mihomo-ruleset/networktest.mrs
 
-  ads:
-    <<: *RuleSet_domain_mrs
-    path: ./ruleset/ads.mrs
-    url: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/mihomo-ruleset/ads.mrs
-
   adblockmihomo:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/adblockmihomo.mrs
     url: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/217heidai/adblockfilters/main/rules/adblockmihomo.mrs
 
-  adrules-mihomo:
-    <<: *RuleSet_domain_mrs
-    path: ./ruleset/adrules-mihomo.mrs
-    url: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/Cats-Team/AdRules/main/adrules-mihomo.mrs
-
-  AWAvenue:
-    <<: *RuleSet_domain_mrs
-    path: ./ruleset/AWAvenue.mrs
-    url: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Clash.mrs
-
 rules:
   - RULE-SET,privateip,DIRECT,no-resolve
   - RULE-SET,private,DIRECT
   - RULE-SET,adblockmihomo,🚫 拦截访问
-  - RULE-SET,adrules-mihomo,🚫 拦截访问
-  - RULE-SET,ads,🚫 拦截访问
-  - RULE-SET,AWAvenue,🚫 拦截访问
   - RULE-SET,networktest,🎯 直连访问
   - RULE-SET,games-cn,🎯 直连访问
   - RULE-SET,apple-cn,🎯 直连访问
