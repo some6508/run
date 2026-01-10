@@ -142,6 +142,10 @@ proxy-groups:
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/Google.svg
     <<: *pg_Proxy
 
+  - name: 🪩 Cloudflare
+    icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/clash-verge-rev/clash-verge-rev.github.io/main/docs/assets/icons/cloudflare.svg
+    <<: *pg_Proxy
+    
   - name: 🪟 Microsoft
     icon: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/GitMetaio/Surfing/rm/Home/icon/Microsoft.svg
     <<: *pg_Proxy
@@ -309,6 +313,11 @@ rule-providers:
     path: ./ruleset/microsoft.mrs
     url: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/microsoft.mrs
 
+  cloudflare:
+    <<: *RuleSet_domain_mrs
+    path: ./ruleset/cloudflare.mrs
+    url: https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cloudflare.mrs
+
   gfw:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/gfw.mrs
@@ -359,6 +368,7 @@ rules:
   - RULE-SET,telegram,✈️ Telegram
   - RULE-SET,telegramip,✈️ Telegram,no-resolve
   - RULE-SET,tiktok,🎵 TikTok
+  - RULE-SET,cloudflare,🪩 Cloudflare
   - RULE-SET,microsoft,🪟 Microsoft
   - RULE-SET,gfw,🍀 Google
   - RULE-SET,proxy,🍀 Google
