@@ -1,6 +1,6 @@
 {
   "experimental": {
-    "cache_file": { "enabled": true, "path": "./cache.db", "store_fakeip": false, "store_rdrc": true, "rdrc_timeout": "24h0m0s" },
+    "cache_file": { "enabled": true, "path": "./cache.db", "store_fakeip": false },
     "clash_api": { "default_mode": "规则", "external_controller": "0.0.0.0:9090", "external_ui": "./ui", "external_ui_update_interval": "1d", "external_ui_download_url": "https://dl.ccaeo.xo.je/https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages-no-fonts.zip" }
   },
   "log": { "disabled": false, "level": "error", "timestamp": true },
@@ -12,6 +12,7 @@
   "dns": {
     "final": "代理解析",
     "strategy": "prefer_ipv4",
+    "independent_cache": true,
     "reverse_mapping": true,
     "servers": [
       { "tag": "本地解析", "type": "local" },
@@ -22,11 +23,10 @@
     ],
     "rules": [
       { "clash_mode": "直连", "server": "直连解析" },
-      { "clash_mode": "全局", "server": "FAKEIP" },
-      { "query_type": [ "SVCB", "HTTPS" ], "action": "reject" },
+      { "clash_mode": "全局", "server": "代理解析" },
       { "rule_set": [ "adblocksingbox" ], "action": "reject" },
-      { "rule_set": "cn", "server": "直连解析" },
-      { "query_type": [ "A", "AAAA" ], "server": "FAKEIP", "rewrite_ttl": 1 }
+      { "rule_set": [ "cn" ], "server": "直连解析", "rewrite_ttl": 1 },
+      { "query_type": [ "A", "AAAA" ], "server": "FAKEIP" }
     ]
   },
   "route": {
@@ -35,9 +35,8 @@
     "auto_detect_interface": true,
     "default_domain_resolver": { "server": "直连解析" },
     "rules": [
-      { "port": 53, "action": "hijack-dns" },
-      { "rule_set": "telegramip", "outbound": "✈️ Telegram" },
       { "action": "sniff" },
+      { "port": 53, "action": "hijack-dns" },
       { "protocol": "dns", "action": "hijack-dns" },
       { "clash_mode": "直连", "outbound": "DIRECT" },
       { "clash_mode": "全局", "outbound": "GLOBAL" },
@@ -47,14 +46,14 @@
       { "rule_set": "games-cn", "outbound": "🎯 直连访问" },
       { "rule_set": "apple-cn", "outbound": "🎯 直连访问" },
       { "rule_set": "telegram", "outbound": "✈️ Telegram" },
+      { "rule_set": "telegramip", "outbound": "✈️ Telegram" },
       { "rule_set": "cloudflare", "outbound": "🪩 Cloudflare" },
       { "rule_set": "microsoft", "outbound": "🪟 Microsoft" },
       { "rule_set": "gfw", "outbound": "🍀 Google" },
       { "rule_set": "proxy", "outbound": "🍀 Google" },
       { "rule_set": "cn", "outbound": "🎯 直连访问" },
-      { "action": "resolve" },
-      { "ip_is_private": true, "outbound": "DIRECT" },
       { "rule_set": "privateip", "outbound": "DIRECT" },
+      { "action": "resolve" },
       { "rule_set": "cnip", "outbound": "🎯 直连访问" }
     ],
     "rule_set": [
