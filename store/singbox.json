@@ -25,7 +25,7 @@
       { "clash_mode": "直连", "server": "直连解析" },
       { "clash_mode": "全局", "server": "FAKEIP" },
       { "query_type": [ "SVCB", "HTTPS" ], "action": "reject" },
-      { "rule_set": [ "adblocksingbox", "adrules-singbox", "ads" ], "action": "reject" },
+      { "rule_set": [ "adblocksingbox" ], "action": "reject" },
       { "rule_set": "cn", "server": "直连解析" },
       { "query_type": [ "A", "AAAA" ], "server": "FAKEIP", "rewrite_ttl": 1 }
     ]
@@ -44,8 +44,6 @@
       { "clash_mode": "全局", "outbound": "GLOBAL" },
       { "rule_set": "private", "outbound": "DIRECT" },
       { "rule_set": "adblocksingbox", "action": "reject" },
-      { "rule_set": "adrules-singbox", "action": "reject" },
-      { "rule_set": "ads", "action": "reject" },
       { "rule_set": "games-cn", "outbound": "🎯 直连访问" },
       { "rule_set": "apple-cn", "outbound": "🎯 直连访问" },
       { "rule_set": "proxy", "outbound": "🚀 节点选择" },
@@ -66,8 +64,6 @@
       { "tag": "telegramip", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/telegramip.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/telegramip.srs" },
       { "tag": "proxy", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/proxy.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/proxy.srs" },
       { "tag": "gfw", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/gfw.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/gfw.srs" },
-      { "tag": "ads", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/ads.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/ads.srs" },
-      { "tag": "adrules-singbox", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/adrules-singbox.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/Cats-Team/AdRules/main/adrules-singbox.srs" },
       { "tag": "adblocksingbox", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/adblocksingbox.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/217heidai/adblockfilters/main/rules/adblocksingbox.srs" }
     ]
   },
@@ -75,7 +71,7 @@
     { "tag": "DIRECT", "type": "direct" },
     { "tag": "🚀 节点选择", "type": "selector", "outbounds": [ "♻️ 自动选择", "🖲️ 手动选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇺🇸 美国节点", "🇸🇬 新加坡节点", "🇺🇳 其它地区", "DIRECT" ] },
     { "tag": "🖲️ 手动选择", "type": "selector", "outbounds": [ "DIRECT" ] },
-    { "tag": "🎯 直连访问", "type": "urltest", "url": "https://connectivitycheck.android.com/generate_204", "interval": "10m", "outbounds": [ "DIRECT" ] },
+    { "tag": "🎯 直连访问", "type": "urltest", "url": "https://connectivitycheck.gstatic.com/generate_204", "interval": "10m", "outbounds": [ "DIRECT" ] },
     { "tag": "🇭🇰 香港节点", "type": "selector", "outbounds": [ "DIRECT" ] },
     { "tag": "🇹🇼 台湾节点", "type": "selector", "outbounds": [ "DIRECT" ] },
     { "tag": "🇯🇵 日本节点", "type": "selector", "outbounds": [ "DIRECT" ] },
