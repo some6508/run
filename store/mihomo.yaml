@@ -74,9 +74,7 @@ dns:
   - system
   nameserver:
   - https://dns.google/dns-query
-  - https://one.one.one.one/dns-query
   - https://cloudflare-dns.com/dns-query
-  - https://dns.cloudflare.com/dns-query
   - https://dns.bebasid.com/dns-query
   - https://dns.csaonline.de/dns-query
   - https://dns.twnic.tw/dns-query
