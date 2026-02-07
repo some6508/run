@@ -7,7 +7,7 @@
   "inbounds": [
     { "tag": "dns-in", "type": "direct", "listen": "0.0.0.0", "listen_port": 1053 },
     { "tag": "mixed-in", "type": "mixed", "listen": "0.0.0.0", "listen_port": 7890 },
-    { "tag": "tun-in", "type": "tun", "stack": "mixed", "auto_route": true, "address": [ "172.19.0.0/30", "fdfe:dcba:9876::1/126" ] }
+    { "tag": "tun-in", "type": "tun", "stack": "mixed", "auto_route": true, "strict_route": true, "exclude_package": [], "address": [ "172.19.0.0/30", "fdfe:dcba:9876::1/126" ], "platform": { "http_proxy": { "enabled": false, "server": "127.0.0.1", "server_port": 7890 }}}
   ],
   "dns": {
     "final": "代理解析",
@@ -24,9 +24,8 @@
     "rules": [
       { "clash_mode": "直连", "server": "直连解析" },
       { "clash_mode": "全局", "server": "代理解析" },
-      { "rule_set": [ "adblocksingbox" ], "action": "reject" },
-      { "rule_set": [ "cn" ], "server": "直连解析", "rewrite_ttl": 1 },
-      { "query_type": [ "A", "AAAA" ], "server": "FAKEIP" }
+      { "query_type": ["SVCB", "HTTPS"], "action": "reject" },
+      { "query_type": [ "A", "AAAA" ], "server": "FAKEIP", "rewrite_ttl": 1 }
     ]
   },
   "route": {
@@ -35,13 +34,13 @@
     "auto_detect_interface": true,
     "default_domain_resolver": { "server": "直连解析" },
     "rules": [
-      { "action": "sniff" },
       { "port": 53, "action": "hijack-dns" },
       { "protocol": "dns", "action": "hijack-dns" },
       { "clash_mode": "直连", "outbound": "DIRECT" },
       { "clash_mode": "全局", "outbound": "GLOBAL" },
+      { "rule_set": "privateip", "outbound": "DIRECT" },
       { "rule_set": "private", "outbound": "DIRECT" },
-      { "rule_set": "adblocksingbox", "action": "reject" },
+      { "rule_set": "adblocksingbox", "action": "reject", "method": "drop" },
       { "rule_set": "networktest", "outbound": "🎯 直连访问" },
       { "rule_set": "games-cn", "outbound": "🎯 直连访问" },
       { "rule_set": "apple-cn", "outbound": "🎯 直连访问" },
@@ -52,8 +51,7 @@
       { "rule_set": "gfw", "outbound": "🍀 Google" },
       { "rule_set": "proxy", "outbound": "🍀 Google" },
       { "rule_set": "cn", "outbound": "🎯 直连访问" },
-      { "rule_set": "privateip", "outbound": "DIRECT" },
-      { "action": "resolve" },
+      { "action": "resolve", "match_only": true },
       { "rule_set": "cnip", "outbound": "🎯 直连访问" }
     ],
     "rule_set": [
