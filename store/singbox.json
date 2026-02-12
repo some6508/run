@@ -1,7 +1,7 @@
 {
   "experimental": {
     "cache_file": { "enabled": true, "path": "./cache.db", "store_fakeip": false },
-    "clash_api": { "default_mode": "规则", "external_controller": "0.0.0.0:9090", "external_ui": "./ui", "external_ui_update_interval": "1d", "external_ui_download_url": "https://dl.ccaeo.xo.je/https://github.com/Zephyruso/zashboard/archive/refs/heads/gh-pages-no-fonts.zip" }
+    "clash_api": { "default_mode": "规则", "external_controller": "0.0.0.0:9090", "external_ui": "./ui", "external_ui_update_interval": "1d", "external_ui_download_url": "https://github.com/Zephyruso/zashboard/releases/latest/download/dist-no-fonts.zip" }
   },
   "log": { "disabled": false, "level": "error", "timestamp": true },
   "inbounds": [
@@ -55,20 +55,20 @@
       { "rule_set": "cnip", "outbound": "🎯 直连访问" }
     ],
     "rule_set": [
-      { "tag": "privateip", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/privateip.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/privateip.srs" },
-      { "tag": "private", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/private.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/private.srs" },
-      { "tag": "cnip", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/cnip.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/cnip.srs" },
-      { "tag": "cn", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/cn.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/cn.srs" },
-      { "tag": "apple-cn", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/apple-cn.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/apple-cn.srs" },
-      { "tag": "games-cn", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/games-cn.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/games-cn.srs" },
-      { "tag": "telegramip", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/telegramip.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/telegramip.srs" },
-      { "tag": "gfw", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/gfw.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/gfw.srs" },
-      { "tag": "proxy", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/proxy.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/proxy.srs" },
-      { "tag": "cloudflare", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/cloudflare.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cloudflare.srs" },
-      { "tag": "microsoft", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/microsoft.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/microsoft.srs" },
-      { "tag": "telegram", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/telegram.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/telegram.srs" },
-      { "tag": "networktest", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/networktest.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/DustinWin/ruleset_geodata/sing-box-ruleset/networktest.srs" },
-      { "tag": "adblocksingbox", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/adblocksingbox.srs", "url": "https://dl.ccaeo.xo.je/https://raw.githubusercontent.com/217heidai/adblockfilters/main/rules/adblocksingbox.srs" }
+      { "tag": "privateip", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/privateip.srs", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/privateip.srs" },
+      { "tag": "private", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/private.srs", "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/private.srs" },
+      { "tag": "cnip", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/cnip.srs", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cnip.srs" },
+      { "tag": "cn", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/cn.srs", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cn.srs" },
+      { "tag": "apple-cn", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/apple-cn.srs", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/apple-cn.srs" },
+      { "tag": "games-cn", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/games-cn.srs", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/games-cn.srs" },
+      { "tag": "telegramip", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/telegramip.srs", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/telegramip.srs" },
+      { "tag": "gfw", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/gfw.srs", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/gfw.srs" },
+      { "tag": "proxy", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/proxy.srs", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/proxy.srs" },
+      { "tag": "cloudflare", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/cloudflare.srs", "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cloudflare.srs" },
+      { "tag": "microsoft", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/microsoft.srs", "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/microsoft.srs" },
+      { "tag": "telegram", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/telegram.srs", "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/telegram.srs" },
+      { "tag": "networktest", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/networktest.srs", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/networktest.srs" },
+      { "tag": "adblocksingbox", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/adblocksingbox.srs", "url": "https://cdn.jsdelivr.net/gh/217heidai/adblockfilters@main/rules/adblocksingbox.srs" }
     ]
   },
   "outbounds": [
