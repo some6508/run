@@ -55,7 +55,7 @@ dns:
   enable: true
   listen: 0.0.0.0:1053
   ipv6: false
-  prefer-h3: false
+  prefer-h3: true
   use-hosts: true
   use-system-hosts: true
   respect-rules: true
@@ -78,6 +78,7 @@ dns:
   - https://dns.bebasid.com/dns-query
   - https://dns.csaonline.de/dns-query
   - https://dns.twnic.tw/dns-query
+  - https://dns.quad9.net/dns-query
   - https://dot.sb/dns-query
   - https://dns.adguard.com/dns-query
   - https://doh.opendns.com/dns-query
@@ -108,7 +109,7 @@ LoadBalance: &LoadBalance {type: load-balance, strategy: consistent-hashing, <<:
 
 proxy-groups:
   - name: 🚀 节点选择
-    type: select
+    输入: select
     icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/All.svg
     proxies: [
       ♻️ 自动选择, ☁️ 故障转移, 🔮 负载均衡, 🖲️ 手动选择,
