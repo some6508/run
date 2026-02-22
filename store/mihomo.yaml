@@ -109,7 +109,7 @@ LoadBalance: &LoadBalance {type: load-balance, strategy: consistent-hashing, <<:
 
 proxy-groups:
   - name: 🚀 节点选择
-    输入: select
+    type: select
     icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/All.svg
     proxies: [
       ♻️ 自动选择, ☁️ 故障转移, 🔮 负载均衡, 🖲️ 手动选择,
