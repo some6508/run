@@ -10,7 +10,6 @@ external-controller: 0.0.0.0:9090
 external-ui-url: https://github.com/Zephyruso/zashboard/releases/latest/download/dist-no-fonts.zip
 external-ui: ./ui
 secret: ""
-global-client-fingerprint: chrome
 geodata-mode: false
 geo-auto-update: true
 geo-update-interval: 24
@@ -296,6 +295,7 @@ rule-providers:
 rules:
   - RULE-SET,privateip,DIRECT,no-resolve
   - RULE-SET,private,DIRECT
+  - AND,((NETWORK,UDP),(DST-PORT,443)),REJECT
   - RULE-SET,adblockmihomo,🚫 拦截访问
   - RULE-SET,networktest,🎯 直连访问
   - RULE-SET,games-cn,🎯 直连访问
@@ -310,3 +310,4 @@ rules:
   - RULE-SET,cn,🎯 直连访问
   - RULE-SET,cnip,🎯 直连访问,no-resolve
   - MATCH,🐟 漏网之鱼
+  - NETWORK,udp,REJECT
