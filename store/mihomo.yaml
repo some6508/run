@@ -21,7 +21,7 @@ geox-url:
 
 profile:
   store-selected: false
-  store-fake-ip: false
+  store-fake-ip: true
 
 sniffer:
   enable: true
