@@ -100,6 +100,8 @@ p: &p {url: 'https://connectivitycheck.gstatic.com/generate_204', interval: 600,
 pg_Proxy: &pg_Proxy {type: select, proxies: [
   🚀 节点选择, ♻️ 自动选择, ☁️ 故障转移, 🔮 负载均衡, 🖲️ 手动选择,
   🇭🇰 香港节点-♻️ 自动选择, 🇹🇼 台湾节点-♻️ 自动选择, 🇯🇵 日本节点-♻️ 自动选择, 🇺🇸 美国节点-♻️ 自动选择, 🇸🇬 新加坡节点-♻️ 自动选择, 🇺🇳 其它节点-♻️ 自动选择,
+  🇭🇰 香港节点-☁️ 故障转移, 🇹🇼 台湾节点-☁️ 故障转移, 🇯🇵 日本节点-☁️ 故障转移, 🇺🇸 美国节点-☁️ 故障转移, 🇸🇬 新加坡节点-☁️ 故障转移, 🇺🇳 其它节点-☁️ 故障转移,
+  🇭🇰 香港节点-🔮 负载均衡, 🇹🇼 台湾节点-🔮 负载均衡, 🇯🇵 日本节点-🔮 负载均衡, 🇺🇸 美国节点-🔮 负载均衡, 🇸🇬 新加坡节点-🔮 负载均衡, 🇺🇳 其它节点-🔮 负载均衡,
   🎯 直连访问, 🚫 拦截访问
 ]}
 
@@ -115,6 +117,8 @@ proxy-groups:
     proxies: [
       ♻️ 自动选择, ☁️ 故障转移, 🔮 负载均衡, 🖲️ 手动选择,
       🇭🇰 香港节点-♻️ 自动选择, 🇹🇼 台湾节点-♻️ 自动选择, 🇯🇵 日本节点-♻️ 自动选择, 🇺🇸 美国节点-♻️ 自动选择, 🇸🇬 新加坡节点-♻️ 自动选择, 🇺🇳 其它节点-♻️ 自动选择,
+  🇭🇰 香港节点-☁️ 故障转移, 🇹🇼 台湾节点-☁️ 故障转移, 🇯🇵 日本节点-☁️ 故障转移, 🇺🇸 美国节点-☁️ 故障转移, 🇸🇬 新加坡节点-☁️ 故障转移, 🇺🇳 其它节点-☁️ 故障转移,
+  🇭🇰 香港节点-🔮 负载均衡, 🇹🇼 台湾节点-🔮 负载均衡, 🇯🇵 日本节点-🔮 负载均衡, 🇺🇸 美国节点-🔮 负载均衡, 🇸🇬 新加坡节点-🔮 负载均衡, 🇺🇳 其它节点-🔮 负载均衡,
       🎯 直连访问
     ]
 
@@ -150,6 +154,10 @@ proxy-groups:
     icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Telegram.svg
     <<: *pg_Proxy
 
+  - name: 🐦 Twitter
+    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Twitter.svg
+    <<: *pg_Proxy
+
   - name: 🎵 TikTok
     icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/TikTok.svg
     <<: *pg_Proxy
@@ -158,31 +166,79 @@ proxy-groups:
     icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/HK.svg
     filter: *FilterHK
     <<: *UrlTest
+  - name: 🇭🇰 香港节点-☁️ 故障转移
+    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/HK.svg
+    filter: *FilterHK
+    <<: *FallBack
+  - name: 🇭🇰 香港节点-🔮 负载均衡
+    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/HK.svg
+    filter: *FilterHK
+    <<: *LoadBalance
 
   - name: 🇹🇼 台湾节点-♻️ 自动选择
     icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/CN.svg
     filter: *FilterTW
     <<: *UrlTest
+  - name: 🇹🇼 台湾节点-☁️ 故障转移
+    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/CN.svg
+    filter: *FilterTW
+    <<: *FallBack
+  - name: 🇹🇼 台湾节点-🔮 负载均衡
+    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/CN.svg
+    filter: *FilterTW
+    <<: *LoadBalance
 
   - name: 🇯🇵 日本节点-♻️ 自动选择
     icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/JP.svg
     filter: *FilterJP
     <<: *UrlTest
+  - name: 🇯🇵 日本节点-☁️ 故障转移
+    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/JP.svg
+    filter: *FilterJP
+    <<: *FallBack
+  - name: 🇯🇵 日本节点-🔮 负载均衡
+    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/JP.svg
+    filter: *FilterJP
+    <<: *LoadBalance
 
   - name: 🇺🇸 美国节点-♻️ 自动选择
     icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/US.svg
     filter: *FilterUS
     <<: *UrlTest
+  - name: 🇺🇸 美国节点-☁️ 故障转移
+    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/US.svg
+    filter: *FilterUS
+    <<: *FallBack
+  - name: 🇺🇸 美国节点-🔮 负载均衡
+    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/US.svg
+    filter: *FilterUS
+    <<: *LoadBalance
 
   - name: 🇸🇬 新加坡节点-♻️ 自动选择
     icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Singapore.svg
     filter: *FilterSG
     <<: *UrlTest
+  - name: 🇸🇬 新加坡节点-☁️ 故障转移
+    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Singapore.svg
+    filter: *FilterSG
+    <<: *FallBack
+  - name: 🇸🇬 新加坡节点-🔮 负载均衡
+    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Singapore.svg
+    filter: *FilterSG
+    <<: *LoadBalance
 
   - name: 🇺🇳 其它节点-♻️ 自动选择
     icon: https://cdn.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/un.svg
     exclude-filter: *FilterUN
     <<: *UrlTest
+  - name: 🇺🇳 其它节点-☁️ 故障转移
+    icon: https://cdn.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/un.svg
+    exclude-filter: *FilterUN
+    <<: *LoadBalance
+  - name: 🇺🇳 其它节点-🔮 负载均衡
+    icon: https://cdn.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/un.svg
+    exclude-filter: *FilterUN
+    <<: *LoadBalance
 
   - name: 🎯 直连访问
     type: url-test
@@ -264,6 +320,11 @@ rule-providers:
     path: ./ruleset/tiktok.mrs
     url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/tiktok.mrs
 
+  twitter:
+    <<: *RuleSet_domain_mrs
+    path: ./ruleset/twitter.mrs
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/twitter.mrs
+
   proxy:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/proxy.mrs
@@ -298,11 +359,13 @@ rules:
   - RULE-SET,privateip,DIRECT,no-resolve
   - RULE-SET,private,DIRECT
   - RULE-SET,adblockmihomo,🚫 拦截访问
+  - DOMAIN,cdn.jsdelivr.net,🎯 直连访问
   - RULE-SET,networktest,🎯 直连访问
   - RULE-SET,games-cn,🎯 直连访问
   - RULE-SET,apple-cn,🎯 直连访问
   - RULE-SET,telegram,✈️ Telegram
   - RULE-SET,telegramip,✈️ Telegram,no-resolve
+  - RULE-SET,twitter,🐦 Twitter
   - RULE-SET,tiktok,🎵 TikTok
   - RULE-SET,cloudflare,🪩 Cloudflare
   - RULE-SET,microsoft,🪟 Microsoft
