@@ -280,6 +280,11 @@ rule-providers:
     path: ./ruleset/telegramip.mrs
     url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/telegramip.mrs
 
+  twitterip:
+    <<: *RuleSet_ipcidr_mrs
+    path: ./ruleset/twitterip.mrs
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/twitter.mrs
+
   cnip:
     <<: *RuleSet_ipcidr_mrs
     path: ./ruleset/cnip.mrs
@@ -366,6 +371,7 @@ rules:
   - RULE-SET,telegram,✈️ Telegram
   - RULE-SET,telegramip,✈️ Telegram,no-resolve
   - RULE-SET,twitter,🐦 Twitter
+  - RULE-SET,twitterip,🐦 Twitter,no-resolve
   - RULE-SET,tiktok,🎵 TikTok
   - RULE-SET,cloudflare,🪩 Cloudflare
   - RULE-SET,microsoft,🪟 Microsoft
