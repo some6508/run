@@ -315,11 +315,6 @@ rule-providers:
     path: ./ruleset/cloudflare.mrs
     url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/cloudflare.mrs
 
-  googlefcm:
-    <<: *RuleSet_domain_mrs
-    path: ./ruleset/googlefcm.mrs
-    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/googlefcm.mrs
-  
   gfw:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/gfw.mrs
@@ -370,7 +365,6 @@ rules:
   - RULE-SET,private,DIRECT
   - RULE-SET,adblockmihomo,🚫 拦截访问
   - DOMAIN,cdn.jsdelivr.net,🎯 直连访问
-  - RULE-SET,googlefcm,🎯 直连访问
   - RULE-SET,networktest,🎯 直连访问
   - RULE-SET,games-cn,🎯 直连访问
   - RULE-SET,apple-cn,🎯 直连访问
