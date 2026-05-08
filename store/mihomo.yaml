@@ -320,6 +320,11 @@ rule-providers:
     path: ./ruleset/gfw.mrs
     url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/gfw.mrs
 
+  googlefcm:
+    <<: *RuleSet_domain_mrs
+    path: ./ruleset/googlefcm.mrs
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/googlefcm.mrs
+
   tiktok:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/tiktok.mrs
@@ -368,6 +373,7 @@ rules:
   - RULE-SET,networktest,🎯 直连访问
   - RULE-SET,games-cn,🎯 直连访问
   - RULE-SET,apple-cn,🎯 直连访问
+  - RULE-SET,googlefcm,🎯 直连访问
   - RULE-SET,telegram,✈️ Telegram
   - RULE-SET,telegramip,✈️ Telegram,no-resolve
   - RULE-SET,twitter,🐦 Twitter
