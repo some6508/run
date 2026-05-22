@@ -6,6 +6,9 @@ allow-lan: true
 bind-address: '*'
 unified-delay: true
 tcp-concurrent: true
+keep-alive-idle: 100
+keep-alive-interval: 15
+disable-keep-alive: false
 external-controller: 0.0.0.0:9090
 external-ui-url: https://github.com/Zephyruso/zashboard/releases/latest/download/dist-no-fonts.zip
 external-ui: ./ui
