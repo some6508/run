@@ -6,7 +6,7 @@ allow-lan: true
 bind-address: '*'
 unified-delay: true
 tcp-concurrent: true
-keep-alive-idle: 100
+keep-alive-idle: 600
 keep-alive-interval: 15
 disable-keep-alive: false
 external-controller: 0.0.0.0:9090
@@ -28,29 +28,26 @@ profile:
 
 sniffer:
   enable: true
-  parse-pure-ip: true
-  force-dns-mapping: true
-  override-destination: true
   sniff:
     HTTP:
       ports: [80, 8080-8880]
+      override-destination: true
     TLS:
-      ports: [443, 5228, 8443]
+      ports: [443, 8443]
     QUIC:
       ports: [443, 8443]
-  force-domain:
-  - +.v2ex.com
   skip-domain:
   - Mijia Cloud
+  - +.push.apple.com
 
 tun:
-  enable: true
+  enable: false
   stack: mixed
   dns-hijack:
   - any:53
   - tcp://any:53
-  udp-timeout: 300
   auto-route: true
+  auto-redirect: true
   auto-detect-interface: true
 
 dns_Direct: &dns_Direct [https://doh.pub/dns-query, https://dns.alidns.com/dns-query]
@@ -59,14 +56,16 @@ dns:
   enable: true
   listen: 0.0.0.0:1053
   ipv6: false
-  prefer-h3: true
-  use-hosts: true
-  use-system-hosts: true
-  respect-rules: true
   enhanced-mode: fake-ip
-  fake-ip-range: 172.20.0.1/16
+  fake-ip-range: 192.18.0.1/16
   fake-ip-filter:
   - rule-set:fakeip-filter
+  - rule-set:private
+  - rule-set:cn
+  - +.miwifi.com
+  - +.docker.io
+  - +.market.xiaomi.com
+  - +.push.apple.com
   default-nameserver:
   - 114.114.114.114
   - 180.184.1.1
@@ -99,7 +98,7 @@ FilterUS: &FilterUS '(?i)(美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|
 FilterSG: &FilterSG '(?i)(新加坡|坡|狮城|sg|singapore|🇸🇬)'
 FilterUN: &FilterUN '(?i)(🇭🇰|🇹🇼|🇯🇵|🇺🇸|🇸🇬|🇨🇳|🇰🇷|港|hk|hongkong|台|新北|彰化|tw|taiwan|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|jp|japan|新加坡|坡|狮城|sg|singapore|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|us|united states)'
 
-p: &p {url: 'https://connectivitycheck.gstatic.com/generate_204', interval: 600, tolerance: 50, timeout: 2000, max-failed-times: 3, lazy: true, include-all: true}
+p: &p {url: 'https://www.google.com/generate_204', interval: 600, tolerance: 50, timeout: 2000, max-failed-times: 3, lazy: true, include-all: true}
 pg_Proxy: &pg_Proxy {type: select, proxies: [
   🚀 节点选择, ♻️ 自动选择, ☁️ 故障转移, 🔮 负载均衡, 🖲️ 手动选择,
   🇭🇰 香港节点-♻️ 自动选择, 🇹🇼 台湾节点-♻️ 自动选择, 🇯🇵 日本节点-♻️ 自动选择, 🇺🇸 美国节点-♻️ 自动选择, 🇸🇬 新加坡节点-♻️ 自动选择, 🇺🇳 其它节点-♻️ 自动选择,
@@ -371,6 +370,7 @@ rule-providers:
 rules:
   - RULE-SET,privateip,DIRECT,no-resolve
   - RULE-SET,private,DIRECT
+  - AND,((DST-PORT,443),(NETWORK,UDP),(NOT,((GEOIP,CN)))),REJECT
   - RULE-SET,adblockmihomo,🚫 拦截访问
   - DOMAIN,cdn.jsdelivr.net,🎯 直连访问
   - RULE-SET,networktest,🎯 直连访问
