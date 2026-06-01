@@ -60,10 +60,6 @@ dns:
   fake-ip-range: 192.18.0.1/16
   fake-ip-filter:
   - rule-set:fakeip-filter
-  - rule-set:private
-  - rule-set:cn
-  - +.miwifi.com
-  - +.docker.io
   - +.market.xiaomi.com
   - +.push.apple.com
   default-nameserver:
