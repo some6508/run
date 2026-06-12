@@ -3,10 +3,11 @@
     "cache_file": { "enabled": true, "path": "./cache.db", "store_fakeip": false },
     "clash_api": { "default_mode": "规则", "external_controller": "0.0.0.0:9090", "external_ui": "./ui", "external_ui_update_interval": "1d", "external_ui_download_url": "https://github.com/Zephyruso/zashboard/releases/latest/download/dist-no-fonts.zip" }
   },
+  "http_clients": [ { "tag": "代理下载", "version": 2, "detour": "🚀 节点选择", "stream_receive_window": 0, "connection_receive_window": 0 } ],
   "log": { "disabled": false, "level": "error", "timestamp": true },
   "inbounds": [
     { "tag": "dns-in", "type": "direct", "listen": "0.0.0.0", "listen_port": 1053 },
-    { "tag": "mixed-in", "type": "mixed", "listen": "0.0.0.0", "listen_port": 7890 },
+    { "tag": "mixed-in", "type": "mixed", "listen": "0.0.0.0", "listen_port": 7890, "set_system_proxy": false },
     { "tag": "tun-in", "type": "tun", "stack": "mixed", "auto_route": true, "exclude_package": [], "address": [ "172.18.0.0/30", "fdfe:dcba:9876::1/126" ], "platform": { "http_proxy": { "enabled": false, "server": "127.0.0.1", "server_port": 7890 }}}
   ],
   "dns": {
