@@ -7,12 +7,11 @@
   "inbounds": [
     { "tag": "dns-in", "type": "direct", "listen": "0.0.0.0", "listen_port": 1053 },
     { "tag": "mixed-in", "type": "mixed", "listen": "0.0.0.0", "listen_port": 7890 },
-    { "tag": "tun-in", "type": "tun", "stack": "mixed", "auto_route": true, "strict_route": true, "exclude_package": [], "address": [ "172.19.0.0/30", "fdfe:dcba:9876::1/126" ], "platform": { "http_proxy": { "enabled": false, "server": "127.0.0.1", "server_port": 7890 }}}
+    { "tag": "tun-in", "type": "tun", "stack": "mixed", "auto_route": true, "exclude_package": [], "address": [ "172.18.0.0/30", "fdfe:dcba:9876::1/126" ], "platform": { "http_proxy": { "enabled": false, "server": "127.0.0.1", "server_port": 7890 }}}
   ],
   "dns": {
     "final": "代理解析",
     "strategy": "prefer_ipv4",
-    "independent_cache": true,
     "reverse_mapping": true,
     "servers": [
       { "tag": "本地解析", "type": "local" },
@@ -23,8 +22,9 @@
     ],
     "rules": [
       { "clash_mode": "直连", "server": "直连解析" },
-      { "clash_mode": "全局", "server": "代理解析" },
-      { "query_type": ["SVCB", "HTTPS"], "action": "reject" },
+      { "clash_mode": "全局", "server": "FAKEIP" },
+      { "rule_set": [ "adblocksingbox" ],"action": "reject"},
+      { "query_type": [ "HTTPS" ], "action": "reject" },
       { "query_type": [ "A", "AAAA" ], "server": "FAKEIP", "rewrite_ttl": 1 }
     ]
   },
@@ -34,13 +34,14 @@
     "auto_detect_interface": true,
     "default_domain_resolver": { "server": "直连解析" },
     "rules": [
+      { "action": "sniff","sniffer": [ "http", "tls", "quic", "dns" ] },
       { "port": 53, "action": "hijack-dns" },
       { "protocol": "dns", "action": "hijack-dns" },
       { "clash_mode": "直连", "outbound": "DIRECT" },
-      { "clash_mode": "全局", "outbound": "GLOBAL" },
+      { "clash_mode": "全局", "outbound": "🚀 节点选择" },
       { "rule_set": "privateip", "outbound": "DIRECT" },
       { "rule_set": "private", "outbound": "DIRECT" },
-      { "rule_set": "adblocksingbox", "action": "reject", "method": "drop" },
+      { "rule_set": "adblocksingbox", "action": "reject" },
       { "rule_set": "networktest", "outbound": "🎯 直连访问" },
       { "rule_set": "games-cn", "outbound": "🎯 直连访问" },
       { "rule_set": "apple-cn", "outbound": "🎯 直连访问" },
@@ -51,7 +52,6 @@
       { "rule_set": "gfw", "outbound": "🍀 Google" },
       { "rule_set": "proxy", "outbound": "🍀 Google" },
       { "rule_set": "cn", "outbound": "🎯 直连访问" },
-      { "action": "resolve", "match_only": true },
       { "rule_set": "cnip", "outbound": "🎯 直连访问" }
     ],
     "rule_set": [
