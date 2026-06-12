@@ -90,12 +90,12 @@
     { "tag": "🐦 Twitter", "type": "selector", "outbounds": [ "🚀 节点选择", "♻️ 自动选择", "🖲️ 手动选择", "🇭🇰 香港节点-♻️ 自动选择", "🇹🇼 台湾节点-♻️ 自动选择", "🇯🇵 日本节点-♻️ 自动选择", "🇺🇸 美国节点-♻️ 自动选择", "🇸🇬 新加坡节点-♻️ 自动选择", "🇺🇳 其它地区-♻️ 自动选择", "🎯 直连访问" ] },
     { "tag": "🎵 TikTok", "type": "selector", "outbounds": [ "🚀 节点选择", "♻️ 自动选择", "🖲️ 手动选择", "🇭🇰 香港节点-♻️ 自动选择", "🇹🇼 台湾节点-♻️ 自动选择", "🇯🇵 日本节点-♻️ 自动选择", "🇺🇸 美国节点-♻️ 自动选择", "🇸🇬 新加坡节点-♻️ 自动选择", "🇺🇳 其它地区-♻️ 自动选择", "🎯 直连访问" ] },
     { "tag": "🎯 直连访问", "type": "urltest", "url": "https://connectivitycheck.platform.hicloud.com/generate_204", "interval": "10m", "outbounds": [ "DIRECT" ] },
-    { "tag": "♻️ 自动选择", "type": "urltest", "url": "https://connectivitycheck.gstatic.com/generate_204", "interval": "10m", "tolerance": 50, "outbounds": [] },
-    { "tag": "🇭🇰 香港节点-♻️ 自动选择", "type": "urltest", "url": "https://connectivitycheck.gstatic.com/generate_204", "interval": "10m", "outbounds": [] },
-    { "tag": "🇹🇼 台湾节点-♻️ 自动选择", "type": "urltest", "url": "https://connectivitycheck.gstatic.com/generate_204", "interval": "10m", "outbounds": [] },
-    { "tag": "🇯🇵 日本节点-♻️ 自动选择", "type": "urltest", "url": "https://connectivitycheck.gstatic.com/generate_204", "interval": "10m", "outbounds": [] },
-    { "tag": "🇺🇸 美国节点-♻️ 自动选择", "type": "urltest", "url": "https://connectivitycheck.gstatic.com/generate_204", "interval": "10m", "outbounds": [] },
-    { "tag": "🇸🇬 新加坡节点-♻️ 自动选择", "type": "urltest", "url": "https://connectivitycheck.gstatic.com/generate_204", "interval": "10m", "outbounds": [] },
-    { "tag": "🇺🇳 其它地区-♻️ 自动选择", "type": "urltest", "url": "https://connectivitycheck.gstatic.com/generate_204", "interval": "10m", "outbounds": [] }
+    { "tag": "♻️ 自动选择", "type": "urltest", "url": "https://www.google.com/generate_204", "interval": "10m", "tolerance": 50, "outbounds": [] },
+    { "tag": "🇭🇰 香港节点-♻️ 自动选择", "type": "urltest", "url": "https://www.google.com/generate_204", "interval": "10m", "outbounds": [] },
+    { "tag": "🇹🇼 台湾节点-♻️ 自动选择", "type": "urltest", "url": "https://www.google.com/generate_204", "interval": "10m", "outbounds": [] },
+    { "tag": "🇯🇵 日本节点-♻️ 自动选择", "type": "urltest", "url": "https://www.google.com/generate_204", "interval": "10m", "outbounds": [] },
+    { "tag": "🇺🇸 美国节点-♻️ 自动选择", "type": "urltest", "url": "https://www.google.com/generate_204", "interval": "10m", "outbounds": [] },
+    { "tag": "🇸🇬 新加坡节点-♻️ 自动选择", "type": "urltest", "url": "https://www.google.com/generate_204", "interval": "10m", "outbounds": [] },
+    { "tag": "🇺🇳 其它地区-♻️ 自动选择", "type": "urltest", "url": "https://www.google.com/generate_204", "interval": "10m", "outbounds": [] }
   ]
 }
