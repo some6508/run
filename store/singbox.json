@@ -48,6 +48,9 @@
       { "rule_set": "apple-cn", "outbound": "🎯 直连访问" },
       { "rule_set": "telegram", "outbound": "✈️ Telegram" },
       { "rule_set": "telegramip", "outbound": "✈️ Telegram" },
+      { "rule_set": "twitter", "outbound": "🐦 Twitter" },
+      { "rule_set": "twitterip", "outbound": "🐦 Twitter" },
+      { "rule_set": "tiktok", "outbound": "🎵 TikTok" },
       { "rule_set": "cloudflare", "outbound": "🪩 Cloudflare" },
       { "rule_set": "microsoft", "outbound": "🪟 Microsoft" },
       { "rule_set": "gfw", "outbound": "🍀 Google" },
@@ -56,18 +59,21 @@
       { "rule_set": "cnip", "outbound": "🎯 直连访问" }
     ],
     "rule_set": [
-      { "tag": "privateip", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/privateip.srs", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/privateip.srs" },
       { "tag": "private", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/private.srs", "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/private.srs" },
-      { "tag": "cnip", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/cnip.srs", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cnip.srs" },
+      { "tag": "privateip", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/privateip.srs", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/privateip.srs" },
       { "tag": "cn", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/cn.srs", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cn.srs" },
+      { "tag": "cnip", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/cnip.srs", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cnip.srs" },
       { "tag": "apple-cn", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/apple-cn.srs", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/apple-cn.srs" },
       { "tag": "games-cn", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/games-cn.srs", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/games-cn.srs" },
-      { "tag": "telegramip", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/telegramip.srs", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/telegramip.srs" },
       { "tag": "gfw", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/gfw.srs", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/gfw.srs" },
       { "tag": "proxy", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/proxy.srs", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/proxy.srs" },
       { "tag": "cloudflare", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/cloudflare.srs", "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/cloudflare.srs" },
       { "tag": "microsoft", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/microsoft.srs", "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/microsoft.srs" },
       { "tag": "telegram", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/telegram.srs", "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/telegram.srs" },
+      { "tag": "telegramip", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/telegramip.srs", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/telegramip.srs" },
+      { "tag": "twitter", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/twitter.srs", "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/twitter.srs" },
+      { "tag": "twitterip", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/twitterip.srs", "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/twitter.srs" },
+      { "tag": "tiktok", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/tiktok.srs", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/tiktok.srs" },
       { "tag": "networktest", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/networktest.srs", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/networktest.srs" },
       { "tag": "adblocksingbox", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/adblocksingbox.srs", "url": "https://cdn.jsdelivr.net/gh/217heidai/adblockfilters@main/rules/adblocksingbox.srs" }
     ]
@@ -81,6 +87,8 @@
     { "tag": "🪩 Cloudflare", "type": "selector", "outbounds": [ "🚀 节点选择", "♻️ 自动选择", "🖲️ 手动选择", "🇭🇰 香港节点-♻️ 自动选择", "🇹🇼 台湾节点-♻️ 自动选择", "🇯🇵 日本节点-♻️ 自动选择", "🇺🇸 美国节点-♻️ 自动选择", "🇸🇬 新加坡节点-♻️ 自动选择", "🇺🇳 其它地区-♻️ 自动选择", "🎯 直连访问" ] },
     { "tag": "🪟 Microsoft", "type": "selector", "outbounds": [ "🚀 节点选择", "♻️ 自动选择", "🖲️ 手动选择", "🇭🇰 香港节点-♻️ 自动选择", "🇹🇼 台湾节点-♻️ 自动选择", "🇯🇵 日本节点-♻️ 自动选择", "🇺🇸 美国节点-♻️ 自动选择", "🇸🇬 新加坡节点-♻️ 自动选择", "🇺🇳 其它地区-♻️ 自动选择", "🎯 直连访问" ] },
     { "tag": "✈️ Telegram", "type": "selector", "outbounds": [ "🚀 节点选择", "♻️ 自动选择", "🖲️ 手动选择", "🇭🇰 香港节点-♻️ 自动选择", "🇹🇼 台湾节点-♻️ 自动选择", "🇯🇵 日本节点-♻️ 自动选择", "🇺🇸 美国节点-♻️ 自动选择", "🇸🇬 新加坡节点-♻️ 自动选择", "🇺🇳 其它地区-♻️ 自动选择", "🎯 直连访问" ] },
+    { "tag": "🐦 Twitter", "type": "selector", "outbounds": [ "🚀 节点选择", "♻️ 自动选择", "🖲️ 手动选择", "🇭🇰 香港节点-♻️ 自动选择", "🇹🇼 台湾节点-♻️ 自动选择", "🇯🇵 日本节点-♻️ 自动选择", "🇺🇸 美国节点-♻️ 自动选择", "🇸🇬 新加坡节点-♻️ 自动选择", "🇺🇳 其它地区-♻️ 自动选择", "🎯 直连访问" ] },
+    { "tag": "🎵 TikTok", "type": "selector", "outbounds": [ "🚀 节点选择", "♻️ 自动选择", "🖲️ 手动选择", "🇭🇰 香港节点-♻️ 自动选择", "🇹🇼 台湾节点-♻️ 自动选择", "🇯🇵 日本节点-♻️ 自动选择", "🇺🇸 美国节点-♻️ 自动选择", "🇸🇬 新加坡节点-♻️ 自动选择", "🇺🇳 其它地区-♻️ 自动选择", "🎯 直连访问" ] },
     { "tag": "🎯 直连访问", "type": "urltest", "url": "https://connectivitycheck.platform.hicloud.com/generate_204", "interval": "10m", "outbounds": [ "DIRECT" ] },
     { "tag": "♻️ 自动选择", "type": "urltest", "url": "https://connectivitycheck.gstatic.com/generate_204", "interval": "10m", "tolerance": 50, "outbounds": [] },
     { "tag": "🇭🇰 香港节点-♻️ 自动选择", "type": "urltest", "url": "https://connectivitycheck.gstatic.com/generate_204", "interval": "10m", "outbounds": [] },
@@ -88,7 +96,6 @@
     { "tag": "🇯🇵 日本节点-♻️ 自动选择", "type": "urltest", "url": "https://connectivitycheck.gstatic.com/generate_204", "interval": "10m", "outbounds": [] },
     { "tag": "🇺🇸 美国节点-♻️ 自动选择", "type": "urltest", "url": "https://connectivitycheck.gstatic.com/generate_204", "interval": "10m", "outbounds": [] },
     { "tag": "🇸🇬 新加坡节点-♻️ 自动选择", "type": "urltest", "url": "https://connectivitycheck.gstatic.com/generate_204", "interval": "10m", "outbounds": [] },
-    { "tag": "🇺🇳 其它地区-♻️ 自动选择", "type": "urltest", "url": "https://connectivitycheck.gstatic.com/generate_204", "interval": "10m", "outbounds": [] },
-    { "tag": "GLOBAL", "type": "selector", "default": "🎯 直连访问", "outbounds": [ "🚀 节点选择", "♻️ 自动选择", "🖲️ 手动选择", "🎯 直连访问", "🐟 漏网之鱼", "🍀 Google", "🪩 Cloudflare", "🪟 Microsoft", "✈️ Telegram", "🇭🇰 香港节点-♻️ 自动选择", "🇹🇼 台湾节点-♻️ 自动选择", "🇯🇵 日本节点-♻️ 自动选择", "🇺🇸 美国节点-♻️ 自动选择", "🇸🇬 新加坡节点-♻️ 自动选择", "🇺🇳 其它地区-♻️ 自动选择" ] }
+    { "tag": "🇺🇳 其它地区-♻️ 自动选择", "type": "urltest", "url": "https://connectivitycheck.gstatic.com/generate_204", "interval": "10m", "outbounds": [] }
   ]
 }
