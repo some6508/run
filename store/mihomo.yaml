@@ -49,6 +49,7 @@ tun:
   auto-route: true
   auto-redirect: true
   auto-detect-interface: true
+  inet6-address: fdfe:dcba:9876::1/126
 
 dns_Direct: &dns_Direct [https://doh.pub/dns-query, https://dns.alidns.com/dns-query]
 
@@ -58,6 +59,7 @@ dns:
   ipv6: false
   enhanced-mode: fake-ip
   fake-ip-range: 192.18.0.1/16
+  fake-ip-range6: fdfe:dcba:9876::1/64
   fake-ip-filter:
   - rule-set:fakeip-filter
   - +.market.xiaomi.com
