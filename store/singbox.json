@@ -8,7 +8,7 @@
   "inbounds": [
     { "tag": "dns-in", "type": "direct", "listen": "0.0.0.0", "listen_port": 1053 },
     { "tag": "mixed-in", "type": "mixed", "listen": "0.0.0.0", "listen_port": 7890, "set_system_proxy": false },
-    { "tag": "tun-in", "type": "tun", "stack": "mixed", "auto_route": true, "exclude_package": [], "address": [ "172.18.0.0/30" ], "platform": { "http_proxy": { "enabled": false, "server": "127.0.0.1", "server_port": 7890 }}}
+    { "tag": "tun-in", "type": "tun", "stack": "mixed", "auto_route": true, "exclude_package": [], "address": [ "172.18.0.0/30", "fdfe:dcba:9876::0/126" ], "platform": { "http_proxy": { "enabled": false, "server": "127.0.0.1", "server_port": 7890 }}}
   ],
   "dns": {
     "final": "代理解析",
@@ -24,6 +24,7 @@
     "rules": [
       { "clash_mode": "直连", "server": "直连解析" },
       { "clash_mode": "全局", "server": "FAKEIP" },
+      { "ip_version": 6, "action": "reject" },
       { "rule_set": [ "adblocksingbox" ],"action": "reject"},
       { "query_type": [ "SVCB", "HTTPS", "PTR" ], "action": "reject" },
       { "query_type": [ "A", "AAAA" ], "server": "FAKEIP", "rewrite_ttl": 1 }
@@ -40,6 +41,7 @@
       { "protocol": "dns", "action": "hijack-dns" },
       { "clash_mode": "直连", "outbound": "DIRECT" },
       { "clash_mode": "全局", "outbound": "🚀 节点选择" },
+      { "ip_version": 6, "action": "reject" },
       { "rule_set": "privateip", "outbound": "DIRECT" },
       { "rule_set": "private", "outbound": "DIRECT" },
       { "rule_set": "adblocksingbox", "action": "reject" },
