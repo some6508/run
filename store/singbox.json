@@ -8,11 +8,11 @@
   "inbounds": [
     { "tag": "dns-in", "type": "direct", "listen": "0.0.0.0", "listen_port": 1053 },
     { "tag": "mixed-in", "type": "mixed", "listen": "0.0.0.0", "listen_port": 7890, "set_system_proxy": false },
-    { "tag": "tun-in", "type": "tun", "stack": "mixed", "auto_route": true, "exclude_package": [], "address": [ "172.18.0.0/30", "fdfe:dcba:9876::1/126" ], "platform": { "http_proxy": { "enabled": false, "server": "127.0.0.1", "server_port": 7890 }}}
+    { "tag": "tun-in", "type": "tun", "stack": "mixed", "auto_route": true, "exclude_package": [], "address": [ "172.18.0.0/30" ], "platform": { "http_proxy": { "enabled": false, "server": "127.0.0.1", "server_port": 7890 }}}
   ],
   "dns": {
     "final": "代理解析",
-    "strategy": "prefer_ipv4",
+    "strategy": "ipv4_only",
     "reverse_mapping": true,
     "servers": [
       { "tag": "本地解析", "type": "local" },
