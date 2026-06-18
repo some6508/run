@@ -12,7 +12,7 @@
   ],
   "dns": {
     "final": "代理解析",
-    "strategy": "ipv4_only",
+    "strategy": "prefer_ipv4",
     "reverse_mapping": true,
     "servers": [
       { "tag": "本地解析", "type": "local" },
