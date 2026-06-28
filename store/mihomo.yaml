@@ -366,6 +366,7 @@ rules:
   - RULE-SET,privateip,DIRECT,no-resolve
   - RULE-SET,private,DIRECT
   - RULE-SET,adblockmihomo,🚫 拦截访问
+  - AND,((DST-PORT,443),(NETWORK,UDP),(NOT,((RULE-SET,cnip)))),🚫 拦截访问
   - DOMAIN,cdn.jsdelivr.net,🎯 直连访问
   - RULE-SET,networktest,🎯 直连访问
   - RULE-SET,games-cn,🎯 直连访问
