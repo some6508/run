@@ -111,6 +111,7 @@ proxy-groups:
   - name: 🚀 节点选择
     type: select
     icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/All.svg
+    include-all: true
     proxies: [
       ♻️ 自动选择, ☁️ 故障转移, 🔮 负载均衡, 🖲️ 手动选择,
       🇭🇰 香港节点-♻️ 自动选择, 🇹🇼 台湾节点-♻️ 自动选择, 🇯🇵 日本节点-♻️ 自动选择, 🇺🇸 美国节点-♻️ 自动选择, 🇸🇬 新加坡节点-♻️ 自动选择, 🇺🇳 其它节点-♻️ 自动选择,
