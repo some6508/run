@@ -1,5 +1,5 @@
 mixed-port: 7890
-ipv6: false
+ipv6: true
 mode: rule
 log-level: error
 allow-lan: true
@@ -7,12 +7,10 @@ bind-address: '*'
 unified-delay: true
 tcp-concurrent: true
 keep-alive-idle: 600
-keep-alive-interval: 15
-disable-keep-alive: false
-external-controller: 0.0.0.0:9090
+keep-alive-interval: 60
+external-controller: 127.0.0.1:9090
 external-ui-url: https://github.com/Zephyruso/zashboard/releases/latest/download/dist-no-fonts.zip
-external-ui: ./ui
-secret: ""
+external-ui: ui
 geodata-mode: false
 geo-auto-update: true
 geo-update-interval: 24
@@ -26,20 +24,6 @@ profile:
   store-selected: false
   store-fake-ip: true
 
-sniffer:
-  enable: true
-  sniff:
-    HTTP:
-      ports: [80, 8080-8880]
-      override-destination: true
-    TLS:
-      ports: [443, 8443]
-    QUIC:
-      ports: [443, 8443]
-  skip-domain:
-  - Mijia Cloud
-  - +.push.apple.com
-
 tun:
   enable: true
   stack: mixed
@@ -47,42 +31,34 @@ tun:
   - any:53
   - tcp://any:53
   auto-route: true
+  strict-route: true
   auto-redirect: true
   auto-detect-interface: true
 
-dns_Direct: &dns_Direct [https://doh.pub/dns-query, https://dns.alidns.com/dns-query]
+dns_Direct: &dns_Direct [https://doh.pub/dns-query#DIRECT, https://dns.alidns.com/dns-query#DIRECT]
 
 dns:
   enable: true
-  listen: 0.0.0.0:1053
-  ipv6: false
+  ipv6: true
+  use-hosts: true
+  cache-algorithm: arc
+  use-system-hosts: true
   enhanced-mode: fake-ip
   fake-ip-range: 192.18.0.1/16
   fake-ip-filter:
+  - rule-set:private
   - rule-set:fakeip-filter
-  - +.market.xiaomi.com
-  - +.push.apple.com
   default-nameserver:
-  - 114.114.114.114
-  - 180.184.1.1
-  - 119.29.29.29
-  - 1.12.12.12
   - 223.5.5.5
-  - 8.8.8.8
-  - 1.1.1.1
-  - system
+  - 119.29.29.29
   nameserver:
-  - https://dns.google/dns-query
-  - https://cloudflare-dns.com/dns-query
-  - https://dns.bebasid.com/dns-query
-  - https://dns.csaonline.de/dns-query
-  - https://dns.twnic.tw/dns-query
-  - https://dot.sb/dns-query
-  - https://dns.adguard.com/dns-query
-  - https://doh.opendns.com/dns-query
-  - https://dns.umbrella.com/dns-query
+  - https://dns.google/dns-query#🚀 节点选择
+  - https://dns.cloudflare.com/dns-query#🚀 节点选择
   proxy-server-nameserver: *dns_Direct
-  direct-nameserver: *dns_Direct
+  direct-nameserver:
+  - system
+  - 223.5.5.5
+  - 119.29.29.29
   nameserver-policy:
     rule-set:adblockmihomo: rcode://success
 
@@ -93,7 +69,7 @@ FilterUS: &FilterUS '(?i)(美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|
 FilterSG: &FilterSG '(?i)(新加坡|坡|狮城|sg|singapore|🇸🇬)'
 FilterUN: &FilterUN '(?i)(🇭🇰|🇹🇼|🇯🇵|🇺🇸|🇸🇬|🇨🇳|🇰🇷|港|hk|hongkong|台|新北|彰化|tw|taiwan|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|jp|japan|新加坡|坡|狮城|sg|singapore|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|us|united states)'
 
-p: &p {url: 'https://connectivitycheck.gstatic.com/generate_204', interval: 600, tolerance: 50, timeout: 5000, max-failed-times: 3, lazy: true, include-all: true}
+p: &p {url: 'https://g.cn/generate_204', interval: 600, tolerance: 50, timeout: 5000, max-failed-times: 3, lazy: true, include-all: true}
 pg_Proxy: &pg_Proxy {type: select, proxies: [
   🚀 节点选择, ♻️ 自动选择, ☁️ 故障转移, 🔮 负载均衡, 🖲️ 手动选择,
   🇭🇰 香港节点-♻️ 自动选择, 🇹🇼 台湾节点-♻️ 自动选择, 🇯🇵 日本节点-♻️ 自动选择, 🇺🇸 美国节点-♻️ 自动选择, 🇸🇬 新加坡节点-♻️ 自动选择, 🇺🇳 其它节点-♻️ 自动选择,
@@ -265,7 +241,6 @@ proxy-groups:
 
 RuleSet_ipcidr_mrs: &RuleSet_ipcidr_mrs {type: http, interval: 86400, behavior: ipcidr, format: mrs}
 RuleSet_domain_mrs: &RuleSet_domain_mrs {type: http, interval: 86400, behavior: domain, format: mrs}
-RuleSet_classical_yaml: &RuleSet_classical_yaml {type: http, interval: 86400, behavior: classical, format: yaml}
 
 rule-providers:
   privateip:
@@ -364,22 +339,22 @@ rule-providers:
     url: https://cdn.jsdelivr.net/gh/217heidai/adblockfilters@main/rules/adblockmihomo.mrs
 
 rules:
-  - RULE-SET,privateip,DIRECT,no-resolve
-  - RULE-SET,private,DIRECT
-  - RULE-SET,adblockmihomo,🚫 拦截访问
   - AND,((DST-PORT,443),(NETWORK,UDP),(NOT,((RULE-SET,cnip)))),🚫 拦截访问
+  - RULE-SET,private,DIRECT
+  - RULE-SET,privateip,DIRECT,no-resolve
+  - RULE-SET,adblockmihomo,🚫 拦截访问
   - DOMAIN,cdn.jsdelivr.net,🎯 直连访问
   - RULE-SET,networktest,🎯 直连访问
   - RULE-SET,games-cn,🎯 直连访问
   - RULE-SET,apple-cn,🎯 直连访问
   - RULE-SET,googlefcm,🎯 直连访问
   - RULE-SET,telegram,✈️ Telegram
-  - RULE-SET,telegramip,✈️ Telegram,no-resolve
   - RULE-SET,twitter,🐦 Twitter
-  - RULE-SET,twitterip,🐦 Twitter,no-resolve
   - RULE-SET,tiktok,🎵 TikTok
   - RULE-SET,cloudflare,🪩 Cloudflare
   - RULE-SET,microsoft,🪟 Microsoft
+  - RULE-SET,telegramip,✈️ Telegram,no-resolve
+  - RULE-SET,twitterip,🐦 Twitter,no-resolve
   - RULE-SET,gfw,🍀 Google
   - RULE-SET,proxy,🍀 Google
   - RULE-SET,cn,🎯 直连访问
