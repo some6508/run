@@ -1,5 +1,5 @@
 mixed-port: 7890
-ipv6: true
+ipv6: false
 mode: rule
 log-level: error
 allow-lan: true
@@ -39,7 +39,8 @@ dns_Direct: &dns_Direct [https://doh.pub/dns-query#DIRECT, https://dns.alidns.co
 
 dns:
   enable: true
-  ipv6: true
+  ipv6: false
+  listen: 0.0.0.0:1053
   use-hosts: true
   cache-algorithm: arc
   use-system-hosts: true
