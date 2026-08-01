@@ -219,6 +219,12 @@ proxy-groups:
     icon: https://cdn.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg
     url: https://connectivitycheck.platform.hicloud.com/generate_204
     interval: 600
+    tolerance: 50
+    timeout: 5000
+    max-failed-times: 3
+    lazy: true
+    empty-fallback: REJECT
+    exclude-type: DIRECT
     proxies:
     - DIRECT
     - REJECT
