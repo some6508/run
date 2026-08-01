@@ -222,9 +222,6 @@ proxy-groups:
     tolerance: 50
     timeout: 5000
     max-failed-times: 3
-    lazy: true
-    empty-fallback: REJECT
-    exclude-type: DIRECT
     proxies:
     - DIRECT
     - REJECT
