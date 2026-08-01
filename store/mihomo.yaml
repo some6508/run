@@ -345,7 +345,6 @@ rule-providers:
     url: https://cdn.jsdelivr.net/gh/217heidai/adblockfilters@main/rules/adblockmihomo.mrs
 
 rules:
-  - AND,((DST-PORT,443),(NETWORK,UDP),(NOT,((RULE-SET,cnip,no-resolve)))),🚫 拦截访问
   - RULE-SET,private,DIRECT
   - RULE-SET,privateip,DIRECT,no-resolve
   - RULE-SET,adblockmihomo,🚫 拦截访问
@@ -354,6 +353,7 @@ rules:
   - RULE-SET,games-cn,🎯 直连访问
   - RULE-SET,apple-cn,🎯 直连访问
   - RULE-SET,googlefcm,🎯 直连访问
+  - AND,((DST-PORT,443),(NETWORK,UDP),(NOT,((OR,((RULE-SET,cn),(RULE-SET,cnip,no-resolve)))))),🚫 拦截访问
   - RULE-SET,telegram,✈️ Telegram
   - RULE-SET,twitter,🐦 Twitter
   - RULE-SET,tiktok,🎵 TikTok
