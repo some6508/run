@@ -24,6 +24,19 @@ profile:
   store-selected: false
   store-fake-ip: true
 
+hosts:
+  +.mcdn.bilivideo.com: [0.0.0.0]
+  +.mcdn.bilivideo.cn: [0.0.0.0]
+  +.edge.mountaintoys.cn: [0.0.0.0]
+  +.h2.smtcdns.net: [0.0.0.0]
+
+ntp:
+  enable: true
+  write-to-system: false
+  server: ntp.aliyun.com
+  port: 123
+  interval: 60
+
 tun:
   enable: true
   stack: mixed
