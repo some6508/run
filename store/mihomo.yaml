@@ -25,10 +25,10 @@ profile:
   store-fake-ip: true
 
 hosts:
-  +.mcdn.bilivideo.com: [0.0.0.0]
-  +.mcdn.bilivideo.cn: [0.0.0.0]
-  +.edge.mountaintoys.cn: [0.0.0.0]
-  +.h2.smtcdns.net: [0.0.0.0]
+  +.mcdn.bilivideo.com: 0.0.0.0
+  +.mcdn.bilivideo.cn: 0.0.0.0
+  +.edge.mountaintoys.cn: 0.0.0.0
+  +.h2.smtcdns.net: 0.0.0.0
 
 ntp:
   enable: true
@@ -40,9 +40,7 @@ ntp:
 tun:
   enable: true
   stack: mixed
-  dns-hijack:
-  - any:53
-  - tcp://any:53
+  dns-hijack: [any:53, tcp://any:53]
   auto-route: true
   strict-route: true
   auto-redirect: true
@@ -62,17 +60,10 @@ dns:
   fake-ip-filter:
   - rule-set:private
   - rule-set:fakeip-filter
-  default-nameserver:
-  - 223.5.5.5
-  - 119.29.29.29
-  nameserver:
-  - https://dns.google/dns-query#🚀 节点选择
-  - https://dns.cloudflare.com/dns-query#🚀 节点选择
+  default-nameserver: [223.5.5.5, 119.29.29.29]
+  nameserver: [https://dns.google/dns-query#🚀 节点选择, https://dns.cloudflare.com/dns-query#🚀 节点选择]
   proxy-server-nameserver: *dns_Direct
-  direct-nameserver:
-  - system
-  - 223.5.5.5
-  - 119.29.29.29
+  direct-nameserver: [system, 223.5.5.5, 119.29.29.29]
   nameserver-policy:
     rule-set:adblockmihomo: rcode://success
 
@@ -235,25 +226,17 @@ proxy-groups:
     tolerance: 50
     timeout: 5000
     max-failed-times: 3
-    proxies:
-    - DIRECT
-    - REJECT
+    proxies: [DIRECT, REJECT]
 
   - name: 🚫 拦截访问
     type: select
     icon: https://cdn.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/block.svg
-    proxies:
-    - REJECT
-    - DIRECT
-    - 🚀 节点选择
+    proxies: [REJECT, DIRECT, 🚀 节点选择]
 
   - name: 🐟 漏网之鱼
     type: select
     icon: https://cdn.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/fish.svg
-    proxies:
-    - 🚀 节点选择
-    - DIRECT
-    - REJECT
+    proxies: [🚀 节点选择, DIRECT, REJECT]
 
 RuleSet_ipcidr_mrs: &RuleSet_ipcidr_mrs {type: http, interval: 86400, behavior: ipcidr, format: mrs}
 RuleSet_domain_mrs: &RuleSet_domain_mrs {type: http, interval: 86400, behavior: domain, format: mrs}
