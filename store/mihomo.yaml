@@ -119,11 +119,7 @@ proxy-groups:
   - name: 🍀 Google
     icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Google.svg
     <<: *pg_Proxy
-
-  - name: 🪩 Cloudflare
-    icon: https://cdn.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/cloudflare.svg
-    <<: *pg_Proxy
-    
+ 
   - name: 🪟 Microsoft
     icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Microsoft.svg
     <<: *pg_Proxy
@@ -134,10 +130,6 @@ proxy-groups:
 
   - name: 🐦 Twitter
     icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Twitter.svg
-    <<: *pg_Proxy
-
-  - name: 🎵 TikTok
-    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/TikTok.svg
     <<: *pg_Proxy
 
   - name: 🇭🇰 香港节点-♻️ 自动选择
@@ -242,20 +234,20 @@ RuleSet_ipcidr_mrs: &RuleSet_ipcidr_mrs {type: http, interval: 86400, behavior: 
 RuleSet_domain_mrs: &RuleSet_domain_mrs {type: http, interval: 86400, behavior: domain, format: mrs}
 
 rule-providers:
-  privateip:
-    <<: *RuleSet_ipcidr_mrs
-    path: ./ruleset/privateip.mrs
-    url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/privateip.mrs
+  adblockmihomo:
+    <<: *RuleSet_domain_mrs
+    path: ./ruleset/adblockmihomo.mrs
+    url: https://cdn.jsdelivr.net/gh/217heidai/adblockfilters@main/rules/adblockmihomo.mrs
 
-  telegramip:
-    <<: *RuleSet_ipcidr_mrs
-    path: ./ruleset/telegramip.mrs
-    url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/telegramip.mrs
+  apple-cn:
+    <<: *RuleSet_domain_mrs
+    path: ./ruleset/apple-cn.mrs
+    url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/apple-cn.mrs
 
-  twitterip:
-    <<: *RuleSet_ipcidr_mrs
-    path: ./ruleset/twitterip.mrs
-    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/twitter.mrs
+  cn:
+    <<: *RuleSet_domain_mrs
+    path: ./ruleset/cn.mrs
+    url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/cn.mrs
 
   cnip:
     <<: *RuleSet_ipcidr_mrs
@@ -267,26 +259,6 @@ rule-providers:
     path: ./ruleset/fakeip-filter.mrs
     url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/fakeip-filter.mrs
 
-  private:
-    <<: *RuleSet_domain_mrs
-    path: ./ruleset/private.mrs
-    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/private.mrs
-
-  telegram:
-    <<: *RuleSet_domain_mrs
-    path: ./ruleset/telegram.mrs
-    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/telegram.mrs
-
-  microsoft:
-    <<: *RuleSet_domain_mrs
-    path: ./ruleset/microsoft.mrs
-    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/microsoft.mrs
-
-  cloudflare:
-    <<: *RuleSet_domain_mrs
-    path: ./ruleset/cloudflare.mrs
-    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/cloudflare.mrs
-
   gfw:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/gfw.mrs
@@ -297,65 +269,61 @@ rule-providers:
     path: ./ruleset/googlefcm.mrs
     url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/googlefcm.mrs
 
-  tiktok:
+  microsoft:
     <<: *RuleSet_domain_mrs
-    path: ./ruleset/tiktok.mrs
-    url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/tiktok.mrs
+    path: ./ruleset/microsoft.mrs
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/microsoft.mrs
 
-  twitter:
+  private:
     <<: *RuleSet_domain_mrs
-    path: ./ruleset/twitter.mrs
-    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/twitter.mrs
+    path: ./ruleset/private.mrs
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/private.mrs
+
+  privateip:
+    <<: *RuleSet_ipcidr_mrs
+    path: ./ruleset/privateip.mrs
+    url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/privateip.mrs
 
   proxy:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/proxy.mrs
     url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/proxy.mrs
 
-  cn:
+  telegram:
     <<: *RuleSet_domain_mrs
-    path: ./ruleset/cn.mrs
-    url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/cn.mrs
+    path: ./ruleset/telegram.mrs
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/telegram.mrs
 
-  games-cn:
-    <<: *RuleSet_domain_mrs
-    path: ./ruleset/games-cn.mrs
-    url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/games-cn.mrs
+  telegramip:
+    <<: *RuleSet_ipcidr_mrs
+    path: ./ruleset/telegramip.mrs
+    url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/telegramip.mrs
 
-  apple-cn:
+  twitter:
     <<: *RuleSet_domain_mrs
-    path: ./ruleset/apple-cn.mrs
-    url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/apple-cn.mrs
+    path: ./ruleset/twitter.mrs
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/twitter.mrs
 
-  networktest:
-    <<: *RuleSet_domain_mrs
-    path: ./ruleset/networktest.mrs
-    url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/networktest.mrs
-
-  adblockmihomo:
-    <<: *RuleSet_domain_mrs
-    path: ./ruleset/adblockmihomo.mrs
-    url: https://cdn.jsdelivr.net/gh/217heidai/adblockfilters@main/rules/adblockmihomo.mrs
+  twitterip:
+    <<: *RuleSet_ipcidr_mrs
+    path: ./ruleset/twitterip.mrs
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/twitter.mrs
 
 rules:
   - RULE-SET,private,DIRECT
   - RULE-SET,privateip,DIRECT,no-resolve
   - RULE-SET,adblockmihomo,🚫 拦截访问
   - DOMAIN,cdn.jsdelivr.net,🎯 直连访问
-  - RULE-SET,networktest,🎯 直连访问
-  - RULE-SET,games-cn,🎯 直连访问
   - RULE-SET,apple-cn,🎯 直连访问
   - RULE-SET,googlefcm,🎯 直连访问
   - AND,((DST-PORT,443),(NETWORK,UDP),(NOT,((OR,((RULE-SET,cn),(RULE-SET,cnip,no-resolve)))))),🚫 拦截访问
   - RULE-SET,telegram,✈️ Telegram
   - RULE-SET,twitter,🐦 Twitter
-  - RULE-SET,tiktok,🎵 TikTok
-  - RULE-SET,cloudflare,🪩 Cloudflare
   - RULE-SET,microsoft,🪟 Microsoft
-  - RULE-SET,telegramip,✈️ Telegram,no-resolve
-  - RULE-SET,twitterip,🐦 Twitter,no-resolve
   - RULE-SET,gfw,🍀 Google
   - RULE-SET,proxy,🍀 Google
+  - RULE-SET,telegramip,✈️ Telegram,no-resolve
+  - RULE-SET,twitterip,🐦 Twitter,no-resolve
   - RULE-SET,cn,🎯 直连访问
   - RULE-SET,cnip,🎯 直连访问,no-resolve
   - MATCH,🐟 漏网之鱼
