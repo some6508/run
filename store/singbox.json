@@ -69,7 +69,7 @@
       { "tag": "telegram", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/telegram.srs", "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/telegram.srs" },
       { "tag": "telegramip", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/telegramip.srs", "url": "https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/telegramip.srs" },
       { "tag": "twitter", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/twitter.srs", "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geosite/twitter.srs" },
-      { "tag": "twitterip", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/twitterip.srs", "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/twitter.srs" },
+      { "tag": "twitterip", "type": "remote", "format": "binary", "update_interval": "1d", "path": "./ruleset/twitterip.srs", "url": "https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@sing/geo/geoip/twitter.srs" }
     ]
   },
   "outbounds": [
