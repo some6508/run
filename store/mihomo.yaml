@@ -119,7 +119,11 @@ proxy-groups:
   - name: 🍀 Google
     icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Google.svg
     <<: *pg_Proxy
- 
+
+  - name: 🪩 Cloudflare
+    icon: https://cdn.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/cloudflare.svg
+    <<: *pg_Proxy
+
   - name: 🪟 Microsoft
     icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Microsoft.svg
     <<: *pg_Proxy
@@ -130,6 +134,10 @@ proxy-groups:
 
   - name: 🐦 Twitter
     icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Twitter.svg
+    <<: *pg_Proxy
+
+  - name: 🎵 TikTok
+    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/TikTok.svg
     <<: *pg_Proxy
 
   - name: 🇭🇰 香港节点-♻️ 自动选择
@@ -244,6 +252,11 @@ rule-providers:
     path: ./ruleset/apple-cn.mrs
     url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/apple-cn.mrs
 
+  cloudflare:
+    <<: *RuleSet_domain_mrs
+    path: ./ruleset/cloudflare.mrs
+    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/cloudflare.mrs
+
   cn:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/cn.mrs
@@ -259,6 +272,11 @@ rule-providers:
     path: ./ruleset/fakeip-filter.mrs
     url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/fakeip-filter.mrs
 
+  games-cn:
+    <<: *RuleSet_domain_mrs
+    path: ./ruleset/games-cn.mrs
+    url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/games-cn.mrs
+
   gfw:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/gfw.mrs
@@ -273,6 +291,11 @@ rule-providers:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/microsoft.mrs
     url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/microsoft.mrs
+
+  networktest:
+    <<: *RuleSet_domain_mrs
+    path: ./ruleset/networktest.mrs
+    url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/networktest.mrs
 
   private:
     <<: *RuleSet_domain_mrs
@@ -299,6 +322,11 @@ rule-providers:
     path: ./ruleset/telegramip.mrs
     url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/telegramip.mrs
 
+  tiktok:
+    <<: *RuleSet_domain_mrs
+    path: ./ruleset/tiktok.mrs
+    url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/tiktok.mrs
+
   twitter:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/twitter.mrs
@@ -314,12 +342,16 @@ rules:
   - RULE-SET,privateip,DIRECT,no-resolve
   - RULE-SET,adblockmihomo,🚫 拦截访问
   - DOMAIN,cdn.jsdelivr.net,🎯 直连访问
-  - RULE-SET,apple-cn,🎯 直连访问
   - RULE-SET,googlefcm,🎯 直连访问
+  - RULE-SET,games-cn,🎯 直连访问
+  - RULE-SET,apple-cn,🎯 直连访问
+  - RULE-SET,networktest,🎯 直连访问
   - AND,((DST-PORT,443),(NETWORK,UDP),(NOT,((OR,((RULE-SET,cn),(RULE-SET,cnip,no-resolve)))))),🚫 拦截访问
+  - RULE-SET,cloudflare,🪩 Cloudflare
+  - RULE-SET,microsoft,🪟 Microsoft
   - RULE-SET,telegram,✈️ Telegram
   - RULE-SET,twitter,🐦 Twitter
-  - RULE-SET,microsoft,🪟 Microsoft
+  - RULE-SET,tiktok,🎵 TikTok
   - RULE-SET,gfw,🍀 Google
   - RULE-SET,proxy,🍀 Google
   - RULE-SET,telegramip,✈️ Telegram,no-resolve
