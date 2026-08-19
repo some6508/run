@@ -242,7 +242,7 @@ proxy-groups:
   - name: 🐟 漏网之鱼
     type: select
     icon: https://cdn.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/fish.svg
-    <<*Select
+    <<: *Select
 
 RuleSet_ipcidr_mrs: &RuleSet_ipcidr_mrs {type: http, interval: 86400, behavior: ipcidr, format: mrs}
 RuleSet_domain_mrs: &RuleSet_domain_mrs {type: http, interval: 86400, behavior: domain, format: mrs}
