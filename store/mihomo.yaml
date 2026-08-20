@@ -345,7 +345,6 @@ rule-providers:
 
 rules:
   - RULE-SET,private,DIRECT
-  - RULE-SET,privateip,DIRECT,no-resolve
   - RULE-SET,adblockmihomo,🚫 拦截访问
   - DOMAIN,cdn.jsdelivr.net,🎯 直连访问
   - RULE-SET,googlefcm,🎯 直连访问
@@ -362,6 +361,7 @@ rules:
   - RULE-SET,proxy,🍀 Google
   - RULE-SET,telegramip,✈️ Telegram,no-resolve
   - RULE-SET,twitterip,🐦 Twitter,no-resolve
+  - RULE-SET,privateip,DIRECT,no-resolve
   - RULE-SET,cn,🎯 直连访问
   - RULE-SET,cnip,🎯 直连访问,no-resolve
   - MATCH,🐟 漏网之鱼
