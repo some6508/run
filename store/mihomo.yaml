@@ -25,6 +25,8 @@ profile:
   store-fake-ip: true
 
 hosts:
+  cloudflare-dns.com: [1.1.1.1, 1.0.0.1]
+  dns.google: [8.8.8.8, 8.8.4.4]
   +.mcdn.bilivideo.com: 0.0.0.0
   +.mcdn.bilivideo.cn: 0.0.0.0
   +.edge.mountaintoys.cn: 0.0.0.0
@@ -61,7 +63,7 @@ dns:
   - rule-set:private
   - rule-set:fakeip-filter
   default-nameserver: [223.5.5.5, 119.29.29.29]
-  nameserver: [https://dns.google/dns-query#🚀 节点选择, https://dns.cloudflare.com/dns-query#🚀 节点选择]
+  nameserver: [https://dns.google/dns-query#🚀 节点选择, https://cloudflare-dns.com/dns-query#🚀 节点选择]
   proxy-server-nameserver: *dns_Direct
   direct-nameserver: [system, 223.5.5.5, 119.29.29.29]
   nameserver-policy:
