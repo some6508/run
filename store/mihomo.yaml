@@ -41,7 +41,7 @@ tun:
   auto-detect-interface: true
 
 dns_ip: &dns_ip [223.5.5.5, 119.29.29.29]
-dns_Direct: &dns_Direct [https://doh.pub/dns-query#DIRECT, https://dns.alidns.com/dns-query#DIRECT]
+dns_Direct: &dns_Direct [https://doh.pub/dns-query#DIRECT, https://dns.alidns.com/dns-query#DIRECT, ]
 dns_Proxy: &dns_Proxy [https://dns.google/dns-query#🚀 节点选择, https://cloudflare-dns.com/dns-query#🚀 节点选择]
 
 hosts:
@@ -60,12 +60,12 @@ dns:
   cache-algorithm: arc
   use-system-hosts: true
   enhanced-mode: fake-ip
-  fake-ip-range: 192.18.0.1/16
+  fake-ip-range: 198.18.0.1/16
   fake-ip-filter: [rule-set:private, rule-set:fakeip-filter]
   default-nameserver: *dns_ip
   nameserver: *dns_Proxy
   proxy-server-nameserver: *dns_Direct
-  direct-nameserver: [system, 223.5.5.5, 119.29.29.29]
+  direct-nameserver: *dns_Direct
   nameserver-policy:
     rule-set:adblockmihomo: rcode://success
 
