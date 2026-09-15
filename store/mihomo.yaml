@@ -354,7 +354,7 @@ rule-providers:
   tiktokip:
     <<: *RuleSet_ipcidr_mrs
     path: ./ruleset/tiktokip.mrs
-    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/tiktok.mrs
+    url: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geoip/tiktok.mrs
     path-in-bundle: geo/geoip/tiktok.mrs
 
   twitter:
