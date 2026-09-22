@@ -40,10 +40,6 @@ tun:
   auto-redirect: true
   auto-detect-interface: true
 
-dns_ip: &dns_ip [223.5.5.5#DIRECT, 119.29.29.29#DIRECT]
-dns_Direct: &dns_Direct [https://doh.pub/dns-query#DIRECT, https://dns.alidns.com/dns-query#DIRECT, ]
-dns_Proxy: &dns_Proxy [https://dns.google/dns-query#🚀 节点选择, https://cloudflare-dns.com/dns-query#🚀 节点选择]
-
 hosts:
   cloudflare-dns.com: [1.1.1.1, 1.0.0.1]
   dns.google: [8.8.8.8, 8.8.4.4]
@@ -51,6 +47,11 @@ hosts:
   +.mcdn.bilivideo.cn: 0.0.0.0
   +.edge.mountaintoys.cn: 0.0.0.0
   +.h2.smtcdns.net: 0.0.0.0
+
+sub_dns:
+  dns_ip: &dns_ip [223.5.5.5#DIRECT, 119.29.29.29#DIRECT]
+  dns_Direct: &dns_Direct [https://doh.pub/dns-query#DIRECT, https://dns.alidns.com/dns-query#DIRECT, ]
+  dns_Proxy: &dns_Proxy [https://dns.google/dns-query#🚀 节点选择, https://cloudflare-dns.com/dns-query#🚀 节点选择]
 
 dns:
   enable: true
@@ -69,24 +70,29 @@ dns:
   nameserver-policy:
     rule-set:adblockmihomo: rcode://success
 
-FilterHK: &FilterHK '(?i)(港|hk|hongkong|hong kong|🇭🇰)'
-FilterTW: &FilterTW '(?i)(台|新北|彰化|tw|taiwan|🇹🇼)'
-FilterJP: &FilterJP '(?i)(日本|川日|东京|大阪|泉日|埼玉|沪日|深日|jp|japan|🇯🇵)'
-FilterUS: &FilterUS '(?i)(美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|us|unitedstates|united states|🇺🇸)'
-FilterSG: &FilterSG '(?i)(新加坡|坡|狮城|sg|singapore|🇸🇬)'
-FilterUN: &FilterUN '(?i)(🇭🇰|🇹🇼|🇯🇵|🇺🇸|🇸🇬|🇨🇳|🇰🇷|港|hk|hongkong|台|新北|彰化|tw|taiwan|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|jp|japan|新加坡|坡|狮城|sg|singapore|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|us|united states)'
+sub_rule:
+  RuleSet_ipcidr_mrs: &RuleSet_ipcidr_mrs {type: http, interval: 86400, behavior: ipcidr, format: mrs}
+  RuleSet_domain_mrs: &RuleSet_domain_mrs {type: http, interval: 86400, behavior: domain, format: mrs}
 
-p: &p {url: 'https://www.gstatic.com/generate_204', interval: 600, tolerance: 50, timeout: 5000, max-failed-times: 3, lazy: true, include-all: true, empty-fallback: REJECT, expected-status: 200/204}
-Select: &Select {type: select, include-all: true, proxies: [
-  🚀 节点选择, ♻️ 自动选择, ☁️ 故障转移, 🔮 负载均衡, 🖲️ 手动选择,
-  🇭🇰 香港节点-♻️ 自动选择, 🇹🇼 台湾节点-♻️ 自动选择, 🇯🇵 日本节点-♻️ 自动选择, 🇺🇸 美国节点-♻️ 自动选择, 🇸🇬 新加坡节点-♻️ 自动选择, 🇺🇳 其它节点-♻️ 自动选择,
-  🇭🇰 香港节点-☁️ 故障转移, 🇹🇼 台湾节点-☁️ 故障转移, 🇯🇵 日本节点-☁️ 故障转移, 🇺🇸 美国节点-☁️ 故障转移, 🇸🇬 新加坡节点-☁️ 故障转移, 🇺🇳 其它节点-☁️ 故障转移,
-  🇭🇰 香港节点-🔮 负载均衡, 🇹🇼 台湾节点-🔮 负载均衡, 🇯🇵 日本节点-🔮 负载均衡, 🇺🇸 美国节点-🔮 负载均衡, 🇸🇬 新加坡节点-🔮 负载均衡, 🇺🇳 其它节点-🔮 负载均衡,
-  🎯 直连访问, 🚫 拦截访问]}
+sub_filter:
+  FilterHK: &FilterHK '(?i)(港|hk|hongkong|hong kong|🇭🇰)'
+  FilterTW: &FilterTW '(?i)(台|新北|彰化|tw|taiwan|🇹🇼)'
+  FilterJP: &FilterJP '(?i)(日本|川日|东京|大阪|泉日|埼玉|沪日|深日|jp|japan|🇯🇵)'
+  FilterUS: &FilterUS '(?i)(美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|us|unitedstates|united states|🇺🇸)'
+  FilterSG: &FilterSG '(?i)(新加坡|坡|狮城|sg|singapore|🇸🇬)'
+  FilterUN: &FilterUN '(?i)(🇭🇰|🇹🇼|🇯🇵|🇺🇸|🇸🇬|🇨🇳|🇰🇷|港|hk|hongkong|台|新北|彰化|tw|taiwan|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|jp|japan|新加坡|坡|狮城|sg|singapore|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|us|united states)'
 
-UrlTest: &UrlTest {type: url-test, <<: *p}
-FallBack: &FallBack {type: fallback, <<: *p}
-LoadBalance: &LoadBalance {type: load-balance, strategy: sticky-sessions, <<: *p}
+sub_group:
+  p: &p {url: 'https://www.gstatic.com/generate_204', interval: 600, tolerance: 50, timeout: 5000, max-failed-times: 3, lazy: true, include-all: true, empty-fallback: REJECT, expected-status: 200/204}
+  UrlTest: &UrlTest {type: url-test, <<: *p}
+  FallBack: &FallBack {type: fallback, <<: *p}
+  LoadBalance: &LoadBalance {type: load-balance, strategy: sticky-sessions, <<: *p}
+  Select: &Select {type: select, include-all: true, proxies: [
+    🚀 节点选择, ♻️ 自动选择, ☁️ 故障转移, 🔮 负载均衡, 🖲️ 手动选择,
+    🇭🇰 香港节点-♻️ 自动选择, 🇹🇼 台湾节点-♻️ 自动选择, 🇯🇵 日本节点-♻️ 自动选择, 🇺🇸 美国节点-♻️ 自动选择, 🇸🇬 新加坡节点-♻️ 自动选择, 🇺🇳 其它节点-♻️ 自动选择,
+    🇭🇰 香港节点-☁️ 故障转移, 🇹🇼 台湾节点-☁️ 故障转移, 🇯🇵 日本节点-☁️ 故障转移, 🇺🇸 美国节点-☁️ 故障转移, 🇸🇬 新加坡节点-☁️ 故障转移, 🇺🇳 其它节点-☁️ 故障转移,
+    🇭🇰 香港节点-🔮 负载均衡, 🇹🇼 台湾节点-🔮 负载均衡, 🇯🇵 日本节点-🔮 负载均衡, 🇺🇸 美国节点-🔮 负载均衡, 🇸🇬 新加坡节点-🔮 负载均衡, 🇺🇳 其它节点-🔮 负载均衡,
+    🎯 直连访问, 🚫 拦截访问]}
 
 proxy-groups:
   - name: 🚀 节点选择
@@ -245,9 +251,6 @@ proxy-groups:
     type: select
     icon: https://cdn.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/fish.svg
     <<: *Select
-
-RuleSet_ipcidr_mrs: &RuleSet_ipcidr_mrs {type: http, interval: 86400, behavior: ipcidr, format: mrs}
-RuleSet_domain_mrs: &RuleSet_domain_mrs {type: http, interval: 86400, behavior: domain, format: mrs}
 
 rule-providers:
   adblockmihomo:
