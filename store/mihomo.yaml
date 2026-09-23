@@ -71,8 +71,8 @@ dns:
     rule-set:adblockmihomo: rcode://success
 
 sub_rule:
-  RuleSet_ipcidr_mrs: &RuleSet_ipcidr_mrs {type: http, interval: 86400, behavior: ipcidr, format: mrs}
-  RuleSet_domain_mrs: &RuleSet_domain_mrs {type: http, interval: 86400, behavior: domain, format: mrs}
+  RuleSet_ipcidr_mrs: &RuleSet_ipcidr_mrs {type: http, interval: 86400, behavior: ipcidr, format: mrs, proxy: DIRECT}
+  RuleSet_domain_mrs: &RuleSet_domain_mrs {type: http, interval: 86400, behavior: domain, format: mrs, proxy: DIRECT}
 
 sub_filter:
   FilterHK: &FilterHK '(?i)(港|hk|hongkong|hong kong|🇭🇰)'
@@ -268,7 +268,7 @@ rule-providers:
   cloudflare:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/cloudflare.mrs
-    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/cloudflare.mrs
+    url: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geosite/cloudflare.mrs
     path-in-bundle: geo/geosite/cloudflare.mrs
 
   cn:
@@ -280,13 +280,13 @@ rule-providers:
   cnip:
     <<: *RuleSet_ipcidr_mrs
     path: ./ruleset/cnip.mrs
-    url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/cnip.mrs
+    url: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geoip/cn.mrs
     path-in-bundle: geo/geoip/cn.mrs
 
   fakeip-filter:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/fakeip-filter.mrs
-    url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/fakeip-filter.mrs
+    url: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geoip/fakeip-filter.mrs
     path-in-bundle: geo/geosite/fakeip-filter.mrs
 
   games-cn:
@@ -304,24 +304,25 @@ rule-providers:
   googlefcm:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/googlefcm.mrs
-    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/googlefcm.mrs
+    url: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geosite/googlefcm.mrs
     path-in-bundle: geo/geosite/googlefcm.mrs
 
   microsoft:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/microsoft.mrs
-    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/microsoft.mrs
+    url: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geosite/microsoft.mrs
     path-in-bundle: geo/geosite/microsoft.mrs
 
   networktest:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/networktest.mrs
     url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/networktest.mrs
+    path-in-bundle: geo/geosite/speedtest.mrs
 
   private:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/private.mrs
-    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/private.mrs
+    url: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geosite/private.mrs
     path-in-bundle: geo/geosite/private.mrs
 
   privateip:
@@ -339,7 +340,7 @@ rule-providers:
   telegram:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/telegram.mrs
-    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/telegram.mrs
+    url: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geosite/telegram.mrs
     path-in-bundle: geo/geosite/telegram.mrs
 
   telegramip:
@@ -363,19 +364,18 @@ rule-providers:
   twitter:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/twitter.mrs
-    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/twitter.mrs
+    url: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geosite/twitter.mrs
     path-in-bundle: geo/geosite/twitter.mrs
 
   twitterip:
     <<: *RuleSet_ipcidr_mrs
     path: ./ruleset/twitterip.mrs
-    url: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geoip/twitter.mrs
+    url: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geoip/twitter.mrs
     path-in-bundle: geo/geoip/twitter.mrs
 
 rules:
   - RULE-SET,private,DIRECT
   - RULE-SET,adblockmihomo,🚫 拦截访问
-  - DOMAIN,cdn.jsdelivr.net,🎯 直连访问
   - RULE-SET,googlefcm,🎯 直连访问
   - RULE-SET,games-cn,🎯 直连访问
   - RULE-SET,apple-cn,🍎 Apple
