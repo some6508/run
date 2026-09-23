@@ -286,8 +286,8 @@ rule-providers:
   fakeip-filter:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/fakeip-filter.mrs
-    url: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geoip/fakeip-filter.mrs
-    path-in-bundle: geo/geosite/fakeip-filter.mrs
+    url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/fakeip-filter.mrs
+    path-in-bundle: geo/geosite/private.mrs
 
   games-cn:
     <<: *RuleSet_domain_mrs
