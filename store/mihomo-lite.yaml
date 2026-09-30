@@ -1,0 +1,69 @@
+mixed-port: 7890
+ipv6: false
+mode: rule
+log-level: error
+allow-lan: true
+bind-address: '*'
+unified-delay: true
+tcp-concurrent: true
+keep-alive-idle: 600
+keep-alive-interval: 60
+external-controller: 0.0.0.0:9090
+external-ui-url: https://github.com/Zephyruso/zashboard/releases/latest/download/dist-no-fonts.zip
+external-ui: ui
+geodata-mode: false
+geo-auto-update: true
+geo-update-interval: 24
+geox-url:
+  geoip: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@release/geoip.dat
+  geosite: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@release/geosite.dat
+  mmdb: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@release/geoip.metadb
+  asn: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@release/GeoLite2-ASN.mmdb
+
+profile:
+  store-selected: false
+  store-fake-ip: true
+
+ntp:
+  enable: true
+  write-to-system: false
+  server: ntp.aliyun.com
+  port: 123
+  interval: 60
+
+tun:
+  enable: true
+  stack: mixed
+  dns-hijack: [any:53, tcp://any:53]
+  auto-route: true
+  strict-route: true
+  auto-redirect: true
+  auto-detect-interface: true
+
+hosts:
+  cloudflare-dns.com: [1.1.1.1, 1.0.0.1]
+  dns.google: [8.8.8.8, 8.8.4.4]
+  +.mcdn.bilivideo.com: 0.0.0.0
+  +.mcdn.bilivideo.cn: 0.0.0.0
+  +.edge.mountaintoys.cn: 0.0.0.0
+  +.h2.smtcdns.net: 0.0.0.0
+
+sub_dns:
+  dns_ip: &dns_ip [223.5.5.5#DIRECT, 119.29.29.29#DIRECT]
+  dns_Direct: &dns_Direct [https://doh.pub/dns-query#DIRECT, https://dns.alidns.com/dns-query#DIRECT, ]
+  dns_Proxy: &dns_Proxy [https://dns.google/dns-query#🚀 节点选择, https://cloudflare-dns.com/dns-query#🚀 节点选择, https://dns11.quad9.net/dns-query#🚀 节点选择]
+
+dns:
+  enable: true
+  ipv6: false
+  listen: 0.0.0.0:1053
+  use-hosts: true
+  cache-algorithm: arc
+  use-system-hosts: true
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter: ['adguardteam.github.io', 'adrules.top', 'amobile.music.tc.qq.com', 'anti-ad.net', 'api-jooxtt.sanook.com', 'api.joox.com', 'aqqmusic.tc.qq.com', 'dl.stream.qqmusic.qq.com', 'ff.dorado.sdo.com', 'heartbeat.belkin.com', 'isure.stream.qqmusic.qq.com', 'joox.com', 'lens.l.google.com', 'local.adguard.org', 'localhost.ptlogin2.qq.com', 'localhost.sec.qq.com', 'mesu.apple.com', 'mobileoc.music.tc.qq.com', 'music.163.com', 'music.migu.cn', 'music.taihe.com', 'musicapi.taihe.com', 'na.b.g-tun.com', 'proxy.golang.org', 'ps.res.netease.com', 'shark007.net', 'songsearch.kugou.com', 'static.adtidy.org', 'streamoc.music.tc.qq.com', 'stun.l.google.com', 'swcdn.apple.com', 'swdist.apple.com', 'swdownload.apple.com', 'swquery.apple.com', 'swscan.apple.com', 'time-ios.apple.com', 'time1.cloud.tencent.com', 'trackercdn.kugou.com', 'xnotify.xboxlive.com', 'y.qq.com', '*.*.xboxlive.com', '+.stun.*.*', '+.stun.*.*.*', '+.stun.*.*.*.*', '+.stun.*.*.*.*.*', 'ntp.*.com', 'ntp1.*.com', 'ntp2.*.com', 'ntp3.*.com', 'ntp4.*.com', 'ntp5.*.com', 'ntp6.*.com', 'ntp7.*.com', 'stun.*.*', 'stun.*.*.*', 'time.*.apple.com', 'time.*.com', 'time.*.edu.cn', 'time.*.gov', 'time1.*.com', 'time2.*.com', 'time3.*.com', 'time4.*.com', 'time5.*.com', 'time6.*.com', 'time7.*.com', 'xbox.*.*.microsoft.com', 'xbox.*.microsoft.com', '+.126.net', '+.3gppnetwork.org', '+.battlenet.com.cn', '+.cdn.nintendo.net', '+.cmbchina.com', '+.cmbimg.com', '+.example', '+.ff14.sdo.com', '+.ffxiv.com', '+.finalfantasyxiv.com', '+.gcloudcs.com', '+.gcloudsdk.com', '+.home.arpa', '+.invalid', '+.kuwo.cn', '+.lan', '+.linksys.com', '+.linksyssmartwifi.com', '+.local', '+.localdomain', '+.localhost', '+.market.xiaomi.com', '+.mcdn.bilivideo.cn', '+.media.dssott.com', '+.msftconnecttest.com', '+.msftncsi.com', '+.music.163.com', '+.music.migu.cn', '+.n.n.srv.nintendo.net', '+.n0808.com', '+.nflxvideo.net', '+.ntp.org.cn', '+.oray.com', '+.orayimg.com', '+.pool.ntp.org', '+.qq.com', '+.router.asus.com', '+.sandai.net', '+.square-enix.com', '+.srv.nintendo.net', '+.steamcontent.com', '+.stun.playstation.net', '+.tencent.com', '+.test', '+.time.edu.cn', '+.uu.163.com', '+.wargaming.net', '+.wggames.cn', '+.wotgame.cn', '+.wowsgame.cn', '+.xiami.com', '+.y.qq.com']
+  default-nameserver: *dns_ip
+  nameserver: *dns_Proxy
+  proxy-server-nameserver: *dns_Direct
+  direct-nameserver: *dns_Direct
