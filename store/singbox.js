@@ -12,7 +12,7 @@ let proxies = await produceArtifact({
 config.outbounds.push(...proxies)
 
 config.outbounds.map(i => {
-  if (['selector'].includes(i.type)) {
+  if (['selector', '♻️ 自动选择'].includes(i.type)) {
     i.outbounds.push(...getTags(proxies))
   }
   if (i.tls) {
