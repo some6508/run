@@ -82,21 +82,15 @@
   },
   "outbounds": [
     { "tag": "DIRECT", "type": "direct" },
-    { "tag": "🚀 节点选择", "type": "selector", "outbounds": [ "♻️ 自动选择", "🖲️ 手动选择", "🇭🇰 香港节点-♻️ 自动选择", "🇹🇼 台湾节点-♻️ 自动选择", "🇯🇵 日本节点-♻️ 自动选择", "🇺🇸 美国节点-♻️ 自动选择", "🇸🇬 新加坡节点-♻️ 自动选择", "🇺🇳 其它地区-♻️ 自动选择", "🎯 直连访问" ] },
-    { "tag": "🖲️ 手动选择", "type": "selector", "outbounds": [ "DIRECT" ] },
-    { "tag": "🐟 漏网之鱼", "type": "selector", "outbounds": [ "🚀 节点选择", "DIRECT" ] },
-    { "tag": "🍀 Google", "type": "selector", "outbounds": [ "🚀 节点选择", "♻️ 自动选择", "🖲️ 手动选择", "🇭🇰 香港节点-♻️ 自动选择", "🇹🇼 台湾节点-♻️ 自动选择", "🇯🇵 日本节点-♻️ 自动选择", "🇺🇸 美国节点-♻️ 自动选择", "🇸🇬 新加坡节点-♻️ 自动选择", "🇺🇳 其它地区-♻️ 自动选择", "🎯 直连访问" ] },
-    { "tag": "🪩 Cloudflare", "type": "selector", "outbounds": [ "🚀 节点选择", "♻️ 自动选择", "🖲️ 手动选择", "🇭🇰 香港节点-♻️ 自动选择", "🇹🇼 台湾节点-♻️ 自动选择", "🇯🇵 日本节点-♻️ 自动选择", "🇺🇸 美国节点-♻️ 自动选择", "🇸🇬 新加坡节点-♻️ 自动选择", "🇺🇳 其它地区-♻️ 自动选择", "🎯 直连访问" ] },
-    { "tag": "🪟 Microsoft", "type": "selector", "outbounds": [ "🚀 节点选择", "♻️ 自动选择", "🖲️ 手动选择", "🇭🇰 香港节点-♻️ 自动选择", "🇹🇼 台湾节点-♻️ 自动选择", "🇯🇵 日本节点-♻️ 自动选择", "🇺🇸 美国节点-♻️ 自动选择", "🇸🇬 新加坡节点-♻️ 自动选择", "🇺🇳 其它地区-♻️ 自动选择", "🎯 直连访问" ] },
-    { "tag": "✈️ Telegram", "type": "selector", "outbounds": [ "🚀 节点选择", "♻️ 自动选择", "🖲️ 手动选择", "🇭🇰 香港节点-♻️ 自动选择", "🇹🇼 台湾节点-♻️ 自动选择", "🇯🇵 日本节点-♻️ 自动选择", "🇺🇸 美国节点-♻️ 自动选择", "🇸🇬 新加坡节点-♻️ 自动选择", "🇺🇳 其它地区-♻️ 自动选择", "🎯 直连访问" ] },
-    { "tag": "🐦 Twitter", "type": "selector", "outbounds": [ "🚀 节点选择", "♻️ 自动选择", "🖲️ 手动选择", "🇭🇰 香港节点-♻️ 自动选择", "🇹🇼 台湾节点-♻️ 自动选择", "🇯🇵 日本节点-♻️ 自动选择", "🇺🇸 美国节点-♻️ 自动选择", "🇸🇬 新加坡节点-♻️ 自动选择", "🇺🇳 其它地区-♻️ 自动选择", "🎯 直连访问" ] },
+    { "tag": "🚀 节点选择", "type": "selector", "outbounds": [ "♻️ 自动选择", "🖲️ 手动选择", "🎯 直连访问" ] },
+    { "tag": "🖲️ 手动选择", "type": "selector", "outbounds": [ "🎯 直连访问" ] },
+    { "tag": "🐟 漏网之鱼", "type": "selector", "outbounds": [ "🚀 节点选择", "🎯 直连访问" ] },
+    { "tag": "🍀 Google", "type": "selector", "outbounds": [ "🚀 节点选择", "♻️ 自动选择", "🖲️ 手动选择", "🎯 直连访问" ] },
+    { "tag": "🪩 Cloudflare", "type": "selector", "outbounds": [ "🚀 节点选择", "♻️ 自动选择", "🖲️ 手动选择", "🎯 直连访问" ] },
+    { "tag": "🪟 Microsoft", "type": "selector", "outbounds": [ "🚀 节点选择", "♻️ 自动选择", "🖲️ 手动选择", "🎯 直连访问" ] },
+    { "tag": "✈️ Telegram", "type": "selector", "outbounds": [ "🚀 节点选择", "♻️ 自动选择", "🖲️ 手动选择", "🎯 直连访问" ] },
+    { "tag": "🐦 Twitter", "type": "selector", "outbounds": [ "🚀 节点选择", "♻️ 自动选择", "🖲️ 手动选择", "🎯 直连访问" ] },
     { "tag": "🎯 直连访问", "type": "urltest", "url": "https://connectivitycheck.platform.hicloud.com/generate_204", "interval": "10m", "outbounds": [ "DIRECT" ] },
-    { "tag": "♻️ 自动选择", "type": "urltest", "url": "https://www.gstatic.com/generate_204", "interval": "10m", "tolerance": 50, "outbounds": [] },
-    { "tag": "🇭🇰 香港节点-♻️ 自动选择", "type": "urltest", "url": "https://www.gstatic.com/generate_204", "interval": "10m", "outbounds": [] },
-    { "tag": "🇹🇼 台湾节点-♻️ 自动选择", "type": "urltest", "url": "https://www.gstatic.com/generate_204", "interval": "10m", "outbounds": [] },
-    { "tag": "🇯🇵 日本节点-♻️ 自动选择", "type": "urltest", "url": "https://www.gstatic.com/generate_204", "interval": "10m", "outbounds": [] },
-    { "tag": "🇺🇸 美国节点-♻️ 自动选择", "type": "urltest", "url": "https://www.gstatic.com/generate_204", "interval": "10m", "outbounds": [] },
-    { "tag": "🇸🇬 新加坡节点-♻️ 自动选择", "type": "urltest", "url": "https://www.gstatic.com/generate_204", "interval": "10m", "outbounds": [] },
-    { "tag": "🇺🇳 其它地区-♻️ 自动选择", "type": "urltest", "url": "https://www.gstatic.com/generate_204", "interval": "10m", "outbounds": [] }
+    { "tag": "♻️ 自动选择", "type": "urltest", "url": "https://www.gstatic.com/generate_204", "interval": "10m", "tolerance": 50, "outbounds": [] }
   ]
 }
