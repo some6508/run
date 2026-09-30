@@ -33,6 +33,9 @@ config.outbounds.map(i => {
   if (['🇺🇳 其它地区-♻️ 自动选择'].includes(i.tag)) {
     i.outbounds.push(...getTags(proxies, /^(?!.*(🇭🇰|🇹🇼|🇯🇵|🇺🇸|🇸🇬|🇨🇳|🇰🇷|港|hk|hongkong|台|tw|taiwan|日|jp|japan|新|sg|singapore|美|us|unitedstates)).*$/i))
   }
+  if (i.tls) {
+    i.tls.ech.enabled = false;
+  }
 })
 
 // 兼容空outbounds的情况
