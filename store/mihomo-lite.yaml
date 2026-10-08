@@ -33,7 +33,7 @@ ntp:
 
 tun:
   enable: true
-  stack: mixed
+  stack: gvisor
   dns-hijack: [any:53, tcp://any:53]
   auto-route: true
   strict-route: true
@@ -41,8 +41,6 @@ tun:
   auto-detect-interface: true
 
 hosts:
-  cloudflare-dns.com: [1.1.1.1, 1.0.0.1]
-  dns.google: [8.8.8.8, 8.8.4.4]
   +.mcdn.bilivideo.com: 0.0.0.0
   +.mcdn.bilivideo.cn: 0.0.0.0
   +.edge.mountaintoys.cn: 0.0.0.0
