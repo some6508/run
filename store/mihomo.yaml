@@ -270,6 +270,12 @@ rule-providers:
     url: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geosite/cloudflare.mrs
     path-in-bundle: geo/geosite/cloudflare.mrs
 
+  cloudflareip:
+    <<: *RuleSet_ipcidr_mrs
+    path: ./ruleset/cloudflareip.mrs
+    url: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geoip/cloudflare.mrs
+    path-in-bundle: geo/geoip/cloudflare.mrs
+
   cn:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/cn.mrs
@@ -387,6 +393,7 @@ rules:
   - RULE-SET,tiktok,🎵 TikTok
   - RULE-SET,gfw,🍀 Google
   - RULE-SET,proxy,🍀 Google
+  - RULE-SET,cloudflareip,🪩 Cloudflare,no-resolve
   - RULE-SET,telegramip,✈️ Telegram,no-resolve
   - RULE-SET,tiktokip,🎵 TikTok,no-resolve
   - RULE-SET,twitterip,🐦 Twitter,no-resolve
