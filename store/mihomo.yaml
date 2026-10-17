@@ -106,15 +106,15 @@ proxy-groups:
     ]
 
   - name: ♻️ 自动选择
-    icon: https://cdn.jsdelivr.net/gh/fmz200/wool_scripts@main/icons/apps/UrlTest.png
+    icon: https://cdn.jsdelivr.net/gh/some6508/run@master/icon/UrlTest.svg
     <<: *UrlTest
 
   - name: ☁️ 故障转移
-    icon: https://cdn.jsdelivr.net/gh/fmz200/wool_scripts@main/icons/apps/FallBack.png
+    icon: https://cdn.jsdelivr.net/gh/some6508/run@master/icon/FallBack.svg
     <<: *FallBack
 
   - name: 🖲️ 手动选择
-    icon: https://cdn.jsdelivr.net/gh/fmz200/wool_scripts@main/icons/apps/select.png
+    icon: https://cdn.jsdelivr.net/gh/some6508/run@master/icon/Select.svg
     type: select
     include-all: true
     proxies: [DIRECT]
