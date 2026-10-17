@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="960" viewBox="0 0 960 960">
+   <!-- 第1行 灰色 -->
+   <circle cx="240" cy="220" r="55" fill="#888888"/>
+   <rect x="360" y="165" width="480" height="110" rx="55" fill="#888888"/>
+   <!-- 第2行 蓝色 -->
+   <circle cx="240" cy="420" r="55" fill="#007bff"/>
+   <rect x="360" y="365" width="480" height="110" rx="55" fill="#007bff"/>
+   <!-- 第3行 灰色 -->
+   <circle cx="240" cy="620" r="55" fill="#888888"/>
+   <rect x="360" y="565" width="480" height="110" rx="55" fill="#888888"/>
+</svg>
