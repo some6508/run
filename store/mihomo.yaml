@@ -15,10 +15,10 @@ geodata-mode: false
 geo-auto-update: true
 geo-update-interval: 24
 geox-url:
-  geoip: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@release/geoip.dat
-  geosite: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@release/geosite.dat
-  mmdb: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@release/geoip.metadb
-  asn: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@release/GeoLite2-ASN.mmdb
+  geoip: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@release/geoip.dat
+  geosite: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@release/geosite.dat
+  mmdb: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@release/geoip.metadb
+  asn: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@release/GeoLite2-ASN.mmdb
 
 profile:
   store-selected: false
@@ -95,7 +95,7 @@ sub_group:
 proxy-groups:
   - name: 🚀 节点选择
     type: select
-    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/All.svg
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/All.svg
     include-all: true
     proxies: [
       ♻️ 自动选择, ☁️ 故障转移, 🔮 负载均衡,
@@ -106,133 +106,133 @@ proxy-groups:
     ]
 
   - name: ♻️ 自动选择
-    icon: https://cdn.jsdelivr.net/gh/some6508/run@master/icon/UrlTest.svg
+    icon: https://cdn.jsdmirror.com/gh/some6508/run@master/icon/UrlTest.svg
     <<: *UrlTest
 
   - name: ☁️ 故障转移
-    icon: https://cdn.jsdelivr.net/gh/some6508/run@master/icon/FallBack.svg
+    icon: https://cdn.jsdmirror.com/gh/some6508/run@master/icon/FallBack.svg
     <<: *FallBack
 
   - name: 🖲️ 手动选择
-    icon: https://cdn.jsdelivr.net/gh/some6508/run@master/icon/Select.svg
+    icon: https://cdn.jsdmirror.com/gh/some6508/run@master/icon/Select.svg
     type: select
     include-all: true
     proxies: [DIRECT]
 
   - name: 🔮 负载均衡
-    icon: https://cdn.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/adjust.svg
+    icon: https://cdn.jsdmirror.com/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/adjust.svg
     <<: *LoadBalance
 
   - name: 🍀 Google
-    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Google.svg
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/Google.svg
     <<: *Select
 
   - name: 🪩 Cloudflare
-    icon: https://cdn.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/cloudflare.svg
+    icon: https://cdn.jsdmirror.com/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/cloudflare.svg
     <<: *Select
 
   - name: 🪟 Microsoft
-    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Microsoft.svg
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/Microsoft.svg
     <<: *Select
 
   - name: ✈️ Telegram
-    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Telegram.svg
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/Telegram.svg
     <<: *Select
 
   - name: 🐦 Twitter
-    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Twitter.svg
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/Twitter.svg
     <<: *Select
 
   - name: 🎵 TikTok
-    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/TikTok.svg
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/TikTok.svg
     <<: *Select
 
   - name: 🍎 Apple
-    icon: https://cdn.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/apple.svg
+    icon: https://cdn.jsdmirror.com/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/apple.svg
     default-selected: 🎯 直连访问
     <<: *Select
 
   - name: 🇭🇰 香港节点-♻️ 自动选择
-    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/HK.svg
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/HK.svg
     filter: *FilterHK
     <<: *UrlTest
   - name: 🇭🇰 香港节点-☁️ 故障转移
-    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/HK.svg
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/HK.svg
     filter: *FilterHK
     <<: *FallBack
   - name: 🇭🇰 香港节点-🔮 负载均衡
-    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/HK.svg
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/HK.svg
     filter: *FilterHK
     <<: *LoadBalance
 
   - name: 🇹🇼 台湾节点-♻️ 自动选择
-    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/CN.svg
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/CN.svg
     filter: *FilterTW
     <<: *UrlTest
   - name: 🇹🇼 台湾节点-☁️ 故障转移
-    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/CN.svg
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/CN.svg
     filter: *FilterTW
     <<: *FallBack
   - name: 🇹🇼 台湾节点-🔮 负载均衡
-    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/CN.svg
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/CN.svg
     filter: *FilterTW
     <<: *LoadBalance
 
   - name: 🇯🇵 日本节点-♻️ 自动选择
-    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/JP.svg
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/JP.svg
     filter: *FilterJP
     <<: *UrlTest
   - name: 🇯🇵 日本节点-☁️ 故障转移
-    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/JP.svg
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/JP.svg
     filter: *FilterJP
     <<: *FallBack
   - name: 🇯🇵 日本节点-🔮 负载均衡
-    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/JP.svg
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/JP.svg
     filter: *FilterJP
     <<: *LoadBalance
 
   - name: 🇺🇸 美国节点-♻️ 自动选择
-    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/US.svg
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/US.svg
     filter: *FilterUS
     <<: *UrlTest
   - name: 🇺🇸 美国节点-☁️ 故障转移
-    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/US.svg
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/US.svg
     filter: *FilterUS
     <<: *FallBack
   - name: 🇺🇸 美国节点-🔮 负载均衡
-    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/US.svg
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/US.svg
     filter: *FilterUS
     <<: *LoadBalance
 
   - name: 🇸🇬 新加坡节点-♻️ 自动选择
-    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Singapore.svg
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/Singapore.svg
     filter: *FilterSG
     <<: *UrlTest
   - name: 🇸🇬 新加坡节点-☁️ 故障转移
-    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Singapore.svg
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/Singapore.svg
     filter: *FilterSG
     <<: *FallBack
   - name: 🇸🇬 新加坡节点-🔮 负载均衡
-    icon: https://cdn.jsdelivr.net/gh/GitMetaio/Surfing@rm/Home/icon/Singapore.svg
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/Singapore.svg
     filter: *FilterSG
     <<: *LoadBalance
 
   - name: 🇺🇳 其它节点-♻️ 自动选择
-    icon: https://cdn.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/un.svg
+    icon: https://cdn.jsdmirror.com/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/un.svg
     exclude-filter: *FilterUN
     <<: *UrlTest
   - name: 🇺🇳 其它节点-☁️ 故障转移
-    icon: https://cdn.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/un.svg
+    icon: https://cdn.jsdmirror.com/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/un.svg
     exclude-filter: *FilterUN
     <<: *LoadBalance
   - name: 🇺🇳 其它节点-🔮 负载均衡
-    icon: https://cdn.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/un.svg
+    icon: https://cdn.jsdmirror.com/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/un.svg
     exclude-filter: *FilterUN
     <<: *LoadBalance
 
   - name: 🎯 直连访问
     type: url-test
-    icon: https://cdn.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg
+    icon: https://cdn.jsdmirror.com/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg
     url: https://connectivitycheck.platform.hicloud.com/generate_204
     interval: 1800
     tolerance: 200
@@ -242,139 +242,139 @@ proxy-groups:
 
   - name: 🚫 拦截访问
     type: select
-    icon: https://cdn.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/block.svg
+    icon: https://cdn.jsdmirror.com/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/block.svg
     proxies: [REJECT, DIRECT, 🚀 节点选择]
 
   - name: 🐟 漏网之鱼
     type: select
-    icon: https://cdn.jsdelivr.net/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/fish.svg
+    icon: https://cdn.jsdmirror.com/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/fish.svg
     <<: *Select
 
 rule-providers:
   adblockmihomo:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/adblockmihomo.mrs
-    url: https://cdn.jsdelivr.net/gh/217heidai/adblockfilters@main/rules/adblockmihomo.mrs
+    url: https://cdn.jsdmirror.com/gh/217heidai/adblockfilters@main/rules/adblockmihomo.mrs
     path-in-bundle: geo/geosite/category-ads-all.mrs
 
   apple-cn:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/apple-cn.mrs
-    url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/apple-cn.mrs
+    url: https://cdn.jsdmirror.com/gh/DustinWin/ruleset_geodata@mihomo-ruleset/apple-cn.mrs
     path-in-bundle: geo/geosite/apple@cn.mrs
 
   cloudflare:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/cloudflare.mrs
-    url: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geosite/cloudflare.mrs
+    url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/cloudflare.mrs
     path-in-bundle: geo/geosite/cloudflare.mrs
 
   cloudflareip:
     <<: *RuleSet_ipcidr_mrs
     path: ./ruleset/cloudflareip.mrs
-    url: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geoip/cloudflare.mrs
+    url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/cloudflare.mrs
     path-in-bundle: geo/geoip/cloudflare.mrs
 
   cn:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/cn.mrs
-    url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/cn.mrs
+    url: https://cdn.jsdmirror.com/gh/DustinWin/ruleset_geodata@mihomo-ruleset/cn.mrs
     path-in-bundle: geo/geosite/cn.mrs
 
   cnip:
     <<: *RuleSet_ipcidr_mrs
     path: ./ruleset/cnip.mrs
-    url: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geoip/cn.mrs
+    url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/cn.mrs
     path-in-bundle: geo/geoip/cn.mrs
 
   fakeip-filter:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/fakeip-filter.mrs
-    url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/fakeip-filter.mrs
+    url: https://cdn.jsdmirror.com/gh/DustinWin/ruleset_geodata@mihomo-ruleset/fakeip-filter.mrs
     path-in-bundle: geo/geosite/private.mrs
 
   games-cn:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/games-cn.mrs
-    url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/games-cn.mrs
+    url: https://cdn.jsdmirror.com/gh/DustinWin/ruleset_geodata@mihomo-ruleset/games-cn.mrs
     path-in-bundle: geo/geosite/category-games@cn.mrs
 
   gfw:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/gfw.mrs
-    url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/gfw.mrs
+    url: https://cdn.jsdmirror.com/gh/DustinWin/ruleset_geodata@mihomo-ruleset/gfw.mrs
     path-in-bundle: geo/geosite/google.mrs
 
   googlefcm:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/googlefcm.mrs
-    url: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geosite/googlefcm.mrs
+    url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/googlefcm.mrs
     path-in-bundle: geo/geosite/googlefcm.mrs
 
   microsoft:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/microsoft.mrs
-    url: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geosite/microsoft.mrs
+    url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/microsoft.mrs
     path-in-bundle: geo/geosite/microsoft.mrs
 
   networktest:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/networktest.mrs
-    url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/networktest.mrs
+    url: https://cdn.jsdmirror.com/gh/DustinWin/ruleset_geodata@mihomo-ruleset/networktest.mrs
     path-in-bundle: geo/geosite/speedtest.mrs
 
   private:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/private.mrs
-    url: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geosite/private.mrs
+    url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/private.mrs
     path-in-bundle: geo/geosite/private.mrs
 
   privateip:
     <<: *RuleSet_ipcidr_mrs
     path: ./ruleset/privateip.mrs
-    url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/privateip.mrs
+    url: https://cdn.jsdmirror.com/gh/DustinWin/ruleset_geodata@mihomo-ruleset/privateip.mrs
     path-in-bundle: geo/geoip/private.mrs
 
   proxy:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/proxy.mrs
-    url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/proxy.mrs
+    url: https://cdn.jsdmirror.com/gh/DustinWin/ruleset_geodata@mihomo-ruleset/proxy.mrs
     path-in-bundle: geo/geosite/geolocation-!cn.mrs
 
   telegram:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/telegram.mrs
-    url: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geosite/telegram.mrs
+    url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/telegram.mrs
     path-in-bundle: geo/geosite/telegram.mrs
 
   telegramip:
     <<: *RuleSet_ipcidr_mrs
     path: ./ruleset/telegramip.mrs
-    url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/telegramip.mrs
+    url: https://cdn.jsdmirror.com/gh/DustinWin/ruleset_geodata@mihomo-ruleset/telegramip.mrs
     path-in-bundle: geo/geoip/telegram.mrs
 
   tiktok:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/tiktok.mrs
-    url: https://cdn.jsdelivr.net/gh/DustinWin/ruleset_geodata@mihomo-ruleset/tiktok.mrs
+    url: https://cdn.jsdmirror.com/gh/DustinWin/ruleset_geodata@mihomo-ruleset/tiktok.mrs
     path-in-bundle: geo/geosite/tiktok.mrs
 
   tiktokip:
     <<: *RuleSet_ipcidr_mrs
     path: ./ruleset/tiktokip.mrs
-    url: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geoip/tiktok.mrs
+    url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/tiktok.mrs
     path-in-bundle: geo/geoip/tiktok.mrs
 
   twitter:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/twitter.mrs
-    url: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geosite/twitter.mrs
+    url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/twitter.mrs
     path-in-bundle: geo/geosite/twitter.mrs
 
   twitterip:
     <<: *RuleSet_ipcidr_mrs
     path: ./ruleset/twitterip.mrs
-    url: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@meta/geo/geoip/twitter.mrs
+    url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/twitter.mrs
     path-in-bundle: geo/geoip/twitter.mrs
 
 rules:
