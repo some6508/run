@@ -15,10 +15,10 @@ geodata-mode: false
 geo-auto-update: true
 geo-update-interval: 24
 geox-url:
-  geoip: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@release/geoip.dat
-  geosite: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@release/geosite.dat
-  mmdb: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@release/geoip.metadb
-  asn: https://cdn.jsdelivr.net/gh/appshubcc/bett-rules@release/GeoLite2-ASN.mmdb
+  geoip: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@release/geoip.dat
+  geosite: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@release/geosite.dat
+  mmdb: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@release/geoip.metadb
+  asn: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@release/GeoLite2-ASN.mmdb
 
 profile:
   store-selected: false
