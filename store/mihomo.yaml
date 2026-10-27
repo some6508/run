@@ -83,7 +83,7 @@ sub_filter:
   FilterUN: &FilterUN '(?i)(🇭🇰|🇹🇼|🇯🇵|🇺🇸|🇸🇬|🇨🇳|🇰🇷|港|hk|hongkong|台|新北|彰化|tw|taiwan|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|jp|japan|新加坡|坡|狮城|sg|singapore|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|us|united states)'
 
 sub_group:
-  p: &p {url: 'https://www.gstatic.com/generate_204', interval: 600, tolerance: 50, timeout: 5000, max-failed-times: 3, lazy: true, include-all: true, empty-fallback: REJECT}
+  p: &p {url: 'https://www.gstatic.com/generate_204', interval: 600, tolerance: 50, timeout: 5000, max-failed-times: 3, lazy: true, include-all: true, empty-fallback: REJECT, exclude-type: DIRECT}
   UrlTest: &UrlTest {type: url-test, <<: *p}
   FallBack: &FallBack {type: fallback, <<: *p}
   LoadBalance: &LoadBalance {type: load-balance, strategy: sticky-sessions, <<: *p}
@@ -233,6 +233,7 @@ proxy-groups:
     <<: *LoadBalance
 
   - name: 🎯 直连访问
+    filter: 直连-
     type: url-test
     icon: https://cdn.jsdmirror.com/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg
     url: https://connectivitycheck.platform.hicloud.com/generate_204
@@ -240,7 +241,7 @@ proxy-groups:
     tolerance: 200
     timeout: 5000
     max-failed-times: 3
-    proxies: [DIRECT, REJECT]
+    proxies: [DIRECT]
 
   - name: 🚫 拦截访问
     type: select
@@ -380,8 +381,8 @@ rule-providers:
     path-in-bundle: geo/geoip/twitter.mrs
 
 rules:
-  - DOMAIN,cdn.jsdmirror.com,DIRECT
-  - RULE-SET,private,DIRECT
+  - DOMAIN,cdn.jsdmirror.com,🎯 直连访问
+  - RULE-SET,private,🎯 直连访问
   - RULE-SET,adblockmihomo,🚫 拦截访问
   - RULE-SET,googlefcm,🎯 直连访问
   - RULE-SET,games-cn,🎯 直连访问
