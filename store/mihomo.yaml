@@ -380,6 +380,7 @@ rule-providers:
     path-in-bundle: geo/geoip/twitter.mrs
 
 rules:
+  - DOMAIN,cdn.jsdmirror.com,DIRECT
   - RULE-SET,private,DIRECT
   - RULE-SET,adblockmihomo,🚫 拦截访问
   - RULE-SET,googlefcm,🎯 直连访问
