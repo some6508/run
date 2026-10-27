@@ -33,12 +33,14 @@ ntp:
 
 tun:
   enable: true
-  stack: gvisor
+  stack: mips
+  dns-mode: hijack
   dns-hijack: [any:53, tcp://any:53]
   auto-route: true
   strict-route: true
   auto-redirect: true
   auto-detect-interface: true
+  congestion-controller: bbr3
 
 hosts:
   +.mcdn.bilivideo.com: 0.0.0.0
