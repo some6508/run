@@ -237,8 +237,8 @@ proxy-groups:
     type: url-test
     icon: https://cdn.jsdmirror.com/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg
     url: https://connectivitycheck.platform.hicloud.com/generate_204
-    interval: 1800
-    tolerance: 200
+    interval: 600
+    tolerance: 50
     timeout: 5000
     max-failed-times: 3
     proxies: [DIRECT]
