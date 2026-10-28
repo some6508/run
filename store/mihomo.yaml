@@ -84,11 +84,11 @@ sub_filter:
   FilterUN: &FilterUN '(?i)(🇭🇰|🇹🇼|🇯🇵|🇺🇸|🇸🇬|🇨🇳|🇰🇷|港|hk|hongkong|台|新北|彰化|tw|taiwan|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|jp|japan|新加坡|坡|狮城|sg|singapore|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|us|united states)'
 
 sub_group:
-  p: &p {url: 'https://www.gstatic.com/generate_204', interval: 600, tolerance: 50, timeout: 5000, max-failed-times: 3, lazy: true, include-all: true, empty-fallback: REJECT, exclude-type: DIRECT}
+  p: &p {url: 'https://www.gstatic.com/generate_204', interval: 600, tolerance: 50, timeout: 5000, max-failed-times: 3, lazy: true, include-all: true, exclude-type: DIRECT, empty-fallback: REJECT}
   UrlTest: &UrlTest {type: url-test, <<: *p}
   FallBack: &FallBack {type: fallback, <<: *p}
   LoadBalance: &LoadBalance {type: load-balance, strategy: sticky-sessions, <<: *p}
-  Select: &Select {type: select, include-all: true, proxies: [
+  Select: &Select {type: select, include-all: true, exclude-type: DIRECT, proxies: [
     🚀 节点选择, ♻️ 自动选择, ☁️ 故障转移, 🔮 负载均衡, 🖲️ 手动选择,
     🇭🇰 香港节点-♻️ 自动选择, 🇹🇼 台湾节点-♻️ 自动选择, 🇯🇵 日本节点-♻️ 自动选择, 🇺🇸 美国节点-♻️ 自动选择, 🇸🇬 新加坡节点-♻️ 自动选择, 🇺🇳 其它节点-♻️ 自动选择,
     🇭🇰 香港节点-☁️ 故障转移, 🇹🇼 台湾节点-☁️ 故障转移, 🇯🇵 日本节点-☁️ 故障转移, 🇺🇸 美国节点-☁️ 故障转移, 🇸🇬 新加坡节点-☁️ 故障转移, 🇺🇳 其它节点-☁️ 故障转移,
