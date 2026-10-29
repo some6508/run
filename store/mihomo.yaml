@@ -126,10 +126,6 @@ proxy-groups:
     icon: https://cdn.jsdmirror.com/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/adjust.svg
     <<: *LoadBalance
 
-  - name: 🍀 Google
-    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/Google.svg
-    <<: *Select
-
   - name: 🪩 Cloudflare
     icon: https://cdn.jsdmirror.com/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/cloudflare.svg
     <<: *Select
@@ -296,18 +292,6 @@ rule-providers:
     url: https://cdn.jsdmirror.com/gh/DustinWin/ruleset_geodata@mihomo-ruleset/fakeip-filter.mrs
     path-in-bundle: geo/geosite/private.mrs
 
-  games-cn:
-    <<: *RuleSet_domain_mrs
-    path: ./ruleset/games-cn.mrs
-    url: https://cdn.jsdmirror.com/gh/DustinWin/ruleset_geodata@mihomo-ruleset/games-cn.mrs
-    path-in-bundle: geo/geosite/category-games@cn.mrs
-
-  gfw:
-    <<: *RuleSet_domain_mrs
-    path: ./ruleset/gfw.mrs
-    url: https://cdn.jsdmirror.com/gh/DustinWin/ruleset_geodata@mihomo-ruleset/gfw.mrs
-    path-in-bundle: geo/geosite/google.mrs
-
   googlefcm:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/googlefcm.mrs
@@ -320,12 +304,6 @@ rule-providers:
     url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/microsoft.mrs
     path-in-bundle: geo/geosite/microsoft.mrs
 
-  networktest:
-    <<: *RuleSet_domain_mrs
-    path: ./ruleset/networktest.mrs
-    url: https://cdn.jsdmirror.com/gh/DustinWin/ruleset_geodata@mihomo-ruleset/networktest.mrs
-    path-in-bundle: geo/geosite/speedtest.mrs
-
   private:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/private.mrs
@@ -337,12 +315,6 @@ rule-providers:
     path: ./ruleset/privateip.mrs
     url: https://cdn.jsdmirror.com/gh/DustinWin/ruleset_geodata@mihomo-ruleset/privateip.mrs
     path-in-bundle: geo/geoip/private.mrs
-
-  proxy:
-    <<: *RuleSet_domain_mrs
-    path: ./ruleset/proxy.mrs
-    url: https://cdn.jsdmirror.com/gh/DustinWin/ruleset_geodata@mihomo-ruleset/proxy.mrs
-    path-in-bundle: geo/geosite/geolocation-!cn.mrs
 
   telegram:
     <<: *RuleSet_domain_mrs
@@ -385,17 +357,13 @@ rules:
   - RULE-SET,private,🎯 直连访问
   - RULE-SET,adblockmihomo,🚫 拦截访问
   - RULE-SET,googlefcm,🎯 直连访问
-  - RULE-SET,games-cn,🎯 直连访问
   - RULE-SET,apple-cn,🍎 Apple
-  - RULE-SET,networktest,🎯 直连访问
   - AND,((DST-PORT,443),(NETWORK,UDP),(NOT,((OR,((RULE-SET,cn),(RULE-SET,cnip,no-resolve)))))),🚫 拦截访问
   - RULE-SET,cloudflare,🪩 Cloudflare
   - RULE-SET,microsoft,🪟 Microsoft
   - RULE-SET,telegram,✈️ Telegram
   - RULE-SET,twitter,🐦 Twitter
   - RULE-SET,tiktok,🎵 TikTok
-  - RULE-SET,gfw,🍀 Google
-  - RULE-SET,proxy,🍀 Google
   - RULE-SET,cloudflareip,🪩 Cloudflare,no-resolve
   - RULE-SET,telegramip,✈️ Telegram,no-resolve
   - RULE-SET,tiktokip,🎵 TikTok,no-resolve
