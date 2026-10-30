@@ -126,6 +126,10 @@ proxy-groups:
     icon: https://cdn.jsdmirror.com/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/adjust.svg
     <<: *LoadBalance
 
+  - name: 🪩 Cloudflare
+    icon: https://cdn.jsdmirror.com/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/cloudflare.svg
+    <<: *Select
+
   - name: 🪟 Microsoft
     icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/Microsoft.svg
     <<: *Select
@@ -258,6 +262,18 @@ rule-providers:
     url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/apple@cn.mrs
     path-in-bundle: geo/geosite/apple@cn.mrs
 
+  cloudflare:
+    <<: *RuleSet_domain_mrs
+    path: ./ruleset/cloudflare.mrs
+    url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/cloudflare.mrs
+    path-in-bundle: geo/geosite/cloudflare.mrs
+
+  cloudflareip:
+    <<: *RuleSet_ipcidr_mrs
+    path: ./ruleset/cloudflareip.mrs
+    url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/cloudflare.mrs
+    path-in-bundle: geo/geoip/cloudflare.mrs
+
   cn:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/cn.mrs
@@ -339,18 +355,20 @@ rule-providers:
 rules:
   - DOMAIN,cdn.jsdmirror.com,🎯 直连访问
   - RULE-SET,private,🎯 直连访问
+  - RULE-SET,privateip,🎯 直连访问,no-resolve
   - RULE-SET,adblockmihomo,🚫 拦截访问
   - RULE-SET,googlefcm,🎯 直连访问
   - RULE-SET,apple-cn,🍎 Apple
   - AND,((DST-PORT,443),(NETWORK,UDP),(NOT,((OR,((RULE-SET,cn),(RULE-SET,cnip,no-resolve)))))),🚫 拦截访问
+  - RULE-SET,cloudflare,🪩 Cloudflare
+  - RULE-SET,cloudflareip,🪩 Cloudflare,no-resolve
   - RULE-SET,microsoft,🪟 Microsoft
   - RULE-SET,telegram,✈️ Telegram
-  - RULE-SET,twitter,🐦 Twitter
-  - RULE-SET,tiktok,🎵 TikTok
   - RULE-SET,telegramip,✈️ Telegram,no-resolve
-  - RULE-SET,tiktokip,🎵 TikTok,no-resolve
+  - RULE-SET,twitter,🐦 Twitter
   - RULE-SET,twitterip,🐦 Twitter,no-resolve
-  - RULE-SET,privateip,DIRECT,no-resolve
+  - RULE-SET,tiktok,🎵 TikTok
+  - RULE-SET,tiktokip,🎵 TikTok,no-resolve
   - RULE-SET,cn,🎯 直连访问
   - RULE-SET,cnip,🎯 直连访问,no-resolve
   - MATCH,🐟 漏网之鱼
