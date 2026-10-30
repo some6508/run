@@ -250,7 +250,7 @@ rule-providers:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/adblockmihomo.mrs
     url: https://cdn.jsdmirror.com/gh/217heidai/adblockfilters@main/rules/adblockmihomo.mrs
-    path-in-bundle: geo/geosite/category-ads-all.mrs
+    path-in-bundle: geo/geosite/category-ads.mrs
 
   apple-cn:
     <<: *RuleSet_domain_mrs
