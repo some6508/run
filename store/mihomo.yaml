@@ -255,13 +255,13 @@ rule-providers:
   apple-cn:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/apple-cn.mrs
-    url: https://cdn.jsdmirror.com/gh/DustinWin/ruleset_geodata@mihomo-ruleset/apple-cn.mrs
+    url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/apple@cn.mrs
     path-in-bundle: geo/geosite/apple@cn.mrs
 
   cn:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/cn.mrs
-    url: https://cdn.jsdmirror.com/gh/DustinWin/ruleset_geodata@mihomo-ruleset/cn.mrs
+    url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/cn.mrs
     path-in-bundle: geo/geosite/cn.mrs
 
   cnip:
@@ -273,8 +273,8 @@ rule-providers:
   fakeip-filter:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/fakeip-filter.mrs
-    url: https://cdn.jsdmirror.com/gh/DustinWin/ruleset_geodata@mihomo-ruleset/fakeip-filter.mrs
-    path-in-bundle: geo/geosite/private.mrs
+    url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/fakeip-filter.mrs
+    path-in-bundle: geo/geosite/fakeip-filter.mrs
 
   googlefcm:
     <<: *RuleSet_domain_mrs
@@ -297,7 +297,7 @@ rule-providers:
   privateip:
     <<: *RuleSet_ipcidr_mrs
     path: ./ruleset/privateip.mrs
-    url: https://cdn.jsdmirror.com/gh/DustinWin/ruleset_geodata@mihomo-ruleset/privateip.mrs
+    url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/private.mrs
     path-in-bundle: geo/geoip/private.mrs
 
   telegram:
@@ -309,13 +309,13 @@ rule-providers:
   telegramip:
     <<: *RuleSet_ipcidr_mrs
     path: ./ruleset/telegramip.mrs
-    url: https://cdn.jsdmirror.com/gh/DustinWin/ruleset_geodata@mihomo-ruleset/telegramip.mrs
+    url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/telegram.mrs
     path-in-bundle: geo/geoip/telegram.mrs
 
   tiktok:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/tiktok.mrs
-    url: https://cdn.jsdmirror.com/gh/DustinWin/ruleset_geodata@mihomo-ruleset/tiktok.mrs
+    url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/tiktok.mrs
     path-in-bundle: geo/geosite/tiktok.mrs
 
   tiktokip:
