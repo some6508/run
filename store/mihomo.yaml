@@ -340,7 +340,7 @@ rules:
   - DOMAIN,cdn.jsdmirror.com,🎯 直连访问
   - RULE-SET,private,🎯 直连访问
   - RULE-SET,privateip,🎯 直连访问,no-resolve
-  - IN-PORT,2053/2083/2087/2096/8443,🎯 直连访问,no-resolve
+  - DST-PORT,2053/2083/2087/2096/8443,🎯 直连访问
   - RULE-SET,adblockmihomo,🚫 拦截访问
   - RULE-SET,googlefcm,🎯 直连访问
   - RULE-SET,apple-cn,🍎 Apple
