@@ -120,6 +120,7 @@ proxy-groups:
     icon: https://cdn.jsdmirror.com/gh/some6508/run@master/icon/Select.svg
     type: select
     include-all: true
+    exclude-type: DIRECT
     proxies: [🎯 直连访问]
 
   - name: 🔮 负载均衡
