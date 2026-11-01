@@ -120,7 +120,7 @@ proxy-groups:
     icon: https://cdn.jsdmirror.com/gh/some6508/run@master/icon/Select.svg
     type: select
     include-all: true
-    proxies: [DIRECT]
+    proxies: [🎯 直连访问]
 
   - name: 🔮 负载均衡
     icon: https://cdn.jsdmirror.com/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/adjust.svg
