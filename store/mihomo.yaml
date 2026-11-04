@@ -71,7 +71,6 @@ dns:
   nameserver-policy:
     rule-set:private: system
     rule-set:adblockmihomo: rcode://name_error
-    rule-set:cn: *dns_Direct
 
 sub_rule:
   RuleSet_ipcidr_mrs: &RuleSet_ipcidr_mrs {type: http, interval: 216000, behavior: ipcidr, format: mrs, proxy: 🎯 直连访问}
