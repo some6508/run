@@ -77,12 +77,12 @@ sub_rule:
   RuleSet_domain_mrs: &RuleSet_domain_mrs {type: http, interval: 216000, behavior: domain, format: mrs, proxy: 🎯 直连访问}
 
 sub_filter:
-  FilterHK: &FilterHK '(?i)(港|hk|hongkong|hong kong|🇭🇰)'
+  FilterHK: &FilterHK '(?i)(港|hk|hong\s*kong|🇭🇰)'
   FilterTW: &FilterTW '(?i)(台|新北|彰化|tw|taiwan|🇹🇼)'
   FilterJP: &FilterJP '(?i)(日本|川日|东京|大阪|泉日|埼玉|沪日|深日|jp|japan|🇯🇵)'
-  FilterUS: &FilterUS '(?i)(美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|us|unitedstates|united states|🇺🇸)'
+  FilterUS: &FilterUS '(?i)(美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|us|united\s*states|🇺🇸)'
   FilterSG: &FilterSG '(?i)(新加坡|坡|狮城|sg|singapore|🇸🇬)'
-  FilterUN: &FilterUN '(?i)(🇭🇰|🇹🇼|🇯🇵|🇺🇸|🇸🇬|🇨🇳|🇰🇷|港|hk|hongkong|台|新北|彰化|tw|taiwan|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|jp|japan|新加坡|坡|狮城|sg|singapore|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|us|united states)'
+  FilterUN: &FilterUN '(?i)(🇭🇰|🇹🇼|🇯🇵|🇺🇸|🇸🇬|🇨🇳|🇰🇷|港|hk|hong\s*kong|台|新北|彰化|tw|taiwan|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|jp|japan|新加坡|坡|狮城|sg|singapore|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|us|united\s*states)'
 
 sub_group:
   p: &p {url: 'http://www.gstatic.com/generate_204', interval: 600, tolerance: 50, timeout: 5000, max-failed-times: 3, lazy: true, include-all: true, exclude-type: DIRECT, empty-fallback: REJECT}
@@ -122,11 +122,16 @@ proxy-groups:
     type: select
     include-all: true
     exclude-type: DIRECT
+    default-selected: 🎯 直连访问
     proxies: [🎯 直连访问]
 
   - name: 🔮 负载均衡
     icon: https://cdn.jsdmirror.com/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/adjust.svg
     <<: *LoadBalance
+
+  - name: 🇬 Google
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/Google.svg
+    <<: *Select
 
   - name: 🪟 Microsoft
     icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/Microsoft.svg
@@ -146,7 +151,6 @@ proxy-groups:
 
   - name: 🍎 Apple
     icon: https://cdn.jsdmirror.com/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/apple.svg
-    default-selected: 🎯 直连访问
     <<: *Select
 
   - name: 🇭🇰 香港节点-♻️ 自动选择
@@ -254,11 +258,17 @@ rule-providers:
     url: https://cdn.jsdmirror.com/gh/217heidai/adblockfilters@main/rules/adblockmihomo.mrs
     path-in-bundle: geo/geosite/category-ads.mrs
 
-  apple-cn:
+  apple:
     <<: *RuleSet_domain_mrs
-    path: ./ruleset/apple-cn.mrs
-    url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/apple@cn.mrs
-    path-in-bundle: geo/geosite/apple@cn.mrs
+    path: ./ruleset/apple.mrs
+    url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/apple.mrs
+    path-in-bundle: geo/geosite/apple.mrs
+
+  apple_ip:
+    <<: *RuleSet_ipcidr_mrs
+    path: ./ruleset/apple_ip.mrs
+    url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/apple.mrs
+    path-in-bundle: geo/geoip/apple.mrs
 
   cn:
     <<: *RuleSet_domain_mrs
@@ -266,9 +276,9 @@ rule-providers:
     url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/cn.mrs
     path-in-bundle: geo/geosite/cn.mrs
 
-  cnip:
+  cn_ip:
     <<: *RuleSet_ipcidr_mrs
-    path: ./ruleset/cnip.mrs
+    path: ./ruleset/cn_ip.mrs
     url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/cn.mrs
     path-in-bundle: geo/geoip/cn.mrs
 
@@ -277,6 +287,18 @@ rule-providers:
     path: ./ruleset/fakeip-filter.mrs
     url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/fakeip-filter.mrs
     path-in-bundle: geo/geosite/fakeip-filter.mrs
+
+  google:
+    <<: *RuleSet_domain_mrs
+    path: ./ruleset/google.mrs
+    url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/google.mrs
+    path-in-bundle: geo/geosite/google.mrs
+
+  google_ip:
+    <<: *RuleSet_ipcidr_mrs
+    path: ./ruleset/google_ip.mrs
+    url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/google.mrs
+    path-in-bundle: geo/geoip/google.mrs
 
   googlefcm:
     <<: *RuleSet_domain_mrs
@@ -290,15 +312,21 @@ rule-providers:
     url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/microsoft.mrs
     path-in-bundle: geo/geosite/microsoft.mrs
 
+  microsoft_ip:
+    <<: *RuleSet_ipcidr_mrs
+    path: ./ruleset/microsoft_ip.mrs
+    url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/microsoft.mrs
+    path-in-bundle: geo/geoip/microsoft.mrs
+
   private:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/private.mrs
     url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/private.mrs
     path-in-bundle: geo/geosite/private.mrs
 
-  privateip:
+  private_ip:
     <<: *RuleSet_ipcidr_mrs
-    path: ./ruleset/privateip.mrs
+    path: ./ruleset/private_ip.mrs
     url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/private.mrs
     path-in-bundle: geo/geoip/private.mrs
 
@@ -308,9 +336,9 @@ rule-providers:
     url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/telegram.mrs
     path-in-bundle: geo/geosite/telegram.mrs
 
-  telegramip:
+  telegram_ip:
     <<: *RuleSet_ipcidr_mrs
-    path: ./ruleset/telegramip.mrs
+    path: ./ruleset/telegram_ip.mrs
     url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/telegram.mrs
     path-in-bundle: geo/geoip/telegram.mrs
 
@@ -320,9 +348,9 @@ rule-providers:
     url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/tiktok.mrs
     path-in-bundle: geo/geosite/tiktok.mrs
 
-  tiktokip:
+  tiktok_ip:
     <<: *RuleSet_ipcidr_mrs
-    path: ./ruleset/tiktokip.mrs
+    path: ./ruleset/tiktok_ip.mrs
     url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/tiktok.mrs
     path-in-bundle: geo/geoip/tiktok.mrs
 
@@ -332,27 +360,31 @@ rule-providers:
     url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/twitter.mrs
     path-in-bundle: geo/geosite/twitter.mrs
 
-  twitterip:
+  twitter_ip:
     <<: *RuleSet_ipcidr_mrs
-    path: ./ruleset/twitterip.mrs
+    path: ./ruleset/twitter_ip.mrs
     url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/twitter.mrs
     path-in-bundle: geo/geoip/twitter.mrs
 
 rules:
   - DOMAIN,cdn.jsdmirror.com,🎯 直连访问
   - RULE-SET,private,🎯 直连访问
-  - RULE-SET,privateip,🎯 直连访问,no-resolve
-  - RULE-SET,adblockmihomo,🚫 拦截访问
+  - RULE-SET,private_ip,🎯 直连访问,no-resolve
   - RULE-SET,googlefcm,🎯 直连访问
-  - RULE-SET,apple-cn,🍎 Apple
-  - AND,((DST-PORT,443),(NETWORK,UDP),(NOT,((OR,((RULE-SET,cn),(RULE-SET,cnip,no-resolve)))))),🚫 拦截访问
+  - RULE-SET,adblockmihomo,🚫 拦截访问
+  - AND,((DST-PORT,443),(NETWORK,UDP),(NOT,((OR,((RULE-SET,cn),(RULE-SET,cn_ip,no-resolve)))))),🚫 拦截访问
+  - RULE-SET,google,🇬 Google
+  - RULE-SET,google_ip,🇬 Google,no-resolve
   - RULE-SET,microsoft,🪟 Microsoft
-  - RULE-SET,telegramip,✈️ Telegram,no-resolve
+  - RULE-SET,microsoft_ip,🪟 Microsoft,no-resolve
+  - RULE-SET,telegram_ip,✈️ Telegram,no-resolve
   - RULE-SET,telegram,✈️ Telegram
   - RULE-SET,twitter,🐦 Twitter
-  - RULE-SET,twitterip,🐦 Twitter,no-resolve
+  - RULE-SET,twitter_ip,🐦 Twitter,no-resolve
   - RULE-SET,tiktok,🎵 TikTok
-  - RULE-SET,tiktokip,🎵 TikTok,no-resolve
+  - RULE-SET,tiktok_ip,🎵 TikTok,no-resolve
+  - RULE-SET,apple,🍎 Apple
+  - RULE-SET,apple_ip,🍎 Apple,no-resolve
   - RULE-SET,cn,🎯 直连访问
-  - RULE-SET,cnip,🎯 直连访问,no-resolve
+  - RULE-SET,cn_ip,🎯 直连访问,no-resolve
   - MATCH,🐟 漏网之鱼
