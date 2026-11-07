@@ -330,6 +330,12 @@ rule-providers:
     url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/private.mrs
     path-in-bundle: geo/geoip/private.mrs
 
+  proxy:
+    <<: *RuleSet_domain_mrs
+    path: ./ruleset/proxy.mrs
+    url: https://cdn.jsdmirror.com/gh/DustinWin/ruleset_geodata@mihomo-ruleset/proxy.mrs
+    path-in-bundle: geo/geosite/geolocation-!cn.mrs
+
   telegram:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/telegram.mrs
@@ -385,6 +391,7 @@ rules:
   - RULE-SET,tiktok_ip,🎵 TikTok,no-resolve
   - RULE-SET,apple,🍎 Apple
   - RULE-SET,apple_ip,🍎 Apple,no-resolve
+  - RULE-SET,proxy,🚀 节点选择
   - RULE-SET,cn,🎯 直连访问
   - RULE-SET,cn_ip,🎯 直连访问,no-resolve
   - MATCH,🐟 漏网之鱼
