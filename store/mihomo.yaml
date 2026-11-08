@@ -73,8 +73,8 @@ dns:
     rule-set:adblockmihomo: rcode://name_error
 
 sub_rule:
-  RuleSet_ipcidr_mrs: &RuleSet_ipcidr_mrs {type: http, interval: 216000, behavior: ipcidr, format: mrs, proxy: 🎯 直连访问}
-  RuleSet_domain_mrs: &RuleSet_domain_mrs {type: http, interval: 216000, behavior: domain, format: mrs, proxy: 🎯 直连访问}
+  RuleSet_ipcidr_mrs: &RuleSet_ipcidr_mrs {type: http, interval: 86400, behavior: ipcidr, format: mrs, proxy: 🎯 直连访问}
+  RuleSet_domain_mrs: &RuleSet_domain_mrs {type: http, interval: 86400, behavior: domain, format: mrs, proxy: 🎯 直连访问}
 
 sub_filter:
   FilterHK: &FilterHK '(?i)(港|hk|hong\s*kong|🇭🇰)'
