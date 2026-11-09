@@ -129,6 +129,16 @@ proxy-groups:
     icon: https://cdn.jsdmirror.com/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/adjust.svg
     <<: *LoadBalance
 
+  - name: 🎯 直连访问
+    type: url-test
+    icon: https://cdn.jsdmirror.com/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg
+    url: https://connectivitycheck.platform.hicloud.com/generate_204
+    interval: 600
+    tolerance: 50
+    timeout: 5000
+    max-failed-times: 3
+    proxies: [DIRECT]
+
   - name: 🇬 Google
     icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/Google.svg
     <<: *Select
@@ -230,16 +240,6 @@ proxy-groups:
     icon: https://cdn.jsdmirror.com/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/un.svg
     exclude-filter: *FilterUN
     <<: *LoadBalance
-
-  - name: 🎯 直连访问
-    type: url-test
-    icon: https://cdn.jsdmirror.com/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg
-    url: https://connectivitycheck.platform.hicloud.com/generate_204
-    interval: 600
-    tolerance: 50
-    timeout: 5000
-    max-failed-times: 3
-    proxies: [DIRECT]
 
   - name: 🚫 拦截访问
     type: select
