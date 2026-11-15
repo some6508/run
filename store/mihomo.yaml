@@ -127,12 +127,12 @@ proxy-groups:
     proxies: [🎯 直连访问]
 
   - name: 🔮 负载均衡
-    icon: https://cdn.jsdmirror.com/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/adjust.svg
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/Meter.svg
     <<: *LoadBalance
 
   - name: 🎯 直连访问
     type: url-test
-    icon: https://cdn.jsdmirror.com/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/link.svg
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/Update.svg
     url: https://connectivitycheck.platform.hicloud.com/generate_204
     interval: 600
     tolerance: 50
@@ -148,6 +148,10 @@ proxy-groups:
     icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/Microsoft.svg
     <<: *Select
 
+  - name: 🤖 OpenAi
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/Ai.svg
+    <<: *Select
+
   - name: ✈️ Telegram
     icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/Telegram.svg
     <<: *Select
@@ -161,7 +165,7 @@ proxy-groups:
     <<: *Select
 
   - name: 🍎 Apple
-    icon: https://cdn.jsdmirror.com/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/apple.svg
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/Apple.svg
     <<: *Select
 
   - name: 🇭🇰 香港节点-♻️ 自动选择
@@ -244,15 +248,27 @@ proxy-groups:
 
   - name: 🚫 拦截访问
     type: select
-    icon: https://cdn.jsdmirror.com/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/block.svg
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/No-ads-all.svg
     proxies: [REJECT, 🎯 直连访问, 🚀 节点选择]
 
   - name: 🐟 漏网之鱼
     type: select
-    icon: https://cdn.jsdmirror.com/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/fish.svg
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/HBASE-copy.svg
     <<: *Select
 
 rule-providers:
+  ai:
+    <<: *RuleSet_domain_mrs
+    path: ./ruleset/ai.mrs
+    url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/category-ai-!cn.mrs
+    path-in-bundle: geo/geosite/category-ai-!cn.mrs
+
+  ai_ip:
+    <<: *RuleSet_ipcidr_mrs
+    path: ./ruleset/ai_ip.mrs
+    url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/ai.mrs
+    path-in-bundle: geo/geoip/ai.mrs
+
   adblockmihomo:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/adblockmihomo.mrs
@@ -334,7 +350,7 @@ rule-providers:
   proxy:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/proxy.mrs
-    url: https://cdn.jsdmirror.com/gh/DustinWin/ruleset_geodata@mihomo-ruleset/proxy.mrs
+    url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geosite/geolocation-!cn.mrs
     path-in-bundle: geo/geosite/geolocation-!cn.mrs
 
   telegram:
@@ -386,6 +402,8 @@ rules:
   - RULE-SET,microsoft_ip,🪟 Microsoft,no-resolve
   - RULE-SET,telegram_ip,✈️ Telegram,no-resolve
   - RULE-SET,telegram,✈️ Telegram
+  - RULE-SET,ai,🤖 OpenAi
+  - RULE-SET,ai_ip,🤖 OpenAi,no-resolve
   - RULE-SET,twitter,🐦 Twitter
   - RULE-SET,twitter_ip,🐦 Twitter,no-resolve
   - RULE-SET,tiktok,🎵 TikTok
