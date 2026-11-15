@@ -78,12 +78,12 @@ sub_rule:
   RuleSet_domain_mrs: &RuleSet_domain_mrs {type: http, interval: 86400, behavior: domain, format: mrs, proxy: 🎯 直连访问}
 
 sub_filter:
-  FilterHK: &FilterHK '(?i)(港|hk|hong\s*kong|🇭🇰)'
-  FilterTW: &FilterTW '(?i)(台|新北|彰化|tw|taiwan|🇹🇼)'
-  FilterJP: &FilterJP '(?i)(日本|川日|东京|大阪|泉日|埼玉|沪日|深日|jp|japan|🇯🇵)'
-  FilterUS: &FilterUS '(?i)(美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|us|united\s*states|🇺🇸)'
-  FilterSG: &FilterSG '(?i)(新加坡|坡|狮城|sg|singapore|🇸🇬)'
-  FilterUN: &FilterUN '(?i)(🇭🇰|🇹🇼|🇯🇵|🇺🇸|🇸🇬|🇨🇳|🇰🇷|港|hk|hong\s*kong|台|新北|彰化|tw|taiwan|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|jp|japan|新加坡|坡|狮城|sg|singapore|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|us|united\s*states)'
+  FilterHK: &FilterHK '(?i)(港|hk|hong\s*kong|hkg|🇭🇰)'
+  FilterTW: &FilterTW '(?i)(台|新北|彰化|tw|taiwan|tpe|khh|🇹🇼)'
+  FilterJP: &FilterJP '(?i)(日本|川日|东京|大阪|泉日|埼玉|沪日|深日|jp|japan|tokyo|nrt|kix|🇯🇵)'
+  FilterUS: &FilterUS '(?i)(美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|us|united\s*states|atl|buf|dfw|ewr|iad|lax|mci|mia|ord|phx|pdx|sea|sjc|🇺🇸)'
+  FilterSG: &FilterSG '(?i)(新加坡|坡|狮城|sg|singapore|sin|🇸🇬)'
+  FilterUN: &FilterUN '(?i)(🇨🇳|🇭🇰|🇹🇼|🇯🇵|🇺🇸|🇸🇬|港|hk|hong\s*kong|hkg|台|新北|彰化|tw|taiwan|tpe|khh|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|jp|japan|tokyo|nrt|kix|新加坡|坡|狮城|sg|singapore|sin|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|us|united\s*states|atl|buf|dfw|ewr|iad|lax|mci|mia|ord|phx|pdx|sea|sjc)'
 
 sub_group:
   p: &p {url: 'https://www.apple.com/library/test/success.html', interval: 600, tolerance: 50, timeout: 5000, max-failed-times: 3, exclude-type: DIRECT, empty-fallback: REJECT, include-all: true, hidden: true, lazy: true}
