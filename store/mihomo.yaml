@@ -257,6 +257,12 @@ proxy-groups:
     <<: *Select
 
 rule-providers:
+  adblockmihomo:
+    <<: *RuleSet_domain_mrs
+    path: ./ruleset/adblockmihomo.mrs
+    url: https://cdn.jsdmirror.com/gh/217heidai/adblockfilters@main/rules/adblockmihomo.mrs
+    path-in-bundle: geo/geosite/category-ads.mrs
+
   ai:
     <<: *RuleSet_domain_mrs
     path: ./ruleset/ai.mrs
@@ -268,12 +274,6 @@ rule-providers:
     path: ./ruleset/ai_ip.mrs
     url: https://cdn.jsdmirror.com/gh/appshubcc/bett-rules@meta/geo/geoip/ai.mrs
     path-in-bundle: geo/geoip/ai.mrs
-
-  adblockmihomo:
-    <<: *RuleSet_domain_mrs
-    path: ./ruleset/adblockmihomo.mrs
-    url: https://cdn.jsdmirror.com/gh/217heidai/adblockfilters@main/rules/adblockmihomo.mrs
-    path-in-bundle: geo/geosite/category-ads.mrs
 
   apple:
     <<: *RuleSet_domain_mrs
