@@ -87,11 +87,11 @@ sub_filter:
 
 sub_group:
   t: &t {url: 'https://www.apple.com/library/test/success.html', interval: 600, tolerance: 50, timeout: 5000, max-failed-times: 3}
-  p: &p {<<: *t, exclude-type: DIRECT, empty-fallback: REJECT, include-all: true}
+  p: &p {<<: *t, exclude-type: DIRECT|DNS, empty-fallback: REJECT, include-all: true}
   UrlTest: &UrlTest {type: url-test, <<: *p}
   FallBack: &FallBack {type: fallback, <<: *p}
   LoadBalance: &LoadBalance {type: load-balance, strategy: sticky-sessions, <<: *p}
-  Select: &Select {type: select, include-all: true, exclude-type: DIRECT, proxies: [
+  Select: &Select {type: select, include-all: true, exclude-type: DIRECT|DNS, proxies: [
     🚀 节点选择, ♻️ 自动选择, ☁️ 故障转移, 🔮 负载均衡, 🖲️ 手动选择,
     🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇺🇸 美国节点, 🇸🇬 新加坡节点, 🇺🇳 其它节点,
     🎯 直连访问, 🚫 拦截访问]}
@@ -101,6 +101,7 @@ proxy-groups:
     type: select
     icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/All.svg
     include-all: true
+    exclude-type: DIRECT|DNS
     proxies: [
       ♻️ 自动选择, ☁️ 故障转移, 🔮 负载均衡,
       🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇺🇸 美国节点, 🇸🇬 新加坡节点, 🇺🇳 其它节点,
@@ -119,7 +120,7 @@ proxy-groups:
     icon: https://cdn.jsdmirror.com/gh/some6508/run@master/icon/Select.svg
     type: select
     include-all: true
-    exclude-type: DIRECT
+    exclude-type: DIRECT|DNS
     default-selected: 🎯 直连访问
     proxies: [🎯 直连访问]
 
