@@ -87,13 +87,15 @@ sub_filter:
 
 sub_group:
   t: &t {url: 'https://www.apple.com/library/test/success.html', interval: 600, tolerance: 50, timeout: 5000, max-failed-times: 3}
-  p: &p {<<: *t, exclude-type: DIRECT|DNS, empty-fallback: REJECT, include-all: true}
+  p: &p {<<: *t, exclude-type: DIRECT|DNS, empty-fallback: REJECT, include-all: true, lazy: true, hidden: true}
   UrlTest: &UrlTest {type: url-test, <<: *p}
   FallBack: &FallBack {type: fallback, <<: *p}
   LoadBalance: &LoadBalance {type: load-balance, strategy: sticky-sessions, <<: *p}
   Select: &Select {type: select, include-all: true, exclude-type: DIRECT|DNS, proxies: [
     🚀 节点选择, ♻️ 自动选择, ☁️ 故障转移, 🔮 负载均衡, 🖲️ 手动选择,
-    🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇺🇸 美国节点, 🇸🇬 新加坡节点, 🇺🇳 其它节点,
+    🇭🇰 香港自动, 🇹🇼 台湾自动, 🇯🇵 日本自动, 🇺🇸 美国自动, 🇸🇬 新加坡自动, 🇺🇳 联合国自动,
+    🇭🇰 香港故障, 🇹🇼 台湾故障, 🇯🇵 日本故障, 🇺🇸 美国故障, 🇸🇬 新加坡故障, 🇺🇳 联合国故障,
+    🇭🇰 香港负载, 🇹🇼 台湾负载, 🇯🇵 日本负载, 🇺🇸 美国负载, 🇸🇬 新加坡负载, 🇺🇳 联合国负载,
     🎯 直连访问, 🚫 拦截访问]}
 
 proxy-groups:
@@ -104,16 +106,20 @@ proxy-groups:
     exclude-type: DIRECT|DNS
     proxies: [
       ♻️ 自动选择, ☁️ 故障转移, 🔮 负载均衡,
-      🇭🇰 香港节点, 🇹🇼 台湾节点, 🇯🇵 日本节点, 🇺🇸 美国节点, 🇸🇬 新加坡节点, 🇺🇳 其它节点,
+      🇭🇰 香港自动, 🇹🇼 台湾自动, 🇯🇵 日本自动, 🇺🇸 美国自动, 🇸🇬 新加坡自动, 🇺🇳 联合国自动,
+      🇭🇰 香港故障, 🇹🇼 台湾故障, 🇯🇵 日本故障, 🇺🇸 美国故障, 🇸🇬 新加坡故障, 🇺🇳 联合国故障,
+      🇭🇰 香港负载, 🇹🇼 台湾负载, 🇯🇵 日本负载, 🇺🇸 美国负载, 🇸🇬 新加坡负载, 🇺🇳 联合国负载,
       🖲️ 手动选择, 🎯 直连访问
     ]
 
   - name: ♻️ 自动选择
     <<: *UrlTest
+    hidden: false
     icon: https://cdn.jsdmirror.com/gh/some6508/run@master/icon/UrlTest.svg
 
   - name: ☁️ 故障转移
     <<: *FallBack
+    hidden: false
     icon: https://cdn.jsdmirror.com/gh/some6508/run@master/icon/FallBack.svg
 
   - name: 🖲️ 手动选择
@@ -125,8 +131,9 @@ proxy-groups:
     proxies: [🎯 直连访问]
 
   - name: 🔮 负载均衡
-    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/Meter.svg
     <<: *LoadBalance
+    hidden: false
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/Meter.svg
 
   - name: 🎯 直连访问
     <<: *t
@@ -163,36 +170,6 @@ proxy-groups:
     <<: *Select
     icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/Apple.svg
 
-  - name: 🇭🇰 香港节点
-    <<: *UrlTest
-    filter: *FilterHK
-    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/HK.svg
-
-  - name: 🇹🇼 台湾节点
-    <<: *UrlTest
-    filter: *FilterTW
-    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/CN.svg
-
-  - name: 🇯🇵 日本节点
-    <<: *UrlTest
-    filter: *FilterTW
-    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/JP.svg
-
-  - name: 🇺🇸 美国节点
-    <<: *UrlTest
-    filter: *FilterUS
-    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/US.svg
-
-  - name: 🇸🇬 新加坡节点
-    <<: *UrlTest
-    filter: *FilterSG
-    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/Singapore.svg
-
-  - name: 🇺🇳 其它节点
-    <<: *UrlTest
-    exclude-filter: *FilterUN
-    icon: https://cdn.jsdmirror.com/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/un.svg
-
   - name: 🚫 拦截访问
     type: select
     icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/No-ads-all.svg
@@ -201,6 +178,96 @@ proxy-groups:
   - name: 🐟 漏网之鱼
     <<: *Select
     icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/HBASE-copy.svg
+
+  - name: 🇭🇰 香港自动
+    <<: *UrlTest
+    filter: *FilterHK
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/HK.svg
+
+  - name: 🇹🇼 台湾自动
+    <<: *UrlTest
+    filter: *FilterTW
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/CN.svg
+
+  - name: 🇯🇵 日本自动
+    <<: *UrlTest
+    filter: *FilterTW
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/JP.svg
+
+  - name: 🇺🇸 美国自动
+    <<: *UrlTest
+    filter: *FilterUS
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/US.svg
+
+  - name: 🇸🇬 新加坡自动
+    <<: *UrlTest
+    filter: *FilterSG
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/Singapore.svg
+
+  - name: 🇺🇳 联合国自动
+    <<: *UrlTest
+    exclude-filter: *FilterUN
+    icon: https://cdn.jsdmirror.com/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/un.svg
+
+  - name: 🇭🇰 香港故障
+    <<: *FallBack
+    filter: *FilterHK
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/HK.svg
+
+  - name: 🇹🇼 台湾故障
+    <<: *FallBack
+    filter: *FilterTW
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/CN.svg
+
+  - name: 🇯🇵 日本故障
+    <<: *FallBack
+    filter: *FilterTW
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/JP.svg
+
+  - name: 🇺🇸 美国故障
+    <<: *FallBack
+    filter: *FilterUS
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/US.svg
+
+  - name: 🇸🇬 新加坡故障
+    <<: *FallBack
+    filter: *FilterSG
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/Singapore.svg
+
+  - name: 🇺🇳 联合国故障
+    <<: *FallBack
+    exclude-filter: *FilterUN
+    icon: https://cdn.jsdmirror.com/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/un.svg
+
+  - name: 🇭🇰 香港负载
+    <<: *LoadBalance
+    filter: *FilterHK
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/HK.svg
+
+  - name: 🇹🇼 台湾负载
+    <<: *LoadBalance
+    filter: *FilterTW
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/CN.svg
+
+  - name: 🇯🇵 日本负载
+    <<: *LoadBalance
+    filter: *FilterTW
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/JP.svg
+
+  - name: 🇺🇸 美国负载
+    <<: *LoadBalance
+    filter: *FilterUS
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/US.svg
+
+  - name: 🇸🇬 新加坡负载
+    <<: *LoadBalance
+    filter: *FilterSG
+    icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/Singapore.svg
+
+  - name: 🇺🇳 联合国负载
+    <<: *LoadBalance
+    exclude-filter: *FilterUN
+    icon: https://cdn.jsdmirror.com/gh/clash-verge-rev/clash-verge-rev.github.io@main/docs/assets/icons/flags/un.svg
 
 rule-providers:
   adblockmihomo:
