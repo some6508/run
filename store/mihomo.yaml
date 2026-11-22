@@ -152,6 +152,7 @@ proxy-groups:
 
   - name: 🤖 OpenAi
     <<: *Select
+    default-selected: 🇺🇸 美国自动
     icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/Ai.svg
 
   - name: ✈️ Telegram
@@ -164,6 +165,7 @@ proxy-groups:
 
   - name: 🎵 TikTok
     <<: *Select
+    default-selected: 🇺🇸 美国自动
     icon: https://cdn.jsdmirror.com/gh/GitMetaio/Surfing@rm/Home/icon/TikTok.svg
 
   - name: 🍎 Apple
